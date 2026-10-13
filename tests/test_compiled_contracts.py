@@ -76,6 +76,27 @@ class CompiledContractsTests(unittest.TestCase):
         self.assertEqual(len(side['ScopeManifest']['card_ids']), 6)
         self.assertNotIn(roadmap['stable_id'], side['ScopeManifest']['card_ids'])
 
+    def test_corrected_cards_keep_native_and_parent_claims_separate(self):
+        record = json.loads((ROOT / 'docs/compiled/specification.json').read_text(encoding='utf-8'))
+        by_id = {card['stable_id']: card for card in record['cards']}
+        parser = by_id['SPEC-trainability-boundary']
+        verify = by_id['V-trainability-discriminating-controls']
+        hypothesis = by_id['REQ-scoped-patch']
+        strategy = by_id['S-start-at-the-patch-acceptance-boundary']
+        self.assertEqual([card['revision'] for card in
+                          (parser, verify, hypothesis, strategy)], [3, 3, 3, 3])
+        self.assertIn('parse_proposal(raw: bytes, fixed_inputs: Mapping)', parser['payload'])
+        self.assertIn('No TaskSnapshot file loading', parser['payload'])
+        self.assertIn('PASS_SCOPED (28 parser tests within 36 local tests)',
+                      verify['payload'])
+        self.assertIn('native P-class/Noodle behavior', verify['payload'])
+        self.assertIn('not evidence of a prior NeoWeaver native failure',
+                      hypothesis['payload'])
+        self.assertIn('not an automatic Parser retry counter', strategy['payload'])
+        side = json.loads((ROOT / 'docs/compiled/semantic-sidecars.json').read_text(encoding='utf-8'))
+        self.assertEqual(side['PromptDelta']['native_consumption'], 'NOT_RUN')
+        self.assertFalse(side['authority']['authorizes_landing'])
+
     def test_parser_cannot_gain_replay(self):
         out = self.mutate('semantic-sidecars.json', lambda d: d['ScopeManifest']['local_contract'].__setitem__('executes_replay', True))
         self.assertEqual(out['error'], 'parser_effect_boundary_changed')

@@ -68,3 +68,14 @@ The historical `verification.json` refers to the earlier compilation and
 remains immutable; the present R39 revision is subject to its own source
 review and original FactoryWeaver validation. This candidate is not a native
 Stage, model-training, transfer or whole-Goal receipt.
+
+### Additional scoped Card refinements in candidate
+
+SPEC08, V09, REQ-scoped-patch, and S38 each have one source-backed proposed
+revision (revision 3) correcting the fixed-input API, present Parser evidence
+versus historical NOT_RUN, observed-failure applicability, and Session
+reassessment rather than Parser retry policy. These changes are synchronized
+with current per-type proposals and are subject to original semantic review.
+The original 10 REQs and all 44 stable identities are preserved; immutable
+historical `verification.json` is not overwritten. Native Stage, Replay,
+Training, Codex transfer and Parent Goal are still unobserved.

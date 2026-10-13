@@ -25,6 +25,29 @@ original historical compiled verification receipts. It cannot establish a
 native Noodle Stage, fresh P-class behavior, Trainer or frozen Codex transfer.
 Remaining R units need source-grounded entry review if Session selects them.
 
+## Source-bound refinement of remaining four Card findings
+
+The current proposed record also revises SPEC08, V09, REQ-scoped-patch
+and S38. Each stable identity and the ten original parent requirements
+remain unchanged; their revision increments by one (revision 3):
+
+- SPEC08: names the actual `parse_proposal(raw: bytes, fixed_inputs:
+  Mapping)` interface, complete opaque Owner fixed inputs, and no file
+  dereference or snapshot replay.
+- V09: reports *separate current* public API Parser PASS_SCOPED from
+  `docs/parser-verification.json`, while preserving the frozen historical
+  `NOT_RUN` and the still-unobserved native/training claims.
+- REQ-scoped-patch: an observed failure is required for a new failure-bound
+  hypothesis; Parser bootstrap alone is not proof of a native defect.
+- S38: three failed authorized corrections refer to original Session
+  reassessment policy, not a new Parser retry counter or Scheduler.
+
+These are source-backed **proposed Card revisions**, not proof of Agent
+compliance. The five original REFINE rows below record what was identified
+before this candidate correction; the current candidate addresses the local
+claims, while independent semantic review and fresh native evidence remain
+separate obligations. Do not treat this note as a formal acceptance receipt.
+
 ## Full 44 / 44 Card review
 
 The scope-role column is copied as existing semantic classification from the original scope sidecar; it is **not** a newly inferred runtime state. `KEEP` means preserve the present boundary, `REFINE` indicates a source-level or future revision recommendation, not that source files were already updated.
