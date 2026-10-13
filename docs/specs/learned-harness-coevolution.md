@@ -1,6 +1,6 @@
 # NeoWeaver Learned Harness Co-evolution 完整規格
 
-本文件重新編譯原 PR #1 的十項 logical REQ。產品、Trainer、native Frozen Codex transfer 均為 PROPOSED，尚未實作或執行。FactoryWeaver CLI 的實際驗證只支持本文件的結構、引用與唯讀交接，不支持 RL 成效或 Agent compliance。來源版本、原需求別名與驗證結果見 [編譯入口](../compiled/README.md)。
+本文件重新編譯原 PR #1 的十項 logical REQ。純 parser／refusal 已有第一個局部實作與正反控制，見 [parser contract](../parser-contract.md) 與 [本輪實測摘要](../parser-verification.json)。其餘產品、Trainer、native Frozen Codex transfer 仍為 PROPOSED，尚未實作或執行。FactoryWeaver CLI 的實際驗證只支持本文件的結構、引用與唯讀交接，不支持 RL 成效或 Agent compliance。來源版本、原需求別名與歷史驗證結果見 [編譯入口](../compiled/README.md)。
 
 ## 原始 Goal 與成功邊界
 
@@ -102,7 +102,7 @@ Test Manager 一次選最小 discriminating controls；Schema Manager 消費真�
 
 局部 Goal 是合法、current、single-surface candidate 只得到 `ParsedProposal`；duplicate keys、stale expected source、越界／protected target、missing fixed input、extra credential/effect fields 得到具名 `DiagnosticRefusal`。兩種輸出都不啟動 replay、training、native transfer 或 provider write。相同 raw input 與 fixed boundary 重讀的 determinism，不等於 TaskSnapshot replay。
 
-Measurement 使用原 fixed input/result parser controls。這些是未實作 parser 的驗收提案，執行狀態仍 NOT_RUN；specification consistency check 不升級它。Persistence 保留原十項需求、未覆蓋 clauses 與 whole Goal。Stop 是需要的原資料缺失或 scope 不符；未知先前 write outcome 回原 Owner，不能重送。
+Measurement 使用原 fixed input/result parser controls。本輪 public API controls 已執行；編譯時保存的 proposed controls 與 NOT_RUN 保留在原 artifact，specification consistency check 不升級它。新的實作證據分開記錄於 parser verification，不把局部 parse acceptance 改稱完整 Trainability 或 replay PASS。Persistence 保留原十項需求、未覆蓋 clauses 與 whole Goal。Stop 是需要的原資料缺失或 scope 不符；未知先前 write outcome 回原 Owner，不能重送。
 
 Scope 只選 SPEC-trainability 的 parser contract、對應 V control、三張必要 C/G 約束與 S38 proposed strategy。全 44 卡在 semantic-sidecars 中逐張標 local exit/control、constraint、strategy、context-only 或 deferred。Source integrity、Three planes、Trainability 與 Scoped patch 只覆蓋明列的局部 clauses；其完整 source review、Execution／Verification、replay 與 causal benefit 仍保留。Full lifecycle 的 native Stage／Provider acceptance 是父層後續義務，不能加入 parser exit。
 
