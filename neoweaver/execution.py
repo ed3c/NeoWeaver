@@ -178,7 +178,7 @@ class ContainerInspection:
 
 
 def inspect_container_capture(capture: ContainerCapture, task: ContainerTask,
-                              source: Path) -> ContainerInspection:
+                              pair: StagedSourcePair) -> ContainerInspection:
     """Independent *read-only* Docker metadata readback bound to an engine ID.
 
     Config matching is not kernel isolation or original task/oracle success.
@@ -196,8 +196,34 @@ def inspect_container_capture(capture: ContainerCapture, task: ContainerTask,
             or type(task.argv) is not tuple or not task.argv
             or any(type(x) is not str or not x for x in task.argv)):
         return ContainerInspection("REFUSED", ("invalid_original_task",), ident)
-    if not isinstance(source, Path) or source.is_symlink() or not source.is_dir():
-        return ContainerInspection("REFUSED", ("invalid_source_path",), ident)
+    if type(pair) is not StagedSourcePair or pair.source_manifest_sha256 != capture.source_manifest_sha256:
+        return ContainerInspection("REFUSED", ("source_manifest_mismatch",), ident)
+    try:
+        source = _check_source(pair, capture.arm)
+    except (ExecutionRefusal, OSError) as error:
+        reason = error.condition if isinstance(error, ExecutionRefusal) else "source_unreadable"
+        return ContainerInspection("INCONCLUSIVE", (reason,), ident)
+    # The original capture producer owns both logs and the engine CID file.
+    stdout_path, stderr_path = capture.stdout_path, capture.stderr_path
+    if (not isinstance(stdout_path, Path) or not isinstance(stderr_path, Path) or
+            stdout_path.parent != stderr_path.parent or
+            stdout_path.name != "stdout.bin" or stderr_path.name != "stderr.bin"):
+        return ContainerInspection("REFUSED", ("invalid_capture_paths",), ident)
+    cidfile = stdout_path.parent / "container.cid"
+    for file in (stdout_path, stderr_path, cidfile):
+        if file.is_symlink() or not file.is_file():
+            return ContainerInspection("INCONCLUSIVE", ("missing_bound_capture",), ident)
+    try:
+        with stdout_path.open("rb") as fp:
+            stdout_sha = hashlib.file_digest(fp, "sha256").hexdigest()
+        with stderr_path.open("rb") as fp:
+            stderr_sha = hashlib.file_digest(fp, "sha256").hexdigest()
+        original_cid = cidfile.read_text(encoding="utf-8").strip()
+    except (OSError, UnicodeError):
+        return ContainerInspection("INCONCLUSIVE", ("capture_read_unavailable",), ident)
+    if (stdout_sha != capture.stdout_sha256 or stderr_sha != capture.stderr_sha256 or
+            original_cid != ident):
+        return ContainerInspection("REFUSED", ("capture_or_cid_mismatch",), ident)
     docker = shutil.which("docker")
     if not docker or not Path(docker).is_file():
         return ContainerInspection("INCONCLUSIVE", ("docker_unavailable",), ident)
@@ -225,6 +251,7 @@ def inspect_container_capture(capture: ContainerCapture, task: ContainerTask,
         if not condition:
             reasons.append(key)
     required(exit_value == capture.exit_code, "exit_code_mismatch")
+    required(obj.get("Name") == "/" + capture.container_name, "container_name_mismatch")
     required(cfg.get("Image") == task.image, "image_mismatch")
     required(cfg.get("User") == "65534:65534", "user_mismatch")
     required(cfg.get("Cmd") == list(task.argv), "task_argv_mismatch")
