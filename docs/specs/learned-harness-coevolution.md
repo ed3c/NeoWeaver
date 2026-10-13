@@ -1,6 +1,6 @@
 # NeoWeaver Learned Harness Co-evolution 完整規格
 
-本文件重新編譯原 PR #1 的十項 logical REQ。產品、Trainer、native Frozen Codex transfer 均為 PROPOSED，尚未實作或執行。FactoryWeaver CLI 的實際驗證只支持本文件的結構、引用與唯讀交接，不支持 RL 成效或 Agent compliance。來源版本、原需求別名與驗證結果見 [編譯入口](../compiled/README.md)。
+本文件重新編譯原 PR #1 的十項 logical REQ。純 parser／refusal 已有第一個局部實作與正反控制，見 [parser contract](../parser-contract.md) 與 [本輪實測摘要](../parser-verification.json)。其餘產品、Trainer、native Frozen Codex transfer 仍為 PROPOSED，尚未實作或執行。FactoryWeaver CLI 的實際驗證只支持本文件的結構、引用與唯讀交接，不支持 RL 成效或 Agent compliance。來源版本、原需求別名與歷史驗證結果見 [編譯入口](../compiled/README.md)。
 
 ## 原始 Goal 與成功邊界
 
@@ -40,7 +40,7 @@ Learning plane 讀取合格 observations，產生 scoped PatchProposal 或可回
 | TaskSnapshot | original_goal、accepted_requirements、acceptance、source/environment/budget/rights refs、dataset split、protected_oracles ref | Source／Environment Owner → replay runner／Solver | 缺任何必要固定輸入只阻擋 replay；source quote 不能替代 environment receipt |
 | RolloutObservation | snapshot ref、actor、policy ref、ordered raw capture ref、observed result、token provenance ref 或明示 UNKNOWN | 實際 generation／runner → Observer／eligibility checker | 無 terminal 或 capture prefix 不完整保留 partial；看過 transcript 不代表完整 action lineage |
 | FailureScope | 原 failure evidence、causal hypothesis、one allowed target、parent acceptance、non-cases、stop rule | Observer／Session → Proposer | 無失敗或已有合法 unchanged next 則 NOOP；未觀察 target 成為 K |
-| PatchProposal | failure/snapshot/allowlist refs、single mutation surface、bounded operations、expected old source ref、proposed replacement、original acceptance ref | πθ → parser／Patch Validator | duplicate keys、path escape、修改 evaluator、unsupported operation、額外 effect 都 REFUSE；proposal 無 effect authority |
+| PatchProposal | failure/snapshot/allowlist refs、single mutation surface、bounded operations、expected old source ref、proposed replacement、original acceptance ref | πθ → parser／Patch Validator | duplicate keys、不在固定 allowlist 的 target、原 Owner 固定的 protected target、unsupported surface、額外 effect 都 REFUSE。Refs 是 opaque data；若後續 Runner 將 reference 解碼為 path，原 Runner／Owner 另驗實際來源與 path escape；proposal 無 effect authority |
 | PairedReplay | baseline/candidate observations、matched conditions refs、population/exclusions、completion validity、missing observations | 原 Snapshot Runner → independent Verifier | stale baseline、不同預算、漏 negative controls、unknown provider effects 都 INCONCLUSIVE |
 | VerificationResult | original oracle ref、hard gates、protected regressions、PASS／FAIL／INCONCLUSIVE、evidence refs、covered scope | 原 Verifier → reward／original Owner | PASS 只覆蓋其 scope；沒有 native effect receipt 不填 goal_closed |
 | RewardObservation | actor/action/replay/verifier refs、known／unknown disposition、observed outcome/cost components、eligibility | 原 reward／verification Producer → Trainer | 權限 gate 或資料不足不能以 scalar 權重抵銷；UNKNOWN 不當成零、failure 或正 reward |
@@ -92,7 +92,7 @@ App Server 的 migration detection/import 是可讀回的外部 config 路徑；
 
 Session 從原 REQ、真正 failure 與 Owner readback 選一個 causal Scope。已有合法 unchanged continuation 時原樣消費，不重選 Thinking Method 或 Poteto playbook。真實 unresolved architecture／Goal／evaluator 問題才走原 Thinking Router；已觀察 CLI bug 直接交原 code owner。卡型沒有觸發權限。
 
-Outer Loop 透過既有 Issue Contract／admission 固定 write/effect boundary、required inputs、independent oracles 與後续交付責任。Inner worker 在原 admitted `execute` stage 消費 semantic bullet Prompt Delta 和已選 playbook，可自由選 implementation details。它不改 acceptance、重新選 judge、重設 effort horizon 或自簽 parent Goal closure。
+啟動 native Stage 時，Outer Loop 透過既有 Issue Contract／admission 固定 write/effect boundary、required inputs、independent oracles 與後续交付責任。Native Inner worker 在原 admitted `execute` stage 消費 semantic bullet Prompt Delta 和已選 playbook，可自由選 implementation details。它不改 acceptance、重新選 judge、重設 effort horizon 或自簽 parent Goal closure。已授權的 local parser 工作使用原 user/task 授權與必要固定輸入，不依賴尚未啟動的 native Stage。
 
 Test Manager 一次選最小 discriminating controls；Schema Manager 消費真實 feedback，回傳 next 且需觀察它被消費。Hook 只用 actual native event；Cron 只用既有 authorized heartbeat；Provider 獨立裁決 publication／landing。這次 FactoryWeaver 工程以 source update、真實 CLI、independent reviews 與 GitHub receipts 完成；它不是 native Noodle Stage／Manager invocation receipt。
 
@@ -102,11 +102,11 @@ Test Manager 一次選最小 discriminating controls；Schema Manager 消費真�
 
 局部 Goal 是合法、current、single-surface candidate 只得到 `ParsedProposal`；duplicate keys、stale expected source、越界／protected target、missing fixed input、extra credential/effect fields 得到具名 `DiagnosticRefusal`。兩種輸出都不啟動 replay、training、native transfer 或 provider write。相同 raw input 與 fixed boundary 重讀的 determinism，不等於 TaskSnapshot replay。
 
-Measurement 使用原 fixed input/result parser controls。這些是未實作 parser 的驗收提案，執行狀態仍 NOT_RUN；specification consistency check 不升級它。Persistence 保留原十項需求、未覆蓋 clauses 與 whole Goal。Stop 是需要的原資料缺失或 scope 不符；未知先前 write outcome 回原 Owner，不能重送。
+Measurement 使用原 fixed input/result parser controls。本輪 public API controls 已執行；編譯時保存的 proposed controls 與 NOT_RUN 保留在原 artifact，specification consistency check 不升級它。新的實作證據分開記錄於 parser verification，不把局部 parse acceptance 改稱完整 Trainability 或 replay PASS。Persistence 保留原十項需求、未覆蓋 clauses 與 whole Goal。Stop 是需要的原資料缺失或 scope 不符；未知先前 write outcome 回原 Owner，不能重送。
 
 Scope 只選 SPEC-trainability 的 parser contract、對應 V control、三張必要 C/G 約束與 S38 proposed strategy。全 44 卡在 semantic-sidecars 中逐張標 local exit/control、constraint、strategy、context-only 或 deferred。Source integrity、Three planes、Trainability 與 Scoped patch 只覆蓋明列的局部 clauses；其完整 source review、Execution／Verification、replay 與 causal benefit 仍保留。Full lifecycle 的 native Stage／Provider acceptance 是父層後續義務，不能加入 parser exit。
 
-Prompt Delta 是 proposed requirements；原 admission／selected playbook 尚未觀察，不是 executable next。
+Prompt Delta 是 proposed requirements，不能授予 native 權限或生成 executable next。原 admission／runtime playbook 尚未觀察，只限制依賴它們的 native Stage；原 user/task 已授權且必要 fixed inputs 可用的 local parser 工作可繼續。
 
 - Parse raw single-surface proposal against original fixed inputs，回 `ParsedProposal` 或具名 `DiagnosticRefusal`。
 - 拒絕 duplicate keys、stale expected source、越界或 protected target、missing fixed inputs、extra credentials/effects；保存 immutable references。
@@ -131,8 +131,8 @@ Parser callers 是提供 raw data 的 Proposer；下一個 Consumer 是另行授
 
 ## Completion Contract
 
-本輪 knowledge compilation 的 DONE 僅表示已讀來源的 inventory、REQ mapping、source-justified Cards、typed links、Scope proposal與已執行 CLI驗證交付完成。NeoWeaver產品 implementation、RL experiments、fresh P-class consumer、admitted Outer/Inner Stage、必要 Managers、native Codex transfer與whole Goal仍需各自原 receipts。它們沒有執行時一律 NOT_RUN／UNKNOWN。
+歷史 knowledge compilation 的 DONE 僅表示已讀來源的 inventory、REQ mapping、source-justified Cards、typed links、Scope proposal與已執行 CLI驗證交付完成。NeoWeaver產品 implementation、RL experiments、fresh P-class consumer、admitted Outer/Inner Stage、必要 Managers、native Codex transfer與whole Goal仍需各自原 receipts。它們沒有執行時一律 NOT_RUN／UNKNOWN。
 
 Whole Goal closure還須原Owner證明無hard-gate violation與可重複正向paired effect；局部parser驗收或可重放fixture不能替代它。
 
-FactoryWeaver的doctor與local maintain已在真實checkout執行。完整maintain可讀到Soodles Reader transport，仍因native source/Agent/Issue/Manager/Provider證據缺口而blocked。不要用local clean改寫該結果，也不要為填滿卡型或四個visual slots制造內容。
+該編譯驗證的FactoryWeaver doctor與local maintain已在真實checkout執行。其完整maintain可讀到Soodles Reader transport，仍因native source/Agent/Issue/Manager/Provider證據缺口而blocked。不要用local clean改寫該結果，也不要為填滿卡型或四個visual slots制造內容。

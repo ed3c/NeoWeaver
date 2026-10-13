@@ -1,0 +1,118 @@
+{
+  "scope": "pure PatchProposal parser/refusal; SPEC08 parser clause and selected local Scope only",
+  "base_commit": "85969389e0be7e87708ad3419cd9ac16a4ee4515",
+  "original_requirement_ids": [
+    "REQ-source-integrity",
+    "REQ-three-planes",
+    "REQ-trainability",
+    "REQ-two-policies",
+    "REQ-causal-attribution",
+    "REQ-scoped-patch",
+    "REQ-plugin-transfer",
+    "REQ-full-lifecycle",
+    "REQ-learning-dataset",
+    "REQ-lesson-lineage"
+  ],
+  "compiled_artifacts_modified": false,
+  "card_count": 44,
+  "producer_consumer": "Owner-fixed inputs and raw Proposer bytes -> parse_proposal -> immutable ParsedProposal or DiagnosticRefusal; subsequent Runner needs separate authorization",
+  "source_bytes": {
+    "neoweaver/__init__.py": "f4b70a0bffec2b14b0e29dc64b66344f54f3279f3901720491263e248c64640a",
+    "neoweaver/patches.py": "b1e874693062d36ff351c8dff18ec9c6705355d2cb4d56541aca4ccbab87af44",
+    "tests/test_patches.py": "795c0f22b740029bcfe9642692be1dedec6e72ff4ded38295c3ede911ac16972",
+    "docs/parser-contract.md": "67ab4acbe3a1a8ad9a2f23d74fcd061197d966b759762b6f742f5fad29c7e385"
+  },
+  "local_controls": {
+    "status": "PASS_SCOPED",
+    "suite": "python3 -m unittest discover -s tests -v",
+    "tests": 36,
+    "parser_tests": 28,
+    "retained_artifact_tests": 8,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "3cb01c6f8573f051393e19307636ef6d6dfaeb8a40ad11fc73ff65e1e4b47ff7",
+    "scope": "public API data acceptance/refusal, no replay or runtime effects"
+  },
+  "original_factoryweaver_v1_validation": {
+    "status": "PASS_SCOPED",
+    "source_commit": "176d60ec3e2487d4a7385ee0066f20b0277a4422",
+    "scope": "shape/reference validation only"
+  },
+  "reviews": {
+    "architecture": "ACCEPT_SCOPED_SOURCE_AND_PUBLIC_CONTROLS",
+    "security": "ACCEPT_SCOPED_STATIC_SECURITY_REVIEW",
+    "github_review_submission": "NOT_RUN",
+    "architecture_report_sha256": "824359ff9bba02ad7a7696552875e7688439801077697c2464d6e354666e23a0",
+    "security_report_sha256": "cbc14ca4fad6ba25495d09c335b95b85458c51003139a32c2ce180db36eb7d5c"
+  },
+  "verified_merges": [
+    {
+      "repository": "ed3c/factoryweaver",
+      "pr": 26,
+      "head": "660778f7e0602bb84e9f46f49e76a620f880ee21",
+      "merge_commit": "176d60ec3e2487d4a7385ee0066f20b0277a4422",
+      "head_ci": "https://github.com/ed3c/factoryweaver/actions/runs/38374942238",
+      "main_ci": "https://github.com/ed3c/factoryweaver/actions/runs/38378204187",
+      "conclusion": "success"
+    },
+    {
+      "repository": "ed3c/NeoWeaver",
+      "pr": 1,
+      "head": "1de71ae70baff9914f0ddd757fadb34c0ed9f733",
+      "merge_commit": "85969389e0be7e87708ad3419cd9ac16a4ee4515",
+      "head_ci": "https://github.com/ed3c/NeoWeaver/actions/runs/38375718862",
+      "main_ci": "https://github.com/ed3c/NeoWeaver/actions/runs/38378218168",
+      "conclusion": "success"
+    }
+  ],
+  "native_hook_observation": {
+    "carrier": "Codex CLI 0.162.1 dedicated session for a task-scoped read-only source review",
+    "hook_manager_source_commit": "c2f1c3afa81fef06fc439ccee67df32104ad5218",
+    "fetched_soodles_main": "1fbae801fda7590a6e6fe728a8a2fc0e5f63e409",
+    "selected_hook_check_outer_source_diff_to_fetched_main": [],
+    "definition_availability": "OBSERVED",
+    "native_trust": "OBSERVED_VIA_HOOKS_UI",
+    "native_invocation": "OBSERVED",
+    "first_stop": "request_continuation: continue_requirements / NATIVE-REVIEW",
+    "consumer_read": "OBSERVED_AFTER_NATIVE_HOOK_PROMPT",
+    "second_stop": "stop_hook_active=true; no further continuation",
+    "task_review_after_feedback": {
+      "reported_complete": 1,
+      "needs_inspection": 10,
+      "status": "incomplete",
+      "next": "inspect_requirements"
+    },
+    "temporary_definition_removed": true,
+    "raw_captures": "retained outside repository; transcripts and machine paths are not published",
+    "definition_identity": "246f2daa86dfee57dd432c7dff7cbe871c5805657a00287b1f9664107a2b66ab",
+    "consumption_capture_sha256": "09c2c1cfd3fecd7df484319079852da17e6ea53ad4cb99cd537106e787c54571",
+    "event_sha256": [
+      "e6aae514575be449eacc4b6572fc46a297919ec496229b2e5150a5e0b0e2ed9d",
+      "b1724fe7754cf7cefaebb4be0adece893443650485f39dc4dfde015fa3ad93b0"
+    ],
+    "scope": "native Stop -> original task-review -> bounded read-only source review; no learned artifact installation or transfer",
+    "native_waza_check": "NOT_RUN",
+    "mr_to_hook_manager_bridge": "NOT_OBSERVED",
+    "remote_webhook_inventory": "UNKNOWN: readback returned authentication required",
+    "requested_cli_sandbox": "read-only",
+    "requested_cli_approval_policy": "never",
+    "native_event_permission_mode": "bypassPermissions",
+    "runtime_sandbox_enforcement": "NOT_VERIFIED"
+  },
+  "remaining": {
+    "replay": "NOT_RUN",
+    "training": "NOT_RUN",
+    "native_learned_artifact_transfer": "NOT_RUN",
+    "full_native_pclass_compliance": "NOT_RUN",
+    "whole_goal": "OPEN",
+    "native_noodle_admitted_stage": "NOT_RUN"
+  },
+  "historical_evidence": "docs/compiled bytes retain original NOT_RUN/UNVERIFIED; the artifact helper is not a current implementation detector",
+  "limitations": [
+    "Opaque references do not authenticate owners, source truth, aliases, paths, causal benefit or permissions.",
+    "Owner must enumerate protected evaluator/oracle identities; parser cannot infer their semantics.",
+    "One complete replacement per causal target; multiple replacements refuse because no operation ordering is defined.",
+    "Resource/transport limits and subsequent Runner behavior are outside this atom.",
+    "Local Host observations are separate from GitHub CI and formal review submissions."
+  ],
+  "implementation_commit": "2992f4fa29ce5788bcebdf00ac9be5d2c2522d7f"
+}

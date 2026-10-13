@@ -14,9 +14,9 @@
     "S-start-at-the-patch-acceptance-boundary"
   ],
   "goal": "Pure parser/refusal: legal current single-surface proposal returns ParsedProposal; invalid input returns DiagnosticRefusal without replay, training or provider effects.",
-  "measurement": "Original fixed parser input/result controls cover allowed input, duplicate keys, stale source, outside/protected target, missing fixed input and extra effect/credential fields. Parser execution is not yet implemented; controls remain NOT_RUN.",
+  "measurement": "Original fixed parser input/result controls cover allowed input, duplicate keys, stale source, outside/protected target, missing fixed input and extra effect/credential fields. In the historical compiled delivery, parser execution had not yet been implemented and its proposed controls remained NOT_RUN. Current pure parser public API evidence is recorded separately in docs/parser-verification.json; compilation checks do not promote those historical controls.",
   "persistence": "原十項parent REQ與whole Goal持續保留，不因這個atom完成而閉合。",
-  "stop_and_escalation": "缺admission/原輸入停依賴操作；unknown effect原Owner readback，不猜next。",
+  "stop_and_escalation": "缺必要 fixed inputs 時，parser 回 DiagnosticRefusal，不進入依賴該輸入的候選處理。Local 工作超出原 user/task 授權時，停止該操作。Native Stage 缺原 Issue/admission 或合法 next 時，只停止該 native 操作；不阻塞獨立且已授權的 local parser 工作。Unknown write outcome 回原 Owner readback，不猜 next 或重送。",
   "causal_change": "Make raw proposal parsing and fixed mutation/acceptance boundary checks unambiguous before any later Runner consumes the data.",
   "acceptance": [
     "With Owner-fixed boundary inputs, return only ParsedProposal or DiagnosticRefusal; preserve original immutable references and report the refusal condition; neither variant causes replay/training/provider writes."
