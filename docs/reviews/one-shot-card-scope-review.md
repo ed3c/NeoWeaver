@@ -69,7 +69,7 @@ The scope-role column is copied as existing semantic classification from the ori
 | `E-joint-result-does-not-identify-a-component-effect` | E | Causal evaluator | `deferred` | KEEP | Joint total under A/D does not identify components; conditional proof is not a universal causal law. |
 | `Q-choose-the-first-evaluation-population` | Q | Measurement population | `deferred` | KEEP | Read original chosen evaluation population first; unknown selection blocks replay/performance, not local parser. |
 | `S-start-at-the-patch-acceptance-boundary` | S | Pure parser / Strategy | `strategy` | REFINE | The three-failed-corrections stop clause needs its actual applicable Session policy; do not install a universal parser retry counter. |
-| `R-verify-a-bounded-delivery-sequence` | R | Parent Roadmap / Scope discovery | `deferred` | REFINE | R lists causal phases but only links to S card; add justified existing card references for each proposed unit when revising R, without making scheduler/Stage next. |
+| `R-verify-a-bounded-delivery-sequence` | R | Parent Roadmap / Scope discovery | `deferred` | REFINE | R39 now links source-backed S38 and SPEC08 Parser entries; future causal units still need independent Entry review when selected, never automatic Stage scheduling or complete Scope closure. |
 | `P-repeat-a-matched-replay-safely` | P | Matched replay | `deferred` | KEEP | Practice replay requires actual runner/isolated environment and verified references; never promote Practice to Soodles P-class. |
 | `N-factoryweaver-reconciliation-precedes-neoweaver-recompilation` | N | Historical FactoryWeaver source | `context_only` | KEEP | Historical FactoryWeaver sequence grounds source correction; none of its merges prove NeoWeaver Trainer. |
 | `D-matching-raw-catalog-pin-still-allowed-duplicate-keys` | D | Historical parser counterexample | `context_only` | KEEP | Observed FactoryWeaver duplicate-key ambiguity supports Neo parser negative input but is not an observed Neo bug. |
@@ -107,7 +107,7 @@ This text is a **proposed semantic projection** and has not been observed as con
 
 | Finding | First affected producer | Positive control | Negative control / proof ceiling |
 |---|---|---|---|
-| R Roadmap lacks complete candidate Card-index edges | R per-type semantic generation and accepted R revision | Existing verified Scope references can be found without inventing identities | A prose R order alone does not imply card selection, admission or execution |
+| R Roadmap future units still lack independently reviewed Entry links | R per-type semantic generation and accepted R revision | Parser unit references S38 and SPEC08; downstream source-backed entries added only on real need | A prose R order or an automatic graph closure cannot authorize admission, select a whole Scope, or prove execution |
 | SPEC08 opaque reference contract may be read as decoded Snapshot | SPEC per-type prompt / Neo parser spec | Actual raw/fixed mapping accepted | Any claim of parser reading the referenced file requires an actual Runner Source/Owner observation |
 | V09 current Parser PASS appears only in later evidence | Scoped evidence reader, not immutable old compilation | 28 Parser controls recorded separately | Do not turn historical `NOT_RUN` into native `PASS` |
 | S38's three failures may be mistaken for parser retry counter | Current applicable Soodles Session policy / strategy card | The real owner reassesses after its defined repeated failures | Do not invent automatic retries, attempt IDs, new Timer or universal counter |
