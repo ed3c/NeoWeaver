@@ -120,7 +120,7 @@ def run_container_arm(pair: StagedSourcePair, arm: str, task: ContainerTask,
                "--env=PYTHONDONTWRITEBYTECODE=1", "--workdir=/workspace",
                "--mount", "type=bind,src=" + str(source) + ",dst=/workspace,readonly",
                task.image, *task.argv]
-    evidence.mkdir()
+    evidence.mkdir(mode=0o700)
     stdout_path, stderr_path = evidence / "stdout.bin", evidence / "stderr.bin"
     start = time.monotonic()
     # Stream directly to durable evidence, not unbounded in-memory pipes.
