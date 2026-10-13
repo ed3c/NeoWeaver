@@ -8,6 +8,8 @@ import unittest
 from unittest.mock import patch
 
 from neoweaver.execution import ContainerCapture, ContainerTask, inspect_container_capture
+from neoweaver.snapshot import StagedSourcePair
+import hashlib
 
 
 ID = "a" * 64
@@ -25,9 +27,23 @@ class ProviderReadbackTests(unittest.TestCase):
         self.task = ContainerTask(IMAGE, ("/bin/true",), 15)
         self.source = self.root / "source"
         self.source.mkdir()
+        self.alternate = self.root / "candidate"
+        self.alternate.mkdir()
+        for folder in (self.source, self.alternate):
+            (folder / "file.txt").write_bytes(b"pinned")
+        self.pair = StagedSourcePair("a" * 40, "b" * 40, "c" * 64,
+                                     (("file.txt", hashlib.sha256(b"pinned").hexdigest()),),
+                                     self.source, self.alternate)
+        (self.root / "container.cid").write_text(ID + "\n")
+        self.capture = replace(self.capture,
+                               stdout_path=self.root / "stdout.bin", stderr_path=self.root / "stderr.bin",
+                               stdout_sha256=hashlib.sha256(b"").hexdigest(),
+                               stderr_sha256=hashlib.sha256(b"").hexdigest())
+        self.capture.stdout_path.write_bytes(b"")
+        self.capture.stderr_path.write_bytes(b"")
 
     def record(self):
-        return {"Id": ID, "State": {"Status": "exited", "Running": False, "ExitCode": 0},
+        return {"Id": ID, "Name": "/nw-replay-test", "State": {"Status": "exited", "Running": False, "ExitCode": 0},
                 "Config": {"Image": IMAGE, "User": "65534:65534",
                            "Cmd": list(self.task.argv)},
                 "HostConfig": {"NetworkMode": "none", "ReadonlyRootfs": True,
@@ -44,7 +60,7 @@ class ProviderReadbackTests(unittest.TestCase):
             return subprocess.CompletedProcess(cmd, exit_code, json.dumps(obj).encode())
         with patch("neoweaver.execution.shutil.which", return_value="/usr/bin/true"), \
              patch("neoweaver.execution.subprocess.run", side_effect=spy):
-            return inspect_container_capture(self.capture, self.task, self.source)
+            return inspect_container_capture(self.capture, self.task, self.pair)
 
     def test_exact_provider_exit_and_declared_options_are_metadata_only(self):
         result = self.inspect(self.record())
@@ -91,7 +107,7 @@ class ProviderReadbackTests(unittest.TestCase):
         self.assertEqual(self.inspect(obj).status, "INCONCLUSIVE")
         noid = replace(self.capture, container_id=None)
         with patch("neoweaver.execution.subprocess.run") as spy:
-            observed = inspect_container_capture(noid, self.task, self.source)
+            observed = inspect_container_capture(noid, self.task, self.pair)
         self.assertEqual(observed.status, "INCONCLUSIVE")
         spy.assert_not_called()
 
@@ -100,6 +116,25 @@ class ProviderReadbackTests(unittest.TestCase):
         obj = self.record()
         obj["State"]["ExitCode"] = 1
         self.assertIn("exit_code_mismatch", self.inspect(obj).reasons)
+
+    def test_capture_tampering_refuses_before_provider_inspect(self):
+        self.capture.stdout_path.write_bytes(b"tampered")
+        with patch("neoweaver.execution.subprocess.run") as spy:
+            result = inspect_container_capture(self.capture, self.task, self.pair)
+        self.assertEqual(result.status, "REFUSED")
+        self.assertIn("capture_or_cid_mismatch", result.reasons)
+        spy.assert_not_called()
+
+    def test_original_source_and_cid_cannot_be_swapped(self):
+        changed = replace(self.pair, source_manifest_sha256="f" * 64)
+        self.assertEqual(inspect_container_capture(self.capture, self.task, changed).status, "REFUSED")
+        (self.root / "container.cid").write_text("f" * 64)
+        self.assertEqual(inspect_container_capture(self.capture, self.task, self.pair).status, "REFUSED")
+        (self.root / "container.cid").write_text(ID)
+        (self.source / "file.txt").write_bytes(b"changed")
+        result = inspect_container_capture(self.capture, self.task, self.pair)
+        self.assertEqual(result.status, "INCONCLUSIVE")
+        self.assertIn("source_changed", result.reasons)
 
     def test_no_automatic_cleanup_or_mutating_provider_action(self):
         record = self.record()
