@@ -97,6 +97,39 @@ class CompiledContractsTests(unittest.TestCase):
         self.assertEqual(side['PromptDelta']['native_consumption'], 'NOT_RUN')
         self.assertFalse(side['authority']['authorizes_landing'])
 
+    def test_spec08_implements_explanation_uses_actual_opaque_inputs(self):
+        """Known source/consumer drift regression, not a general semantic judge."""
+        proposal = json.loads((ROOT / 'docs/compiled/card-proposals.json').read_text(encoding='utf-8'))
+        spec = next(card for card in proposal['cards']
+                    if card['series'] == 'SPEC' and card['title'] == 'Trainability boundary')
+        relation = next(link for link in spec['links']
+                        if link['relation'] == 'implements'
+                        and link['target_series'] == 'REQ'
+                        and link['target_topic'] == 'Trainability')
+        rationale = relation['counterfactual']
+        self.assertIn('parse_proposal(raw: bytes, fixed_inputs: Mapping)', rationale)
+        self.assertIn('opaque snapshot/failure/allowlist/acceptance references', rationale)
+        self.assertIn('does not read TaskSnapshot contents', rationale)
+        self.assertIn('does not', rationale)
+        self.assertNotIn('Raw PatchProposal JSON + TaskSnapshot + FailureScope', rationale)
+        self.assertIn('replay tasks', rationale)
+        self.assertIn('complete the parent Trainability goal', rationale)
+        # Negative planted control: the observed old explanation violates this
+        # narrow contract even though its typed-link target and shape are valid.
+        old = ('Raw PatchProposal JSON + TaskSnapshot + FailureScope + fixed '
+               'allowlist and acceptance references → ParsedProposal or DiagnosticRefusal.')
+        def preserves_parser_consumer_boundary(description):
+            return ('parse_proposal(raw: bytes, fixed_inputs: Mapping)' in description
+                    and 'does not read TaskSnapshot contents' in description
+                    and 'Raw PatchProposal JSON + TaskSnapshot + FailureScope' not in description)
+        self.assertTrue(preserves_parser_consumer_boundary(rationale))
+        self.assertFalse(preserves_parser_consumer_boundary(old))
+        compiled = json.loads((ROOT / 'docs/compiled/specification.json').read_text(encoding='utf-8'))
+        self.assertEqual(len(compiled['cards']), 44)
+        self.assertEqual(len(compiled['requirements']), 10)
+        self.assertEqual(next(card['revision'] for card in compiled['cards']
+                              if card['stable_id'] == 'SPEC-trainability-boundary'), 3)
+
     def test_parser_cannot_gain_replay(self):
         out = self.mutate('semantic-sidecars.json', lambda d: d['ScopeManifest']['local_contract'].__setitem__('executes_replay', True))
         self.assertEqual(out['error'], 'parser_effect_boundary_changed')

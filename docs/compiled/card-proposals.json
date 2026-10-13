@@ -193,7 +193,7 @@
           "target_series": "REQ",
           "target_topic": "Trainability",
           "applicability": "Raw parsing and static fixed-target/source/acceptance checks only. TaskSnapshot replay and complete training readiness remain parent obligations.",
-          "counterfactual": "If the original required outcome changes, review this bounded output contract: Raw PatchProposal JSON + TaskSnapshot + FailureScope + fixed allowlist and acceptance references → ParsedProposal or DiagnosticRefusal. The parser cannot replace those references or certify their source truth. It supports only the stated clause, not unobserved parent results."
+          "counterfactual": "If the original Trainability outcome changes, review only this parser-side output boundary: parse_proposal(raw: bytes, fixed_inputs: Mapping) consumes raw PatchProposal bytes and Owner-issued opaque snapshot/failure/allowlist/acceptance references plus fixed causal-target, allowlist, and protected-target values. It returns immutable ParsedProposal or DiagnosticRefusal with a named condition/path; it does not read TaskSnapshot contents, replay tasks, validate reference truth, train policies, or complete the parent Trainability goal."
         },
         {
           "relation": "validated_by",
