@@ -1,0 +1,21 @@
+name: compiled-specification-consistency
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  declared-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check declared Card and parser Scope consistency
+        run: python scripts/check_compiled_contracts.py
+      - name: Exercise retained artifact refusal controls
+        run: python -m unittest discover -s tests -v

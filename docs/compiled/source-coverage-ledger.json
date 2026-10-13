@@ -126,5 +126,12 @@
       "disposition": "K and verification targets; NOT_RUN"
     }
   ],
-  "semantic_completeness": "SCOPED_INDEPENDENT_SOURCE_SEMANTIC_REVIEW_ACCEPTED; arbitrary source truth and native completeness remain unverified"
+  "semantic_completeness": "SCOPED_INDEPENDENT_SOURCE_SEMANTIC_REVIEW_ACCEPTED; arbitrary source truth and native completeness remain unverified",
+  "correction_scope": "Pure parser/refusal; full original ten requirements and source units preserved; per-card applicability lives in semantic-sidecars.",
+  "correction_sources": [
+    {
+      "source_id": "SRC-factoryweaver-effective-catalog-controls",
+      "disposition": "D42 exact fixture locator; supports an observed FactoryWeaver case, not Neo runtime failure"
+    }
+  ]
 }

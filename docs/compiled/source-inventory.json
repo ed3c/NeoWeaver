@@ -121,6 +121,14 @@
       "captured_bytes_sha256": "568bbd2189c90741afa4c44db06f58a036f31d8d14ea9722d4f83746b737f9e8",
       "status": "INSPECTED",
       "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-factoryweaver-effective-catalog-controls",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/tests/test_effective_catalog.py",
+      "locator": "Exact duplicate producer_claim/raw-pin public controls",
+      "captured_bytes_sha256": "1301d9eedea746ea755e6d86ba2284273c49d139450939a2f26fb7272ba026b3",
+      "status": "INSPECTED",
+      "assertion_boundary": "Public fixture source, not native Worker evidence"
     }
   ],
   "original_logical_aliases": {
@@ -138,5 +146,55 @@
   "missing": [
     "Native model/dataset/Stage/Manager/transfer captures"
   ],
-  "proof_ceiling": "INSPECTED_SOURCES_AND_DECLARED_SPECIFICATION"
+  "proof_ceiling": "INSPECTED_SOURCES_AND_DECLARED_SPECIFICATION",
+  "prior_compiled_neoweaver_revision": "ae739ac4514ab7fa23e4c2688d3dae600f972e98",
+  "factoryweaver_feedback_candidate": {
+    "revision": "660778f7e0602bb84e9f46f49e76a620f880ee21",
+    "pull_request": "https://github.com/ed3c/factoryweaver/pull/26",
+    "status": "PROPOSED_SOURCE_UPDATE_NOT_MAIN_OR_NATIVE_PCLASS_ACCEPTANCE",
+    "source_files": [
+      {
+        "uri": "https://github.com/ed3c/factoryweaver/blob/660778f7e0602bb84e9f46f49e76a620f880ee21/references/card-classification-and-scope-assembly.md",
+        "captured_bytes_sha256": "1020b9f40e31632e75a22e4069fd2366fe8782e1693dee886e44b5531384fd61",
+        "status": "INSPECTED",
+        "boundary": "Reviewed source guidance, not observed Agent compliance"
+      },
+      {
+        "uri": "https://github.com/ed3c/factoryweaver/blob/660778f7e0602bb84e9f46f49e76a620f880ee21/references/zettelkasten-v7.2.md",
+        "captured_bytes_sha256": "85b712e7df6868c64fc660b3ff4b85e5a8d2d90bc5ef686d71e2f88af2fcbb72",
+        "status": "INSPECTED",
+        "boundary": "Reviewed source guidance, not observed Agent compliance"
+      },
+      {
+        "uri": "https://github.com/ed3c/factoryweaver/blob/660778f7e0602bb84e9f46f49e76a620f880ee21/references/card-prompts/types/REQ.md",
+        "captured_bytes_sha256": "a80f3c992f2cd16703e023932f1f48e62c34728b3129b4d4493c24ccdc629370",
+        "status": "INSPECTED",
+        "boundary": "Reviewed source guidance, not observed Agent compliance"
+      },
+      {
+        "uri": "https://github.com/ed3c/factoryweaver/blob/660778f7e0602bb84e9f46f49e76a620f880ee21/references/card-prompts/types/SPEC.md",
+        "captured_bytes_sha256": "e48c2a6d07960ad834c22a96bf71ed66594ace1a7f1672cafd8943c4b511acc3",
+        "status": "INSPECTED",
+        "boundary": "Reviewed source guidance, not observed Agent compliance"
+      },
+      {
+        "uri": "https://github.com/ed3c/factoryweaver/blob/660778f7e0602bb84e9f46f49e76a620f880ee21/references/card-prompts/types/V.md",
+        "captured_bytes_sha256": "e166f6e8c764800213240b88d1d49bcecc98369e74f48b56f3fc3d971760f5fd",
+        "status": "INSPECTED",
+        "boundary": "Reviewed source guidance, not observed Agent compliance"
+      },
+      {
+        "uri": "https://github.com/ed3c/factoryweaver/blob/660778f7e0602bb84e9f46f49e76a620f880ee21/skills/factoryweaver-compile/SKILL.md",
+        "captured_bytes_sha256": "068329ed985eb1009e08c87aa6a4e20f3d6aba1e77566f7144f56aa700608620",
+        "status": "INSPECTED",
+        "boundary": "Reviewed source guidance, not observed Agent compliance"
+      },
+      {
+        "uri": "https://github.com/ed3c/factoryweaver/blob/660778f7e0602bb84e9f46f49e76a620f880ee21/skills/factoryweaver-verify/SKILL.md",
+        "captured_bytes_sha256": "c9138834063c7e4c0ff3911d4f9d9a47d12a5fbe63de66aab83da0ded67642f9",
+        "status": "INSPECTED",
+        "boundary": "Reviewed source guidance, not observed Agent compliance"
+      }
+    ]
+  }
 }

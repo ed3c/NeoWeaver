@@ -96,19 +96,26 @@ Outer Loop 透過既有 Issue Contract／admission 固定 write/effect boundary�
 
 Test Manager 一次選最小 discriminating controls；Schema Manager 消費真實 feedback，回傳 next 且需觀察它被消費。Hook 只用 actual native event；Cron 只用既有 authorized heartbeat；Provider 獨立裁決 publication／landing。這次 FactoryWeaver 工程以 source update、真實 CLI、independent reviews 與 GitHub receipts 完成；它不是 native Noodle Stage／Manager invocation receipt。
 
-## 第一個 implementation Scope
+## 第一個 implementation Scope：純 parser／refusal
 
-建議的第一個 atom 是「拒絕非法 PatchProposal 並保持 immutable acceptance」。Goal 是使 one bounded candidate 在 parser／validator 邊界 fail closed。Measurement 是相同 snapshot 與 allowlist 下的正反 controls；Persistence 保留十项 parent REQ；Stop 是 invalid input、未知 effect 或超 scope 時回原 Owner，不試三個修補去繞過同一 gate。
+第一個 proposed atom 僅修 raw PatchProposal parser 與固定 mutation／acceptance boundary。原 Owner 提供 TaskSnapshot、FailureScope、allowlist、expected-source 和 immutable acceptance references；parser 不替它們判定來源真相、授權或因果效益。
 
-Prompt Delta 僅含下列行為提案。尚未 admission，不是 executable Stage instruction。
+局部 Goal 是合法、current、single-surface candidate 只得到 `ParsedProposal`；duplicate keys、stale expected source、越界／protected target、missing fixed input、extra credential/effect fields 得到具名 `DiagnosticRefusal`。兩種輸出都不啟動 replay、training、native transfer 或 provider write。相同 raw input 與 fixed boundary 重讀的 determinism，不等於 TaskSnapshot replay。
 
-- 接受一個 Owner 選定 snapshot／failure／allowlist 與單一 surface 的候選。
-- 以明確 typed refusal 拒絕 duplicate keys、stale source、越界 target、修改 evaluator、額外 credential 或 effect。
-- 保留原 acceptance 與來源 bytes；拒絕不得產生 replay 或 provider write。
-- 對合法候選只回可供原 runner 消費的 proposal，不宣告 training／native transfer／parent Goal 完成。
-- 在既有 admitted scope 與 playbook 內自行選 code structure；保留 positive、negative、unknown-effect 與 replay evidence。
+Measurement 使用原 fixed input/result parser controls。這些是未實作 parser 的驗收提案，執行狀態仍 NOT_RUN；specification consistency check 不升級它。Persistence 保留原十項需求、未覆蓋 clauses 與 whole Goal。Stop 是需要的原資料缺失或 scope 不符；未知先前 write outcome 回原 Owner，不能重送。
 
-可持有的 module boundary 是 `domain`（資料與純函式）、`patches`（boundary parser/validator）、`replay`（原 runner adapter）、`verification`（原 oracle reader）、`learning`（eligibility/batch/update adapter）、`transfer`（capability-bound mapping）、`evidence`（原 references reader）。這只是責任草圖，沒有 package、library 或 runtime 已安裝的主張。
+Scope 只選 SPEC-trainability 的 parser contract、對應 V control、三張必要 C/G 約束與 S38 proposed strategy。全 44 卡在 semantic-sidecars 中逐張標 local exit/control、constraint、strategy、context-only 或 deferred。Source integrity、Three planes、Trainability 與 Scoped patch 只覆蓋明列的局部 clauses；其完整 source review、Execution／Verification、replay 與 causal benefit 仍保留。Full lifecycle 的 native Stage／Provider acceptance 是父層後續義務，不能加入 parser exit。
+
+Prompt Delta 是 proposed requirements；原 admission／selected playbook 尚未觀察，不是 executable next。
+
+- Parse raw single-surface proposal against original fixed inputs，回 `ParsedProposal` 或具名 `DiagnosticRefusal`。
+- 拒絕 duplicate keys、stale expected source、越界或 protected target、missing fixed inputs、extra credentials/effects；保存 immutable references。
+- 不執行 replay、training、native transfer 或 provider effects；保留全十项需求與後續驗收。
+- 在實際授權 scope 與已選 playbook 內自主選 implementation；不重建原 next，不 retry unknown write。
+
+Parser callers 是提供 raw data 的 Proposer；下一個 Consumer 是另行授權的原 Runner。Parser 不接受 self-signed VerifierResult。Implementation rollback 由原 source owner 回復 parser change；沒有本 atom 產生的 provider/replay state。Landing 仍由原 repository/provider owner處理，parser PASS 不等於交付或 whole Goal closure。
+
+可持有的 module boundary 是 `domain`（資料與純函式）、`patches`（boundary parser/validator）、`replay`（原 runner adapter）、`verification`（原 oracle reader）、`learning`（eligibility/batch/update adapter）、`transfer`（capability-bound mapping）、`evidence`（原 references reader）。只有 patches/domain 的純 parser slice 屬首 atom；其餘為後續責任草圖，不宣稱已存在。
 
 ## 逐步交付與驗證矩陣
 

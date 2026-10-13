@@ -49,3 +49,17 @@ Patch parser、Snapshot Runner、Verifier/reward join、dataset eligibility、po
 ## 審計限制
 
 本次 independent reviewers 有實際 isolated CLI evidence。不同模型家族的 trail review，以及未提供完整 active-workspace transcript 的逐 turn audit 均 NOT_RUN。Source update／GitHub merge 與 native Noodle Stage 是不同 carriers，不互相代稱。計算值來自實際 Producer receipts 或編譯器；此文件沒有生成 runtime identity。
+
+## Parser Scope correction after ae739
+
+The first observed specification defect was the compiler projecting one acceptance sentence into REQ measurement, SPEC then/oracle and V positive_control. SPEC08 returned data with no replay while its then asserted replay. This is an observed source/Consumer contract contradiction, not an observed Neo runtime failure.
+
+The corrected proposal preserves all ten original statements/falsifiers and stable Card identities, bounds the local output to ParsedProposal/DiagnosticRefusal, and keeps replay/native delivery outside that exit. All ten V controls now state discriminating input/result pairs. Material typed-link explanations were updated with the same corrected I/O; K43/K44 bind only their dependent parent requirements.
+
+Independent review first returned REVISE for T35's unconditional factorial phrase, stale link explanations, and D42's abbreviated actual enum. Corrections were read back before scoped source ACCEPT. FactoryWeaver feedback also corrected the apparent ban on proposing control inputs while leaving actual selection/execution with the original Test Manager. Review history is separate from immutable CLI results.
+
+Actual structural controls cover the retained prior bytes, revision paging, stale cursor, forged TESTED, wrong V direction, declared dependency invalidation, Scope reuse/conflict and original Reader drift refusal. A new read-only artifact consistency helper checks proposals/record/Scope projections and refuses structural drift; it is not the PatchProposal parser or a native state machine. Previous public verification bytes remain in verification-before-parser-correction.json.
+
+Source review ACCEPT, 8 artifact controls and local CLI maintenance do not upgrade proposed parser controls, native P-class feedback, Noodle/Managers, training or transfer. Those remain NOT_RUN. The delta's BLOCKED terminal retains source/non-card reconciliation obligations; no DONE/landing authorization was synthesized. Actual new commit/PR identities are supplied by GitHub Provider readback.
+
+The source correction feedback is [FactoryWeaver PR #26](https://github.com/ed3c/factoryweaver/pull/26): [guidance a90f195](https://github.com/ed3c/factoryweaver/commit/a90f195e5c40030a6b90464b153e38cac7c719e2) followed by [verification 660778f](https://github.com/ed3c/factoryweaver/commit/660778f7e0602bb84e9f46f49e76a620f880ee21). These actual commits preserve the original product CLI and separate source review from native instruction compliance. They remain a proposed PR, not main/landing receipts.

@@ -5,39 +5,325 @@
       "REQ-source-integrity",
       "REQ-three-planes",
       "REQ-trainability",
-      "REQ-scoped-patch",
-      "REQ-full-lifecycle"
+      "REQ-scoped-patch"
     ],
     "card_ids": [
-      "SPEC-source-integrity-boundary",
-      "SPEC-three-planes-boundary",
       "SPEC-trainability-boundary",
-      "SPEC-scoped-patch-boundary",
-      "SPEC-full-lifecycle-boundary",
-      "V-source-integrity-discriminating-controls",
-      "V-three-planes-discriminating-controls",
       "V-trainability-discriminating-controls",
-      "V-scoped-patch-discriminating-controls",
-      "V-full-lifecycle-discriminating-controls",
       "C-independent-immutable-verification",
       "G-cards-preserve-original-effect-ownership",
-      "G-hard-gates-precede-reward"
+      "G-hard-gates-precede-reward",
+      "S-start-at-the-patch-acceptance-boundary"
     ],
-    "goal": "合法 bounded PatchProposal 保留 immutable acceptance；非法输入拒絕且無effects。",
-    "measurement": "原Owner-fixed positive/negative parser controls；尚未有NeoWeaver implementation。",
+    "goal": "Pure parser/refusal: legal current single-surface proposal returns ParsedProposal; invalid input returns DiagnosticRefusal without replay, training or provider effects.",
+    "measurement": "Original fixed parser input/result controls cover allowed input, duplicate keys, stale source, outside/protected target, missing fixed input and extra effect/credential fields. Parser execution is not yet implemented; controls remain NOT_RUN.",
     "persistence": "原十項parent REQ與whole Goal持續保留，不因這個atom完成而閉合。",
     "stop_and_escalation": "缺admission/原輸入停依賴操作；unknown effect原Owner readback，不猜next。",
-    "causal_change": "在候選進replay/reward前讓JSON與mutation scope單義並保持原acceptance。",
+    "causal_change": "Make raw proposal parsing and fixed mutation/acceptance boundary checks unambiguous before any later Runner consumes the data.",
     "acceptance": [
-      "合法single-surface proposal可讀；duplicate/stale/oracle-edit/越界input具名refusal且無effects。"
+      "With Owner-fixed boundary inputs, return only ParsedProposal or DiagnosticRefusal; preserve original immutable references and report the refusal condition; neither variant causes replay/training/provider writes."
     ],
     "constraints": [
-      "原Issue/admission/allowlist/oracle由原Owner固定；proposal不是writer instruction。"
+      "All ten original parent requirements and whole-Goal measurement persist; this atom covers only parser/static-boundary clauses.",
+      "Original Source/authorization Producers own reference truth and permissions; parser shape/consistency is not source truth, native admission or outcome acceptance."
     ],
     "prompt_delta": [
-      "拒絕duplicate keys、stale expected source、越界target、evaluator edit與額外effects。",
-      "合法候選只回read-only proposal；保留原Goal/acceptance與十項parent inventory。",
-      "在原admitted scope與selected playbook內自行選implementation；未知效果先原Owner readback。"
+      "Parse only the selected single-surface raw proposal against original fixed inputs; produce ParsedProposal or DiagnosticRefusal with a diagnostic condition.",
+      "Reject duplicate keys, stale expected source, targets outside the allowlist or protected acceptance, missing fixed inputs and extra credentials/effect fields; preserve the original references.",
+      "Do not start replay, training, native transfer or provider effects; preserve the ten parent requirements and report later obligations separately.",
+      "Within the actual authorized scope and selected playbook, choose implementation details freely; do not reconstruct original next or retry an unknown write."
+    ],
+    "work_kind": "proposed parser implementation",
+    "entry": "Owner-fixed boundary inputs and raw proposal are available; original implementation authorization must be established through the actual selected carrier.",
+    "exit": "ParsedProposal or DiagnosticRefusal only; actual parser controls and no-effects evidence required before a local implementation PASS.",
+    "callers_consumers": [
+      "Patch Proposer produces raw data; it cannot self-certify acceptance.",
+      "Parser/Patch Validator returns data to a later original Runner; Runner is outside this atom."
+    ],
+    "rollback": "Restore the pre-change parser implementation through its original source owner if implementation controls fail; no replay/provider state is created by this atom.",
+    "landing_owner": "Original repository/provider owner; specification review and parser control PASS do not authorize landing or close parent Goal.",
+    "covered_parent_clauses": {
+      "REQ-source-integrity": "Preserve fixed Goal/acceptance/TaskSnapshot/rights references; no source inventory or rights adjudication is implemented.",
+      "REQ-three-planes": "Parser output is read-only; it does not run Execution or produce a VerificationResult.",
+      "REQ-trainability": "Only raw parse and static mutation-boundary checks; reproducible task replay remains pending.",
+      "REQ-scoped-patch": "Consume the original FailureScope/allowlist/capability references; do not prove the hypothesis or regenerate upstream scope."
+    },
+    "local_contract": {
+      "producer": "Original NeoWeaver parser/Patch Validator",
+      "outputs": [
+        "ParsedProposal",
+        "DiagnosticRefusal"
+      ],
+      "effects": [],
+      "executes_replay": false,
+      "executes_training": false,
+      "authorizes_landing": false
+    },
+    "card_applicability": [
+      {
+        "card_id": "REQ-source-integrity",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "SPEC-source-integrity-boundary",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "V-source-integrity-discriminating-controls",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "REQ-three-planes",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "SPEC-three-planes-boundary",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "V-three-planes-discriminating-controls",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "REQ-trainability",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "SPEC-trainability-boundary",
+        "role": "local_exit",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      {
+        "card_id": "V-trainability-discriminating-controls",
+        "role": "local_control",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      {
+        "card_id": "REQ-two-policies",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "SPEC-two-policies-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "V-two-policies-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "REQ-causal-attribution",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "SPEC-causal-attribution-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "V-causal-attribution-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "REQ-scoped-patch",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "SPEC-scoped-patch-boundary",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "V-scoped-patch-discriminating-controls",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "REQ-plugin-transfer",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "SPEC-plugin-transfer-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "V-plugin-transfer-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "REQ-full-lifecycle",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "SPEC-full-lifecycle-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "V-full-lifecycle-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "REQ-learning-dataset",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "SPEC-learning-dataset-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "V-learning-dataset-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "REQ-lesson-lineage",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "SPEC-lesson-lineage-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "V-lesson-lineage-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "C-independent-immutable-verification",
+        "role": "constraint",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      {
+        "card_id": "C-actor-scoped-credit-assignment",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "G-cards-preserve-original-effect-ownership",
+        "role": "constraint",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      {
+        "card_id": "G-hard-gates-precede-reward",
+        "role": "constraint",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      {
+        "card_id": "T-harness-only-versus-joint-policy-update",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "E-joint-result-does-not-identify-a-component-effect",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "Q-choose-the-first-evaluation-population",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "S-start-at-the-patch-acceptance-boundary",
+        "role": "strategy",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      {
+        "card_id": "R-verify-a-bounded-delivery-sequence",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "P-repeat-a-matched-replay-safely",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "N-factoryweaver-reconciliation-precedes-neoweaver-recompilation",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "D-matching-raw-catalog-pin-still-allowed-duplicate-keys",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      {
+        "card_id": "K-training-data-and-token-provenance-unavailable",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      {
+        "card_id": "K-native-codex-transfer-has-no-observed-consumer",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      }
     ]
   },
   "SkillRoute": {
@@ -48,9 +334,10 @@
   "PromptDelta": {
     "status": "ADD_PROPOSAL_ONLY",
     "bullets": [
-      "拒絕duplicate keys、stale expected source、越界target、evaluator edit與額外effects。",
-      "合法候選只回read-only proposal；保留原Goal/acceptance與十項parent inventory。",
-      "在原admitted scope與selected playbook內自行選implementation；未知效果先原Owner readback。"
+      "Parse only the selected single-surface raw proposal against original fixed inputs; produce ParsedProposal or DiagnosticRefusal with a diagnostic condition.",
+      "Reject duplicate keys, stale expected source, targets outside the allowlist or protected acceptance, missing fixed inputs and extra credentials/effect fields; preserve the original references.",
+      "Do not start replay, training, native transfer or provider effects; preserve the ten parent requirements and report later obligations separately.",
+      "Within the actual authorized scope and selected playbook, choose implementation details freely; do not reconstruct original next or retry an unknown write."
     ],
     "native_consumption": "NOT_RUN"
   },
@@ -72,11 +359,19 @@
       "REQ-two-policies",
       "REQ-causal-attribution",
       "REQ-plugin-transfer",
+      "REQ-full-lifecycle",
       "REQ-learning-dataset",
       "REQ-lesson-lineage"
     ],
-    "paging": "Frozen compilation paging was exercised; its empty-card baseline is a fixture, not a prior accepted Registry.",
-    "native_next": "NOT_OBSERVED"
+    "paging": "This correction starts a new immutable Before/After cycle from the actual prior specification; previous cursors are not reused.",
+    "native_next": "NOT_OBSERVED",
+    "remaining_selected_requirement_clauses": {
+      "REQ-source-integrity": "Whole-source integrity/source-rights review remains a Source Reader obligation.",
+      "REQ-three-planes": "Actual isolated Execution and independent Verification observations remain pending.",
+      "REQ-trainability": "Fixed-task replay and training readiness remain pending.",
+      "REQ-scoped-patch": "Hypothesis relevance/capability readback and later causal benefit remain original upstream/downstream responsibilities."
+    },
+    "parent_success": "No hard-gate violation and repeatable positive paired effect with applicable frozen Codex transfer; original Owner readback required."
   },
   "authority": {
     "effects": [],
