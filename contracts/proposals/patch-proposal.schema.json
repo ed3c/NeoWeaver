@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:neoweaver:proposals:patch-v1",
+  "title": "Proposed Patch shape; references and authorization are not authenticated",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "snapshot_ref", "failure_ref", "allowlist_ref", "acceptance_ref", "surface", "changes"],
+  "properties": {
+    "kind": {"const": "neoweaver/patch-proposal/v1"},
+    "snapshot_ref": {"$ref": "#/$defs/ownerRef"},
+    "failure_ref": {"$ref": "#/$defs/ownerRef"},
+    "allowlist_ref": {"$ref": "#/$defs/ownerRef"},
+    "acceptance_ref": {"$ref": "#/$defs/ownerRef"},
+    "surface": {"enum": ["skill_instruction", "context_policy", "mcp_wrapper"]},
+    "changes": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["target_ref", "expected_source_ref", "replacement"],
+        "properties": {
+          "target_ref": {"$ref": "#/$defs/ownerRef"},
+          "expected_source_ref": {"$ref": "#/$defs/ownerRef"},
+          "replacement": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "ownerRef": {
+      "type": "object", "additionalProperties": false,
+      "required": ["producer", "reference"],
+      "properties": {
+        "producer": {"type": "string", "minLength": 1},
+        "reference": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

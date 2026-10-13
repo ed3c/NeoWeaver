@@ -1,0 +1,130 @@
+{
+  "scope": "All inspected original NeoWeaver sections plus selected FactoryWeaver and official interface contracts",
+  "units": [
+    {
+      "source_unit": "Original REQ-source-integrity",
+      "status": "MAPPED",
+      "requirement_ids": [
+        "REQ-source-integrity"
+      ],
+      "locator": "Original ten logical REQ table"
+    },
+    {
+      "source_unit": "Original REQ-three-planes",
+      "status": "MAPPED",
+      "requirement_ids": [
+        "REQ-three-planes"
+      ],
+      "locator": "Original ten logical REQ table"
+    },
+    {
+      "source_unit": "Original REQ-trainability",
+      "status": "MAPPED",
+      "requirement_ids": [
+        "REQ-trainability"
+      ],
+      "locator": "Original ten logical REQ table"
+    },
+    {
+      "source_unit": "Original REQ-two-policies",
+      "status": "MAPPED",
+      "requirement_ids": [
+        "REQ-two-policies"
+      ],
+      "locator": "Original ten logical REQ table"
+    },
+    {
+      "source_unit": "Original REQ-causal-attribution",
+      "status": "MAPPED",
+      "requirement_ids": [
+        "REQ-causal-attribution"
+      ],
+      "locator": "Original ten logical REQ table"
+    },
+    {
+      "source_unit": "Original REQ-scoped-patch",
+      "status": "MAPPED",
+      "requirement_ids": [
+        "REQ-scoped-patch"
+      ],
+      "locator": "Original ten logical REQ table"
+    },
+    {
+      "source_unit": "Original REQ-plugin-transfer",
+      "status": "MAPPED",
+      "requirement_ids": [
+        "REQ-plugin-transfer"
+      ],
+      "locator": "Original ten logical REQ table"
+    },
+    {
+      "source_unit": "Original REQ-full-lifecycle",
+      "status": "MAPPED",
+      "requirement_ids": [
+        "REQ-full-lifecycle"
+      ],
+      "locator": "Original ten logical REQ table"
+    },
+    {
+      "source_unit": "Original REQ-learning-dataset",
+      "status": "MAPPED",
+      "requirement_ids": [
+        "REQ-learning-dataset"
+      ],
+      "locator": "Original ten logical REQ table"
+    },
+    {
+      "source_unit": "Original REQ-lesson-lineage",
+      "status": "MAPPED",
+      "requirement_ids": [
+        "REQ-lesson-lineage"
+      ],
+      "locator": "Original ten logical REQ table"
+    }
+  ],
+  "additional_units": [
+    {
+      "unit": "Original Goal/Measurement/Persistence/Stop",
+      "disposition": "Full specification opening + all REQ cards"
+    },
+    {
+      "unit": "Original 12-hop handoff table",
+      "disposition": "Three-plane data table + full lifecycle + LESSON/sidecars"
+    },
+    {
+      "unit": "Original P-class/CLI state contracts",
+      "disposition": "AGENTS + original effects Governance Card + SPEC full lifecycle"
+    },
+    {
+      "unit": "Original three proof levels",
+      "disposition": "Completion Contract + verification.json; native NOT_RUN"
+    },
+    {
+      "unit": "Original LESSON method/baseline",
+      "disposition": "LESSON preserves method; historical NOT_RUN stays historical"
+    },
+    {
+      "unit": "FactoryWeaver v7.2 full prompt/taxonomy/registry/carriers",
+      "disposition": "14 source-justified series selected; X has no actual unresolved conflict"
+    },
+    {
+      "unit": "Reconciled portable/coverage/profile/legacy consumers",
+      "disposition": "N/D and observed GitHub rework DAG; no native receipt substitution"
+    },
+    {
+      "unit": "Official manual desktop hook trust and import",
+      "disposition": "Codex capability-bound section; target probe still missing"
+    }
+  ],
+  "missing": [
+    {
+      "unit": "Native dataset/model/rights/token/paired experiments",
+      "disposition": "K and Q; blocks real training/performance only"
+    },
+    {
+      "unit": "Fresh P-class/admitted Stage/Manager/Codex transfer capture",
+      "disposition": "K and verification targets; NOT_RUN"
+    }
+  ],
+  "semantic_completeness": "SCOPED_INDEPENDENT_SOURCE_SEMANTIC_REVIEW_ACCEPTED; arbitrary source truth and native completeness remain unverified"
+}

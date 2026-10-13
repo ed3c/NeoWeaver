@@ -1,0 +1,990 @@
+{
+  "schema_version": "factoryweaver/v1",
+  "subject": {
+    "id": "neoweaver-learned-harness",
+    "scope": "Source-grounded proposed specification; no native training or effect grant",
+    "consumer": "Original Soodles Session proposal"
+  },
+  "sources": [
+    {
+      "source_id": "SRC-original-neoweaver-spec",
+      "source_type": "other",
+      "source_dependency_key": "https://github.com/ed3c/NeoWeaver/blob/df41167de1d191d890db9bb94cfcc43663d027f7/docs/specs/learned-harness-coevolution.md",
+      "locator": "Original ten logical REQ rows and all handoff sections",
+      "uri": "https://github.com/ed3c/NeoWeaver/blob/df41167de1d191d890db9bb94cfcc43663d027f7/docs/specs/learned-harness-coevolution.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "e2038c877e04901ae651b01849dfcbf8a7dfc4a8d4980decd8f2c44d0627d8ff"
+    },
+    {
+      "source_id": "SRC-original-neoweaver-agents",
+      "source_type": "other",
+      "source_dependency_key": "https://github.com/ed3c/NeoWeaver/blob/df41167de1d191d890db9bb94cfcc43663d027f7/AGENTS.md",
+      "locator": "Original entry, conditional routing and proof boundaries",
+      "uri": "https://github.com/ed3c/NeoWeaver/blob/df41167de1d191d890db9bb94cfcc43663d027f7/AGENTS.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "7535c1126c6072eadaabacd404112ad4a5ca1fc41e19e55ccaa57049976a2735"
+    },
+    {
+      "source_id": "SRC-original-neoweaver-lesson",
+      "source_type": "other",
+      "source_dependency_key": "https://github.com/ed3c/NeoWeaver/blob/df41167de1d191d890db9bb94cfcc43663d027f7/LESSON.md",
+      "locator": "Original first-breakpoint procedure and historical NOT_RUN baseline",
+      "uri": "https://github.com/ed3c/NeoWeaver/blob/df41167de1d191d890db9bb94cfcc43663d027f7/LESSON.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "effe9365d00b90dad1fad7b999ddfa1dfae260fd7780ed1ee1b0d59a3774ac04"
+    },
+    {
+      "source_id": "SRC-skills-factoryweaver-skill-md",
+      "source_type": "official_doc",
+      "source_dependency_key": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/skills/factoryweaver/SKILL.md",
+      "locator": "Complete selected source file",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/skills/factoryweaver/SKILL.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "558d489c6f55a2fd51563f88623ae43a398b86bbd146870e5b4c7e571f695df4"
+    },
+    {
+      "source_id": "SRC-references-zettelkasten-v7-2-md",
+      "source_type": "official_doc",
+      "source_dependency_key": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/zettelkasten-v7.2.md",
+      "locator": "Complete selected source file",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/zettelkasten-v7.2.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "b3aa8f71123139d9de6dc5e2d494ea0e5a5bd3ecc22a5f55d54b78c1b211ad58"
+    },
+    {
+      "source_id": "SRC-references-card-classification-and-scope-assembly-md",
+      "source_type": "official_doc",
+      "source_dependency_key": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/card-classification-and-scope-assembly.md",
+      "locator": "Complete selected source file",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/card-classification-and-scope-assembly.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "060563528c43760bae39600de4d231ec9dc79068be0e677fddb8e4c8129df752"
+    },
+    {
+      "source_id": "SRC-references-card-prompts-registry-json",
+      "source_type": "code",
+      "source_dependency_key": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/card-prompts/registry.json",
+      "locator": "Complete selected source file",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/card-prompts/registry.json",
+      "integrity": "PINNED_SHA256",
+      "sha256": "5747e9383d940b767f1247e42675d62010646d235d8173d6df10238f8d078de0"
+    },
+    {
+      "source_id": "SRC-references-prompt-carrier-and-ownership-md",
+      "source_type": "official_doc",
+      "source_dependency_key": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/prompt-carrier-and-ownership.md",
+      "locator": "Complete selected source file",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/prompt-carrier-and-ownership.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "281803a0c0095f1df228bcc256b7e46ec395b18d4d170cd3a6b973f8123b0e32"
+    },
+    {
+      "source_id": "SRC-cursor-skills-verify-factoryweaver-skill-md",
+      "source_type": "official_doc",
+      "source_dependency_key": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/.cursor/skills/verify-factoryweaver/SKILL.md",
+      "locator": "Complete selected source file",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/.cursor/skills/verify-factoryweaver/SKILL.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "30556561792c26cf6bd6904809721f5a5dc950b165c54dc1109d18b491264bb1"
+    },
+    {
+      "source_id": "SRC-docs-reconciliation-portable-md",
+      "source_type": "official_doc",
+      "source_dependency_key": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/portable.md",
+      "locator": "Complete selected source file",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/portable.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "858cb0daebe7e478234bf33eeaa196ee90b8880c46cd10a51c115d298aeff6dd"
+    },
+    {
+      "source_id": "SRC-docs-reconciliation-coverage-md",
+      "source_type": "official_doc",
+      "source_dependency_key": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/coverage.md",
+      "locator": "Complete selected source file",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/coverage.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "c3e543b3f4b469d470aa5786bb50c467d678b42a4f7c2f2a1c7880f02db61d21"
+    },
+    {
+      "source_id": "SRC-docs-reconciliation-profile-md",
+      "source_type": "official_doc",
+      "source_dependency_key": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/profile.md",
+      "locator": "Complete selected source file",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/profile.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "c7c6f9484e2d855b946175790f589fb2b0420294bb95ad605a0ba02dff9f4bc4"
+    },
+    {
+      "source_id": "SRC-docs-reconciliation-legacy-md",
+      "source_type": "official_doc",
+      "source_dependency_key": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/legacy.md",
+      "locator": "Complete selected source file",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/legacy.md",
+      "integrity": "PINNED_SHA256",
+      "sha256": "9ee9e3bbc556ffcdd8d7796065150ff2e8d67953c92355567c54fcc1039e397d"
+    },
+    {
+      "source_id": "SRC-openai-plugin-hooks",
+      "source_type": "official_doc",
+      "source_dependency_key": "https://developers.openai.com/plugins/build/plugins#bundled-mcp-servers-and-lifecycle-hooks",
+      "locator": "Fetched official section; local capability not observed",
+      "uri": "https://developers.openai.com/plugins/build/plugins#bundled-mcp-servers-and-lifecycle-hooks",
+      "integrity": "PINNED_SHA256",
+      "sha256": "32e4c69ddd13f8ca3789f82936f574f80898e7f422d81467acabda73204f2dc7"
+    },
+    {
+      "source_id": "SRC-openai-config-import",
+      "source_type": "official_doc",
+      "source_dependency_key": "https://learn.chatgpt.com/docs/app-server#detect-and-import-external-agent-config",
+      "locator": "Fetched official external config import section",
+      "uri": "https://learn.chatgpt.com/docs/app-server#detect-and-import-external-agent-config",
+      "integrity": "PINNED_SHA256",
+      "sha256": "568bbd2189c90741afa4c44db06f58a036f31d8d14ea9722d4f83746b737f9e8"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "REQ-source-integrity",
+      "statement": "Preserve actual Issue Goal, acceptance, Repo snapshot, training rights and full original REQ inventory",
+      "claim_kind": "NORMATIVE",
+      "source_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "owner": "原 User／Source Reader／Issue Owner",
+      "acceptance": [
+        "每個 decision-relevant source unit 對應原 REQ／Card 或具名 K；沒有被四卡顯示截斷的第五需求"
+      ],
+      "knowledge_status": "SPECIFIED",
+      "engineering_status": "CONTRACT_DEFINED",
+      "delivery_status": "NOT_STARTED",
+      "falsifier": "A generated summary cannot authorize a merge"
+    },
+    {
+      "id": "REQ-three-planes",
+      "statement": "Learning may propose, Execution may sandbox, independent Verification determines acceptance",
+      "claim_kind": "NORMATIVE",
+      "source_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "owner": "原 execution 與 verification Owners",
+      "acceptance": [
+        "被允許的候選只進入 disposable replay；驗收 oracle 由獨立來源固定"
+      ],
+      "knowledge_status": "SPECIFIED",
+      "engineering_status": "CONTRACT_DEFINED",
+      "delivery_status": "NOT_STARTED",
+      "falsifier": "Self-reported success is a rejection"
+    },
+    {
+      "id": "REQ-trainability",
+      "statement": "Candidate has bounded mutable surface and patch parser, reproducible task and replay",
+      "claim_kind": "NORMATIVE",
+      "source_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "owner": "原 Patch Validator／Snapshot Runner",
+      "acceptance": [
+        "合法 patch 可 parse、通過靜態限制並在固定 snapshot 重放；重播資料由原 runner 提供"
+      ],
+      "knowledge_status": "SPECIFIED",
+      "engineering_status": "CONTRACT_DEFINED",
+      "delivery_status": "NOT_STARTED",
+      "falsifier": "Arbitrary source rewrite without replay is not RL-ready"
+    },
+    {
+      "id": "REQ-two-policies",
+      "statement": "Proposer πθ modifies Harness; optional open Solver πφ is trained only with valid own token provenance; Codex φC stays frozen",
+      "claim_kind": "NORMATIVE",
+      "source_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "owner": "原 generation／Trainer Owners",
+      "acceptance": [
+        "batch 的 actor、action、generation token provenance 與 reward 指向同一次原始 observation"
+      ],
+      "knowledge_status": "SPECIFIED",
+      "engineering_status": "CONTRACT_DEFINED",
+      "delivery_status": "NOT_STARTED",
+      "falsifier": "Codex transcript cannot be treated as Proposer policy-gradient tokens"
+    },
+    {
+      "id": "REQ-causal-attribution",
+      "statement": "A=H0/φ0, B=H1/φ0, C=H0/φ1, D=H1/φ1; separate frozen Codex H0/H1 transfer",
+      "claim_kind": "NORMATIVE",
+      "source_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "owner": "原 paired evaluator",
+      "acceptance": [
+        "A=H0/φ0、B=H1/φ0、C=H0/φ1、D=H1/φ1 使用匹配條件；frozen Codex 另測 H0/H1；whole Goal需無hard-gate violation且有可重複正向paired effect"
+      ],
+      "knowledge_status": "SPECIFIED",
+      "engineering_status": "CONTRACT_DEFINED",
+      "delivery_status": "NOT_STARTED",
+      "falsifier": "Improvement in D alone cannot identify cause"
+    },
+    {
+      "id": "REQ-scoped-patch",
+      "statement": "Only observed failure supports a single causal target; capability probe before generating plugin patch",
+      "claim_kind": "NORMATIVE",
+      "source_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "owner": "原 observation／admission／Patch Validator",
+      "acceptance": [
+        "failure ref 指向原 trace；target 在 Owner allowlist 內；原 Goal 與 acceptance 不變"
+      ],
+      "knowledge_status": "SPECIFIED",
+      "engineering_status": "CONTRACT_DEFINED",
+      "delivery_status": "NOT_STARTED",
+      "falsifier": "Proposed unsupported native Hook must be rejected"
+    },
+    {
+      "id": "REQ-plugin-transfer",
+      "statement": "Verified artifact maps solely to capability-proven Skill, MCP wrapper, or supported lifecycle interface",
+      "claim_kind": "NORMATIVE",
+      "source_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "owner": "原 target Host／plugin／provider",
+      "acceptance": [
+        "probe 證明介面、bytes、load 與 fresh consumer consumption；保留安裝／執行／效果三種 readback"
+      ],
+      "knowledge_status": "SPECIFIED",
+      "engineering_status": "CONTRACT_DEFINED",
+      "delivery_status": "NOT_STARTED",
+      "falsifier": "Proposal != installed or consumed plugin"
+    },
+    {
+      "id": "REQ-full-lifecycle",
+      "statement": "Soodles Outer chooses only real needed method and admission; Noodle Poteto receives bounded delta and implements freely; Test/Schema results read back; provider owns effects",
+      "claim_kind": "NORMATIVE",
+      "source_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "owner": "原 Soodles／Noodle／Test／Schema／Provider",
+      "acceptance": [
+        "actual Stage capture 顯示 consumed task／preselected playbook；必要 Test／Schema next 有真實 consumption；Provider 有 exact-head delivery"
+      ],
+      "knowledge_status": "SPECIFIED",
+      "engineering_status": "CONTRACT_DEFINED",
+      "delivery_status": "NOT_STARTED",
+      "falsifier": "Writer-complete != merged/receipted goal"
+    },
+    {
+      "id": "REQ-learning-dataset",
+      "statement": "Training/validation/held-out partition; trace refs preserved; producer binds rollout/action/reward; legal rights for code/data/model/trace checked independently",
+      "claim_kind": "NORMATIVE",
+      "source_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "owner": "原 dataset／generation／verification Owners",
+      "acceptance": [
+        "train samples 有完整合法 lineage；validation 用於 acceptance；held-out 只做封存評估"
+      ],
+      "knowledge_status": "SPECIFIED",
+      "engineering_status": "CONTRACT_DEFINED",
+      "delivery_status": "NOT_STARTED",
+      "falsifier": "A sample with guessed tokens, leaked held-out tests or noncommercial rights is ineligible"
+    },
+    {
+      "id": "REQ-lesson-lineage",
+      "statement": "LESSON.md references observed issue/commit/PR relations and actual rework edges, distinguishing unknown from observed",
+      "claim_kind": "NORMATIVE",
+      "source_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "owner": "原 GitHub／capture／source Owners",
+      "acceptance": [
+        "LESSON 每個 Issue／Commit／PR edge 可讀回；正反控制能區分首個因果錯誤與後續症狀"
+      ],
+      "knowledge_status": "SPECIFIED",
+      "engineering_status": "CONTRACT_DEFINED",
+      "delivery_status": "NOT_STARTED",
+      "falsifier": "Do not invent SHA, DAG edge or closure"
+    }
+  ],
+  "cards": [
+    {
+      "stable_id": "REQ-source-integrity",
+      "canonical_key": "NeoWeaver|REQ|source-integrity|proposed|source-bound|v1",
+      "series": "REQ",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Source integrity",
+      "payload": "actor: Session 保留原 Issue Goal、acceptance、Repo snapshot、訓練資料權利與全需求 inventory\ngoal: Preserve actual Issue Goal, acceptance, Repo snapshot, training rights and full original REQ inventory\nmeasurement: 每個 decision-relevant source unit 對應原 REQ／Card 或具名 K；沒有被四卡顯示截斷的第五需求\npersistence: 保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。\nstop_escalation: 未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。\nacceptance: 每個 decision-relevant source unit 對應原 REQ／Card 或具名 K；沒有被四卡顯示截斷的第五需求\nnon_case: Summary 改了原 acceptance、漏掉 clause、以生成文件授予 merge，均拒絕；資料格式通過不等於語義完整",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "SPEC-source-integrity-boundary",
+      "canonical_key": "NeoWeaver|SPEC|source-integrity-boundary|proposed|source-bound|v1",
+      "series": "SPEC",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Source integrity boundary",
+      "payload": "given: Inspected source units、完整原 REQ inventory、原 Issue acceptance 可讀。\nwhen: 編譯每一 decision-relevant unit，保留原 Goal／negation／unknown。 Proposed behavior；NeoWeaver native 執行尚未發生。\nthen: 每個 decision-relevant source unit 對應原 REQ／Card 或具名 K；沒有被四卡顯示截斷的第五需求\ninputs_outputs: SourceCoverage + PriorInventory → MappedUnit[]／NamedGap[] + unchanged parent acceptance。\nforbidden: Summary 改了原 acceptance、漏掉 clause、以生成文件授予 merge，均拒絕；資料格式通過不等於語義完整\nnegative_case: A generated summary cannot authorize a merge\nunknown_effect: 不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。\nreplay: 固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。\noracle: 每個 decision-relevant source unit 對應原 REQ／Card 或具名 K；沒有被四卡顯示截斷的第五需求 由原獨立 verifier 審查，尚無 NeoWeaver runtime capture。\noriginal_owner: 原 User／Source Reader／Issue Owner",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": [
+        {
+          "relation": "implements",
+          "target": "REQ-source-integrity"
+        },
+        {
+          "relation": "validated_by",
+          "target": "V-source-integrity-discriminating-controls"
+        }
+      ]
+    },
+    {
+      "stable_id": "V-source-integrity-discriminating-controls",
+      "canonical_key": "NeoWeaver|V|source-integrity-discriminating-controls|proposed|source-bound|v1",
+      "series": "V",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Source integrity discriminating controls",
+      "payload": "subject: Preserve actual Issue Goal, acceptance, Repo snapshot, training rights and full original REQ inventory\noracle: 每個 decision-relevant source unit 對應原 REQ／Card 或具名 K；沒有被四卡顯示截斷的第五需求\nproducer: 原 User／Source Reader／Issue Owner\npositive_control: 每個 decision-relevant source unit 對應原 REQ／Card 或具名 K；沒有被四卡顯示截斷的第五需求\nnegative_control: Summary 改了原 acceptance、漏掉 clause、以生成文件授予 merge，均拒絕；資料格式通過不等於語義完整\nobservation_status: NOT_RUN for NeoWeaver implementation/training/native behavior. Specification CLI checks are separate.",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "REQ-three-planes",
+      "canonical_key": "NeoWeaver|REQ|three-planes|proposed|source-bound|v1",
+      "series": "REQ",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Three planes",
+      "payload": "actor: Learning 提案、Execution 隔離 replay、Verification 獨立裁決\ngoal: Learning may propose, Execution may sandbox, independent Verification determines acceptance\nmeasurement: 被允許的候選只進入 disposable replay；驗收 oracle 由獨立來源固定\npersistence: 保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。\nstop_escalation: 未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。\nacceptance: 被允許的候選只進入 disposable replay；驗收 oracle 由獨立來源固定\nnon_case: Proposer 修改 reward oracle、sandbox 外 effect、自己提交 PASS 都不能取得 acceptance；不以新增 Owner 取代原 Owner",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "SPEC-three-planes-boundary",
+      "canonical_key": "NeoWeaver|SPEC|three-planes-boundary|proposed|source-bound|v1",
+      "series": "SPEC",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Three planes boundary",
+      "payload": "given: PatchProposal、原 allowlist／authority 與 writer 不可改的 oracle refs 固定。\nwhen: 候選進入 Execution 前與其後的 Verification 都保留原責任與資料。 Proposed behavior；NeoWeaver native 執行尚未發生。\nthen: 被允許的候選只進入 disposable replay；驗收 oracle 由獨立來源固定\ninputs_outputs: Proposal + ImmutableOracleRef + EffectBoundary → Refused 或 ReplayEligible；VerifierResult 不由 writer 生產。\nforbidden: Proposer 修改 reward oracle、sandbox 外 effect、自己提交 PASS 都不能取得 acceptance；不以新增 Owner 取代原 Owner\nnegative_case: Self-reported success is a rejection\nunknown_effect: 不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。\nreplay: 固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。\noracle: 被允許的候選只進入 disposable replay；驗收 oracle 由獨立來源固定 由原獨立 verifier 審查，尚無 NeoWeaver runtime capture。\noriginal_owner: 原 execution 與 verification Owners",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": [
+        {
+          "relation": "implements",
+          "target": "REQ-three-planes"
+        },
+        {
+          "relation": "validated_by",
+          "target": "V-three-planes-discriminating-controls"
+        }
+      ]
+    },
+    {
+      "stable_id": "V-three-planes-discriminating-controls",
+      "canonical_key": "NeoWeaver|V|three-planes-discriminating-controls|proposed|source-bound|v1",
+      "series": "V",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Three planes discriminating controls",
+      "payload": "subject: Learning may propose, Execution may sandbox, independent Verification determines acceptance\noracle: 被允許的候選只進入 disposable replay；驗收 oracle 由獨立來源固定\nproducer: 原 execution 與 verification Owners\npositive_control: 被允許的候選只進入 disposable replay；驗收 oracle 由獨立來源固定\nnegative_control: Proposer 修改 reward oracle、sandbox 外 effect、自己提交 PASS 都不能取得 acceptance；不以新增 Owner 取代原 Owner\nobservation_status: NOT_RUN for NeoWeaver implementation/training/native behavior. Specification CLI checks are separate.",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "REQ-trainability",
+      "canonical_key": "NeoWeaver|REQ|trainability|proposed|source-bound|v1",
+      "series": "REQ",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Trainability",
+      "payload": "actor: Trainer 只處理有界 mutation surface、有 parser、可重現 task 與 replay 的候選\ngoal: Candidate has bounded mutable surface and patch parser, reproducible task and replay\nmeasurement: 合法 patch 可 parse、通過靜態限制並在固定 snapshot 重放；重播資料由原 runner 提供\npersistence: 保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。\nstop_escalation: 未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。\nacceptance: 合法 patch 可 parse、通過靜態限制並在固定 snapshot 重放；重播資料由原 runner 提供\nnon_case: 任意 source rewrite、未固定 environment 或不可回讀 action 不能進訓練；不把所有 repository edits 變成 action space",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "SPEC-trainability-boundary",
+      "canonical_key": "NeoWeaver|SPEC|trainability-boundary|proposed|source-bound|v1",
+      "series": "SPEC",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Trainability boundary",
+      "payload": "given: TaskSnapshot、single-surface proposal 與原 expected-source／allowlist refs 可核對。\nwhen: Boundary parser 解析，Validator 檢查範圍、staleness 與不可變 acceptance。 Proposed behavior；NeoWeaver native 執行尚未發生。\nthen: 合法 patch 可 parse、通過靜態限制並在固定 snapshot 重放；重播資料由原 runner 提供\ninputs_outputs: TaskSnapshot + PatchProposal → ParsedProposal 或 DiagnosticRefusal；不產生 replay/effect。\nforbidden: 任意 source rewrite、未固定 environment 或不可回讀 action 不能進訓練；不把所有 repository edits 變成 action space\nnegative_case: Arbitrary source rewrite without replay is not RL-ready\nunknown_effect: 不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。\nreplay: 固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。\noracle: 合法 patch 可 parse、通過靜態限制並在固定 snapshot 重放；重播資料由原 runner 提供 由原獨立 verifier 審查，尚無 NeoWeaver runtime capture。\noriginal_owner: 原 Patch Validator／Snapshot Runner",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": [
+        {
+          "relation": "implements",
+          "target": "REQ-trainability"
+        },
+        {
+          "relation": "validated_by",
+          "target": "V-trainability-discriminating-controls"
+        }
+      ]
+    },
+    {
+      "stable_id": "V-trainability-discriminating-controls",
+      "canonical_key": "NeoWeaver|V|trainability-discriminating-controls|proposed|source-bound|v1",
+      "series": "V",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Trainability discriminating controls",
+      "payload": "subject: Candidate has bounded mutable surface and patch parser, reproducible task and replay\noracle: 合法 patch 可 parse、通過靜態限制並在固定 snapshot 重放；重播資料由原 runner 提供\nproducer: 原 Patch Validator／Snapshot Runner\npositive_control: 合法 patch 可 parse、通過靜態限制並在固定 snapshot 重放；重播資料由原 runner 提供\nnegative_control: 任意 source rewrite、未固定 environment 或不可回讀 action 不能進訓練；不把所有 repository edits 變成 action space\nobservation_status: NOT_RUN for NeoWeaver implementation/training/native behavior. Specification CLI checks are separate.",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "REQ-two-policies",
+      "canonical_key": "NeoWeaver|REQ|two-policies|proposed|source-bound|v1",
+      "series": "REQ",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Two policies",
+      "payload": "actor: Proposer πθ 學 Harness；open Solver πφ 僅在有效自身 token lineage 下更新；Codex 保持 frozen\ngoal: Proposer πθ modifies Harness; optional open Solver πφ is trained only with valid own token provenance; Codex φC stays frozen\nmeasurement: batch 的 actor、action、generation token provenance 與 reward 指向同一次原始 observation\npersistence: 保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。\nstop_escalation: 未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。\nacceptance: batch 的 actor、action、generation token provenance 與 reward 指向同一次原始 observation\nnon_case: 把 Codex transcript 算成 πθ 的 policy-gradient tokens、補造 logprob／tokens／weights 皆拒絕；缺 Solver provenance 不影響獨立 Proposer source preparation",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "SPEC-two-policies-boundary",
+      "canonical_key": "NeoWeaver|SPEC|two-policies-boundary|proposed|source-bound|v1",
+      "series": "SPEC",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Two policies boundary",
+      "payload": "given: 原 RolloutObservation 有 actor/policy/action/token provenance，reward 可連至同次 observation。\nwhen: Eligibility checker 為指定 policy 選 batch，freeze counterpart；Codex trace 不進 gradient。 Proposed behavior；NeoWeaver native 執行尚未發生。\nthen: batch 的 actor、action、generation token provenance 與 reward 指向同一次原始 observation\ninputs_outputs: ActorRollout + RewardObservation → EligibleTrainingSample 或 IneligibleReason；open Solver 需要自身 tokens。\nforbidden: 把 Codex transcript 算成 πθ 的 policy-gradient tokens、補造 logprob／tokens／weights 皆拒絕；缺 Solver provenance 不影響獨立 Proposer source preparation\nnegative_case: Codex transcript cannot be treated as Proposer policy-gradient tokens\nunknown_effect: 不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。\nreplay: 固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。\noracle: batch 的 actor、action、generation token provenance 與 reward 指向同一次原始 observation 由原獨立 verifier 審查，尚無 NeoWeaver runtime capture。\noriginal_owner: 原 generation／Trainer Owners",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": [
+        {
+          "relation": "implements",
+          "target": "REQ-two-policies"
+        },
+        {
+          "relation": "validated_by",
+          "target": "V-two-policies-discriminating-controls"
+        }
+      ]
+    },
+    {
+      "stable_id": "V-two-policies-discriminating-controls",
+      "canonical_key": "NeoWeaver|V|two-policies-discriminating-controls|proposed|source-bound|v1",
+      "series": "V",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Two policies discriminating controls",
+      "payload": "subject: Proposer πθ modifies Harness; optional open Solver πφ is trained only with valid own token provenance; Codex φC stays frozen\noracle: batch 的 actor、action、generation token provenance 與 reward 指向同一次原始 observation\nproducer: 原 generation／Trainer Owners\npositive_control: batch 的 actor、action、generation token provenance 與 reward 指向同一次原始 observation\nnegative_control: 把 Codex transcript 算成 πθ 的 policy-gradient tokens、補造 logprob／tokens／weights 皆拒絕；缺 Solver provenance 不影響獨立 Proposer source preparation\nobservation_status: NOT_RUN for NeoWeaver implementation/training/native behavior. Specification CLI checks are separate.",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "REQ-causal-attribution",
+      "canonical_key": "NeoWeaver|REQ|causal-attribution|proposed|source-bound|v1",
+      "series": "REQ",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Causal attribution",
+      "payload": "actor: Evaluator 分開 Harness、Solver 與 interaction 的影響\ngoal: A=H0/φ0, B=H1/φ0, C=H0/φ1, D=H1/φ1; separate frozen Codex H0/H1 transfer\nmeasurement: A=H0/φ0、B=H1/φ0、C=H0/φ1、D=H1/φ1 使用匹配條件；frozen Codex 另測 H0/H1；whole Goal需無hard-gate violation且有可重複正向paired effect\npersistence: 保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。\nstop_escalation: 未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。\nacceptance: A=H0/φ0、B=H1/φ0、C=H0/φ1、D=H1/φ1 使用匹配條件；frozen Codex 另測 H0/H1；whole Goal需無hard-gate violation且有可重複正向paired effect\nnon_case: 只看 D 或單次改善便宣稱成功、或不匹配預算／task population，均 INCONCLUSIVE；不將 interaction 當單一政策效果",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "SPEC-causal-attribution-boundary",
+      "canonical_key": "NeoWeaver|SPEC|causal-attribution-boundary|proposed|source-bound|v1",
+      "series": "SPEC",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Causal attribution boundary",
+      "payload": "given: A/B/C/D 觀察或明示缺失，task/environment/budget/population 匹配。\nwhen: 原 evaluator 比較固定 counterpart 並區分 component 與 interaction。 Proposed behavior；NeoWeaver native 執行尚未發生。\nthen: A=H0/φ0、B=H1/φ0、C=H0/φ1、D=H1/φ1 使用匹配條件；frozen Codex 另測 H0/H1；whole Goal需無hard-gate violation且有可重複正向paired effect\ninputs_outputs: MatchedArms → HarnessDifference／SolverDifference／Interaction 或 INCONCLUSIVE；缺 arm 不輸出替代數值。\nforbidden: 只看 D 或單次改善便宣稱成功、或不匹配預算／task population，均 INCONCLUSIVE；不將 interaction 當單一政策效果\nnegative_case: Improvement in D alone cannot identify cause\nunknown_effect: 不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。\nreplay: 固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。\noracle: A=H0/φ0、B=H1/φ0、C=H0/φ1、D=H1/φ1 使用匹配條件；frozen Codex 另測 H0/H1；whole Goal需無hard-gate violation且有可重複正向paired effect 由原獨立 verifier 審查，尚無 NeoWeaver runtime capture。\noriginal_owner: 原 paired evaluator",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": [
+        {
+          "relation": "implements",
+          "target": "REQ-causal-attribution"
+        },
+        {
+          "relation": "validated_by",
+          "target": "V-causal-attribution-discriminating-controls"
+        }
+      ]
+    },
+    {
+      "stable_id": "V-causal-attribution-discriminating-controls",
+      "canonical_key": "NeoWeaver|V|causal-attribution-discriminating-controls|proposed|source-bound|v1",
+      "series": "V",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Causal attribution discriminating controls",
+      "payload": "subject: A=H0/φ0, B=H1/φ0, C=H0/φ1, D=H1/φ1; separate frozen Codex H0/H1 transfer\noracle: A=H0/φ0、B=H1/φ0、C=H0/φ1、D=H1/φ1 使用匹配條件；frozen Codex 另測 H0/H1；whole Goal需無hard-gate violation且有可重複正向paired effect\nproducer: 原 paired evaluator\npositive_control: A=H0/φ0、B=H1/φ0、C=H0/φ1、D=H1/φ1 使用匹配條件；frozen Codex 另測 H0/H1；whole Goal需無hard-gate violation且有可重複正向paired effect\nnegative_control: 只看 D 或單次改善便宣稱成功、或不匹配預算／task population，均 INCONCLUSIVE；不將 interaction 當單一政策效果\nobservation_status: NOT_RUN for NeoWeaver implementation/training/native behavior. Specification CLI checks are separate.",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "REQ-scoped-patch",
+      "canonical_key": "NeoWeaver|REQ|scoped-patch|proposed|source-bound|v1",
+      "series": "REQ",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Scoped patch",
+      "payload": "actor: Proposer 針對一個被觀察失敗提出一個合法因果目標\ngoal: Only observed failure supports a single causal target; capability probe before generating plugin patch\nmeasurement: failure ref 指向原 trace；target 在 Owner allowlist 內；原 Goal 與 acceptance 不變\npersistence: 保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。\nstop_escalation: 未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。\nacceptance: failure ref 指向原 trace；target 在 Owner allowlist 內；原 Goal 與 acceptance 不變\nnon_case: 只有課程標題或泛稱品質不好、capability 未觀察、越出 path/effect scope，均 REFUSE／NOOP",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "SPEC-scoped-patch-boundary",
+      "canonical_key": "NeoWeaver|SPEC|scoped-patch-boundary|proposed|source-bound|v1",
+      "series": "SPEC",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Scoped patch boundary",
+      "payload": "given: Observed failure、original acceptance、允許 target 與原 Owner continuation 可讀。\nwhen: Session 只針對一個真實 causal barrier 提出 scope；unchanged legal next 不重新選方法。 Proposed behavior；NeoWeaver native 執行尚未發生。\nthen: failure ref 指向原 trace；target 在 Owner allowlist 內；原 Goal 與 acceptance 不變\ninputs_outputs: FailureObservation + AcceptedScope → BoundedFailureScope 或 NOOP／NamedGap；無新增 admission。\nforbidden: 只有課程標題或泛稱品質不好、capability 未觀察、越出 path/effect scope，均 REFUSE／NOOP\nnegative_case: Proposed unsupported native Hook must be rejected\nunknown_effect: 不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。\nreplay: 固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。\noracle: failure ref 指向原 trace；target 在 Owner allowlist 內；原 Goal 與 acceptance 不變 由原獨立 verifier 審查，尚無 NeoWeaver runtime capture。\noriginal_owner: 原 observation／admission／Patch Validator",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": [
+        {
+          "relation": "implements",
+          "target": "REQ-scoped-patch"
+        },
+        {
+          "relation": "validated_by",
+          "target": "V-scoped-patch-discriminating-controls"
+        }
+      ]
+    },
+    {
+      "stable_id": "V-scoped-patch-discriminating-controls",
+      "canonical_key": "NeoWeaver|V|scoped-patch-discriminating-controls|proposed|source-bound|v1",
+      "series": "V",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Scoped patch discriminating controls",
+      "payload": "subject: Only observed failure supports a single causal target; capability probe before generating plugin patch\noracle: failure ref 指向原 trace；target 在 Owner allowlist 內；原 Goal 與 acceptance 不變\nproducer: 原 observation／admission／Patch Validator\npositive_control: failure ref 指向原 trace；target 在 Owner allowlist 內；原 Goal 與 acceptance 不變\nnegative_control: 只有課程標題或泛稱品質不好、capability 未觀察、越出 path/effect scope，均 REFUSE／NOOP\nobservation_status: NOT_RUN for NeoWeaver implementation/training/native behavior. Specification CLI checks are separate.",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "REQ-plugin-transfer",
+      "canonical_key": "NeoWeaver|REQ|plugin-transfer|proposed|source-bound|v1",
+      "series": "REQ",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Plugin transfer",
+      "payload": "actor: Adapter 將已接受 artifact 映射至目標 Host 真正支援的介面\ngoal: Verified artifact maps solely to capability-proven Skill, MCP wrapper, or supported lifecycle interface\nmeasurement: probe 證明介面、bytes、load 與 fresh consumer consumption；保留安裝／執行／效果三種 readback\npersistence: 保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。\nstop_escalation: 未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。\nacceptance: probe 證明介面、bytes、load 與 fresh consumer consumption；保留安裝／執行／效果三種 readback\nnon_case: Plugin 被提及或 installer copied files 不證明 native consumption；缺 Hook event 或 trust 時不能宣稱 Hook 已執行；沒有能力不猜 API",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "SPEC-plugin-transfer-boundary",
+      "canonical_key": "NeoWeaver|SPEC|plugin-transfer-boundary|proposed|source-bound|v1",
+      "series": "SPEC",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Plugin transfer boundary",
+      "payload": "given: 已接受 patch artifact、實際 target capability／trust 與原 consumer Owner 可用。\nwhen: Adapter 選受支持 mapping，逐別核對 install/load/consume/effect。 Proposed behavior；NeoWeaver native 執行尚未發生。\nthen: probe 證明介面、bytes、load 與 fresh consumer consumption；保留安裝／執行／效果三種 readback\ninputs_outputs: AcceptedArtifact + CapabilityReadback → MappingProposal；各 native observation 保留原 receipt，缺一個便該步 NOT_RUN。\nforbidden: Plugin 被提及或 installer copied files 不證明 native consumption；缺 Hook event 或 trust 時不能宣稱 Hook 已執行；沒有能力不猜 API\nnegative_case: Proposal != installed or consumed plugin\nunknown_effect: 不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。\nreplay: 固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。\noracle: probe 證明介面、bytes、load 與 fresh consumer consumption；保留安裝／執行／效果三種 readback 由原獨立 verifier 審查，尚無 NeoWeaver runtime capture。\noriginal_owner: 原 target Host／plugin／provider",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": [
+        {
+          "relation": "implements",
+          "target": "REQ-plugin-transfer"
+        },
+        {
+          "relation": "validated_by",
+          "target": "V-plugin-transfer-discriminating-controls"
+        }
+      ]
+    },
+    {
+      "stable_id": "V-plugin-transfer-discriminating-controls",
+      "canonical_key": "NeoWeaver|V|plugin-transfer-discriminating-controls|proposed|source-bound|v1",
+      "series": "V",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Plugin transfer discriminating controls",
+      "payload": "subject: Verified artifact maps solely to capability-proven Skill, MCP wrapper, or supported lifecycle interface\noracle: probe 證明介面、bytes、load 與 fresh consumer consumption；保留安裝／執行／效果三種 readback\nproducer: 原 target Host／plugin／provider\npositive_control: probe 證明介面、bytes、load 與 fresh consumer consumption；保留安裝／執行／效果三種 readback\nnegative_control: Plugin 被提及或 installer copied files 不證明 native consumption；缺 Hook event 或 trust 時不能宣稱 Hook 已執行；沒有能力不猜 API\nobservation_status: NOT_RUN for NeoWeaver implementation/training/native behavior. Specification CLI checks are separate.",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "REQ-full-lifecycle",
+      "canonical_key": "NeoWeaver|REQ|full-lifecycle|proposed|source-bound|v1",
+      "series": "REQ",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Full lifecycle",
+      "payload": "actor: Soodles Outer 準備原 Issue／admission；Noodle Poteto 實作 admitted delta；原 Managers／Provider 各自回讀\ngoal: Soodles Outer chooses only real needed method and admission; Noodle Poteto receives bounded delta and implements freely; Test/Schema results read back; provider owns effects\nmeasurement: actual Stage capture 顯示 consumed task／preselected playbook；必要 Test／Schema next 有真實 consumption；Provider 有 exact-head delivery\npersistence: 保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。\nstop_escalation: 未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。\nacceptance: actual Stage capture 顯示 consumed task／preselected playbook；必要 Test／Schema next 有真實 consumption；Provider 有 exact-head delivery\nnon_case: Writer Completed、reference CI、Reader next=null 不能閉合 parent Goal；不強迫所有 Managers 跑",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "SPEC-full-lifecycle-boundary",
+      "canonical_key": "NeoWeaver|SPEC|full-lifecycle-boundary|proposed|source-bound|v1",
+      "series": "SPEC",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Full lifecycle boundary",
+      "payload": "given: 原 Issue Contract/admission、原 Stage task/playbook 與必要 Managers 的 actual readbacks 可讀。\nwhen: 原 admitted execute 消費 delta；原 Owner 驗收、回 next，由 Provider 決定 delivery。 Proposed behavior；NeoWeaver native 執行尚未發生。\nthen: actual Stage capture 顯示 consumed task／preselected playbook；必要 Test／Schema next 有真實 consumption；Provider 有 exact-head delivery\ninputs_outputs: Issue/Stage/Manager/Provider refs → scoped execution/readback + unfinished parent obligations；Reader next=null 無執行權。\nforbidden: Writer Completed、reference CI、Reader next=null 不能閉合 parent Goal；不強迫所有 Managers 跑\nnegative_case: Writer-complete != merged/receipted goal\nunknown_effect: 不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。\nreplay: 固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。\noracle: actual Stage capture 顯示 consumed task／preselected playbook；必要 Test／Schema next 有真實 consumption；Provider 有 exact-head delivery 由原獨立 verifier 審查，尚無 NeoWeaver runtime capture。\noriginal_owner: 原 Soodles／Noodle／Test／Schema／Provider",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": [
+        {
+          "relation": "implements",
+          "target": "REQ-full-lifecycle"
+        },
+        {
+          "relation": "validated_by",
+          "target": "V-full-lifecycle-discriminating-controls"
+        }
+      ]
+    },
+    {
+      "stable_id": "V-full-lifecycle-discriminating-controls",
+      "canonical_key": "NeoWeaver|V|full-lifecycle-discriminating-controls|proposed|source-bound|v1",
+      "series": "V",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Full lifecycle discriminating controls",
+      "payload": "subject: Soodles Outer chooses only real needed method and admission; Noodle Poteto receives bounded delta and implements freely; Test/Schema results read back; provider owns effects\noracle: actual Stage capture 顯示 consumed task／preselected playbook；必要 Test／Schema next 有真實 consumption；Provider 有 exact-head delivery\nproducer: 原 Soodles／Noodle／Test／Schema／Provider\npositive_control: actual Stage capture 顯示 consumed task／preselected playbook；必要 Test／Schema next 有真實 consumption；Provider 有 exact-head delivery\nnegative_control: Writer Completed、reference CI、Reader next=null 不能閉合 parent Goal；不強迫所有 Managers 跑\nobservation_status: NOT_RUN for NeoWeaver implementation/training/native behavior. Specification CLI checks are separate.",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "REQ-learning-dataset",
+      "canonical_key": "NeoWeaver|REQ|learning-dataset|proposed|source-bound|v1",
+      "series": "REQ",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Learning dataset",
+      "payload": "actor: Dataset Owner 固定 train／validation／held-out，保留來源、rights 與 rollout→action→reward 的真實關係\ngoal: Training/validation/held-out partition; trace refs preserved; producer binds rollout/action/reward; legal rights for code/data/model/trace checked independently\nmeasurement: train samples 有完整合法 lineage；validation 用於 acceptance；held-out 只做封存評估\npersistence: 保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。\nstop_escalation: 未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。\nacceptance: train samples 有完整合法 lineage；validation 用於 acceptance；held-out 只做封存評估\nnon_case: 猜 token、混 held-out training、使用權未確認、未裁決 reward 都排除更新；成本缺 capture 不是零",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "SPEC-learning-dataset-boundary",
+      "canonical_key": "NeoWeaver|SPEC|learning-dataset-boundary|proposed|source-bound|v1",
+      "series": "SPEC",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Learning dataset boundary",
+      "payload": "given: 原 dataset rights、split、generation/action/reward lineage 與 checkpoint refs 固定。\nwhen: Dataset Owner 隔離 train/validation/held-out；只將 eligible train samples 交原 Trainer。 Proposed behavior；NeoWeaver native 執行尚未發生。\nthen: train samples 有完整合法 lineage；validation 用於 acceptance；held-out 只做封存評估\ninputs_outputs: Dataset + Lineage + Rights → TrainBatch 或 QuarantinedSample(reason)；held-out 只讀評估，不能更新政策。\nforbidden: 猜 token、混 held-out training、使用權未確認、未裁決 reward 都排除更新；成本缺 capture 不是零\nnegative_case: A sample with guessed tokens, leaked held-out tests or noncommercial rights is ineligible\nunknown_effect: 不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。\nreplay: 固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。\noracle: train samples 有完整合法 lineage；validation 用於 acceptance；held-out 只做封存評估 由原獨立 verifier 審查，尚無 NeoWeaver runtime capture。\noriginal_owner: 原 dataset／generation／verification Owners",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": [
+        {
+          "relation": "implements",
+          "target": "REQ-learning-dataset"
+        },
+        {
+          "relation": "validated_by",
+          "target": "V-learning-dataset-discriminating-controls"
+        }
+      ]
+    },
+    {
+      "stable_id": "V-learning-dataset-discriminating-controls",
+      "canonical_key": "NeoWeaver|V|learning-dataset-discriminating-controls|proposed|source-bound|v1",
+      "series": "V",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Learning dataset discriminating controls",
+      "payload": "subject: Training/validation/held-out partition; trace refs preserved; producer binds rollout/action/reward; legal rights for code/data/model/trace checked independently\noracle: train samples 有完整合法 lineage；validation 用於 acceptance；held-out 只做封存評估\nproducer: 原 dataset／generation／verification Owners\npositive_control: train samples 有完整合法 lineage；validation 用於 acceptance；held-out 只做封存評估\nnegative_control: 猜 token、混 held-out training、使用權未確認、未裁決 reward 都排除更新；成本缺 capture 不是零\nobservation_status: NOT_RUN for NeoWeaver implementation/training/native behavior. Specification CLI checks are separate.",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "REQ-lesson-lineage",
+      "canonical_key": "NeoWeaver|REQ|lesson-lineage|proposed|source-bound|v1",
+      "series": "REQ",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Lesson lineage",
+      "payload": "actor: Session 記錄被觀察的 first unsupported premise 與實際 rework DAG\ngoal: LESSON.md references observed issue/commit/PR relations and actual rework edges, distinguishing unknown from observed\nmeasurement: LESSON 每個 Issue／Commit／PR edge 可讀回；正反控制能區分首個因果錯誤與後續症狀\npersistence: 保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。\nstop_escalation: 未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。\nacceptance: LESSON 每個 Issue／Commit／PR edge 可讀回；正反控制能區分首個因果錯誤與後續症狀\nnon_case: 補造 Issue ID、SHA、closure 或將歷史 NOT_RUN 改成 PASS，均拒絕；NeoWeaver 尚無 implementation Issue 不補一個",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "SPEC-lesson-lineage-boundary",
+      "canonical_key": "NeoWeaver|SPEC|lesson-lineage-boundary|proposed|source-bound|v1",
+      "series": "SPEC",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Lesson lineage boundary",
+      "payload": "given: 原 GitHub/provider/capture events、原 Goal 與 fixed source quotes 可取得。\nwhen: Session 找第一個未獲支持 premise，核對每個實際 rework edge，保存正反 control。 Proposed behavior；NeoWeaver native 執行尚未發生。\nthen: LESSON 每個 Issue／Commit／PR edge 可讀回；正反控制能區分首個因果錯誤與後續症狀\ninputs_outputs: ObservedHistory → FirstBreakpoint + EvidenceDAG + MissingEdge[]；沒有實際 Issue/Commit 不補 identity。\nforbidden: 補造 Issue ID、SHA、closure 或將歷史 NOT_RUN 改成 PASS，均拒絕；NeoWeaver 尚無 implementation Issue 不補一個\nnegative_case: Do not invent SHA, DAG edge or closure\nunknown_effect: 不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。\nreplay: 固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。\noracle: LESSON 每個 Issue／Commit／PR edge 可讀回；正反控制能區分首個因果錯誤與後續症狀 由原獨立 verifier 審查，尚無 NeoWeaver runtime capture。\noriginal_owner: 原 GitHub／capture／source Owners",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": [
+        {
+          "relation": "implements",
+          "target": "REQ-lesson-lineage"
+        },
+        {
+          "relation": "validated_by",
+          "target": "V-lesson-lineage-discriminating-controls"
+        }
+      ]
+    },
+    {
+      "stable_id": "V-lesson-lineage-discriminating-controls",
+      "canonical_key": "NeoWeaver|V|lesson-lineage-discriminating-controls|proposed|source-bound|v1",
+      "series": "V",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Lesson lineage discriminating controls",
+      "payload": "subject: LESSON.md references observed issue/commit/PR relations and actual rework edges, distinguishing unknown from observed\noracle: LESSON 每個 Issue／Commit／PR edge 可讀回；正反控制能區分首個因果錯誤與後續症狀\nproducer: 原 GitHub／capture／source Owners\npositive_control: LESSON 每個 Issue／Commit／PR edge 可讀回；正反控制能區分首個因果錯誤與後續症狀\nnegative_control: 補造 Issue ID、SHA、closure 或將歷史 NOT_RUN 改成 PASS，均拒絕；NeoWeaver 尚無 implementation Issue 不補一個\nobservation_status: NOT_RUN for NeoWeaver implementation/training/native behavior. Specification CLI checks are separate.",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "C-independent-immutable-verification",
+      "canonical_key": "NeoWeaver|C|independent-immutable-verification|proposed|source-bound|v1",
+      "series": "C",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Independent immutable verification",
+      "payload": "mechanism: Learning 只能提出候選；Execution replay 生成 observation；Verification 用 writer 不能修改的 oracle 決定 scoped acceptance。\nconditions: 候選會影響 reward 或 completion，且原 verifier/source refs 可固定。\ninputs_outputs: Patch proposal 與 paired observations → 原 verifier PASS/FAIL/INCONCLUSIVE；仍非 provider delivery。\nfailure_mode: 若 writer 能改 oracle，reward 反映自簽結果而非原 Goal。\ndecision_consequence: 把 evaluator、held-out 與 admission 排除 mutation allowlist。",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "C-actor-scoped-credit-assignment",
+      "canonical_key": "NeoWeaver|C|actor-scoped-credit-assignment|proposed|source-bound|v1",
+      "series": "C",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Actor scoped credit assignment",
+      "payload": "mechanism: Proposer action 與其 generation provenance、paired replay reward 連結；Solver tokens 由自己的 actor 產生。\nconditions: 只有原 Producer 提供可一致連結的資料才形成 eligible batch；Codex 只做 frozen inference。\ninputs_outputs: Rollout/action/verifier refs → eligibility；missing lineage → UNKNOWN/ineligible。\nfailure_mode: 把 Codex transcript 當 πθ tokens 會把不同 actor 的 action 歸因到錯誤 policy。\ndecision_consequence: 先訓獨立可追溯 Proposer；無 open Solver provenance 時不更新 Solver。",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "G-cards-preserve-original-effect-ownership",
+      "canonical_key": "NeoWeaver|G|cards-preserve-original-effect-ownership|proposed|source-bound|v1",
+      "series": "G",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Cards preserve original effect ownership",
+      "payload": "invariant: Card、Scope、Prompt Delta、Reader readback 都不授予 effects、admission 或 landing。\napplicability: 任何把規格知識轉成原 Soodles/Noodle 或 Codex action 的 Consumer。\nauthority_owner: 原 Issue/admission、native carrier 與 Provider 各自負責相應 fact。\nrefusal: 無合法 original next、capability 或 effect readback 時拒絕依賴操作，不生成 argv。\nconsequences: local PASS／writer exit 不能升級為 native Stage 或 whole Goal closure。\nexception: 原 Owner 已回有效 unchanged continuation 時消費它；沒有新增授權例外。",
+      "evidence_ids": [
+        "SRC-skills-factoryweaver-skill-md",
+        "SRC-references-zettelkasten-v7-2-md",
+        "SRC-references-card-classification-and-scope-assembly-md",
+        "SRC-references-card-prompts-registry-json",
+        "SRC-references-prompt-carrier-and-ownership-md",
+        "SRC-cursor-skills-verify-factoryweaver-skill-md"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "G-hard-gates-precede-reward",
+      "canonical_key": "NeoWeaver|G|hard-gates-precede-reward|proposed|source-bound|v1",
+      "series": "G",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Hard gates precede reward",
+      "payload": "invariant: Acceptance、protected regressions、rights、split 與 authority 任一 gate 未通過，都不能用 soft cost bonus 抵銷。\napplicability: Reward eligibility、policy update 和 patch transfer。\nauthority_owner: 原 independent Verifier／Dataset／admission Owner。\nrefusal: UNKNOWN gate 產生 INCONCLUSIVE；held-out 或 foreign tokens 排除 gradient。\nconsequences: 即使低成本或自稱完成，候選仍不可 accepted。\nexception: 不需要的外部 effect 標 N/A；這不免除實際必要 gates。",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "T-harness-only-versus-joint-policy-update",
+      "canonical_key": "NeoWeaver|T|harness-only-versus-joint-policy-update|proposed|source-bound|v1",
+      "series": "T",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Harness only versus joint policy update",
+      "payload": "common_goal: 在相同 task/environment/budget 下找到可驗證的 outcome 改善。\nalternatives: H1/φ0 只改 Harness；H0/φ1 只改 Solver；H1/φ1 同時改兩者。\ndimensions: Actor provenance、因果可辨識性、受保護 regressions、可取得資料與 checkpoint。\ntradeoffs: Harness-only 可在 frozen Solver 下比較；聯合更新需要完整 matched factorial 且有 interaction。沒有成本數據。\nselection_rule: 首次 slice 固定 Solver；只有原資料與 rights 俱全時才選 optional Solver arm。",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "E-joint-result-does-not-identify-a-component-effect",
+      "canonical_key": "NeoWeaver|E|joint-result-does-not-identify-a-component-effect|proposed|source-bound|v1",
+      "series": "E",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Joint result does not identify a component effect",
+      "payload": "premises: 同時改 Harness 與 Solver，且只觀察 A 与 D；沒有 B 与 C。\nderivation: D−A 混合 Harness、Solver 及 interaction。多組 B/C 值可得到同一 D−A，因此無法唯一歸因。\napplicability: 原規格 matched four-arm attribution；不是所有 observational data 的普遍定律。\ncounterexample: 若 Solver 完全固定且有匹配 B/A，可識別該 scoped Harness difference；仍不能外推全 population。\nimplication: D-only 報 INCONCLUSIVE；不補造 missing arms。",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "Q-choose-the-first-evaluation-population",
+      "canonical_key": "NeoWeaver|Q|choose-the-first-evaluation-population|proposed|source-bound|v1",
+      "series": "Q",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Choose the first evaluation population",
+      "payload": "unresolved_decision: 尚未選定 NeoWeaver 首次 task population、實際 benchmark oracle 與 authorized resource budget。\ncompeting_answers: 使用既有 Owner 固定的 repository task set，或由產品 Owner 明確選另一個可重放 task population；無已觀察選擇。\ndecision_owner: 原 Goal／Dataset／measurement Owner；Session 先讀既有 artifacts，未解的產品選擇才需決定。\nimpact: 阻擋真實 RL performance acceptance，不阻擋 parser/spec fixture。\nnext_evidence: 取得原 population、oracle、split 與 budget 的已接受資料，不重問已解決 Goal。",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "S-start-at-the-patch-acceptance-boundary",
+      "canonical_key": "NeoWeaver|S|start-at-the-patch-acceptance-boundary|proposed|source-bound|v1",
+      "series": "S",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Start at the patch acceptance boundary",
+      "payload": "goal: 合法 single-surface proposal 保留 immutable acceptance；非法輸入 fail closed。\ncausal_hypothesis: 先固定 parser／validator 可避免未驗收候選污染 replay/reward；尚未測 NeoWeaver。\nintervention: 一個 bounded patch-validation atom，不同時改 replay、Trainer、native hooks。\nalternative: 若原 source 顯示另一個更早 failure，先修其原 Producer，不建立無需要的 parser layer。\nmeasurement: allowlisted positive 與 duplicate/stale/evaluator-edit negative controls；原 Owner supplies oracle。\nstop_rule: 缺原 admission 或依賴資料停該步；三次失敗重新評估，不放寬 acceptance。",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "R-verify-a-bounded-delivery-sequence",
+      "canonical_key": "NeoWeaver|R|verify-a-bounded-delivery-sequence|proposed|source-bound|v1",
+      "series": "R",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Verify a bounded delivery sequence",
+      "payload": "parent_goal: 有界 Harness learning 與 verified frozen Codex transfer，原十項 REQ 全保留。\nunits: Parser/immutable acceptance → matched replay → independent gates → eligible Proposer update → optional Solver → capability-bound transfer → Provider/LESSON。\nprerequisites: Reward 依賴真實 replay/gates；update 依賴 eligible dataset；transfer 依賴 accepted artifact/target capability。\nexit_gates: Parser→合法解析與非法無effect；Replay→matched observations；Verification→固定oracle與lineage；Proposer→eligible train-only batch與rollback checkpoint；Solver→自身provenance且counterpart固定；Transfer→capability/install/load/consume/effect各自讀回；Delivery→Provider與無hard-gate violation、可重複正向paired effect。詳細正反/unknown/replay在完整規格逐步交付矩陣；未觀察仍NOT_RUN。\nowner_continuation: 既有原 Owner next 決定實際 lifecycle；此 Roadmap 不建立排程器。",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "P-repeat-a-matched-replay-safely",
+      "canonical_key": "NeoWeaver|P|repeat-a-matched-replay-safely|proposed|source-bound|v1",
+      "series": "P",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Repeat a matched replay safely",
+      "payload": "preconditions: 原固定 snapshot、budget、oracle、mutation allowlist 與許可環境可用。\nprocedure: 保留 baseline，使用另一個 isolated copy 套已通過 parser/scope checks且原Owner允許進disposable replay的candidate；此時尚未得到outcome acceptance。原 runner記錄兩組observations，再交獨立Verifier。\nvalidation: 核對 matched conditions、protected negative controls、terminal/capture coverage與原 acceptance。\nfailure_recovery: unknown effect 讀原 Owner，不 replay write；missing observation 保留 INCONCLUSIVE。\nrollback: 由原 effect Owner 從其原 checkpoint/ref 恢復；Practice card 不授權 rollback。\nscope: 可重用 proposed replay practice，非 Soodles P-class instruction 或已執行模型實驗。",
+      "evidence_ids": [
+        "SRC-original-neoweaver-spec"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "N-factoryweaver-reconciliation-precedes-neoweaver-recompilation",
+      "canonical_key": "NeoWeaver|N|factoryweaver-reconciliation-precedes-neoweaver-recompilation|proposed|source-bound|v1",
+      "series": "N",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "FactoryWeaver reconciliation precedes NeoWeaver recompilation",
+      "payload": "actors: 使用者要求續作；Session 修復 source；獨立 reviewers 驅動 CLI；GitHub 提供 head/CI/merge。\ninitial_state: 三份 reconciliation draft 尚未驗證，原 bootstrap 與 latest main 分岔；NeoWeaver 只有 logical REQ 表。\nevent_sequence: 先修 portable deps/trusted checker，再補 coverage refusal、profile ambiguity，最後恢復 PR7 missing consumers。\nturning_point: 實際 negative cases 揭露綠測試沒有覆蓋的 Consumer 契約缺口，不能直接合併旧 source。\noutcome: 獨立 scoped CLI 證據與 GitHub source delivery可讀回；NeoWeaver原生learning仍未執行。\ncausal_uncertainty: 這條實際 rework sequence 不證明 native Agent compliance、decision cost降低或RL成效。",
+      "evidence_ids": [
+        "SRC-docs-reconciliation-portable-md",
+        "SRC-docs-reconciliation-coverage-md",
+        "SRC-docs-reconciliation-profile-md",
+        "SRC-docs-reconciliation-legacy-md"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "D-matching-raw-catalog-pin-still-allowed-duplicate-keys",
+      "canonical_key": "NeoWeaver|D|matching-raw-catalog-pin-still-allowed-duplicate-keys|proposed|source-bound|v1",
+      "series": "D",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Matching raw catalog pin still allowed duplicate keys",
+      "payload": "case: 原 Profile auditor 曾以普通 JSON decoder 讀取 exact-pin catalog。\ncondition: 同一 raw object 含兩個 producer_claim keys，後者為 UNVERIFIED_CARRIER_OUTPUT。\nobserved_detail: 獨立負例指出不同 parser 可有不同解讀；修正沿用 main duplicate-key refusal，raw pin 不被當語義正確。\ncountercase: 唯一 keys 的 matching synthetic catalog 仍回 CLAIM_MATCHES，所有 native-provenance flags false。\nimplication: NeoWeaver Parser 亦需單義 input；這是已觀察 FactoryWeaver case，不是 NeoWeaver implementation failure。",
+      "evidence_ids": [
+        "SRC-docs-reconciliation-profile-md"
+      ],
+      "typed_links": []
+    },
+    {
+      "stable_id": "K-training-data-and-token-provenance-unavailable",
+      "canonical_key": "NeoWeaver|K|training-data-and-token-provenance-unavailable|proposed|source-bound|v1",
+      "series": "K",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Training data and token provenance unavailable",
+      "payload": "missing_input: 實際可使用 dataset/splits、generation token provenance、matched rollout/reward 與 model rights。\nwhy_required: 沒有它們不能形成合法 policy-gradient batch 或主張 performance。\nproducer: 原 Dataset、generation、Verifier／Trainer Owners。\naffected_scope: 真實 Proposer/Solver update 與成效 acceptance。\nnext_source: 讀原已授權資料與 capture；不從 transcript 補造 token、logprob或reward。\nunaffected_work: 完整規格、PatchProposal shape、parser fixtures及 source/CLI拒絕驗證。",
+      "evidence_ids": [],
+      "typed_links": []
+    },
+    {
+      "stable_id": "K-native-codex-transfer-has-no-observed-consumer",
+      "canonical_key": "NeoWeaver|K|native-codex-transfer-has-no-observed-consumer|proposed|source-bound|v1",
+      "series": "K",
+      "revision": 1,
+      "status": "ACTIVE",
+      "title": "Native Codex transfer has no observed consumer",
+      "payload": "missing_input: 目標Host的capability、已trusted定義、fresh native load/consume trace與effect readback。\nwhy_required: 官方文件與filesystem installation不能證明本目標consumer消費learned patch。\nproducer: 原 target Host、Codex carrier、plugin與Provider Owners。\naffected_scope: REQ-07 native transfer及whole Goal closure。\nnext_source: 先讀實際capability與原next；需要Hook時保留真實event/trust，不能猜API。\nunaffected_work: 官方介面來源核對、source-bound artifact與唯讀CLI交接。",
+      "evidence_ids": [],
+      "typed_links": []
+    }
+  ],
+  "action_requests": [],
+  "progress": {
+    "knowledge": {
+      "state": "SPECIFIED",
+      "evidence_refs": []
+    },
+    "engineering": {
+      "state": "CONTRACT_DEFINED",
+      "evidence_refs": []
+    },
+    "delivery": {
+      "state": "NOT_STARTED",
+      "evidence_refs": []
+    }
+  }
+}

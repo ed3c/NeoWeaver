@@ -1,0 +1,142 @@
+{
+  "factoryweaver_source_revision": "a370c271ab6517298306e51c0f5a38c754bd71dd",
+  "prior_neoweaver_revision": "df41167de1d191d890db9bb94cfcc43663d027f7",
+  "sources": [
+    {
+      "source_id": "SRC-original-neoweaver-spec",
+      "uri": "https://github.com/ed3c/NeoWeaver/blob/df41167de1d191d890db9bb94cfcc43663d027f7/docs/specs/learned-harness-coevolution.md",
+      "locator": "Original ten logical REQ rows and all handoff sections",
+      "captured_bytes_sha256": "e2038c877e04901ae651b01849dfcbf8a7dfc4a8d4980decd8f2c44d0627d8ff",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-original-neoweaver-agents",
+      "uri": "https://github.com/ed3c/NeoWeaver/blob/df41167de1d191d890db9bb94cfcc43663d027f7/AGENTS.md",
+      "locator": "Original entry, conditional routing and proof boundaries",
+      "captured_bytes_sha256": "7535c1126c6072eadaabacd404112ad4a5ca1fc41e19e55ccaa57049976a2735",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-original-neoweaver-lesson",
+      "uri": "https://github.com/ed3c/NeoWeaver/blob/df41167de1d191d890db9bb94cfcc43663d027f7/LESSON.md",
+      "locator": "Original first-breakpoint procedure and historical NOT_RUN baseline",
+      "captured_bytes_sha256": "effe9365d00b90dad1fad7b999ddfa1dfae260fd7780ed1ee1b0d59a3774ac04",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-skills-factoryweaver-skill-md",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/skills/factoryweaver/SKILL.md",
+      "locator": "Complete selected source file",
+      "captured_bytes_sha256": "558d489c6f55a2fd51563f88623ae43a398b86bbd146870e5b4c7e571f695df4",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-references-zettelkasten-v7-2-md",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/zettelkasten-v7.2.md",
+      "locator": "Complete selected source file",
+      "captured_bytes_sha256": "b3aa8f71123139d9de6dc5e2d494ea0e5a5bd3ecc22a5f55d54b78c1b211ad58",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-references-card-classification-and-scope-assembly-md",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/card-classification-and-scope-assembly.md",
+      "locator": "Complete selected source file",
+      "captured_bytes_sha256": "060563528c43760bae39600de4d231ec9dc79068be0e677fddb8e4c8129df752",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-references-card-prompts-registry-json",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/card-prompts/registry.json",
+      "locator": "Complete selected source file",
+      "captured_bytes_sha256": "5747e9383d940b767f1247e42675d62010646d235d8173d6df10238f8d078de0",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-references-prompt-carrier-and-ownership-md",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/references/prompt-carrier-and-ownership.md",
+      "locator": "Complete selected source file",
+      "captured_bytes_sha256": "281803a0c0095f1df228bcc256b7e46ec395b18d4d170cd3a6b973f8123b0e32",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-cursor-skills-verify-factoryweaver-skill-md",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/.cursor/skills/verify-factoryweaver/SKILL.md",
+      "locator": "Complete selected source file",
+      "captured_bytes_sha256": "30556561792c26cf6bd6904809721f5a5dc950b165c54dc1109d18b491264bb1",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-docs-reconciliation-portable-md",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/portable.md",
+      "locator": "Complete selected source file",
+      "captured_bytes_sha256": "858cb0daebe7e478234bf33eeaa196ee90b8880c46cd10a51c115d298aeff6dd",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-docs-reconciliation-coverage-md",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/coverage.md",
+      "locator": "Complete selected source file",
+      "captured_bytes_sha256": "c3e543b3f4b469d470aa5786bb50c467d678b42a4f7c2f2a1c7880f02db61d21",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-docs-reconciliation-profile-md",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/profile.md",
+      "locator": "Complete selected source file",
+      "captured_bytes_sha256": "c7c6f9484e2d855b946175790f589fb2b0420294bb95ad605a0ba02dff9f4bc4",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-docs-reconciliation-legacy-md",
+      "uri": "https://github.com/ed3c/factoryweaver/blob/a370c271ab6517298306e51c0f5a38c754bd71dd/docs/reconciliation/legacy.md",
+      "locator": "Complete selected source file",
+      "captured_bytes_sha256": "9ee9e3bbc556ffcdd8d7796065150ff2e8d67953c92355567c54fcc1039e397d",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-openai-plugin-hooks",
+      "uri": "https://developers.openai.com/plugins/build/plugins#bundled-mcp-servers-and-lifecycle-hooks",
+      "locator": "Fetched official section; local capability not observed",
+      "captured_bytes_sha256": "32e4c69ddd13f8ca3789f82936f574f80898e7f422d81467acabda73204f2dc7",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    },
+    {
+      "source_id": "SRC-openai-config-import",
+      "uri": "https://learn.chatgpt.com/docs/app-server#detect-and-import-external-agent-config",
+      "locator": "Fetched official external config import section",
+      "captured_bytes_sha256": "568bbd2189c90741afa4c44db06f58a036f31d8d14ea9722d4f83746b737f9e8",
+      "status": "INSPECTED",
+      "assertion_boundary": "Source bytes/requirements; not native execution"
+    }
+  ],
+  "original_logical_aliases": {
+    "REQ-01": "REQ-source-integrity",
+    "REQ-02": "REQ-three-planes",
+    "REQ-03": "REQ-trainability",
+    "REQ-04": "REQ-two-policies",
+    "REQ-05": "REQ-causal-attribution",
+    "REQ-06": "REQ-scoped-patch",
+    "REQ-07": "REQ-plugin-transfer",
+    "REQ-08": "REQ-full-lifecycle",
+    "REQ-09": "REQ-learning-dataset",
+    "REQ-10": "REQ-lesson-lineage"
+  },
+  "missing": [
+    "Native model/dataset/Stage/Manager/transfer captures"
+  ],
+  "proof_ceiling": "INSPECTED_SOURCES_AND_DECLARED_SPECIFICATION"
+}

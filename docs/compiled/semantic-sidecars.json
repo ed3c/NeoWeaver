@@ -1,0 +1,86 @@
+{
+  "status": "PROPOSED_NOT_ADMITTED",
+  "ScopeManifest": {
+    "requirement_ids": [
+      "REQ-source-integrity",
+      "REQ-three-planes",
+      "REQ-trainability",
+      "REQ-scoped-patch",
+      "REQ-full-lifecycle"
+    ],
+    "card_ids": [
+      "SPEC-source-integrity-boundary",
+      "SPEC-three-planes-boundary",
+      "SPEC-trainability-boundary",
+      "SPEC-scoped-patch-boundary",
+      "SPEC-full-lifecycle-boundary",
+      "V-source-integrity-discriminating-controls",
+      "V-three-planes-discriminating-controls",
+      "V-trainability-discriminating-controls",
+      "V-scoped-patch-discriminating-controls",
+      "V-full-lifecycle-discriminating-controls",
+      "C-independent-immutable-verification",
+      "G-cards-preserve-original-effect-ownership",
+      "G-hard-gates-precede-reward"
+    ],
+    "goal": "合法 bounded PatchProposal 保留 immutable acceptance；非法输入拒絕且無effects。",
+    "measurement": "原Owner-fixed positive/negative parser controls；尚未有NeoWeaver implementation。",
+    "persistence": "原十項parent REQ與whole Goal持續保留，不因這個atom完成而閉合。",
+    "stop_and_escalation": "缺admission/原輸入停依賴操作；unknown effect原Owner readback，不猜next。",
+    "causal_change": "在候選進replay/reward前讓JSON與mutation scope單義並保持原acceptance。",
+    "acceptance": [
+      "合法single-surface proposal可讀；duplicate/stale/oracle-edit/越界input具名refusal且無effects。"
+    ],
+    "constraints": [
+      "原Issue/admission/allowlist/oracle由原Owner固定；proposal不是writer instruction。"
+    ],
+    "prompt_delta": [
+      "拒絕duplicate keys、stale expected source、越界target、evaluator edit與額外effects。",
+      "合法候選只回read-only proposal；保留原Goal/acceptance與十項parent inventory。",
+      "在原admitted scope與selected playbook內自行選implementation；未知效果先原Owner readback。"
+    ]
+  },
+  "SkillRoute": {
+    "status": "NOOP_FOR_CURRENT_SPECIFICATION_DELIVERY",
+    "cause": "No native implementation stage is being launched by the Compiler; the first implementation atom requires original admission and accepted inputs.",
+    "missing": "Original NeoWeaver Issue/admission, selected runtime playbook and actual next"
+  },
+  "PromptDelta": {
+    "status": "ADD_PROPOSAL_ONLY",
+    "bullets": [
+      "拒絕duplicate keys、stale expected source、越界target、evaluator edit與額外effects。",
+      "合法候選只回read-only proposal；保留原Goal/acceptance與十項parent inventory。",
+      "在原admitted scope與selected playbook內自行選implementation；未知效果先原Owner readback。"
+    ],
+    "native_consumption": "NOT_RUN"
+  },
+  "Continuation": {
+    "parent_goal": "Bounded Harness learning and verified frozen Codex transfer; all original ten REQ persist.",
+    "original_requirement_ids": [
+      "REQ-source-integrity",
+      "REQ-three-planes",
+      "REQ-trainability",
+      "REQ-two-policies",
+      "REQ-causal-attribution",
+      "REQ-scoped-patch",
+      "REQ-plugin-transfer",
+      "REQ-full-lifecycle",
+      "REQ-learning-dataset",
+      "REQ-lesson-lineage"
+    ],
+    "outside_selected_scope": [
+      "REQ-two-policies",
+      "REQ-causal-attribution",
+      "REQ-plugin-transfer",
+      "REQ-learning-dataset",
+      "REQ-lesson-lineage"
+    ],
+    "paging": "Frozen compilation paging was exercised; its empty-card baseline is a fixture, not a prior accepted Registry.",
+    "native_next": "NOT_OBSERVED"
+  },
+  "authority": {
+    "effects": [],
+    "authorizes_landing": false,
+    "native_admission": "NOT_RUN"
+  }
+}
