@@ -5,6 +5,7 @@ isolation. The original Owner still selects the image, task and oracle.
 """
 from dataclasses import dataclass
 import hashlib
+import json
 import os
 from pathlib import Path
 import re
@@ -41,6 +42,7 @@ class ContainerCapture:
     stderr_sha256: str
     elapsed_seconds: float
     source_manifest_sha256: str
+    container_id: str | None = None
     effect_status: str = "unknown"
     isolation_verified: bool = False
     task_completed: bool | None = None
@@ -112,7 +114,9 @@ def run_container_arm(pair: StagedSourcePair, arm: str, task: ContainerTask,
 
     # Name originates in the executing Host rather than an Agent-authored prompt.
     name = "nw-replay-" + secrets.token_hex(12)
-    command = [docker, "run", "--rm", "--pull=never", "--name", name,
+    cidfile = evidence / "container.cid"
+    command = [docker, "run", "--pull=never", "--name", name,
+               "--cidfile", str(cidfile),
                "--network=none", "--read-only", "--cap-drop=ALL",
                "--security-opt=no-new-privileges", "--pids-limit=64",
                "--memory=512m", "--cpus=1", "--user=65534:65534",
@@ -140,7 +144,104 @@ def run_container_arm(pair: StagedSourcePair, arm: str, task: ContainerTask,
         stdout_sha = hashlib.file_digest(output, "sha256").hexdigest()
     with stderr_path.open("rb") as output:
         stderr_sha = hashlib.file_digest(output, "sha256").hexdigest()
-    # No automatic Docker cleanup on unknown outcome: inspect original provider.
+    # Read the engine-created identity even on failure; never invent its ID.
+    container_id = None
+    if cidfile.exists():
+        if cidfile.is_symlink() or not cidfile.is_file():
+            status = "UNKNOWN_OUTCOME"
+        else:
+            raw_id = cidfile.read_text(encoding="utf-8").strip()
+            if re.fullmatch(r"[0-9a-f]{64}", raw_id):
+                container_id = raw_id
+            else:
+                status = "UNKNOWN_OUTCOME"
+    elif status == "EXIT_RECORDED":
+        # Docker client exit 0 alone cannot establish that a container existed.
+        status = "UNKNOWN_OUTCOME"
+    # Intentionally retain the named container for exact-ID Provider readback.
+    # Original Owner owns later cleanup; no unknown-effect retries.
     return ContainerCapture(arm, name, status, exit_code,
                             stdout_path, stderr_path, stdout_sha, stderr_sha,
-                            duration, pair.source_manifest_sha256)
+                            duration, pair.source_manifest_sha256, container_id)
+
+
+@dataclass(frozen=True, slots=True)
+class ContainerInspection:
+    status: str   # CONFIG_AND_EXIT_MATCH / INCONCLUSIVE / REFUSED
+    reasons: tuple[str, ...]
+    container_id: str | None
+    observed_exit_code: int | None = None
+    scope: str = "DOCKER_PROVIDER_METADATA_ONLY"
+    isolation_verified: bool = False
+    task_completed: bool | None = None
+    authorizes_landing: bool = False
+
+
+def inspect_container_capture(capture: ContainerCapture, task: ContainerTask,
+                              source: Path) -> ContainerInspection:
+    """Independent *read-only* Docker metadata readback bound to an engine ID.
+
+    Config matching is not kernel isolation or original task/oracle success.
+    Transport/capture identity and original task remain separate authorities.
+    """
+    if type(capture) is not ContainerCapture or type(task) is not ContainerTask:
+        return ContainerInspection("REFUSED", ("invalid_input_type",), None)
+    if (type(capture.container_id) is not str or
+            not re.fullmatch(r"[0-9a-f]{64}", capture.container_id)):
+        return ContainerInspection("INCONCLUSIVE", ("missing_engine_container_id",), None)
+    ident = capture.container_id
+    if capture.status != "EXIT_RECORDED" or type(capture.exit_code) is not int:
+        return ContainerInspection("INCONCLUSIVE", ("no_recorded_client_exit",), ident)
+    if (type(task.image) is not str or not _IMAGE.fullmatch(task.image)
+            or type(task.argv) is not tuple or not task.argv
+            or any(type(x) is not str or not x for x in task.argv)):
+        return ContainerInspection("REFUSED", ("invalid_original_task",), ident)
+    if not isinstance(source, Path) or source.is_symlink() or not source.is_dir():
+        return ContainerInspection("REFUSED", ("invalid_source_path",), ident)
+    docker = shutil.which("docker")
+    if not docker or not Path(docker).is_file():
+        return ContainerInspection("INCONCLUSIVE", ("docker_unavailable",), ident)
+    try:
+        result = subprocess.run([docker, "inspect", "--type", "container", "--format", "{{json .}}", ident],
+                                capture_output=True, timeout=10, check=False)
+    except (OSError, subprocess.TimeoutExpired):
+        return ContainerInspection("INCONCLUSIVE", ("provider_read_unavailable",), ident)
+    if result.returncode != 0:
+        return ContainerInspection("INCONCLUSIVE", ("provider_container_missing",), ident)
+    try:
+        obj = json.loads(result.stdout)
+    except (ValueError, UnicodeError):
+        return ContainerInspection("REFUSED", ("malformed_provider_response",), ident)
+    if type(obj) is not dict or obj.get("Id") != ident:
+        return ContainerInspection("REFUSED", ("wrong_provider_identity",), ident)
+    state, cfg, host, mounts = (obj.get(k) for k in ("State", "Config", "HostConfig", "Mounts"))
+    if any(type(x) is not dict for x in (state, cfg, host)) or type(mounts) is not list:
+        return ContainerInspection("REFUSED", ("malformed_provider_contract",), ident)
+    exit_value = state.get("ExitCode")
+    if state.get("Status") != "exited" or state.get("Running") is not False or type(exit_value) is not int:
+        return ContainerInspection("INCONCLUSIVE", ("provider_not_terminal",), ident)
+    reasons = []
+    def required(condition, key):
+        if not condition:
+            reasons.append(key)
+    required(exit_value == capture.exit_code, "exit_code_mismatch")
+    required(cfg.get("Image") == task.image, "image_mismatch")
+    required(cfg.get("User") == "65534:65534", "user_mismatch")
+    required(cfg.get("Cmd") == list(task.argv), "task_argv_mismatch")
+    required(host.get("NetworkMode") == "none", "network_not_none")
+    required(host.get("ReadonlyRootfs") is True, "rootfs_not_readonly")
+    required(host.get("Privileged") is False, "privileged_container")
+    required(host.get("AutoRemove") is False, "container_autoremoved")
+    required("ALL" in (host.get("CapDrop") or []), "capabilities_not_dropped")
+    required(any(opt in ("no-new-privileges", "no-new-privileges:true")
+                 for opt in (host.get("SecurityOpt") or [])), "new_privileges_allowed")
+    required(host.get("PidsLimit") == 64, "pids_limit_mismatch")
+    required(host.get("Memory") == 512 * 1024 * 1024, "memory_limit_mismatch")
+    required(host.get("NanoCpus") == 1_000_000_000, "cpu_limit_mismatch")
+    found = [x for x in mounts if type(x) is dict and x.get("Destination") == "/workspace"]
+    required(len(mounts) == 1 and len(found) == 1 and
+             found[0].get("Type") == "bind" and
+             found[0].get("Source") == str(source.resolve()) and
+             found[0].get("RW") is False, "readonly_source_mount_mismatch")
+    return ContainerInspection("INCONCLUSIVE" if reasons else "CONFIG_AND_EXIT_MATCH",
+                               tuple(reasons), ident, exit_value)
