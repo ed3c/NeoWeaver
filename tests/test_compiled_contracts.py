@@ -36,6 +36,22 @@ class CompiledContractsTests(unittest.TestCase):
         self.assertEqual(out['native_pclass'], 'NOT_RUN')
         self.assertEqual(out['effects'], [])
 
+    def test_one_shot_review_covers_every_card_with_existing_scope_role(self):
+        import re
+        content = (ROOT / 'docs/reviews/one-shot-card-scope-review.md').read_text(encoding='utf-8')
+        rows = re.findall(r'^\\| \\x60([^\\x60]+)\\x60 \\| ([A-Z]+) \\| [^\\n|]+ \\| \\x60([^\\x60]+)\\x60 \\| (KEEP|REFINE) \\|', content, re.M)
+        record = json.loads((ROOT / 'docs/compiled/specification.json').read_text(encoding='utf-8'))
+        sidecar = json.loads((ROOT / 'docs/compiled/semantic-sidecars.json').read_text(encoding='utf-8'))
+        expected = {(c['stable_id'], c['series']): c for c in record['cards']}
+        roles = {a['card_id']: a['role'] for a in sidecar['ScopeManifest']['card_applicability']}
+        self.assertEqual(len(rows), len(expected))
+        self.assertEqual(len(set((cid, series) for cid, series, _, _ in rows)), len(expected))
+        for cid, series, role, verdict in rows:
+            self.assertIn((cid, series), expected)
+            self.assertEqual(role, roles[cid])
+            self.assertIn(verdict, ('KEEP', 'REFINE'))
+        self.assertEqual(len(sidecar['ScopeManifest']['card_ids']), 6)
+
     def test_parser_cannot_gain_replay(self):
         out = self.mutate('semantic-sidecars.json', lambda d: d['ScopeManifest']['local_contract'].__setitem__('executes_replay', True))
         self.assertEqual(out['error'], 'parser_effect_boundary_changed')

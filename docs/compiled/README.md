@@ -45,3 +45,12 @@ Local maintain 為 clean，只覆蓋12個CLI features。Full maintain為blocked�
 `python scripts/check_compiled_contracts.py` 可重跑record／semantic proposals／typed edges／Scope／Continuation的declared consistency；使用`--before`指向prior artifact可另查原需求、coverage與revision保存。它只讀JSON並回報結構一致性，不是PatchProposal parser、semantic judge、native feedback或新CLI狀態機。原FactoryWeaverCLI仍處理v1 shape、delta／advisory invalidation與Bundle。實際語義審查與native證據分開記錄於verification；前輪verification原bytes保留於verification-before-parser-correction.json。
 
 K43只對two-policies／learning-dataset形成必要依賴；K44只對plugin-transfer形成必要依賴。Parser不依賴這些native/training gaps。Material C/G changes經已聲明的typed edges作advisory invalidation；context-only卡不強造依賴。
+
+## New source-level One-Shot card review (does not rewrite history)
+
+[NeoWeaver 44-card / Behavior Scope Review](../reviews/one-shot-card-scope-review.md)
+inspects every saved Card with its original applicability, recommends narrower
+Roadmap references and Session-specific One-Shot composition, and explicitly
+keeps compiled snapshots/old NOT_RUN states unchanged. The proposed R/SPEC/V/S
+revisions require the original FactoryWeaver producer and fresh review to land;
+this review does not itself create Registry revisions or native execution receipts.
