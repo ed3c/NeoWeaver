@@ -37,9 +37,14 @@ class CompiledContractsTests(unittest.TestCase):
         self.assertEqual(out['effects'], [])
 
     def test_one_shot_review_covers_every_card_with_existing_scope_role(self):
-        import re
         content = (ROOT / 'docs/reviews/one-shot-card-scope-review.md').read_text(encoding='utf-8')
-        rows = re.findall(r'^\\| \\x60([^\\x60]+)\\x60 \\| ([A-Z]+) \\| [^\\n|]+ \\| \\x60([^\\x60]+)\\x60 \\| (KEEP|REFINE) \\|', content, re.M)
+        rows = []
+        for line in content.splitlines():
+            if not line.startswith('| `'):
+                continue
+            cells = [part.strip() for part in line.strip('|').split('|')]
+            if len(cells) >= 6 and cells[0].startswith('`') and cells[3].startswith('`'):
+                rows.append((cells[0].strip('`'), cells[1], cells[3].strip('`'), cells[4]))
         record = json.loads((ROOT / 'docs/compiled/specification.json').read_text(encoding='utf-8'))
         sidecar = json.loads((ROOT / 'docs/compiled/semantic-sidecars.json').read_text(encoding='utf-8'))
         expected = {(c['stable_id'], c['series']): c for c in record['cards']}
