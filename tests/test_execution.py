@@ -36,7 +36,9 @@ class ContainerExecutionTests(unittest.TestCase):
         seen = []
         def execute(command, **kwargs):
             seen.append((command, kwargs))
-            return subprocess.CompletedProcess(command, 0, b"observed stdout", b"observed stderr")
+            kwargs["stdout"].write(b"observed stdout")
+            kwargs["stderr"].write(b"observed stderr")
+            return subprocess.CompletedProcess(command, 0)
         with patch("neoweaver.execution.shutil.which", return_value="/usr/bin/true"), \
              patch("neoweaver.execution.subprocess.run", side_effect=execute):
             receipt = run_container_arm(self.pair, arm, task or self.task, self.out)
@@ -60,10 +62,12 @@ class ContainerExecutionTests(unittest.TestCase):
         self.assertEqual(argv[-3:], list(self.task.argv))
         self.assertEqual(opts["timeout"], 40)
         self.assertNotIn("shell", opts)
+        self.assertNotIn("capture_output", opts)
 
     def test_unknown_docker_outcome_preserves_container_name_and_does_not_retry(self):
         def timeout(command, **kwargs):
-            raise subprocess.TimeoutExpired(command, kwargs["timeout"], output=b"partial")
+            kwargs["stdout"].write(b"partial")
+            raise subprocess.TimeoutExpired(command, kwargs["timeout"])
         with patch("neoweaver.execution.shutil.which", return_value="/usr/bin/true"), \
              patch("neoweaver.execution.subprocess.run", side_effect=timeout) as launch:
             output = run_container_arm(self.pair, "candidate", self.task, self.out)
@@ -77,7 +81,7 @@ class ContainerExecutionTests(unittest.TestCase):
     def test_docker_backend_rejection_is_not_task_failure(self):
         with patch("neoweaver.execution.shutil.which", return_value="/usr/bin/true"), \
              patch("neoweaver.execution.subprocess.run",
-                   return_value=subprocess.CompletedProcess([], 125, b"", b"docker error")):
+                   return_value=subprocess.CompletedProcess([], 125)):
             result = run_container_arm(self.pair, "baseline", self.task, self.out)
         self.assertEqual(result.status, "BACKEND_REFUSED")
         self.assertIsNone(result.task_completed)
