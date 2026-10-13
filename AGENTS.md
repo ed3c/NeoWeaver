@@ -8,6 +8,34 @@
 
 先消費原 Owner 的有效 unchanged next。真實 unresolved Goal／causality 才選既有 Thinking Router；不能因 Card type 自動呼叫所有方法。Soodles Outer 準備原 Issue Contract、admission、固定 acceptance 與必要 reviews。Noodle Poteto 在原 admitted execute Stage 消費 task-local delta、已選 playbook，並自由決定 scope 內的 implementation。
 
+## Roadmap-assisted Session-composed One-Shot Prompt
+
+規格卡片是 source-grounded Knowledge IR，不是 Worker 要逐卡照做的 Prompt。
+Card Generation 期間由 Session 對第一個不成立的來源／Consumer 因果前提提出
+**Card-generation feedback**，修正原本 REQ/SPEC/V/Typed Link 的 Producer；
+沒有新的可證明語意就 REUSE/NOOP。這份生成回饋不等於下游 Stage 的 `PromptDelta`。
+
+R Roadmap 可以列出具可觀察 Exit 的多個候選 Behavior Scopes，引用原 Registry
+已有 Card identities 與必要依賴；R 不是 Scheduler，也不產生 Admission 或
+具法律效果的 Next。Session 讀原 User Goal、Source、Failure、Original Owner
+Next，選擇最小充分的 Scope，必要時可不依 Roadmap 建議順序。
+CLI/Host 固定已存在的 Reference 和 Source Binding；不由模型補造任何
+SHA、HEAD、operation ID、argv、cursor 或 runtime metadata。
+
+Session **語意編譯**而非拼貼 Cards：只把當前 Consumer 需要的局部 Goal、
+Inputs、Required Behavior、適用的 C/G／禁止事項、SPEC/V Oracle、Stop
+及 Worker Implementation Freedom 組成 One-Shot Prompt。原十項 REQ、
+Parent Goal 與 Deferred Scope 仍存在完整 Knowledge Record。
+既有 Scope sidecar 的 `PromptDelta` 只包含**新且必要**的 Worker 行為；
+沒有變更或已有合法 Owner Next 時 NOOP。原 Soodles Admission／Stage 才能
+將組合後的指引提供給 Noodle Poteto，並由原 Test／Schema／Provider
+各自驗收；文字可讀不等於 Native Agent 遵循。
+
+逐卡 Review 與六張 Parser Scope 的適用性，見
+[44-Card One-Shot Review](docs/reviews/one-shot-card-scope-review.md)。
+此 Review 是新的 source-level feedback，不覆寫原 compiled evidence；
+Native P-class compliance 仍需 fresh consumer 與原 schema feedback。
+
 ## 資料與 effects
 
 原 Source／Registry／Host／Runner／Provider 產生自己的 identities、digests、heads、argv、capture 與 receipts。Consumer 使用其原 references，不補造或重建。缺 capability、token provenance、rights、evaluation population 或 admission，只停止依賴它的步驟；continue 已授權且不依賴該缺口的工作。

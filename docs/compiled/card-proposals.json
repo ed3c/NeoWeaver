@@ -176,10 +176,10 @@
         "Original ten logical REQ rows and all handoff sections"
       ],
       "semantics": {
-        "given": "Owner-issued TaskSnapshot, FailureScope, mutation allowlist and immutable acceptance references are available; the single-surface PatchProposal has expected old source references.",
-        "when": "The boundary parser reads raw JSON and the Patch Validator compares the candidate targets and expected source references with those fixed inputs.",
+        "given": "The Original Owner supplies raw single-surface PatchProposal bytes and the complete fixed_inputs mapping: snapshot_ref, failure_ref, allowlist_ref, acceptance_ref, causal_target_ref, allowlist, and protected_target_refs. References are opaque; the parser does not load their targets.",
+        "when": "parse_proposal(raw: bytes, fixed_inputs: Mapping) checks JSON ambiguity, fixed reference equality, the one causal target, selected surface, allowlist, protected targets, and expected source without executing a replacement or reading referenced files.",
         "then": "Return ParsedProposal for a well-formed, current, allowed single-surface candidate, or DiagnosticRefusal naming the failed condition. Neither result starts replay, training or provider effects.",
-        "inputs_outputs": "Raw PatchProposal JSON + TaskSnapshot + FailureScope + fixed allowlist and acceptance references → ParsedProposal or DiagnosticRefusal. The parser cannot replace those references or certify their source truth.",
+        "inputs_outputs": "Raw PatchProposal bytes + Owner-fixed mapping of opaque references/allowlist/protected targets → frozen ParsedProposal or DiagnosticRefusal with condition/path. No TaskSnapshot file loading, Replay, Trainer, or external effect.",
         "forbidden": "Do not accept duplicate keys, stale expected source, targets outside the allowlist, protected oracle/acceptance edits, credentials or effect fields; do not execute a proposal.",
         "negative_case": "Keep the otherwise valid proposal fixed and independently introduce a duplicate key, stale expected source, protected target or extra effect field; each must produce a diagnostic refusal and no replay/write.",
         "unknown_effect": "The parser produces no external effects. Missing required Owner input yields DiagnosticRefusal; unknown effects from an earlier operation require its original Owner readback and are not repaired by replaying a write.",
@@ -193,7 +193,7 @@
           "target_series": "REQ",
           "target_topic": "Trainability",
           "applicability": "Raw parsing and static fixed-target/source/acceptance checks only. TaskSnapshot replay and complete training readiness remain parent obligations.",
-          "counterfactual": "If the original required outcome changes, review this bounded output contract: Raw PatchProposal JSON + TaskSnapshot + FailureScope + fixed allowlist and acceptance references → ParsedProposal or DiagnosticRefusal. The parser cannot replace those references or certify their source truth. It supports only the stated clause, not unobserved parent results."
+          "counterfactual": "If the original Trainability outcome changes, review only this parser-side output boundary: parse_proposal(raw: bytes, fixed_inputs: Mapping) consumes raw PatchProposal bytes and Owner-issued opaque snapshot/failure/allowlist/acceptance references plus fixed causal-target, allowlist, and protected-target values. It returns immutable ParsedProposal or DiagnosticRefusal with a named condition/path; it does not read TaskSnapshot contents, replay tasks, validate reference truth, train policies, or complete the parent Trainability goal."
         },
         {
           "relation": "validated_by",
@@ -238,7 +238,7 @@
         "producer": "Original parser/Patch Validator control Producer; later Snapshot Runner observations are not covered by this parser oracle.",
         "positive_control": "Given current TaskSnapshot/FailureScope/allowlist/acceptance references and one allowed single-surface raw proposal, return ParsedProposal and preserve immutable inputs; no replay/training/effects.",
         "negative_control": "Independently add a duplicate JSON key, stale expected source, out-of-allowlist target, protected oracle edit or extra effect/credential field: DiagnosticRefusal naming that condition; no replay/write. Missing required fixed input also refuses.",
-        "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
+        "observation_status": "Current public API Parser evidence is PASS_SCOPED (28 parser tests within 36 local tests) in docs/parser-verification.json. Original frozen compiled verification previously said NOT_RUN and remains unchanged. TaskSnapshot replay, native P-class/Noodle behavior, learning and transfer are NOT_RUN."
       },
       "links": [
         {
@@ -427,7 +427,7 @@
         "persistence": "保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。",
         "stop_escalation": "未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。",
         "acceptance": "The failure reference identifies an observed trace, the target is allowed, and an explicit source-bound causal hypothesis explains its relevance. Hypothesis is not verified cause; plugin targets additionally need the applicable capability readback. Preserve original Goal and acceptance.",
-        "non_case": "只有課程標題或泛稱品質不好、capability 未觀察、越出 path/effect scope，均 REFUSE／NOOP"
+        "non_case": "Generic quality complaints, unread source titles, unsupported plugin capability, out-of-scope effects, or absent observed failure do not justify a new failure-bound patch hypothesis. A separately proposed pure parser/refusal bootstrap is an implementation slice, not evidence of a prior NeoWeaver native failure."
       },
       "links": []
     },
@@ -907,7 +907,7 @@
         "intervention": "A proposed pure parser/refusal bootstrap atom returns ParsedProposal or DiagnosticRefusal without replay, reward, training or native effects. This is not an observed NeoWeaver runtime defect.",
         "alternative": "若原 source 顯示另一個更早 failure，先修其原 Producer，不建立無需要的 parser layer。",
         "measurement": "Owner-fixed allowed single-surface input and duplicate/stale/protected-target/extra-effect negative inputs discriminate parser outcomes; native execution remains NOT_RUN.",
-        "stop_rule": "缺原 admission 或依賴資料停該步；三次失敗重新評估，不放寬 acceptance。"
+        "stop_rule": "Missing native admission blocks only dependent native work; independent authorized local parsing can continue. Under the applicable original Session correction policy, three failed authorized corrections trigger causal reassessment in the same task, not an automatic Parser retry counter or a new scheduler. Never relax immutable acceptance."
       },
       "links": []
     },
@@ -920,7 +920,7 @@
       ],
       "semantics": {
         "parent_goal": "有界 Harness learning 與 verified frozen Codex transfer，原十項 REQ 全保留。",
-        "units": "Parser/immutable acceptance → matched replay → independent gates and eligible Proposer update. Optional Solver update is a separate branch. Accepted artifact plus target capability enables authorized transfer without requiring that optional branch; Provider/LESSON follows applicable delivery.",
+        "units": "Candidate Parser unit: S-start-at-the-patch-acceptance-boundary Strategy with SPEC-trainability-boundary local ParsedProposal/DiagnosticRefusal exit; parent Replay/Training is not completed by Parser. Then matched replay → independent gates → eligible Proposer update. Optional Solver update remains separate. Accepted artifact plus target capability enables authorized transfer without that optional Solver branch; Provider/LESSON follow applicable delivery.",
         "prerequisites": "Reward uses actual matched replay/gates; updates use eligible data and authorized method. Transfer requires an accepted artifact and target capability, not an optional Solver update.",
         "exit_gates": "Parser→合法解析與非法無effect；Replay→matched observations；Verification→固定oracle與lineage；Proposer→eligible train-only batch與rollback checkpoint；Solver→自身provenance且counterpart固定；Transfer→capability/install/load/consume/effect各自讀回；Delivery→Provider與無hard-gate violation、可重複正向paired effect。詳細正反/unknown/replay在完整規格逐步交付矩陣；未觀察仍NOT_RUN。",
         "owner_continuation": "既有原 Owner next 決定實際 lifecycle；此 Roadmap 不建立排程器。"
@@ -932,6 +932,13 @@
           "target_topic": "Start at the patch acceptance boundary",
           "applicability": "The proposed first unit is parser/refusal, while later units preserve the parent Goal.",
           "counterfactual": "If the first selected causal unit changes, this roadmap ordering must be reviewed rather than reused blindly."
+        },
+        {
+          "relation": "based_on",
+          "target_series": "SPEC",
+          "target_topic": "Trainability boundary",
+          "applicability": "The first candidate parser unit's local acceptance uses SPEC-trainability-boundary, not full Trainability replay; SPEC itself already declares relevant V/C/G relations and those are not Roadmap direct entries.",
+          "counterfactual": "If the original parser output/refusal contract changes, review this Roadmap first-unit exit. The link does not grant a native Stage or promote parent Replay/Training acceptance."
         }
       ]
     },

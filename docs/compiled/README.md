@@ -45,3 +45,37 @@ Local maintain 為 clean，只覆蓋12個CLI features。Full maintain為blocked�
 `python scripts/check_compiled_contracts.py` 可重跑record／semantic proposals／typed edges／Scope／Continuation的declared consistency；使用`--before`指向prior artifact可另查原需求、coverage與revision保存。它只讀JSON並回報結構一致性，不是PatchProposal parser、semantic judge、native feedback或新CLI狀態機。原FactoryWeaverCLI仍處理v1 shape、delta／advisory invalidation與Bundle。實際語義審查與native證據分開記錄於verification；前輪verification原bytes保留於verification-before-parser-correction.json。
 
 K43只對two-policies／learning-dataset形成必要依賴；K44只對plugin-transfer形成必要依賴。Parser不依賴這些native/training gaps。Material C/G changes經已聲明的typed edges作advisory invalidation；context-only卡不強造依賴。
+
+## New source-level One-Shot card review (does not rewrite history)
+
+[NeoWeaver 44-card / Behavior Scope Review](../reviews/one-shot-card-scope-review.md)
+inspects every saved Card with its original applicability, recommends narrower
+Roadmap references and Session-specific One-Shot composition, and explicitly
+keeps compiled snapshots/old NOT_RUN states unchanged. The proposed R/SPEC/V/S
+revisions require the original FactoryWeaver producer and fresh review to land;
+this review does not itself create Registry revisions or native execution receipts.
+
+## Current R39 Entry Card revision (candidate)
+
+The current proposed R39 card adds the already registered
+`SPEC-trainability-boundary` as a sparse candidate Parser entry alongside
+S38. Its revision increases to 3. This **does not** create a complete
+Scope closure: SPEC08 retains its own V/C/G links and the actual Session
+selects applicability from current evidence. All ten parent REQs and six
+saved current Parser Scope members remain unchanged.
+
+The historical `verification.json` refers to the earlier compilation and
+remains immutable; the present R39 revision is subject to its own source
+review and original FactoryWeaver validation. This candidate is not a native
+Stage, model-training, transfer or whole-Goal receipt.
+
+### Additional scoped Card refinements in candidate
+
+SPEC08, V09, REQ-scoped-patch, and S38 each have one source-backed proposed
+revision (revision 3) correcting the fixed-input API, present Parser evidence
+versus historical NOT_RUN, observed-failure applicability, and Session
+reassessment rather than Parser retry policy. These changes are synchronized
+with current per-type proposals and are subject to original semantic review.
+The original 10 REQs and all 44 stable identities are preserved; immutable
+historical `verification.json` is not overwritten. Native Stage, Replay,
+Training, Codex transfer and Parent Goal are still unobserved.

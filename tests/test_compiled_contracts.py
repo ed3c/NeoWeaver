@@ -36,6 +36,100 @@ class CompiledContractsTests(unittest.TestCase):
         self.assertEqual(out['native_pclass'], 'NOT_RUN')
         self.assertEqual(out['effects'], [])
 
+    def test_one_shot_review_covers_every_card_with_existing_scope_role(self):
+        content = (ROOT / 'docs/reviews/one-shot-card-scope-review.md').read_text(encoding='utf-8')
+        rows = []
+        for line in content.splitlines():
+            if not line.startswith('| `'):
+                continue
+            cells = [part.strip() for part in line.strip('|').split('|')]
+            if len(cells) >= 6 and cells[0].startswith('`') and cells[3].startswith('`'):
+                rows.append((cells[0].strip('`'), cells[1], cells[3].strip('`'), cells[4]))
+        record = json.loads((ROOT / 'docs/compiled/specification.json').read_text(encoding='utf-8'))
+        sidecar = json.loads((ROOT / 'docs/compiled/semantic-sidecars.json').read_text(encoding='utf-8'))
+        expected = {(c['stable_id'], c['series']): c for c in record['cards']}
+        roles = {a['card_id']: a['role'] for a in sidecar['ScopeManifest']['card_applicability']}
+        self.assertEqual(len(rows), len(expected))
+        self.assertEqual(len(set((cid, series) for cid, series, _, _ in rows)), len(expected))
+        for cid, series, role, verdict in rows:
+            self.assertIn((cid, series), expected)
+            self.assertEqual(role, roles[cid])
+            self.assertIn(verdict, ('KEEP', 'REFINE'))
+        self.assertEqual(len(sidecar['ScopeManifest']['card_ids']), 6)
+
+    def test_roadmap_index_uses_existing_parser_entry_without_scope_closure(self):
+        record = json.loads((ROOT / 'docs/compiled/specification.json').read_text(encoding='utf-8'))
+        cards = {card['stable_id']: card for card in record['cards']}
+        roadmap = cards['R-verify-a-bounded-delivery-sequence']
+        self.assertEqual(roadmap['revision'], 3)
+        self.assertEqual({edge['target'] for edge in roadmap['typed_links']}, {
+            'S-start-at-the-patch-acceptance-boundary', 'SPEC-trainability-boundary'
+        })
+        spec = cards['SPEC-trainability-boundary']
+        self.assertIn({'relation': 'validated_by',
+                       'target': 'V-trainability-discriminating-controls'}, spec['typed_links'])
+        self.assertIn({'relation': 'depends_on',
+                       'target': 'G-cards-preserve-original-effect-ownership'}, spec['typed_links'])
+        self.assertNotIn('G-hard-gates-precede-reward',
+                         {edge['target'] for edge in roadmap['typed_links']})
+        side = json.loads((ROOT / 'docs/compiled/semantic-sidecars.json').read_text(encoding='utf-8'))
+        self.assertEqual(len(side['ScopeManifest']['card_ids']), 6)
+        self.assertNotIn(roadmap['stable_id'], side['ScopeManifest']['card_ids'])
+
+    def test_corrected_cards_keep_native_and_parent_claims_separate(self):
+        record = json.loads((ROOT / 'docs/compiled/specification.json').read_text(encoding='utf-8'))
+        by_id = {card['stable_id']: card for card in record['cards']}
+        parser = by_id['SPEC-trainability-boundary']
+        verify = by_id['V-trainability-discriminating-controls']
+        hypothesis = by_id['REQ-scoped-patch']
+        strategy = by_id['S-start-at-the-patch-acceptance-boundary']
+        self.assertEqual([card['revision'] for card in
+                          (parser, verify, hypothesis, strategy)], [3, 3, 3, 3])
+        self.assertIn('parse_proposal(raw: bytes, fixed_inputs: Mapping)', parser['payload'])
+        self.assertIn('No TaskSnapshot file loading', parser['payload'])
+        self.assertIn('PASS_SCOPED (28 parser tests within 36 local tests)',
+                      verify['payload'])
+        self.assertIn('native P-class/Noodle behavior', verify['payload'])
+        self.assertIn('not evidence of a prior NeoWeaver native failure',
+                      hypothesis['payload'])
+        self.assertIn('not an automatic Parser retry counter', strategy['payload'])
+        side = json.loads((ROOT / 'docs/compiled/semantic-sidecars.json').read_text(encoding='utf-8'))
+        self.assertEqual(side['PromptDelta']['native_consumption'], 'NOT_RUN')
+        self.assertFalse(side['authority']['authorizes_landing'])
+
+    def test_spec08_implements_explanation_uses_actual_opaque_inputs(self):
+        """Known source/consumer drift regression, not a general semantic judge."""
+        proposal = json.loads((ROOT / 'docs/compiled/card-proposals.json').read_text(encoding='utf-8'))
+        spec = next(card for card in proposal['cards']
+                    if card['series'] == 'SPEC' and card['title'] == 'Trainability boundary')
+        relation = next(link for link in spec['links']
+                        if link['relation'] == 'implements'
+                        and link['target_series'] == 'REQ'
+                        and link['target_topic'] == 'Trainability')
+        rationale = relation['counterfactual']
+        self.assertIn('parse_proposal(raw: bytes, fixed_inputs: Mapping)', rationale)
+        self.assertIn('opaque snapshot/failure/allowlist/acceptance references', rationale)
+        self.assertIn('does not read TaskSnapshot contents', rationale)
+        self.assertIn('does not', rationale)
+        self.assertNotIn('Raw PatchProposal JSON + TaskSnapshot + FailureScope', rationale)
+        self.assertIn('replay tasks', rationale)
+        self.assertIn('complete the parent Trainability goal', rationale)
+        # Negative planted control: the observed old explanation violates this
+        # narrow contract even though its typed-link target and shape are valid.
+        old = ('Raw PatchProposal JSON + TaskSnapshot + FailureScope + fixed '
+               'allowlist and acceptance references → ParsedProposal or DiagnosticRefusal.')
+        def preserves_parser_consumer_boundary(description):
+            return ('parse_proposal(raw: bytes, fixed_inputs: Mapping)' in description
+                    and 'does not read TaskSnapshot contents' in description
+                    and 'Raw PatchProposal JSON + TaskSnapshot + FailureScope' not in description)
+        self.assertTrue(preserves_parser_consumer_boundary(rationale))
+        self.assertFalse(preserves_parser_consumer_boundary(old))
+        compiled = json.loads((ROOT / 'docs/compiled/specification.json').read_text(encoding='utf-8'))
+        self.assertEqual(len(compiled['cards']), 44)
+        self.assertEqual(len(compiled['requirements']), 10)
+        self.assertEqual(next(card['revision'] for card in compiled['cards']
+                              if card['stable_id'] == 'SPEC-trainability-boundary'), 3)
+
     def test_parser_cannot_gain_replay(self):
         out = self.mutate('semantic-sidecars.json', lambda d: d['ScopeManifest']['local_contract'].__setitem__('executes_replay', True))
         self.assertEqual(out['error'], 'parser_effect_boundary_changed')

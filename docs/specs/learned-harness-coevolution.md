@@ -29,6 +29,25 @@ Stop／Escalation 遵守原 scope 與授權 effort horizon。Unknown effect 先�
 
 上述原 logical IDs 不改名。首次 v1 materialization 由 Host 產生合法 registry identities，別名映射保存在 compilation sidecar。它不是既有 native Registry 身分、authorization 或 Stage metadata。
 
+## Roadmap-assisted Session One-Shot Prompt — proposed consumer contract
+
+編譯期 Session 從真實 Source/Owner 觀察提出可反駁的 Card-generation feedback，
+先修正第一個錯誤的 REQ／SPEC／V 因果前提。它不是下游 Stage `PromptDelta`。
+原 44 張 Cards 作為 Knowledge IR 與 source/acceptance ledger 保留。
+
+R Card 僅索引多個候選 Behavior Scope 的 prerequisite、existing Card references
+與各自局部 Exit。Session 依原 Goal、最新 Failure、合法 Owner Next 和當前
+Consumer 決定最小充分 Scope，將 Card 語意轉換成 One-Shot Prompt；
+不可直接串接所有 Card payload、提升 context-only/deferred 接受條款，
+也不得把 Roadmap 順序當成實際 issue admission。
+
+Current Parser Scope 的 semantic projection 由 SPEC08/V09/C31/G33/G34/S38
+組成：只在固定 `raw bytes + fixed_inputs` 上 parse/refuse；驗收來自原
+Parser controls，後續 replay/train/transfer/effects 都在 parent scope。
+完整逐卡審查及可直接用於 independent Source Review 的負例見
+[44-Card One-Shot Review](../reviews/one-shot-card-scope-review.md)。
+這是需求/語意契約，不宣稱 native Stage 已讀取或已有 Agent 行為提升。
+
 ## 三個平面與資料契約
 
 Learning plane 讀取合格 observations，產生 scoped PatchProposal 或可回滾的模型 update proposal。Execution plane 只在既有允許環境進行 snapshot／replay。Verification plane 使用 writer 不能修改的 acceptance、protected regressions 與 effect readback。這是職責分離，不建立第二個 Soodles lifecycle state machine。
