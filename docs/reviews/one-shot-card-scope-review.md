@@ -10,6 +10,21 @@ This is a source-backed **review artifact**, not an accepted Registry rewrite, e
 - Only the original Host/CLI validates existing Card ID bindings, revisions, source and owner next; do not ask an Agent to invent digest, paths, argv, IDs, measured costs or timestamps.
 - A Card count or typed-link shape cannot prove semantic completeness. Selected Parser scope does not close parent REQs, replay, Trainer, Native Transfer or Provider delivery.
 
+## R39 source-backed entry correction in current candidate
+
+The original R39 had one direct link, `based_on → S38`. This current
+candidate retains it and adds `based_on → SPEC-trainability-boundary`
+to identify the Parser unit's **local ParsedProposal/DiagnosticRefusal exit**.
+R39 revision advances from 2 to 3; the full ten parent requirements and
+other 43 Card identities/semantics remain unchanged. SPEC08 itself has the
+V09/C31/G33/G34 links. R39 does *not* redundantly list those as direct
+entries or imply any transitive Scope closure.
+
+This Card revision changes the current proposed knowledge record, not the
+original historical compiled verification receipts. It cannot establish a
+native Noodle Stage, fresh P-class behavior, Trainer or frozen Codex transfer.
+Remaining R units need source-grounded entry review if Session selects them.
+
 ## Full 44 / 44 Card review
 
 The scope-role column is copied as existing semantic classification from the original scope sidecar; it is **not** a newly inferred runtime state. `KEEP` means preserve the present boundary, `REFINE` indicates a source-level or future revision recommendation, not that source files were already updated.

@@ -54,3 +54,17 @@ Roadmap references and Session-specific One-Shot composition, and explicitly
 keeps compiled snapshots/old NOT_RUN states unchanged. The proposed R/SPEC/V/S
 revisions require the original FactoryWeaver producer and fresh review to land;
 this review does not itself create Registry revisions or native execution receipts.
+
+## Current R39 Entry Card revision (candidate)
+
+The current proposed R39 card adds the already registered
+`SPEC-trainability-boundary` as a sparse candidate Parser entry alongside
+S38. Its revision increases to 3. This **does not** create a complete
+Scope closure: SPEC08 retains its own V/C/G links and the actual Session
+selects applicability from current evidence. All ten parent REQs and six
+saved current Parser Scope members remain unchanged.
+
+The historical `verification.json` refers to the earlier compilation and
+remains immutable; the present R39 revision is subject to its own source
+review and original FactoryWeaver validation. This candidate is not a native
+Stage, model-training, transfer or whole-Goal receipt.

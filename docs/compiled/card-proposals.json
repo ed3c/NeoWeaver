@@ -920,7 +920,7 @@
       ],
       "semantics": {
         "parent_goal": "有界 Harness learning 與 verified frozen Codex transfer，原十項 REQ 全保留。",
-        "units": "Parser/immutable acceptance → matched replay → independent gates and eligible Proposer update. Optional Solver update is a separate branch. Accepted artifact plus target capability enables authorized transfer without requiring that optional branch; Provider/LESSON follows applicable delivery.",
+        "units": "Candidate Parser unit: S-start-at-the-patch-acceptance-boundary Strategy with SPEC-trainability-boundary local ParsedProposal/DiagnosticRefusal exit; parent Replay/Training is not completed by Parser. Then matched replay → independent gates → eligible Proposer update. Optional Solver update remains separate. Accepted artifact plus target capability enables authorized transfer without that optional Solver branch; Provider/LESSON follow applicable delivery.",
         "prerequisites": "Reward uses actual matched replay/gates; updates use eligible data and authorized method. Transfer requires an accepted artifact and target capability, not an optional Solver update.",
         "exit_gates": "Parser→合法解析與非法無effect；Replay→matched observations；Verification→固定oracle與lineage；Proposer→eligible train-only batch與rollback checkpoint；Solver→自身provenance且counterpart固定；Transfer→capability/install/load/consume/effect各自讀回；Delivery→Provider與無hard-gate violation、可重複正向paired effect。詳細正反/unknown/replay在完整規格逐步交付矩陣；未觀察仍NOT_RUN。",
         "owner_continuation": "既有原 Owner next 決定實際 lifecycle；此 Roadmap 不建立排程器。"
@@ -932,6 +932,13 @@
           "target_topic": "Start at the patch acceptance boundary",
           "applicability": "The proposed first unit is parser/refusal, while later units preserve the parent Goal.",
           "counterfactual": "If the first selected causal unit changes, this roadmap ordering must be reviewed rather than reused blindly."
+        },
+        {
+          "relation": "based_on",
+          "target_series": "SPEC",
+          "target_topic": "Trainability boundary",
+          "applicability": "The first candidate parser unit's local acceptance uses SPEC-trainability-boundary, not full Trainability replay; SPEC itself already declares relevant V/C/G relations and those are not Roadmap direct entries.",
+          "counterfactual": "If the original parser output/refusal contract changes, review this Roadmap first-unit exit. The link does not grant a native Stage or promote parent Replay/Training acceptance."
         }
       ]
     },

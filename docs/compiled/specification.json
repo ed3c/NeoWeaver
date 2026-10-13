@@ -953,10 +953,10 @@
       "stable_id": "R-verify-a-bounded-delivery-sequence",
       "canonical_key": "NeoWeaver|R|verify-a-bounded-delivery-sequence|proposed|source-bound|v1",
       "series": "R",
-      "revision": 2,
+      "revision": 3,
       "status": "ACTIVE",
       "title": "Verify a bounded delivery sequence",
-      "payload": "parent_goal: 有界 Harness learning 與 verified frozen Codex transfer，原十項 REQ 全保留。\nunits: Parser/immutable acceptance → matched replay → independent gates and eligible Proposer update. Optional Solver update is a separate branch. Accepted artifact plus target capability enables authorized transfer without requiring that optional branch; Provider/LESSON follows applicable delivery.\nprerequisites: Reward uses actual matched replay/gates; updates use eligible data and authorized method. Transfer requires an accepted artifact and target capability, not an optional Solver update.\nexit_gates: Parser→合法解析與非法無effect；Replay→matched observations；Verification→固定oracle與lineage；Proposer→eligible train-only batch與rollback checkpoint；Solver→自身provenance且counterpart固定；Transfer→capability/install/load/consume/effect各自讀回；Delivery→Provider與無hard-gate violation、可重複正向paired effect。詳細正反/unknown/replay在完整規格逐步交付矩陣；未觀察仍NOT_RUN。\nowner_continuation: 既有原 Owner next 決定實際 lifecycle；此 Roadmap 不建立排程器。",
+      "payload": "parent_goal: 有界 Harness learning 與 verified frozen Codex transfer，原十項 REQ 全保留。\nunits: Candidate Parser unit: S-start-at-the-patch-acceptance-boundary Strategy with SPEC-trainability-boundary local ParsedProposal/DiagnosticRefusal exit; parent Replay/Training is not completed by Parser. Then matched replay → independent gates → eligible Proposer update. Optional Solver update remains separate. Accepted artifact plus target capability enables authorized transfer without that optional Solver branch; Provider/LESSON follow applicable delivery.\nprerequisites: Reward uses actual matched replay/gates; updates use eligible data and authorized method. Transfer requires an accepted artifact and target capability, not an optional Solver update.\nexit_gates: Parser→合法解析與非法無effect；Replay→matched observations；Verification→固定oracle與lineage；Proposer→eligible train-only batch與rollback checkpoint；Solver→自身provenance且counterpart固定；Transfer→capability/install/load/consume/effect各自讀回；Delivery→Provider與無hard-gate violation、可重複正向paired effect。詳細正反/unknown/replay在完整規格逐步交付矩陣；未觀察仍NOT_RUN。\nowner_continuation: 既有原 Owner next 決定實際 lifecycle；此 Roadmap 不建立排程器。",
       "evidence_ids": [
         "SRC-original-neoweaver-spec"
       ],
@@ -964,6 +964,10 @@
         {
           "relation": "based_on",
           "target": "S-start-at-the-patch-acceptance-boundary"
+        },
+        {
+          "relation": "based_on",
+          "target": "SPEC-trainability-boundary"
         }
       ]
     },

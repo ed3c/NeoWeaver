@@ -57,6 +57,25 @@ class CompiledContractsTests(unittest.TestCase):
             self.assertIn(verdict, ('KEEP', 'REFINE'))
         self.assertEqual(len(sidecar['ScopeManifest']['card_ids']), 6)
 
+    def test_roadmap_index_uses_existing_parser_entry_without_scope_closure(self):
+        record = json.loads((ROOT / 'docs/compiled/specification.json').read_text(encoding='utf-8'))
+        cards = {card['stable_id']: card for card in record['cards']}
+        roadmap = cards['R-verify-a-bounded-delivery-sequence']
+        self.assertEqual(roadmap['revision'], 3)
+        self.assertEqual({edge['target'] for edge in roadmap['typed_links']}, {
+            'S-start-at-the-patch-acceptance-boundary', 'SPEC-trainability-boundary'
+        })
+        spec = cards['SPEC-trainability-boundary']
+        self.assertIn({'relation': 'validated_by',
+                       'target': 'V-trainability-discriminating-controls'}, spec['typed_links'])
+        self.assertIn({'relation': 'depends_on',
+                       'target': 'G-cards-preserve-original-effect-ownership'}, spec['typed_links'])
+        self.assertNotIn('G-hard-gates-precede-reward',
+                         {edge['target'] for edge in roadmap['typed_links']})
+        side = json.loads((ROOT / 'docs/compiled/semantic-sidecars.json').read_text(encoding='utf-8'))
+        self.assertEqual(len(side['ScopeManifest']['card_ids']), 6)
+        self.assertNotIn(roadmap['stable_id'], side['ScopeManifest']['card_ids'])
+
     def test_parser_cannot_gain_replay(self):
         out = self.mutate('semantic-sidecars.json', lambda d: d['ScopeManifest']['local_contract'].__setitem__('executes_replay', True))
         self.assertEqual(out['error'], 'parser_effect_boundary_changed')
