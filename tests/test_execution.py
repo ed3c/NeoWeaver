@@ -48,6 +48,7 @@ class ContainerExecutionTests(unittest.TestCase):
         result, seen = self.run_fake_docker()
         argv, opts = seen[0]
         self.assertEqual(result.status, "EXIT_RECORDED")
+        self.assertEqual(self.out.stat().st_mode & 0o077, 0)
         self.assertEqual(result.exit_code, 0)
         self.assertEqual(result.stdout_path.read_bytes(), b"observed stdout")
         self.assertEqual(result.stderr_path.read_bytes(), b"observed stderr")
