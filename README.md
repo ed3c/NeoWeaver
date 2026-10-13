@@ -8,4 +8,6 @@
 
 [Hook purpose applicability](docs/hook-purpose-applicability.md)分開 task-review、PR／MR source check 與未來 native transfer，逐步核對推論與必要資料。
 
+[Git Source Materialization](docs/source-materialization-contract.md) stages exact tracked Git blob bytes in two separate filesystem copies, without task execution or sandbox guarantees. Source staging is not native Replay, independent Oracle acceptance, training, or transfer.
+
 [完整規格](docs/specs/learned-harness-coevolution.md)保留十項原需求與其後續驗收。Replay、training、learned artifact 的 native transfer 和 whole Goal 尚未驗收；歷史編譯證據保留原狀。
