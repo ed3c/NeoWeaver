@@ -36,6 +36,7 @@ class ContainerExecutionTests(unittest.TestCase):
         seen = []
         def execute(command, **kwargs):
             seen.append((command, kwargs))
+            Path(command[command.index("--cidfile") + 1]).write_text("a" * 64 + "\n")
             kwargs["stdout"].write(b"observed stdout")
             kwargs["stderr"].write(b"observed stderr")
             return subprocess.CompletedProcess(command, 0)
@@ -50,6 +51,9 @@ class ContainerExecutionTests(unittest.TestCase):
         self.assertEqual(result.status, "EXIT_RECORDED")
         self.assertEqual(self.out.stat().st_mode & 0o077, 0)
         self.assertEqual(result.exit_code, 0)
+        self.assertEqual(result.container_id, "a" * 64)
+        self.assertNotIn("--rm", argv)
+        self.assertIn("--cidfile", argv)
         self.assertEqual(result.stdout_path.read_bytes(), b"observed stdout")
         self.assertEqual(result.stderr_path.read_bytes(), b"observed stderr")
         self.assertFalse(result.isolation_verified)
