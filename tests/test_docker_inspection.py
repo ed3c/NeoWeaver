@@ -144,7 +144,7 @@ class ProviderReadbackTests(unittest.TestCase):
             return subprocess.CompletedProcess(cmd, 0, json.dumps(record).encode())
         with patch("neoweaver.execution.shutil.which", return_value="/usr/bin/true"), \
              patch("neoweaver.execution.subprocess.run", side_effect=spy) as process:
-            result = inspect_container_capture(self.capture, self.task, self.source)
+            result = inspect_container_capture(self.capture, self.task, self.pair)
         self.assertEqual(result.status, "CONFIG_AND_EXIT_MATCH")
         process.assert_called_once()
 
