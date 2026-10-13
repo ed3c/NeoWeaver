@@ -121,21 +121,26 @@ def run_container_arm(pair: StagedSourcePair, arm: str, task: ContainerTask,
                "--mount", "type=bind,src=" + str(source) + ",dst=/workspace,readonly",
                task.image, *task.argv]
     evidence.mkdir()
+    stdout_path, stderr_path = evidence / "stdout.bin", evidence / "stderr.bin"
     start = time.monotonic()
-    try:
-        result = subprocess.run(command, capture_output=True, timeout=task.timeout_seconds + 10,
-                                check=False)
-        stdout, stderr, exit_code = result.stdout, result.stderr, result.returncode
-        status = "BACKEND_REFUSED" if exit_code in (125, 126, 127) else "EXIT_RECORDED"
-    except subprocess.TimeoutExpired as error:
-        stdout, stderr, exit_code, status = error.stdout or b"", error.stderr or b"", None, "UNKNOWN_OUTCOME"
-    except OSError as error:
-        stdout, stderr, exit_code, status = b"", str(error).encode(), None, "UNKNOWN_OUTCOME"
+    # Stream directly to durable evidence, not unbounded in-memory pipes.
+    with stdout_path.open("xb") as stdout_file, stderr_path.open("xb") as stderr_file:
+        try:
+            result = subprocess.run(command, stdout=stdout_file, stderr=stderr_file,
+                                    timeout=task.timeout_seconds + 10, check=False)
+            exit_code = result.returncode
+            status = "BACKEND_REFUSED" if exit_code in (125, 126, 127) else "EXIT_RECORDED"
+        except subprocess.TimeoutExpired:
+            exit_code, status = None, "UNKNOWN_OUTCOME"
+        except OSError as error:
+            stderr_file.write(str(error).encode())
+            exit_code, status = None, "UNKNOWN_OUTCOME"
     duration = time.monotonic() - start
-    (evidence / "stdout.bin").write_bytes(stdout)
-    (evidence / "stderr.bin").write_bytes(stderr)
+    with stdout_path.open("rb") as output:
+        stdout_sha = hashlib.file_digest(output, "sha256").hexdigest()
+    with stderr_path.open("rb") as output:
+        stderr_sha = hashlib.file_digest(output, "sha256").hexdigest()
     # No automatic Docker cleanup on unknown outcome: inspect original provider.
     return ContainerCapture(arm, name, status, exit_code,
-                            evidence / "stdout.bin", evidence / "stderr.bin",
-                            hashlib.sha256(stdout).hexdigest(), hashlib.sha256(stderr).hexdigest(),
+                            stdout_path, stderr_path, stdout_sha, stderr_sha,
                             duration, pair.source_manifest_sha256)
