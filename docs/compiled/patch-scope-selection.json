@@ -1,0 +1,34 @@
+{
+  "requirement_ids": [
+    "REQ-source-integrity",
+    "REQ-three-planes",
+    "REQ-trainability",
+    "REQ-scoped-patch"
+  ],
+  "card_ids": [
+    "SPEC-trainability-boundary",
+    "V-trainability-discriminating-controls",
+    "C-independent-immutable-verification",
+    "G-cards-preserve-original-effect-ownership",
+    "G-hard-gates-precede-reward",
+    "S-start-at-the-patch-acceptance-boundary"
+  ],
+  "goal": "Pure parser/refusal: legal current single-surface proposal returns ParsedProposal; invalid input returns DiagnosticRefusal without replay, training or provider effects.",
+  "measurement": "Original fixed parser input/result controls cover allowed input, duplicate keys, stale source, outside/protected target, missing fixed input and extra effect/credential fields. Parser execution is not yet implemented; controls remain NOT_RUN.",
+  "persistence": "原十項parent REQ與whole Goal持續保留，不因這個atom完成而閉合。",
+  "stop_and_escalation": "缺admission/原輸入停依賴操作；unknown effect原Owner readback，不猜next。",
+  "causal_change": "Make raw proposal parsing and fixed mutation/acceptance boundary checks unambiguous before any later Runner consumes the data.",
+  "acceptance": [
+    "With Owner-fixed boundary inputs, return only ParsedProposal or DiagnosticRefusal; preserve original immutable references and report the refusal condition; neither variant causes replay/training/provider writes."
+  ],
+  "constraints": [
+    "All ten original parent requirements and whole-Goal measurement persist; this atom covers only parser/static-boundary clauses.",
+    "Original Source/authorization Producers own reference truth and permissions; parser shape/consistency is not source truth, native admission or outcome acceptance."
+  ],
+  "prompt_delta": [
+    "Parse only the selected single-surface raw proposal against original fixed inputs; produce ParsedProposal or DiagnosticRefusal with a diagnostic condition.",
+    "Reject duplicate keys, stale expected source, targets outside the allowlist or protected acceptance, missing fixed inputs and extra credentials/effect fields; preserve the original references.",
+    "Do not start replay, training, native transfer or provider effects; preserve the ten parent requirements and report later obligations separately.",
+    "Within the actual authorized scope and selected playbook, choose implementation details freely; do not reconstruct original next or retry an unknown write."
+  ]
+}

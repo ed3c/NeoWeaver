@@ -1,0 +1,1075 @@
+{
+  "schema": "factoryweaver/card-semantic-proposal/v1",
+  "cards": [
+    {
+      "series": "REQ",
+      "title": "Source integrity",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "actor": "Session 保留原 Issue Goal、acceptance、Repo snapshot、訓練資料權利與全需求 inventory",
+        "goal": "Preserve actual Issue Goal, acceptance, Repo snapshot, training rights and full original REQ inventory",
+        "measurement": "Source Reader compares the complete inspected-unit inventory and original Goal, acceptance, TaskSnapshot and rights references, including preserved UNKNOWN rights; mapping counts alone are insufficient.",
+        "persistence": "保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。",
+        "stop_escalation": "未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。",
+        "acceptance": "Preserve the original Goal, acceptance, TaskSnapshot, rights status and all ten requirements; each inspected material unit maps to a Card/REQ or named gap. UNKNOWN rights stop dependent training, not read-only parser work.",
+        "non_case": "Summary 改了原 acceptance、漏掉 clause、以生成文件授予 merge，均拒絕；資料格式通過不等於語義完整"
+      },
+      "links": []
+    },
+    {
+      "series": "SPEC",
+      "title": "Source integrity boundary",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "given": "Inspected source units、完整原 REQ inventory、原 Issue acceptance 可讀。",
+        "when": "編譯每一 decision-relevant unit，保留原 Goal／negation／unknown。 Proposed behavior；NeoWeaver native 執行尚未發生。",
+        "then": "Return the inspected source-unit mapping and named gaps while preserving the original Goal, acceptance, TaskSnapshot and rights status. This is Source Reader/compiler output, not parser execution.",
+        "inputs_outputs": "SourceCoverage + PriorInventory + original Goal/acceptance/TaskSnapshot/rights references → MappedUnit[] and NamedGap[] with the same immutable references.",
+        "forbidden": "Summary 改了原 acceptance、漏掉 clause、以生成文件授予 merge，均拒絕；資料格式通過不等於語義完整",
+        "negative_case": "A generated summary cannot authorize a merge",
+        "unknown_effect": "不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。",
+        "replay": "固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。",
+        "oracle": "Original source comparison checks both clause coverage and unchanged immutable references; rights UNKNOWN remains visible and only blocks its dependent training.",
+        "original_owner": "原 User／Source Reader／Issue Owner"
+      },
+      "links": [
+        {
+          "relation": "implements",
+          "target_series": "REQ",
+          "target_topic": "Source integrity",
+          "applicability": "Inspected-unit mapping and preservation of immutable source references. Actual source truth and permitted training rights remain original Source/rights responsibilities.",
+          "counterfactual": "If the original required outcome changes, review this bounded output contract: SourceCoverage + PriorInventory + original Goal/acceptance/TaskSnapshot/rights references → MappedUnit[] and NamedGap[] with the same immutable references. It supports only the stated clause, not unobserved parent results."
+        },
+        {
+          "relation": "validated_by",
+          "target_series": "V",
+          "target_topic": "Source integrity discriminating controls",
+          "applicability": "The V checks this same Consumer result: Return the inspected source-unit mapping and named gaps while preserving the original Goal, acceptance, TaskSnapshot and rights status. This is Source Reader/compiler output, not parser execution.",
+          "counterfactual": "Without the original V method/input distinction, this result is not verified: Source Reader compares full inspected-unit coverage and unchanged Goal, acceptance, TaskSnapshot and rights status. Missing downstream evidence must not change the local proof scope."
+        }
+      ]
+    },
+    {
+      "series": "V",
+      "title": "Source integrity discriminating controls",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "subject": "Preserve actual Issue Goal, acceptance, Repo snapshot, training rights and full original REQ inventory",
+        "oracle": "Source Reader compares full inspected-unit coverage and unchanged Goal, acceptance, TaskSnapshot and rights status.",
+        "producer": "原 User／Source Reader／Issue Owner",
+        "positive_control": "Given complete inventory and the same immutable references, preserve all ten requirements and UNKNOWN rights while returning the mapping; parser-only work is unaffected.",
+        "negative_control": "Change only TaskSnapshot or weaken acceptance while keeping mapping count constant: reject the integrity claim. Remove one material unit: report a coverage gap; unknown training rights block only training.",
+        "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
+      },
+      "links": []
+    },
+    {
+      "series": "REQ",
+      "title": "Three planes",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "actor": "Learning 提案、Execution 隔離 replay、Verification 獨立裁決",
+        "goal": "Learning may propose, Execution may sandbox, independent Verification determines acceptance",
+        "measurement": "被允許的候選只進入 disposable replay；驗收 oracle 由獨立來源固定",
+        "persistence": "保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。",
+        "stop_escalation": "未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。",
+        "acceptance": "被允許的候選只進入 disposable replay；驗收 oracle 由獨立來源固定",
+        "non_case": "Proposer 修改 reward oracle、sandbox 外 effect、自己提交 PASS 都不能取得 acceptance；不以新增 Owner 取代原 Owner"
+      },
+      "links": []
+    },
+    {
+      "series": "SPEC",
+      "title": "Three planes boundary",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "given": "PatchProposal、原 allowlist／authority 與 writer 不可改的 oracle refs 固定。",
+        "when": "Before replay, the Patch Validator checks the Owner-fixed protected targets and acceptance references; it does not run Execution or Verification.",
+        "then": "Return a read-only ParsedProposal or DiagnosticRefusal. A parsed candidate is not replayed or outcome-accepted; the later independent Verifier owns that result.",
+        "inputs_outputs": "PatchProposal + Owner-fixed allowlist and protected acceptance references → ParsedProposal or DiagnosticRefusal; no replay, VerifierResult or provider write.",
+        "forbidden": "Proposer 修改 reward oracle、sandbox 外 effect、自己提交 PASS 都不能取得 acceptance；不以新增 Owner 取代原 Owner",
+        "negative_case": "Self-reported success is a rejection",
+        "unknown_effect": "不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。",
+        "replay": "固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。",
+        "oracle": "The original fixed-boundary controls discriminate an allowed edit from evaluator/acceptance edits and self-certified PASS; sandbox isolation is a later Runner observation.",
+        "original_owner": "原 execution 與 verification Owners"
+      },
+      "links": [
+        {
+          "relation": "implements",
+          "target_series": "REQ",
+          "target_topic": "Three planes",
+          "applicability": "Preflight separates parsed proposal from writer-controlled verification or effects. Actual Execution isolation and independent outcome acceptance remain later observations.",
+          "counterfactual": "If the original required outcome changes, review this bounded output contract: PatchProposal + Owner-fixed allowlist and protected acceptance references → ParsedProposal or DiagnosticRefusal; no replay, VerifierResult or provider write. It supports only the stated clause, not unobserved parent results."
+        },
+        {
+          "relation": "validated_by",
+          "target_series": "V",
+          "target_topic": "Three planes discriminating controls",
+          "applicability": "The V checks this same Consumer result: Return a read-only ParsedProposal or DiagnosticRefusal. A parsed candidate is not replayed or outcome-accepted; the later independent Verifier owns that result.",
+          "counterfactual": "Without the original V method/input distinction, this result is not verified: Original fixed-boundary review distinguishes parser no-effects from later independent Execution/Verification observations. Missing downstream evidence must not change the local proof scope."
+        },
+        {
+          "relation": "based_on",
+          "target_series": "C",
+          "target_topic": "Independent immutable verification",
+          "applicability": "Preflight protects the independent immutable acceptance boundary.",
+          "counterfactual": "If writer may alter its oracle, preflight cannot claim that independent acceptance remains intact."
+        }
+      ]
+    },
+    {
+      "series": "V",
+      "title": "Three planes discriminating controls",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "subject": "Learning may propose, Execution may sandbox, independent Verification determines acceptance",
+        "oracle": "Original fixed-boundary review distinguishes parser no-effects from later independent Execution/Verification observations.",
+        "producer": "原 execution 與 verification Owners",
+        "positive_control": "Given an Owner-allowed Skill edit and fixed protected acceptance, return ParsedProposal with no replay or VerifierResult; independent outcome verification remains NOT_RUN.",
+        "negative_control": "Change only target to the protected evaluator or include writer self-PASS: DiagnosticRefusal with no replay/write. A claim of sandbox isolation without Runner capture remains unverified.",
+        "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
+      },
+      "links": []
+    },
+    {
+      "series": "REQ",
+      "title": "Trainability",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "actor": "Trainer 只處理有界 mutation surface、有 parser、可重現 task 與 replay 的候選",
+        "goal": "Candidate has bounded mutable surface and patch parser, reproducible task and replay",
+        "measurement": "合法 patch 可 parse、通過靜態限制並在固定 snapshot 重放；重播資料由原 runner 提供",
+        "persistence": "保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。",
+        "stop_escalation": "未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。",
+        "acceptance": "合法 patch 可 parse、通過靜態限制並在固定 snapshot 重放；重播資料由原 runner 提供",
+        "non_case": "任意 source rewrite、未固定 environment 或不可回讀 action 不能進訓練；不把所有 repository edits 變成 action space"
+      },
+      "links": []
+    },
+    {
+      "series": "SPEC",
+      "title": "Trainability boundary",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "given": "Owner-issued TaskSnapshot, FailureScope, mutation allowlist and immutable acceptance references are available; the single-surface PatchProposal has expected old source references.",
+        "when": "The boundary parser reads raw JSON and the Patch Validator compares the candidate targets and expected source references with those fixed inputs.",
+        "then": "Return ParsedProposal for a well-formed, current, allowed single-surface candidate, or DiagnosticRefusal naming the failed condition. Neither result starts replay, training or provider effects.",
+        "inputs_outputs": "Raw PatchProposal JSON + TaskSnapshot + FailureScope + fixed allowlist and acceptance references → ParsedProposal or DiagnosticRefusal. The parser cannot replace those references or certify their source truth.",
+        "forbidden": "Do not accept duplicate keys, stale expected source, targets outside the allowlist, protected oracle/acceptance edits, credentials or effect fields; do not execute a proposal.",
+        "negative_case": "Keep the otherwise valid proposal fixed and independently introduce a duplicate key, stale expected source, protected target or extra effect field; each must produce a diagnostic refusal and no replay/write.",
+        "unknown_effect": "The parser produces no external effects. Missing required Owner input yields DiagnosticRefusal; unknown effects from an earlier operation require its original Owner readback and are not repaired by replaying a write.",
+        "replay": "Re-reading identical raw proposal and fixed boundary inputs must reproduce the same parse/refusal decision. This is parser determinism, not TaskSnapshot replay.",
+        "oracle": "Original fixed parser controls compare the returned variant, diagnostic condition and unchanged immutable references; execution/reward/native outcomes remain NOT_RUN.",
+        "original_owner": "Original NeoWeaver parser/Patch Validator; Source Reader and authorization Producers retain their own truth and effect boundaries."
+      },
+      "links": [
+        {
+          "relation": "implements",
+          "target_series": "REQ",
+          "target_topic": "Trainability",
+          "applicability": "Raw parsing and static fixed-target/source/acceptance checks only. TaskSnapshot replay and complete training readiness remain parent obligations.",
+          "counterfactual": "If the original required outcome changes, review this bounded output contract: Raw PatchProposal JSON + TaskSnapshot + FailureScope + fixed allowlist and acceptance references → ParsedProposal or DiagnosticRefusal. The parser cannot replace those references or certify their source truth. It supports only the stated clause, not unobserved parent results."
+        },
+        {
+          "relation": "validated_by",
+          "target_series": "V",
+          "target_topic": "Trainability discriminating controls",
+          "applicability": "The V checks this same Consumer result: Return ParsedProposal for a well-formed, current, allowed single-surface candidate, or DiagnosticRefusal naming the failed condition. Neither result starts replay, training or provider effects.",
+          "counterfactual": "Without the original V method/input distinction, this result is not verified: Original parser controls compare ParsedProposal/DiagnosticRefusal, named condition and unchanged fixed references; TaskSnapshot replay is not part of this oracle. Missing downstream evidence must not change the local proof scope."
+        },
+        {
+          "relation": "based_on",
+          "target_series": "C",
+          "target_topic": "Independent immutable verification",
+          "applicability": "Parser checks protected targets and fixed acceptance references before any execution.",
+          "counterfactual": "A changed immutable-oracle rule changes which parsed targets must refuse."
+        },
+        {
+          "relation": "depends_on",
+          "target_series": "G",
+          "target_topic": "Cards preserve original effect ownership",
+          "applicability": "This parser contract returns data and cannot authorize effects.",
+          "counterfactual": "If the effect boundary changes, the parser output/forbidden-effect controls need original review."
+        },
+        {
+          "relation": "depends_on",
+          "target_series": "G",
+          "target_topic": "Hard gates precede reward",
+          "applicability": "Only the protected-acceptance restriction applies here, not reward/update gates.",
+          "counterfactual": "If protected acceptance may be mutated, allowed-target parser controls no longer protect the parent acceptance."
+        }
+      ]
+    },
+    {
+      "series": "V",
+      "title": "Trainability discriminating controls",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "subject": "Pure parser/static-boundary slice of trainability; fixed TaskSnapshot replay is a separate parent obligation.",
+        "oracle": "Original parser controls compare ParsedProposal/DiagnosticRefusal, named condition and unchanged fixed references; TaskSnapshot replay is not part of this oracle.",
+        "producer": "Original parser/Patch Validator control Producer; later Snapshot Runner observations are not covered by this parser oracle.",
+        "positive_control": "Given current TaskSnapshot/FailureScope/allowlist/acceptance references and one allowed single-surface raw proposal, return ParsedProposal and preserve immutable inputs; no replay/training/effects.",
+        "negative_control": "Independently add a duplicate JSON key, stale expected source, out-of-allowlist target, protected oracle edit or extra effect/credential field: DiagnosticRefusal naming that condition; no replay/write. Missing required fixed input also refuses.",
+        "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
+      },
+      "links": [
+        {
+          "relation": "based_on",
+          "target_series": "D",
+          "target_topic": "Matching raw catalog pin still allowed duplicate keys",
+          "applicability": "Duplicate-key refusal has an observed FactoryWeaver ambiguity case; this is not a Neo execution receipt.",
+          "counterfactual": "Removing the duplicate-key control would miss the observed ambiguity pattern; it would not prove Neo itself previously failed."
+        }
+      ]
+    },
+    {
+      "series": "REQ",
+      "title": "Two policies",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "actor": "Proposer πθ 學 Harness；open Solver πφ 僅在有效自身 token lineage 下更新；Codex 保持 frozen",
+        "goal": "Proposer πθ modifies Harness; optional open Solver πφ is trained only with valid own token provenance; Codex φC stays frozen",
+        "measurement": "Compare each sample with the selected policy/action/generation/reward lineage, then separately read the update Owner result for selected-policy-only mutation and fixed counterpart; Codex remains frozen.",
+        "persistence": "保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。",
+        "stop_escalation": "未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。",
+        "acceptance": "Only the selected policy may update from its eligible data; actor/action/reward lineage is bound to the same observation, the counterpart stays fixed for the selected comparison, and Codex weights are not updated.",
+        "non_case": "把 Codex transcript 算成 πθ 的 policy-gradient tokens、補造 logprob／tokens／weights 皆拒絕；缺 Solver provenance 不影響獨立 Proposer source preparation"
+      },
+      "links": []
+    },
+    {
+      "series": "SPEC",
+      "title": "Two policies boundary",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "given": "原 RolloutObservation 有 actor/policy/action/token provenance，reward 可連至同次 observation。",
+        "when": "The Dataset Owner checks selected-policy eligibility. The later Trainer separately applies its authorized method and reports which policy changed; optional Solver absence does not block Proposer/parser work.",
+        "then": "Return EligibleTrainingSample or IneligibleReason for the selected policy. This result does not itself prove an update or frozen counterpart; those require the Trainer readback.",
+        "inputs_outputs": "ActorRollout + RewardObservation → EligibleTrainingSample 或 IneligibleReason；open Solver 需要自身 tokens。",
+        "forbidden": "Never treat another actor’s transcript as the Proposer’s own on-policy generation tokens or claim Codex weight updates. Any separately proposed SFT use needs its own rights, method and eligibility decision; it is not authorized here.",
+        "negative_case": "Codex transcript cannot be treated as Proposer policy-gradient tokens",
+        "unknown_effect": "不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。",
+        "replay": "固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。",
+        "oracle": "Eligibility compares the original policy/action/generation/reward/split references. The update Owner independently checks the selected-policy and frozen-counterpart boundary.",
+        "original_owner": "原 generation／Trainer Owners"
+      },
+      "links": [
+        {
+          "relation": "implements",
+          "target_series": "REQ",
+          "target_topic": "Two policies",
+          "applicability": "Selected-policy sample lineage/eligibility only. Actual policy update and frozen-counterpart observations remain Trainer responsibilities.",
+          "counterfactual": "If the original required outcome changes, review this bounded output contract: ActorRollout + RewardObservation → EligibleTrainingSample 或 IneligibleReason；open Solver 需要自身 tokens。 It supports only the stated clause, not unobserved parent results."
+        },
+        {
+          "relation": "validated_by",
+          "target_series": "V",
+          "target_topic": "Two policies discriminating controls",
+          "applicability": "The V checks this same Consumer result: Return EligibleTrainingSample or IneligibleReason for the selected policy. This result does not itself prove an update or frozen counterpart; those require the Trainer readback.",
+          "counterfactual": "Without the original V method/input distinction, this result is not verified: Dataset checks sample policy/action/generation/reward lineage; Trainer separately checks selected-policy-only mutation and fixed counterpart. Missing downstream evidence must not change the local proof scope."
+        },
+        {
+          "relation": "based_on",
+          "target_series": "C",
+          "target_topic": "Actor scoped credit assignment",
+          "applicability": "Selected-policy sample eligibility needs actor-specific credit assignment.",
+          "counterfactual": "If foreign tokens are treated as own generation, the sample-eligibility oracle changes."
+        }
+      ]
+    },
+    {
+      "series": "V",
+      "title": "Two policies discriminating controls",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "subject": "Proposer πθ modifies Harness; optional open Solver πφ is trained only with valid own token provenance; Codex φC stays frozen",
+        "oracle": "Dataset checks sample policy/action/generation/reward lineage; Trainer separately checks selected-policy-only mutation and fixed counterpart.",
+        "producer": "原 generation／Trainer Owners",
+        "positive_control": "Given a train-only sample with the selected policy’s own generation/action and matching independently verified replay/reward, return EligibleTrainingSample; update/freeze observations remain separate.",
+        "negative_control": "Swap only reward reference, token actor or split: ineligible/quarantine. Eligible lineage plus an update of Codex or the unselected counterpart cannot satisfy the update boundary. Unknown provenance remains unknown, not reconstructed.",
+        "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
+      },
+      "links": []
+    },
+    {
+      "series": "REQ",
+      "title": "Causal attribution",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "actor": "Evaluator 分開 Harness、Solver 與 interaction 的影響",
+        "goal": "A=H0/φ0, B=H1/φ0, C=H0/φ1, D=H1/φ1; separate frozen Codex H0/H1 transfer",
+        "measurement": "A=H0/φ0、B=H1/φ0、C=H0/φ1、D=H1/φ1 使用匹配條件；frozen Codex 另測 H0/H1；whole Goal需無hard-gate violation且有可重複正向paired effect",
+        "persistence": "保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。",
+        "stop_escalation": "未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。",
+        "acceptance": "A=H0/φ0、B=H1/φ0、C=H0/φ1、D=H1/φ1 使用匹配條件；frozen Codex 另測 H0/H1；whole Goal需無hard-gate violation且有可重複正向paired effect",
+        "non_case": "只看 D 或單次改善便宣稱成功、或不匹配預算／task population，均 INCONCLUSIVE；不將 interaction 當單一政策效果"
+      },
+      "links": []
+    },
+    {
+      "series": "SPEC",
+      "title": "Causal attribution boundary",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "given": "A/B/C/D 觀察或明示缺失，task/environment/budget/population 匹配。",
+        "when": "原 evaluator 比較固定 counterpart 並區分 component 與 interaction。 Proposed behavior；NeoWeaver native 執行尚未發生。",
+        "then": "Report only identifiable components from matched observed arms: A/B supports HarnessDifference; A/C supports SolverDifference; all four support Interaction. Missing components remain NOT_RUN; unmatched comparisons are INCONCLUSIVE.",
+        "inputs_outputs": "MatchedArms with original population/resource/oracle references → observed component differences with per-component availability. A/D can report a joint total difference, without component attribution; never synthesize missing arms.",
+        "forbidden": "只看 D 或單次改善便宣稱成功、或不匹配預算／task population，均 INCONCLUSIVE；不將 interaction 當單一政策效果",
+        "negative_case": "Improvement in D alone cannot identify cause",
+        "unknown_effect": "不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。",
+        "replay": "固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。",
+        "oracle": "Original evaluator checks B−A, C−A and D−B−C+A only when their matched input arms exist; positive paired repeatability and hard gates are separate whole-Goal requirements.",
+        "original_owner": "原 paired evaluator"
+      },
+      "links": [
+        {
+          "relation": "implements",
+          "target_series": "REQ",
+          "target_topic": "Causal attribution",
+          "applicability": "Report each identifiable comparison from its available matched arms. Held-out frozen transfer and repeatable positive whole-Goal measurement remain separate.",
+          "counterfactual": "If the original required outcome changes, review this bounded output contract: MatchedArms with original population/resource/oracle references → observed component differences with per-component availability. A/D can report a joint total difference, without component attribution; never synthesize missing arms. It supports only the stated clause, not unobserved parent results."
+        },
+        {
+          "relation": "validated_by",
+          "target_series": "V",
+          "target_topic": "Causal attribution discriminating controls",
+          "applicability": "The V checks this same Consumer result: Report only identifiable components from matched observed arms: A/B supports HarnessDifference; A/C supports SolverDifference; all four support Interaction. Missing components remain NOT_RUN; unmatched comparisons are INCONCLUSIVE.",
+          "counterfactual": "Without the original V method/input distinction, this result is not verified: Original paired evaluator checks matched input availability and component formulas, with whole-Goal hard gates/repeatability measured separately. Missing downstream evidence must not change the local proof scope."
+        },
+        {
+          "relation": "based_on",
+          "target_series": "T",
+          "target_topic": "Harness only versus joint policy update",
+          "applicability": "Arm availability determines which comparison is supported.",
+          "counterfactual": "If counterpart-freezing or matched conditions change, component comparisons are no longer the same experiment."
+        },
+        {
+          "relation": "based_on",
+          "target_series": "E",
+          "target_topic": "Joint result does not identify a component effect",
+          "applicability": "Component attribution requires its identifiable matched arms.",
+          "counterfactual": "With missing B/C, the interaction/components cannot be obtained from the joint total."
+        }
+      ]
+    },
+    {
+      "series": "V",
+      "title": "Causal attribution discriminating controls",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "subject": "A=H0/φ0, B=H1/φ0, C=H0/φ1, D=H1/φ1; separate frozen Codex H0/H1 transfer",
+        "oracle": "Original paired evaluator checks matched input availability and component formulas, with whole-Goal hard gates/repeatability measured separately.",
+        "producer": "原 paired evaluator",
+        "positive_control": "Given matched A/B, report B−A as HarnessDifference and C/D-dependent results NOT_RUN. With all four matched arms, compute the three defined components. Whole Goal still needs its own repeatable positive paired evidence.",
+        "negative_control": "Only matching A/D permits joint total D−A, not component attribution. D alone or mismatched budget cannot identify component effects; one positive pair or hard-gate failure cannot close whole Goal.",
+        "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
+      },
+      "links": []
+    },
+    {
+      "series": "REQ",
+      "title": "Scoped patch",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "actor": "Proposer 針對一個被觀察失敗提出一個合法因果目標",
+        "goal": "Only observed failure supports a single causal target; capability probe before generating plugin patch",
+        "measurement": "failure ref 指向原 trace；target 在 Owner allowlist 內；原 Goal 與 acceptance 不變",
+        "persistence": "保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。",
+        "stop_escalation": "未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。",
+        "acceptance": "The failure reference identifies an observed trace, the target is allowed, and an explicit source-bound causal hypothesis explains its relevance. Hypothesis is not verified cause; plugin targets additionally need the applicable capability readback. Preserve original Goal and acceptance.",
+        "non_case": "只有課程標題或泛稱品質不好、capability 未觀察、越出 path/effect scope，均 REFUSE／NOOP"
+      },
+      "links": []
+    },
+    {
+      "series": "SPEC",
+      "title": "Scoped patch boundary",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "given": "Original RolloutObservation, acceptance/allowlist references and applicable continuation are available.",
+        "when": "Session prepares one failure-bound hypothesis for an observed target; absent failure or an unchanged valid continuation does not start another method selection.",
+        "then": "Return FailureScope as a bounded hypothesis, preserve the existing valid continuation as NOOP, or name the missing input. This upstream scope decision does not parse a PatchProposal or prove causality.",
+        "inputs_outputs": "RolloutObservation + original acceptance/allowlist/capability readback → FailureScope or named missing input; an unchanged legal continuation remains NOOP.",
+        "forbidden": "只有課程標題或泛稱品質不好、capability 未觀察、越出 path/effect scope，均 REFUSE／NOOP",
+        "negative_case": "Proposed unsupported native Hook must be rejected",
+        "unknown_effect": "不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。",
+        "replay": "固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。",
+        "oracle": "Original source review checks hypothesis-to-trace relevance and applicable capability. The parser later checks fixed references and targets, not the causal truth of that hypothesis.",
+        "original_owner": "原 observation／admission／Patch Validator"
+      },
+      "links": [
+        {
+          "relation": "implements",
+          "target_series": "REQ",
+          "target_topic": "Scoped patch",
+          "applicability": "Source-bound failure hypothesis and applicable target/capability references. The causal benefit remains a hypothesis until the original paired evaluation.",
+          "counterfactual": "If the original required outcome changes, review this bounded output contract: RolloutObservation + original acceptance/allowlist/capability readback → FailureScope or named missing input; an unchanged legal continuation remains NOOP. It supports only the stated clause, not unobserved parent results."
+        },
+        {
+          "relation": "validated_by",
+          "target_series": "V",
+          "target_topic": "Scoped patch discriminating controls",
+          "applicability": "The V checks this same Consumer result: Return FailureScope as a bounded hypothesis, preserve the existing valid continuation as NOOP, or name the missing input. This upstream scope decision does not parse a PatchProposal or prove causality.",
+          "counterfactual": "Without the original V method/input distinction, this result is not verified: Original source/capability review checks the failure-bound hypothesis; parser checks the resulting fixed target/ref boundary. Missing downstream evidence must not change the local proof scope."
+        }
+      ]
+    },
+    {
+      "series": "V",
+      "title": "Scoped patch discriminating controls",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "subject": "Only observed failure supports a single causal target; capability probe before generating plugin patch",
+        "oracle": "Original source/capability review checks the failure-bound hypothesis; parser checks the resulting fixed target/ref boundary.",
+        "producer": "原 observation／admission／Patch Validator",
+        "positive_control": "Given actual failure evidence and an allowed relevant single target, produce a FailureScope hypothesis. Its legal proposal can be parsed; causal benefit remains for later matched replay.",
+        "negative_control": "No observed failure or unchanged legal next: NOOP. An unrelated allowed target cannot gain causal acceptance from valid refs alone. Unsupported Hook: named refusal; unknown previous write: original readback, no retry.",
+        "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
+      },
+      "links": []
+    },
+    {
+      "series": "REQ",
+      "title": "Plugin transfer",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "actor": "Adapter 將已接受 artifact 映射至目標 Host 真正支援的介面",
+        "goal": "Verified artifact maps solely to capability-proven Skill, MCP wrapper, or supported lifecycle interface",
+        "measurement": "probe 證明介面、bytes、load 與 fresh consumer consumption；保留安裝／執行／效果三種 readback",
+        "persistence": "保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。",
+        "stop_escalation": "未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。",
+        "acceptance": "probe 證明介面、bytes、load 與 fresh consumer consumption；保留安裝／執行／效果三種 readback",
+        "non_case": "Plugin 被提及或 installer copied files 不證明 native consumption；缺 Hook event 或 trust 時不能宣稱 Hook 已執行；沒有能力不猜 API"
+      },
+      "links": []
+    },
+    {
+      "series": "SPEC",
+      "title": "Plugin transfer boundary",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "given": "已接受 patch artifact、實際 target capability／trust 與原 consumer Owner 可用。",
+        "when": "The capability adapter prepares a mapping only for an accepted artifact and an actually supported target interface.",
+        "then": "Return a proposed mapping to the supported Skill, MCP wrapper or required trusted Hook, or a named refusal/gap. Mapping does not install, load, consume or execute it.",
+        "inputs_outputs": "TransferArtifact + actual target capability/authorization readback → MappingProposal or named refusal/gap. Authorized installation, fresh consumption and effect receipts belong to subsequent native Consumers.",
+        "forbidden": "Plugin 被提及或 installer copied files 不證明 native consumption；缺 Hook event 或 trust 時不能宣稱 Hook 已執行；沒有能力不猜 API",
+        "negative_case": "Proposal != installed or consumed plugin",
+        "unknown_effect": "不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。",
+        "replay": "固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。",
+        "oracle": "Original adapter mapping review checks supported interface and permitted distribution. Host load, fresh Consumer and applicable Provider effect each require separate actual evidence.",
+        "original_owner": "原 target Host／plugin／provider"
+      },
+      "links": [
+        {
+          "relation": "implements",
+          "target_series": "REQ",
+          "target_topic": "Plugin transfer",
+          "applicability": "Supported capability-bound MappingProposal only. Installation, load, fresh consumption and applicable effect receipts remain native Consumer responsibilities.",
+          "counterfactual": "If the original required outcome changes, review this bounded output contract: TransferArtifact + actual target capability/authorization readback → MappingProposal or named refusal/gap. Authorized installation, fresh consumption and effect receipts belong to subsequent native Consumers. It supports only the stated clause, not unobserved parent results."
+        },
+        {
+          "relation": "validated_by",
+          "target_series": "V",
+          "target_topic": "Plugin transfer discriminating controls",
+          "applicability": "The V checks this same Consumer result: Return a proposed mapping to the supported Skill, MCP wrapper or required trusted Hook, or a named refusal/gap. Mapping does not install, load, consume or execute it.",
+          "counterfactual": "Without the original V method/input distinction, this result is not verified: Adapter review checks mapping; Host capture separately establishes install/load/consume and applicable effect readback. Missing downstream evidence must not change the local proof scope."
+        }
+      ]
+    },
+    {
+      "series": "V",
+      "title": "Plugin transfer discriminating controls",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "subject": "Verified artifact maps solely to capability-proven Skill, MCP wrapper, or supported lifecycle interface",
+        "oracle": "Adapter review checks mapping; Host capture separately establishes install/load/consume and applicable effect readback.",
+        "producer": "原 target Host／plugin／provider",
+        "positive_control": "Given an accepted artifact and supported Skill/MCP capability, produce MappingProposal only. Native consumption remains NOT_RUN until a fresh bound capture; an unnecessary Hook is N/A.",
+        "negative_control": "Same artifact with only a copied-file receipt cannot prove consumption. Unsupported interface refuses mapping; an actually required but untrusted Hook cannot execute. Missing native trace does not block parser.",
+        "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
+      },
+      "links": []
+    },
+    {
+      "series": "REQ",
+      "title": "Full lifecycle",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "actor": "Soodles Outer 準備原 Issue／admission；Noodle Poteto 實作 admitted delta；原 Managers／Provider 各自回讀",
+        "goal": "Soodles Outer chooses only real needed method and admission; Noodle Poteto receives bounded delta and implements freely; Test/Schema results read back; provider owns effects",
+        "measurement": "actual Stage capture 顯示 consumed task／preselected playbook；必要 Test／Schema next 有真實 consumption；Provider 有 exact-head delivery",
+        "persistence": "保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。",
+        "stop_escalation": "未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。",
+        "acceptance": "actual Stage capture 顯示 consumed task／preselected playbook；必要 Test／Schema next 有真實 consumption；Provider 有 exact-head delivery",
+        "non_case": "Writer Completed、reference CI、Reader next=null 不能閉合 parent Goal；不強迫所有 Managers 跑"
+      },
+      "links": []
+    },
+    {
+      "series": "SPEC",
+      "title": "Full lifecycle boundary",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "given": "原 Issue Contract/admission、原 Stage task/playbook 與必要 Managers 的 actual readbacks 可讀。",
+        "when": "The authorized Session consumes the original continuation at each applicable Issue, Stage, Test, Schema and Provider boundary; each result remains scoped to its own Consumer.",
+        "then": "Preserve scoped Stage/test/feedback readbacks and their original next. Writer completion does not establish delivery or whole-Goal success; publication is required only where the original task calls for it.",
+        "inputs_outputs": "Original Issue/Stage/Manager observations → their original scoped readback/continuation. Provider delivery and parent measurement are separate downstream inputs, never parser output.",
+        "forbidden": "Writer Completed、reference CI、Reader next=null 不能閉合 parent Goal；不強迫所有 Managers 跑",
+        "negative_case": "Writer-complete != merged/receipted goal",
+        "unknown_effect": "不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。",
+        "replay": "固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。",
+        "oracle": "Original Stage capture establishes prompt/playbook consumption; selected Test/Schema evidence establishes its covered behavior and next consumption. Applicable Provider and whole-Goal receipts are checked independently.",
+        "original_owner": "原 Soodles／Noodle／Test／Schema／Provider"
+      },
+      "links": [
+        {
+          "relation": "implements",
+          "target_series": "REQ",
+          "target_topic": "Full lifecycle",
+          "applicability": "Session preserves scoped original observations and continuations. Each original Producer retains its acceptance; Provider and whole-Goal closure need their applicable evidence.",
+          "counterfactual": "If the original required outcome changes, review this bounded output contract: Original Issue/Stage/Manager observations → their original scoped readback/continuation. Provider delivery and parent measurement are separate downstream inputs, never parser output. It supports only the stated clause, not unobserved parent results."
+        },
+        {
+          "relation": "validated_by",
+          "target_series": "V",
+          "target_topic": "Full lifecycle discriminating controls",
+          "applicability": "The V checks this same Consumer result: Preserve scoped Stage/test/feedback readbacks and their original next. Writer completion does not establish delivery or whole-Goal success; publication is required only where the original task calls for it.",
+          "counterfactual": "Without the original V method/input distinction, this result is not verified: Original Stage/Test/Schema/Provider Producers provide scoped evidence and actual next consumption; no single report proves all boundaries. Missing downstream evidence must not change the local proof scope."
+        }
+      ]
+    },
+    {
+      "series": "V",
+      "title": "Full lifecycle discriminating controls",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "subject": "Soodles Outer chooses only real needed method and admission; Noodle Poteto receives bounded delta and implements freely; Test/Schema results read back; provider owns effects",
+        "oracle": "Original Stage/Test/Schema/Provider Producers provide scoped evidence and actual next consumption; no single report proves all boundaries.",
+        "producer": "原 Soodles／Noodle／Test／Schema／Provider",
+        "positive_control": "Given admitted Stage capture using the selected delta/playbook and selected control readbacks, report only scoped completion; leave parent delivery/measurement open when their receipts are absent.",
+        "negative_control": "Writer completed without applicable Provider receipt is not delivered; returned Schema next without consumption remains pending. Reader next=null cannot admit a Stage. No native Hook/Cron need does not require invented events.",
+        "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
+      },
+      "links": []
+    },
+    {
+      "series": "REQ",
+      "title": "Learning dataset",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "actor": "Dataset Owner 固定 train／validation／held-out，保留來源、rights 與 rollout→action→reward 的真實關係",
+        "goal": "Training/validation/held-out partition; trace refs preserved; producer binds rollout/action/reward; legal rights for code/data/model/trace checked independently",
+        "measurement": "train samples 有完整合法 lineage；validation 用於 acceptance；held-out 只做封存評估",
+        "persistence": "保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。",
+        "stop_escalation": "未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。",
+        "acceptance": "train samples 有完整合法 lineage；validation 用於 acceptance；held-out 只做封存評估",
+        "non_case": "猜 token、混 held-out training、使用權未確認、未裁決 reward 都排除更新；成本缺 capture 不是零"
+      },
+      "links": []
+    },
+    {
+      "series": "SPEC",
+      "title": "Learning dataset boundary",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "given": "原 dataset rights、split、generation/action/reward lineage 與 checkpoint refs 固定。",
+        "when": "Dataset Owner 隔離 train/validation/held-out；只將 eligible train samples 交原 Trainer。 Proposed behavior；NeoWeaver native 執行尚未發生。",
+        "then": "Return only eligible TrainingBatch members; preserve reasons for quarantined and unknown samples. Near-duplicate leakage and held-out-driven patch selection cannot be hidden by distinct row IDs.",
+        "inputs_outputs": "Dataset samples + original policy/action/generation/replay/reward/rights/split references → TrainingBatch of eligible train-only samples or named quarantine/missing-input reasons; no policy update occurs here.",
+        "forbidden": "猜 token、混 held-out training、使用權未確認、未裁決 reward 都排除更新；成本缺 capture 不是零",
+        "negative_case": "A sample with guessed tokens, leaked held-out tests or noncommercial rights is ineligible",
+        "unknown_effect": "不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。",
+        "replay": "固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。",
+        "oracle": "Dataset Owner compares each actor/action/reward and partition lineage, permitted use policy and leakage review. Unknown rights/provenance stop the dependent update, not parser work.",
+        "original_owner": "原 dataset／generation／verification Owners"
+      },
+      "links": [
+        {
+          "relation": "implements",
+          "target_series": "REQ",
+          "target_topic": "Learning dataset",
+          "applicability": "Form eligible TrainingBatch from original sample references. Actual training/update results remain Trainer responsibilities.",
+          "counterfactual": "If the original required outcome changes, review this bounded output contract: Dataset samples + original policy/action/generation/replay/reward/rights/split references → TrainingBatch of eligible train-only samples or named quarantine/missing-input reasons; no policy update occurs here. It supports only the stated clause, not unobserved parent results."
+        },
+        {
+          "relation": "validated_by",
+          "target_series": "V",
+          "target_topic": "Learning dataset discriminating controls",
+          "applicability": "The V checks this same Consumer result: Return only eligible TrainingBatch members; preserve reasons for quarantined and unknown samples. Near-duplicate leakage and held-out-driven patch selection cannot be hidden by distinct row IDs.",
+          "counterfactual": "Without the original V method/input distinction, this result is not verified: Dataset Owner compares the selected sample’s policy/action/replay/reward, permitted-use and split/leakage references before forming TrainingBatch. Missing downstream evidence must not change the local proof scope."
+        },
+        {
+          "relation": "based_on",
+          "target_series": "C",
+          "target_topic": "Actor scoped credit assignment",
+          "applicability": "TrainingBatch membership uses actor/action/reward lineage.",
+          "counterfactual": "Loss of actor lineage invalidates the training eligibility claim."
+        }
+      ]
+    },
+    {
+      "series": "V",
+      "title": "Learning dataset discriminating controls",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "subject": "Training/validation/held-out partition; trace refs preserved; producer binds rollout/action/reward; legal rights for code/data/model/trace checked independently",
+        "oracle": "Dataset Owner compares the selected sample’s policy/action/replay/reward, permitted-use and split/leakage references before forming TrainingBatch.",
+        "producer": "原 dataset／generation／verification Owners",
+        "positive_control": "Given train-only own-policy samples with matching independent rewards, applicable rights and nonleaking split evidence, include them in TrainingBatch; no update is inferred.",
+        "negative_control": "Swap a reward ref, use foreign on-policy tokens, relabel a held-out/near-duplicate task as train or select a patch after seeing held-out outcome: quarantine/refuse. Missing rights/lineage stops only the dependent update.",
+        "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
+      },
+      "links": []
+    },
+    {
+      "series": "REQ",
+      "title": "Lesson lineage",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "actor": "Session 記錄被觀察的 first unsupported premise 與實際 rework DAG",
+        "goal": "LESSON.md references observed issue/commit/PR relations and actual rework edges, distinguishing unknown from observed",
+        "measurement": "LESSON 每個 Issue／Commit／PR edge 可讀回；正反控制能區分首個因果錯誤與後續症狀",
+        "persistence": "保留原十項 parent REQ、原 Goal 與 acceptance；失敗後不重設 effort horizon。",
+        "stop_escalation": "未知 effect 先原 Owner readback；缺此需求必要資料只停止其依賴操作。",
+        "acceptance": "LESSON 每個 Issue／Commit／PR edge 可讀回；正反控制能區分首個因果錯誤與後續症狀",
+        "non_case": "補造 Issue ID、SHA、closure 或將歷史 NOT_RUN 改成 PASS，均拒絕；NeoWeaver 尚無 implementation Issue 不補一個"
+      },
+      "links": []
+    },
+    {
+      "series": "SPEC",
+      "title": "Lesson lineage boundary",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "given": "原 GitHub/provider/capture events、原 Goal 與 fixed source quotes 可取得。",
+        "when": "Session analyzes actually captured failure, repair and readback history. Current FactoryWeaver source reconciliation and future NeoWeaver runtime history are different observation scopes.",
+        "then": "Return a source-bound first-premise analysis and evidenced rework edges, retaining unsupported edges as gaps. Observed FactoryWeaver commits do not prove NeoWeaver native execution.",
+        "inputs_outputs": "ObservedHistory → FirstBreakpoint + EvidenceDAG + MissingEdge[]；沒有實際 Issue/Commit 不補 identity。",
+        "forbidden": "補造 Issue ID、SHA、closure 或將歷史 NOT_RUN 改成 PASS，均拒絕；NeoWeaver 尚無 implementation Issue 不補一個",
+        "negative_case": "Do not invent SHA, DAG edge or closure",
+        "unknown_effect": "不能由 Card 判斷外部 effect；原 Owner 回讀前不重送。非外部資料檢查的 effect 為 N/A。",
+        "replay": "固定 bytes、原 acceptance 與相同 scope 才可比較；已提供合法 next 時原樣 reuse。",
+        "oracle": "GitHub establishes identities/relations; original failed Consumer capture, repair diff and discriminating after-control establish the scoped rework explanation. Temporal order alone is insufficient.",
+        "original_owner": "原 GitHub／capture／source Owners"
+      },
+      "links": [
+        {
+          "relation": "implements",
+          "target_series": "REQ",
+          "target_topic": "Lesson lineage",
+          "applicability": "Source-bound first-premise/rework explanation from observed history. Git identities alone do not establish causality or Neo native history.",
+          "counterfactual": "If the original required outcome changes, review this bounded output contract: ObservedHistory → FirstBreakpoint + EvidenceDAG + MissingEdge[]；沒有實際 Issue/Commit 不補 identity。 It supports only the stated clause, not unobserved parent results."
+        },
+        {
+          "relation": "validated_by",
+          "target_series": "V",
+          "target_topic": "Lesson lineage discriminating controls",
+          "applicability": "The V checks this same Consumer result: Return a source-bound first-premise analysis and evidenced rework edges, retaining unsupported edges as gaps. Observed FactoryWeaver commits do not prove NeoWeaver native execution.",
+          "counterfactual": "Without the original V method/input distinction, this result is not verified: GitHub proves actual identities; independent review compares original failure capture, repair diff and after-control to support a specific rework edge. Missing downstream evidence must not change the local proof scope."
+        }
+      ]
+    },
+    {
+      "series": "V",
+      "title": "Lesson lineage discriminating controls",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "subject": "LESSON.md references observed issue/commit/PR relations and actual rework edges, distinguishing unknown from observed",
+        "oracle": "GitHub proves actual identities; independent review compares original failure capture, repair diff and after-control to support a specific rework edge.",
+        "producer": "原 GitHub／capture／source Owners",
+        "positive_control": "Given an observed FactoryWeaver failure/control, its exact repair and after-control, retain that evidenced source rework edge and its proof ceiling; future Neo native history remains NOT_RUN.",
+        "negative_control": "Use two real but unrelated commits as a causal repair edge: reject that edge. Chronology, CI or merge alone cannot prove first cause or whole Goal. Missing capture remains a named gap, never a fabricated receipt.",
+        "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
+      },
+      "links": []
+    },
+    {
+      "series": "C",
+      "title": "Independent immutable verification",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "mechanism": "Learning 只能提出候選；Execution replay 生成 observation；Verification 用 writer 不能修改的 oracle 決定 scoped acceptance。",
+        "conditions": "候選會影響 reward 或 completion，且原 verifier/source refs 可固定。",
+        "inputs_outputs": "Patch proposal 與 paired observations → 原 verifier PASS/FAIL/INCONCLUSIVE；仍非 provider delivery。",
+        "failure_mode": "若 writer 能改 oracle，reward 反映自簽結果而非原 Goal。",
+        "decision_consequence": "把 evaluator、held-out 與 admission 排除 mutation allowlist。"
+      },
+      "links": []
+    },
+    {
+      "series": "C",
+      "title": "Actor scoped credit assignment",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "mechanism": "Proposer action 與其 generation provenance、paired replay reward 連結；Solver tokens 由自己的 actor 產生。",
+        "conditions": "只有原 Producer 提供可一致連結的資料才形成 eligible batch；Codex 只做 frozen inference。",
+        "inputs_outputs": "Rollout/action/verifier refs → eligibility；missing lineage → UNKNOWN/ineligible。",
+        "failure_mode": "把 Codex transcript 當 πθ tokens 會把不同 actor 的 action 歸因到錯誤 policy。",
+        "decision_consequence": "先訓獨立可追溯 Proposer；無 open Solver provenance 時不更新 Solver。"
+      },
+      "links": []
+    },
+    {
+      "series": "G",
+      "title": "Cards preserve original effect ownership",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Complete selected source file",
+        "Complete selected source file",
+        "Complete selected source file",
+        "Complete selected source file",
+        "Complete selected source file",
+        "Complete selected source file"
+      ],
+      "semantics": {
+        "invariant": "Card、Scope、Prompt Delta、Reader readback 都不授予 effects、admission 或 landing。",
+        "applicability": "Proposal-to-native effects requiring original admission/continuation. The parser inherits no-effects protection; ordinary read-only work and expressly authorized local edits use their actual task/Host authorization.",
+        "authority_owner": "原 Issue/admission、native carrier 與 Provider 各自負責相應 fact。",
+        "refusal": "For an operation that depends on original native admission, missing or invented next cannot authorize it. Continue independent authorized local/source work; do not manufacture permission or retry an unknown write.",
+        "consequences": "local PASS／writer exit 不能升級為 native Stage 或 whole Goal closure。",
+        "exception": "原 Owner 已回有效 unchanged continuation 時消費它；沒有新增授權例外。"
+      },
+      "links": []
+    },
+    {
+      "series": "G",
+      "title": "Hard gates precede reward",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "invariant": "Acceptance、protected regressions、rights、split 與 authority 任一 gate 未通過，都不能用 soft cost bonus 抵銷。",
+        "applicability": "Artifact acceptance and reward interpretation after replay; training-sample eligibility has a separate rights/lineage/method check. Parser uses only the protected-acceptance constraint.",
+        "authority_owner": "原 independent Verifier／Dataset／admission Owner。",
+        "refusal": "UNKNOWN gate 產生 INCONCLUSIVE；held-out 或 foreign tokens 排除 gradient。",
+        "consequences": "A failed acceptance gate cannot be offset by cost. Whether a safe, rights-cleared task-failure observation is an eligible negative training sample depends on the original Trainer/Dataset method; this card does not decide it.",
+        "exception": "不需要的外部 effect 標 N/A；這不免除實際必要 gates。"
+      },
+      "links": []
+    },
+    {
+      "series": "T",
+      "title": "Harness only versus joint policy update",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "common_goal": "在相同 task/environment/budget 下找到可驗證的 outcome 改善。",
+        "alternatives": "H1/φ0 只改 Harness；H0/φ1 只改 Solver；H1/φ1 同時改兩者。",
+        "dimensions": "Actor provenance、因果可辨識性、受保護 regressions、可取得資料與 checkpoint。",
+        "tradeoffs": "Fixed Solver A/B isolates a Harness difference. Matching A/D can report joint total change; separating its component/interaction attribution requires the corresponding additional matched arms. Missing costs or observations remain unknown.",
+        "selection_rule": "For the first replay comparison, fixed Solver A/B can estimate Harness difference. Separate component/interaction attribution for joint changes needs the corresponding matched arms; a joint update alone does not require that attribution. Parser work runs no Solver."
+      },
+      "links": []
+    },
+    {
+      "series": "E",
+      "title": "Joint result does not identify a component effect",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "premises": "同時改 Harness 與 Solver，且只觀察 A 与 D；沒有 B 与 C。",
+        "derivation": "D−A 混合 Harness、Solver 及 interaction。多組 B/C 值可得到同一 D−A，因此無法唯一歸因。",
+        "applicability": "原規格 matched four-arm attribution；不是所有 observational data 的普遍定律。",
+        "counterexample": "若 Solver 完全固定且有匹配 B/A，可識別該 scoped Harness difference；仍不能外推全 population。",
+        "implication": "With only matching A/D, report the observed joint total difference, while component/interaction attribution remains INCONCLUSIVE. D alone provides no comparison; do not invent B/C or erase actual observed outcomes."
+      },
+      "links": []
+    },
+    {
+      "series": "Q",
+      "title": "Choose the first evaluation population",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "unresolved_decision": "This inspected specification has no accepted initial task population/resource/evaluation selection. Read the original Owner’s current records before concluding that the choice is unresolved.",
+        "competing_answers": "使用既有 Owner 固定的 repository task set，或由產品 Owner 明確選另一個可重放 task population；無已觀察選擇。",
+        "decision_owner": "原 Goal／Dataset／measurement Owner；Session 先讀既有 artifacts，未解的產品選擇才需決定。",
+        "impact": "Only replay/performance acceptance depends on the population choice; parser/refusal fixture work can continue without it.",
+        "next_evidence": "取得原 population、oracle、split 與 budget 的已接受資料，不重問已解決 Goal。"
+      },
+      "links": []
+    },
+    {
+      "series": "S",
+      "title": "Start at the patch acceptance boundary",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "goal": "合法 single-surface proposal 保留 immutable acceptance；非法輸入 fail closed。",
+        "causal_hypothesis": "先固定 parser／validator 可避免未驗收候選污染 replay/reward；尚未測 NeoWeaver。",
+        "intervention": "A proposed pure parser/refusal bootstrap atom returns ParsedProposal or DiagnosticRefusal without replay, reward, training or native effects. This is not an observed NeoWeaver runtime defect.",
+        "alternative": "若原 source 顯示另一個更早 failure，先修其原 Producer，不建立無需要的 parser layer。",
+        "measurement": "Owner-fixed allowed single-surface input and duplicate/stale/protected-target/extra-effect negative inputs discriminate parser outcomes; native execution remains NOT_RUN.",
+        "stop_rule": "缺原 admission 或依賴資料停該步；三次失敗重新評估，不放寬 acceptance。"
+      },
+      "links": []
+    },
+    {
+      "series": "R",
+      "title": "Verify a bounded delivery sequence",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "parent_goal": "有界 Harness learning 與 verified frozen Codex transfer，原十項 REQ 全保留。",
+        "units": "Parser/immutable acceptance → matched replay → independent gates and eligible Proposer update. Optional Solver update is a separate branch. Accepted artifact plus target capability enables authorized transfer without requiring that optional branch; Provider/LESSON follows applicable delivery.",
+        "prerequisites": "Reward uses actual matched replay/gates; updates use eligible data and authorized method. Transfer requires an accepted artifact and target capability, not an optional Solver update.",
+        "exit_gates": "Parser→合法解析與非法無effect；Replay→matched observations；Verification→固定oracle與lineage；Proposer→eligible train-only batch與rollback checkpoint；Solver→自身provenance且counterpart固定；Transfer→capability/install/load/consume/effect各自讀回；Delivery→Provider與無hard-gate violation、可重複正向paired effect。詳細正反/unknown/replay在完整規格逐步交付矩陣；未觀察仍NOT_RUN。",
+        "owner_continuation": "既有原 Owner next 決定實際 lifecycle；此 Roadmap 不建立排程器。"
+      },
+      "links": [
+        {
+          "relation": "based_on",
+          "target_series": "S",
+          "target_topic": "Start at the patch acceptance boundary",
+          "applicability": "The proposed first unit is parser/refusal, while later units preserve the parent Goal.",
+          "counterfactual": "If the first selected causal unit changes, this roadmap ordering must be reviewed rather than reused blindly."
+        }
+      ]
+    },
+    {
+      "series": "P",
+      "title": "Repeat a matched replay safely",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Original ten logical REQ rows and all handoff sections"
+      ],
+      "semantics": {
+        "preconditions": "原固定 snapshot、budget、oracle、mutation allowlist 與許可環境可用。",
+        "procedure": "保留 baseline，使用另一個 isolated copy 套已通過 parser/scope checks且原Owner允許進disposable replay的candidate；此時尚未得到outcome acceptance。原 runner記錄兩組observations，再交獨立Verifier。",
+        "validation": "核對 matched conditions、protected negative controls、terminal/capture coverage與原 acceptance。",
+        "failure_recovery": "unknown effect 讀原 Owner，不 replay write；missing observation 保留 INCONCLUSIVE。",
+        "rollback": "由原 effect Owner 從其原 checkpoint/ref 恢復；Practice card 不授權 rollback。",
+        "scope": "可重用 proposed replay practice，非 Soodles P-class instruction 或已執行模型實驗。"
+      },
+      "links": []
+    },
+    {
+      "series": "N",
+      "title": "FactoryWeaver reconciliation precedes NeoWeaver recompilation",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Complete selected source file",
+        "Complete selected source file",
+        "Complete selected source file",
+        "Complete selected source file"
+      ],
+      "semantics": {
+        "actors": "使用者要求續作；Session 修復 source；獨立 reviewers 驅動 CLI；GitHub 提供 head/CI/merge。",
+        "initial_state": "The inspected reconciliation documents record portable dependencies, coverage refusal, profile ambiguity and missing legacy consumers that required source repairs; no unreferenced draft-count assertion is made.",
+        "event_sequence": "先修 portable deps/trusted checker，再補 coverage refusal、profile ambiguity，最後恢復 PR7 missing consumers。",
+        "turning_point": "實際 negative cases 揭露綠測試沒有覆蓋的 Consumer 契約缺口，不能直接合併旧 source。",
+        "outcome": "獨立 scoped CLI 證據與 GitHub source delivery可讀回；NeoWeaver原生learning仍未執行。",
+        "causal_uncertainty": "這條實際 rework sequence 不證明 native Agent compliance、decision cost降低或RL成效。"
+      },
+      "links": []
+    },
+    {
+      "series": "D",
+      "title": "Matching raw catalog pin still allowed duplicate keys",
+      "source_status": "INSPECTED",
+      "evidence_topics": [
+        "Complete selected source file",
+        "Actual pinned effective-catalog test fixture: duplicate producer_claim with matching raw pin"
+      ],
+      "semantics": {
+        "case": "原 Profile auditor 曾以普通 JSON decoder 讀取 exact-pin catalog。",
+        "condition": "同一 raw object 含兩個 producer_claim keys，後者為 UNVERIFIED_CARRIER_OUTPUT。",
+        "observed_detail": "獨立負例指出不同 parser 可有不同解讀；修正沿用 main duplicate-key refusal，raw pin 不被當語義正確。",
+        "countercase": "Unique-key synthetic catalog with a matching supplied raw pin returns EFFECTIVE_CATALOG_CLAIM_MATCHES, with native Worker verification false; duplicate keys refuse even when the raw pin matches.",
+        "implication": "NeoWeaver Parser 亦需單義 input；這是已觀察 FactoryWeaver case，不是 NeoWeaver implementation failure。"
+      },
+      "links": []
+    },
+    {
+      "series": "K",
+      "title": "Training data and token provenance unavailable",
+      "source_status": "UNREAD",
+      "evidence_topics": [],
+      "semantics": {
+        "missing_input": "The inspected bundle has no actual authorized train split/own-generation/action/reward lineage or model/data rights readback. This is a coverage gap in this source, not proof that no Owner possesses those inputs.",
+        "why_required": "沒有它們不能形成合法 policy-gradient batch 或主張 performance。",
+        "producer": "原 Dataset、generation、Verifier／Trainer Owners。",
+        "affected_scope": "真實 Proposer/Solver update 與成效 acceptance。",
+        "next_source": "讀原已授權資料與 capture；不從 transcript 補造 token、logprob或reward。",
+        "unaffected_work": "完整規格、PatchProposal shape、parser fixtures及 source/CLI拒絕驗證。"
+      },
+      "links": []
+    },
+    {
+      "series": "K",
+      "title": "Native Codex transfer has no observed consumer",
+      "source_status": "UNREAD",
+      "evidence_topics": [],
+      "semantics": {
+        "missing_input": "Actual target capability, authorized distribution, load and fresh Consumer evidence are not observed in this bundle. A trusted Hook definition and native event are required only if that target actually needs a Hook.",
+        "why_required": "官方文件與filesystem installation不能證明本目標consumer消費learned patch。",
+        "producer": "原 target Host、Codex carrier、plugin與Provider Owners。",
+        "affected_scope": "REQ-07 native transfer及whole Goal closure。",
+        "next_source": "先讀實際capability與原next；需要Hook時保留真實event/trust，不能猜API。",
+        "unaffected_work": "官方介面來源核對、source-bound artifact與唯讀CLI交接。"
+      },
+      "links": []
+    }
+  ],
+  "coverage": [
+    {
+      "source_unit": "REQ-01",
+      "status": "MAPPED",
+      "disposition": "Source integrity"
+    },
+    {
+      "source_unit": "REQ-02",
+      "status": "MAPPED",
+      "disposition": "Three planes"
+    },
+    {
+      "source_unit": "REQ-03",
+      "status": "MAPPED",
+      "disposition": "Trainability"
+    },
+    {
+      "source_unit": "REQ-04",
+      "status": "MAPPED",
+      "disposition": "Two policies"
+    },
+    {
+      "source_unit": "REQ-05",
+      "status": "MAPPED",
+      "disposition": "Causal attribution"
+    },
+    {
+      "source_unit": "REQ-06",
+      "status": "MAPPED",
+      "disposition": "Scoped patch"
+    },
+    {
+      "source_unit": "REQ-07",
+      "status": "MAPPED",
+      "disposition": "Plugin transfer"
+    },
+    {
+      "source_unit": "REQ-08",
+      "status": "MAPPED",
+      "disposition": "Full lifecycle"
+    },
+    {
+      "source_unit": "REQ-09",
+      "status": "MAPPED",
+      "disposition": "Learning dataset"
+    },
+    {
+      "source_unit": "REQ-10",
+      "status": "MAPPED",
+      "disposition": "Lesson lineage"
+    }
+  ]
+}

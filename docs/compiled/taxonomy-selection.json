@@ -1,0 +1,39 @@
+{
+  "registered_series": [
+    "N",
+    "C",
+    "D",
+    "T",
+    "E",
+    "Q",
+    "S",
+    "R",
+    "REQ",
+    "SPEC",
+    "G",
+    "P",
+    "V",
+    "X",
+    "K"
+  ],
+  "selected_series": [
+    "C",
+    "D",
+    "E",
+    "G",
+    "K",
+    "N",
+    "P",
+    "Q",
+    "R",
+    "REQ",
+    "S",
+    "SPEC",
+    "T",
+    "V"
+  ],
+  "unselected": {
+    "X": "No unresolved incompatible source claim in the reconciled current specification; past failures are D/LESSON, not invented conflicts."
+  },
+  "policy": "Selected source-backed roles, never a forced 15-card quota"
+}

@@ -1,0 +1,671 @@
+{
+  "prior_compiled_revision": "ae739ac4514ab7fa23e4c2688d3dae600f972e98",
+  "goal": "Preserve all original ten requirements and whole Goal while bounding the first atom to pure parser/refusal",
+  "first_unsupported_premise": "A source acceptance sentence can be copied into REQ, SPEC then/oracle and V controls without changing its Consumer boundary",
+  "producer_correction": "Separate each type’s meaning, synchronize material link justifications, map partial clauses and retain actual unmet parent prerequisites",
+  "cards": [
+    {
+      "card_id": "REQ-source-integrity",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "abe2218cc60e29a5be51ba2dc1ae56f6a1ea0841fa12239240e1fce2ca6597f1",
+      "after_payload_sha256": "c7287bfe84a5804f8f9c2dbb61eff13b31efd4f2cf0808076a16927dd11294c3",
+      "applicability": {
+        "card_id": "REQ-source-integrity",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "SPEC-source-integrity-boundary",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "2aaa5a402f849f459f8c17b60b70f9031dc1b8bde5fbb9c6e0ddcdffc73fa266",
+      "after_payload_sha256": "443d024577eecc7ecc6c03fb1c9ce6715fdb94a8ecddf7866df544d29ae5a959",
+      "applicability": {
+        "card_id": "SPEC-source-integrity-boundary",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "V-source-integrity-discriminating-controls",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "16ad5d26079cc813a6312cbf321cca1e0a7852eab16782c3f7972b5e6536d9fc",
+      "after_payload_sha256": "6ae473d4c7a616867d60f93939d07a6f8dc1fdf991e334dd7cb2f87d95bc5609",
+      "applicability": {
+        "card_id": "V-source-integrity-discriminating-controls",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "REQ-three-planes",
+      "before_revision": 1,
+      "after_revision": 1,
+      "before_payload_sha256": "470c88fa15f5e519d9fa7242420dfb95558f35ca89422f759f247903562aa6bf",
+      "after_payload_sha256": "470c88fa15f5e519d9fa7242420dfb95558f35ca89422f759f247903562aa6bf",
+      "applicability": {
+        "card_id": "REQ-three-planes",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "SPEC-three-planes-boundary",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "13b0044f79a3d74ffb8d121afaf1da8cbf56255e5c7d60a7587d3469e79b5647",
+      "after_payload_sha256": "a784f5171823159eddf7af94464a70f5500386c01dfb5dd8f02733e9f084dde1",
+      "applicability": {
+        "card_id": "SPEC-three-planes-boundary",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "V-three-planes-discriminating-controls",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "5159c3f9c2578c4230dcc76d534fcbf6f09482d973a479aab573bf9f5e20ec66",
+      "after_payload_sha256": "3d6ed6f0781b42e416db3321c05147c3d354f94b551a353c274c65371066d8cb",
+      "applicability": {
+        "card_id": "V-three-planes-discriminating-controls",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "REQ-trainability",
+      "before_revision": 1,
+      "after_revision": 1,
+      "before_payload_sha256": "8b6be89efca125173a6665d86c7a2661f7bee2f7a83ec951d28927b01b46e09c",
+      "after_payload_sha256": "8b6be89efca125173a6665d86c7a2661f7bee2f7a83ec951d28927b01b46e09c",
+      "applicability": {
+        "card_id": "REQ-trainability",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "SPEC-trainability-boundary",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "5d4c598ea4ae4fdaa45b2318901f25f64a909a9fa1b1c2d3be951a31e4f2a959",
+      "after_payload_sha256": "39968d39f2793f25d5caf9ed15c6b68373ecdea81970e67d3071df66b7f74ba8",
+      "applicability": {
+        "card_id": "SPEC-trainability-boundary",
+        "role": "local_exit",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "V-trainability-discriminating-controls",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "77f94625f23c420c2bfcc695156259d627d081601e783ac04d0d30e9fab70264",
+      "after_payload_sha256": "e433e8db56fb2f5be84961561be2ef72963277e90c2a77c26da2052a0a799fdc",
+      "applicability": {
+        "card_id": "V-trainability-discriminating-controls",
+        "role": "local_control",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "REQ-two-policies",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "46bcac6903a03995451a606cff15d0411e75da846a55c1e836e0494ba7c5c31f",
+      "after_payload_sha256": "3ad7344c9a5bb1511cc00165601419ff47430678b534f188ea586454d1253247",
+      "applicability": {
+        "card_id": "REQ-two-policies",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "SPEC-two-policies-boundary",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "407403d265bdd583334d75602cc9c80ad1cfa4b90a02fd722beaab4daa1e1a2a",
+      "after_payload_sha256": "e676040e70b5b947dadf80d81fb54a14549c01f02485fa1fb469b80e44e6d8de",
+      "applicability": {
+        "card_id": "SPEC-two-policies-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "V-two-policies-discriminating-controls",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "d6a5f3b69fb8206ffe58bbeb394fcc06246de9ae1d2f04221f00c33c8dfba9fb",
+      "after_payload_sha256": "9a0212262040fd627b6fb92560a86ede637951d816e23310c10f22a35def9166",
+      "applicability": {
+        "card_id": "V-two-policies-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "REQ-causal-attribution",
+      "before_revision": 1,
+      "after_revision": 1,
+      "before_payload_sha256": "4a7cd60f0cd5d2203a8396298a5746089baa737808f85203e2d2b0db296d58fa",
+      "after_payload_sha256": "4a7cd60f0cd5d2203a8396298a5746089baa737808f85203e2d2b0db296d58fa",
+      "applicability": {
+        "card_id": "REQ-causal-attribution",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "SPEC-causal-attribution-boundary",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "257a1ac99eb0f88c8b518f15b4ff574a7112a2578296406f608c952553750825",
+      "after_payload_sha256": "78474e126ffe89d13db28eb2f50f3f1f6d8c83e3aac8d2a8dbb66ec21c0c66f9",
+      "applicability": {
+        "card_id": "SPEC-causal-attribution-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "V-causal-attribution-discriminating-controls",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "49cd49e8c7ad0b0424ae690cc1753230a8b4039f420e14d67b122551a8c89817",
+      "after_payload_sha256": "c9070fa298a1d2532ceefa1cf4e16dc668b7990317f6be3f4678213427f0a61f",
+      "applicability": {
+        "card_id": "V-causal-attribution-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "REQ-scoped-patch",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "674e9f6e3721dd057e8046bdef0a217ea90802492df32a6df81d43b3897360b4",
+      "after_payload_sha256": "bd0ad2281fa30d19284ffe0e43c828971efa7c14e08a5325dc9db276559f8d3f",
+      "applicability": {
+        "card_id": "REQ-scoped-patch",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "SPEC-scoped-patch-boundary",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "e7dd1eb5ea9c120718662d7b83afd56022afad40696aa9e40e4d5bceb49415c3",
+      "after_payload_sha256": "f68821b9dd41c2f3fba7eab62bcc3f646005bd9d04c01dd6d44df795effd785e",
+      "applicability": {
+        "card_id": "SPEC-scoped-patch-boundary",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "V-scoped-patch-discriminating-controls",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "ab41a9d765d43c45617b0e73b88f284ee6781e76224e2a9e9e284c91f1201545",
+      "after_payload_sha256": "6b816d01ef6b3b22f78dace44d0a4dd70a77d47688bfa609e72daa450b6cefba",
+      "applicability": {
+        "card_id": "V-scoped-patch-discriminating-controls",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "REQ-plugin-transfer",
+      "before_revision": 1,
+      "after_revision": 1,
+      "before_payload_sha256": "239ffed2bfa4b05035b22b5740f02cb6112a8861cc73434b2abc8b534a3d4a34",
+      "after_payload_sha256": "239ffed2bfa4b05035b22b5740f02cb6112a8861cc73434b2abc8b534a3d4a34",
+      "applicability": {
+        "card_id": "REQ-plugin-transfer",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "SPEC-plugin-transfer-boundary",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "cb6c6453a833f3dad34eee85075e0190154fc3f713a4d63be98b3fe6ffdf32f2",
+      "after_payload_sha256": "c3df3e77a5bc195b3496383db216710c4c5713210813e0a861a6cf4cbf137227",
+      "applicability": {
+        "card_id": "SPEC-plugin-transfer-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "V-plugin-transfer-discriminating-controls",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "910fdbb03fad643d65189c9b5cbd2fc9c165afb6131b52cbc0035794e09fdc54",
+      "after_payload_sha256": "39cb008e29af82b20fd13aad60cc4f174edb8dc6e425dbcff6555b7b0094c4f6",
+      "applicability": {
+        "card_id": "V-plugin-transfer-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "REQ-full-lifecycle",
+      "before_revision": 1,
+      "after_revision": 1,
+      "before_payload_sha256": "5c701bddfbdfdd7d8c1f50f972f5d41801309a954dd8e20c0d10d82ee9915d6e",
+      "after_payload_sha256": "5c701bddfbdfdd7d8c1f50f972f5d41801309a954dd8e20c0d10d82ee9915d6e",
+      "applicability": {
+        "card_id": "REQ-full-lifecycle",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "SPEC-full-lifecycle-boundary",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "875b81ecbd3a1b42f97a84718b742cf0f0ca4d3913ba3ba21b5a1ccaaf6e08c9",
+      "after_payload_sha256": "4e64950121437eab74294b7ae778037799ca7abbc1c7d0b68ac5c4422b1f0a42",
+      "applicability": {
+        "card_id": "SPEC-full-lifecycle-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "V-full-lifecycle-discriminating-controls",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "7fa925bccc4d2272f12bb1559451de8f1ce9f95c4038111f8957aaa1ff1e3739",
+      "after_payload_sha256": "e098b99f45fd723d00e8cd920993f708f22322500729c40dcd6cd0c84de379d0",
+      "applicability": {
+        "card_id": "V-full-lifecycle-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "REQ-learning-dataset",
+      "before_revision": 1,
+      "after_revision": 1,
+      "before_payload_sha256": "94edd5539bfda5eca60a5684ae394abf4593043ffb5aafc12763b05f671692f5",
+      "after_payload_sha256": "94edd5539bfda5eca60a5684ae394abf4593043ffb5aafc12763b05f671692f5",
+      "applicability": {
+        "card_id": "REQ-learning-dataset",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "SPEC-learning-dataset-boundary",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "6bbfe08560753a1a69b6eef9484be0f9df83cbc82c81c7acfee9e3daa1f65d25",
+      "after_payload_sha256": "e42aa5dfd7f396e21f2669e34e4d388802a048a2ae7aa75a63c0a678c509aa3f",
+      "applicability": {
+        "card_id": "SPEC-learning-dataset-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "V-learning-dataset-discriminating-controls",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "f5c859c1f64c882df7d2a7ca0d1dcda44a1d41da758518f74fbc57fbdd780205",
+      "after_payload_sha256": "39f70bf824ff7a5bf2825e33393496752d600d824ede561ddc05347b09cdf250",
+      "applicability": {
+        "card_id": "V-learning-dataset-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "REQ-lesson-lineage",
+      "before_revision": 1,
+      "after_revision": 1,
+      "before_payload_sha256": "f8633b3d013eee8aeea35b3df22aca352f147d57cd3826e77d32d6d48d57e0c7",
+      "after_payload_sha256": "f8633b3d013eee8aeea35b3df22aca352f147d57cd3826e77d32d6d48d57e0c7",
+      "applicability": {
+        "card_id": "REQ-lesson-lineage",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "SPEC-lesson-lineage-boundary",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "77fb2787d085ce575cb419705aafc636eb38b55e379ec592a6154dd8bdd4bd13",
+      "after_payload_sha256": "dd0acc3915b254e6fee5ca034011837f6727ced22330873480b2c09cddc01041",
+      "applicability": {
+        "card_id": "SPEC-lesson-lineage-boundary",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "V-lesson-lineage-discriminating-controls",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "17f319e08a36530cdbe08c1be83ecbf980e7b2cb277a7458c020f3ade8cfe72e",
+      "after_payload_sha256": "b7c254f159215ecc51d2df9e2a05beb6e7d53d85ee5a91e841ea4347546983d7",
+      "applicability": {
+        "card_id": "V-lesson-lineage-discriminating-controls",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "C-independent-immutable-verification",
+      "before_revision": 1,
+      "after_revision": 1,
+      "before_payload_sha256": "52cad719dff52483d22dfa9f64aa5600d6cbdb02c52714f9fb47ad95b0bd2d49",
+      "after_payload_sha256": "52cad719dff52483d22dfa9f64aa5600d6cbdb02c52714f9fb47ad95b0bd2d49",
+      "applicability": {
+        "card_id": "C-independent-immutable-verification",
+        "role": "constraint",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "C-actor-scoped-credit-assignment",
+      "before_revision": 1,
+      "after_revision": 1,
+      "before_payload_sha256": "e7758eb3e1a1dc02fff3800ba017fc3bad1405e68a4ebb764f3ee1b4ebe2f930",
+      "after_payload_sha256": "e7758eb3e1a1dc02fff3800ba017fc3bad1405e68a4ebb764f3ee1b4ebe2f930",
+      "applicability": {
+        "card_id": "C-actor-scoped-credit-assignment",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "G-cards-preserve-original-effect-ownership",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "c774c6ba7e2997c43d6038cd2e3ae475f2971bbe0597ed1ed604c834e09cf87d",
+      "after_payload_sha256": "0f0608d38705d0aad2c7efa16232a4e742f025f8c881f298fe41ffe0039fa909",
+      "applicability": {
+        "card_id": "G-cards-preserve-original-effect-ownership",
+        "role": "constraint",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "G-hard-gates-precede-reward",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "b9e46cce494994463f3b78efb2a70fe178e23478de8ddc44ced8549e2341dd5a",
+      "after_payload_sha256": "3d0dfc0513fdf6eacfe8979341a0552634e835aed4e7562af206339d212b5410",
+      "applicability": {
+        "card_id": "G-hard-gates-precede-reward",
+        "role": "constraint",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "T-harness-only-versus-joint-policy-update",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "f1eb1217630959dcecc77dc57fa2032f05482c8216397628f3ea8594e287df47",
+      "after_payload_sha256": "b4fd04115d1b4b06d7cf9802b2606559839e8b4982b4c810fc3017512056b394",
+      "applicability": {
+        "card_id": "T-harness-only-versus-joint-policy-update",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "E-joint-result-does-not-identify-a-component-effect",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "f13526b0023ee3f9ae5174eb6525a438d821c3a5f7641906ed7633a50e376dba",
+      "after_payload_sha256": "3c8d1da978775868950c553fae235bb23df52956b112f05224c3dd78c6d10811",
+      "applicability": {
+        "card_id": "E-joint-result-does-not-identify-a-component-effect",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "Q-choose-the-first-evaluation-population",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "98912d43b882826cce9dd09b552a9e0366c56632fd6b45dac883224b5fad7056",
+      "after_payload_sha256": "46280cd469abc68e191487a5a74cb4ecfe06c6499df296499db8214ac4efff3d",
+      "applicability": {
+        "card_id": "Q-choose-the-first-evaluation-population",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "S-start-at-the-patch-acceptance-boundary",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "1a8ed85ab8c8144be7fd533ed1aa9e1936eb131e58679bb987d17d4c99547603",
+      "after_payload_sha256": "fee1fd15c02ab949fe7e5870d3cbdb0ff76db51be24d0e0b90d4c65d8de26229",
+      "applicability": {
+        "card_id": "S-start-at-the-patch-acceptance-boundary",
+        "role": "strategy",
+        "scope": "Pure parser/refusal",
+        "selected": true
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "R-verify-a-bounded-delivery-sequence",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "3a0e587a73524602c1ea74ab6c9f688fd253128df17e8aa03d02a598b7f5471b",
+      "after_payload_sha256": "65e2af17aea8dbf4cabc7269a831dec41e8d74f6f8231c63b2a89847be89dad5",
+      "applicability": {
+        "card_id": "R-verify-a-bounded-delivery-sequence",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "P-repeat-a-matched-replay-safely",
+      "before_revision": 1,
+      "after_revision": 1,
+      "before_payload_sha256": "41c5b32e1a7e6a836da46f344c4899124ba0618e711863b8ee365117e8a935f9",
+      "after_payload_sha256": "41c5b32e1a7e6a836da46f344c4899124ba0618e711863b8ee365117e8a935f9",
+      "applicability": {
+        "card_id": "P-repeat-a-matched-replay-safely",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "N-factoryweaver-reconciliation-precedes-neoweaver-recompilation",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "f7ca3d9ba5f998aaaaa5f361771761a221b82e88e2c43cc5bc114981a35cf7b0",
+      "after_payload_sha256": "3355795d96afc3a7c5240f811dd046ad05b3adba71945647b2c1f6d1ca17d981",
+      "applicability": {
+        "card_id": "N-factoryweaver-reconciliation-precedes-neoweaver-recompilation",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "D-matching-raw-catalog-pin-still-allowed-duplicate-keys",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "b51c92b5175a712adca28e2eb943e541dff8c4735306f2e43d77ecbc21336117",
+      "after_payload_sha256": "8b5a975a3cbf0679738e089354342c7eaa1ab2b7857dee6e1d42f8fd7e34cbbd",
+      "applicability": {
+        "card_id": "D-matching-raw-catalog-pin-still-allowed-duplicate-keys",
+        "role": "context_only",
+        "scope": "Parent/source context; not a parser exit",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "K-training-data-and-token-provenance-unavailable",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "016fd295eb1a684c0336210a6dba583c45b18f6256ccff8ad97c4b486921ce40",
+      "after_payload_sha256": "88c5dca8687a20c578a4fdc6c0b038d3a2cd695265acc08a0349bd65778fbf2c",
+      "applicability": {
+        "card_id": "K-training-data-and-token-provenance-unavailable",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    },
+    {
+      "card_id": "K-native-codex-transfer-has-no-observed-consumer",
+      "before_revision": 1,
+      "after_revision": 2,
+      "before_payload_sha256": "bbb017131461d07249acb93044dd0b5d3c959a451e2636c751f16939c3bd99f6",
+      "after_payload_sha256": "91548ffb6cfe10a748d7039baf60e89f513d1df9609cb1057070970a5621d8e2",
+      "applicability": {
+        "card_id": "K-native-codex-transfer-has-no-observed-consumer",
+        "role": "deferred",
+        "scope": "Later original learning/replay/native/delivery consumer; not required to complete parser",
+        "selected": false
+      },
+      "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+      "behavior_observation": "NOT_RUN"
+    }
+  ],
+  "positive_negative": "Actual artifact-consistency and original CLI controls are separately summarized in verification.json; all proposed Neo parser/RL/native behavior controls remain NOT_RUN",
+  "metadata_producer": "Host computed revisions, content hashes and captured CLI evidence from actual saved bytes; no runtime identities inferred",
+  "delivery": "Exact updated GitHub heads are recorded by the PR Provider after publication, not invented here"
+}

@@ -1,0 +1,99 @@
+{
+  "protocol": "factoryweaver/requirement-coverage-v1",
+  "subject_id": "neoweaver-learned-harness",
+  "source_id": "SRC-original-neoweaver-spec",
+  "source_dependency_key": "https://github.com/ed3c/NeoWeaver/blob/df41167de1d191d890db9bb94cfcc43663d027f7/docs/specs/learned-harness-coevolution.md",
+  "source_state": "PINNED_SHA256",
+  "clauses": [
+    {
+      "clause_id": "JD-req-01",
+      "locator": "Original specification REQ-01",
+      "summary": "Preserve actual Issue Goal, acceptance, Repo snapshot, training rights and full original REQ inventory",
+      "claim_kind": "SOURCE_PARAPHRASE",
+      "requirement_ids": [
+        "REQ-source-integrity"
+      ]
+    },
+    {
+      "clause_id": "JD-req-02",
+      "locator": "Original specification REQ-02",
+      "summary": "Learning may propose, Execution may sandbox, independent Verification determines acceptance",
+      "claim_kind": "SOURCE_PARAPHRASE",
+      "requirement_ids": [
+        "REQ-three-planes"
+      ]
+    },
+    {
+      "clause_id": "JD-req-03",
+      "locator": "Original specification REQ-03",
+      "summary": "Candidate has bounded mutable surface and patch parser, reproducible task and replay",
+      "claim_kind": "SOURCE_PARAPHRASE",
+      "requirement_ids": [
+        "REQ-trainability"
+      ]
+    },
+    {
+      "clause_id": "JD-req-04",
+      "locator": "Original specification REQ-04",
+      "summary": "Proposer πθ modifies Harness; optional open Solver πφ is trained only with valid own token provenance; Codex φC stays frozen",
+      "claim_kind": "SOURCE_PARAPHRASE",
+      "requirement_ids": [
+        "REQ-two-policies"
+      ]
+    },
+    {
+      "clause_id": "JD-req-05",
+      "locator": "Original specification REQ-05",
+      "summary": "A=H0/φ0, B=H1/φ0, C=H0/φ1, D=H1/φ1; separate frozen Codex H0/H1 transfer",
+      "claim_kind": "SOURCE_PARAPHRASE",
+      "requirement_ids": [
+        "REQ-causal-attribution"
+      ]
+    },
+    {
+      "clause_id": "JD-req-06",
+      "locator": "Original specification REQ-06",
+      "summary": "Only observed failure supports a single causal target; capability probe before generating plugin patch",
+      "claim_kind": "SOURCE_PARAPHRASE",
+      "requirement_ids": [
+        "REQ-scoped-patch"
+      ]
+    },
+    {
+      "clause_id": "JD-req-07",
+      "locator": "Original specification REQ-07",
+      "summary": "Verified artifact maps solely to capability-proven Skill, MCP wrapper, or supported lifecycle interface",
+      "claim_kind": "SOURCE_PARAPHRASE",
+      "requirement_ids": [
+        "REQ-plugin-transfer"
+      ]
+    },
+    {
+      "clause_id": "JD-req-08",
+      "locator": "Original specification REQ-08",
+      "summary": "Soodles Outer chooses only real needed method and admission; Noodle Poteto receives bounded delta and implements freely; Test/Schema results read back; provider owns effects",
+      "claim_kind": "SOURCE_PARAPHRASE",
+      "requirement_ids": [
+        "REQ-full-lifecycle"
+      ]
+    },
+    {
+      "clause_id": "JD-req-09",
+      "locator": "Original specification REQ-09",
+      "summary": "Training/validation/held-out partition; trace refs preserved; producer binds rollout/action/reward; legal rights for code/data/model/trace checked independently",
+      "claim_kind": "SOURCE_PARAPHRASE",
+      "requirement_ids": [
+        "REQ-learning-dataset"
+      ]
+    },
+    {
+      "clause_id": "JD-req-10",
+      "locator": "Original specification REQ-10",
+      "summary": "LESSON.md references observed issue/commit/PR relations and actual rework edges, distinguishing unknown from observed",
+      "claim_kind": "SOURCE_PARAPHRASE",
+      "requirement_ids": [
+        "REQ-lesson-lineage"
+      ]
+    }
+  ]
+}

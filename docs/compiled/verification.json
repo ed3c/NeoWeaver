@@ -1,0 +1,310 @@
+{
+  "prior_compiled_revision": "ae739ac4514ab7fa23e4c2688d3dae600f972e98",
+  "original_requirements": 10,
+  "cards": 44,
+  "updated_cards": 34,
+  "selected_cards": 6,
+  "delta_pages": 9,
+  "delta_terminal": "BLOCKED",
+  "delta_remaining_work": [
+    "original_source_owner_readback_required",
+    "noncard_change_requires_reconciliation"
+  ],
+  "delta_baseline": "Actual prior PROPOSED specification; no native Registry acceptance inferred",
+  "controls": [
+    {
+      "control": "doctor",
+      "exit": 0,
+      "stdout_sha256": "9bc94ec66617360b31e0410046b8c9a1baaeaee6d14779fef6f88efd0a9deec1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "artifact-consistency",
+      "exit": 0,
+      "stdout_sha256": "546d89cf7aed2a6e58e0a72a7e7d54cf0aae22b74217351ee2e924264c5c4432",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "v1-record",
+      "exit": 0,
+      "stdout_sha256": "8cc574dc1033ff45090a762acd323419c98935dc5d8fe5c99977b3973fe27aa6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "semantic-shape",
+      "exit": 0,
+      "stdout_sha256": "be1b2d67c5dbf635918e90d06ca04cd90cc9ddca6dd387eaac67370d50628db2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "original-ten-clauses",
+      "exit": 0,
+      "stdout_sha256": "e87d0664a83ef25a6ab87edf0010e60df5ad564defa967e1f628609972bd1755",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "scoped-gap-project",
+      "exit": 0,
+      "stdout_sha256": "2f16b744ad92e659ee14412bc0fd10aff13a6da9bbc38ff12b42509a709be87a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "noop",
+      "exit": 0,
+      "stdout_sha256": "4b8e5fc45b4330e5d42c7da47f26040f682d5ee181354e2a2e68ef56fb1676fe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "prior-head-delta-page-1",
+      "exit": 0,
+      "stdout_sha256": "4244b3e7cf772b307e242a0960967e51f232144bc1c2101066d546d4d76d5901",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "prior-head-delta-page-2",
+      "exit": 0,
+      "stdout_sha256": "2b1bc4559d16a38ae03ecbb87a34246d800d141bfa66678fd4a60d848768c771",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "prior-head-delta-page-3",
+      "exit": 0,
+      "stdout_sha256": "5ae0994d8464c7018298aa6975b3835abc3149c5c53d91223bbc8e39e2940e7e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "prior-head-delta-page-4",
+      "exit": 0,
+      "stdout_sha256": "64f86d9d4157bfbc2390fdc3ddfb2b038c94cc2c02fb7c5feaf669428d68fd62",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "prior-head-delta-page-5",
+      "exit": 0,
+      "stdout_sha256": "60bf8542e077a1a6273111bb8356e7845d0741f846e8721e37721bc38e5eff48",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "prior-head-delta-page-6",
+      "exit": 0,
+      "stdout_sha256": "33469e874bb134f5e4b4fb01ea7541786e575dc96000cea67e2faf394a3b4adb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "prior-head-delta-page-7",
+      "exit": 0,
+      "stdout_sha256": "ad47ef53153b8f87d17136f7cad24d4c4ccd709235a06a56b4bbecdd44ebc506",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "prior-head-delta-page-8",
+      "exit": 0,
+      "stdout_sha256": "70b4102695177ef2b8f92ad50149f7b74f855fbe6d76d0aae4d36d2a8024c837",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "prior-head-delta-page-9",
+      "exit": 0,
+      "stdout_sha256": "6753dfa61f2e4e0bfc9229c884885c91aadea996dbf7bd32c74ca78fc420397d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "stale-cursor",
+      "exit": 2,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b73872238c3fcecfb4ff06a775e4038890851ea872f65b98e20b18d0ad73b61c"
+    },
+    {
+      "control": "forged-tested",
+      "exit": 2,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f55189033fbc2f733915d7b29b79094acd0dee055fae6f9c7478645c3486cc45"
+    },
+    {
+      "control": "wrong-v-target",
+      "exit": 2,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a4a1617b19128ca43b0e019157fc7c5e2595d9c695e972555dd49c7d5b2d463a"
+    },
+    {
+      "control": "material-concept-delta",
+      "exit": 0,
+      "stdout_sha256": "fa737366bf57ffb6a0cfa3f31787011ab8d2d7c0d39594354762ab284519f718",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "scope-materialize",
+      "exit": 0,
+      "stdout_sha256": "2b09f712dcc62fdb7e965587ddd8b5275072cc9402c2f0a4be1abcd5df8c078b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "scope-exact-reuse",
+      "exit": 0,
+      "stdout_sha256": "2b09f712dcc62fdb7e965587ddd8b5275072cc9402c2f0a4be1abcd5df8c078b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "scope-conflict",
+      "exit": 2,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "484952c3ed0fca51de262738b8afb6b268dbf4859c16c64c1440c09303f48b71"
+    },
+    {
+      "control": "original-reader",
+      "exit": 0,
+      "stdout_sha256": "da664f16219bc171d5e81fb96a3d16e8bb96add10e0cbe551fccdea9f3469250",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "reader-source-drift",
+      "exit": 2,
+      "stdout_sha256": "b689d114d693e4b8b5d99c534ed8a6dc92b39539a7b9355ab095e82889e0f39d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "neo-consistency-controls",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c2a7e90f3b0a7788d96d8ba71ddc29686f7bd66ec38e062b1661c31da5136022"
+    },
+    {
+      "control": "local-maintain",
+      "exit": 0,
+      "stdout_sha256": "2e5c51b16d9d53985e943903b19d15a99d9a2d30f23fc4a9f59e432f1e230132",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "control": "full-maintain-reader",
+      "exit": 2,
+      "stdout_sha256": "5c8cc1710599f1eae8d1b3e27eb945118d6daec4671000bd43886561c0c3f147",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "specification_cli": {
+    "v1": "valid",
+    "per_type": "SHAPE_VALID_SEMANTICS_UNVERIFIED",
+    "declared_clauses": 10,
+    "source_semantics": "UNVERIFIED"
+  },
+  "reader": {
+    "status": "source_bound_proposal",
+    "next": null,
+    "effects": [],
+    "authorizes_landing": false,
+    "boundary_findings": {
+      "scope": [
+        {
+          "boundary": "goal_and_acceptance_alignment",
+          "state": "UNVERIFIED",
+          "basis": "selection_claims_without_original_issue_readback",
+          "producer": "original Session and Issue Contract owner"
+        },
+        {
+          "boundary": "parent_goal_coverage",
+          "state": "OUTSIDE_SELECTED_SCOPE",
+          "basis": "unselected_requirements_preserved_in_full_record",
+          "producer": "original task owner"
+        }
+      ],
+      "execution": [
+        {
+          "boundary": "original_lifecycle_continuation",
+          "state": "NOT_OBSERVED",
+          "basis": "knowledge_reader_does_not_consume_issue_or_task_review",
+          "producer": "original Soodles Session and Issue Contract/Task Review owner"
+        }
+      ]
+    }
+  },
+  "maintenance": {
+    "local": {
+      "outcome": "clean",
+      "coverage": {
+        "mapped": 24,
+        "cli_verified": 12,
+        "unverified": 0
+      }
+    },
+    "full": {
+      "outcome": "blocked",
+      "coverage": {
+        "mapped": 24,
+        "cli_verified": 12,
+        "unverified": 11
+      },
+      "feature_status": {
+        "knowledge-contract": "cli-verified",
+        "semantic-cards": "cli-verified",
+        "scope-handoff": "cli-verified",
+        "manager-needs": "cli-verified",
+        "typed-links": "cli-verified",
+        "soodles-reader": "cli-verified-native-not-run",
+        "source-fidelity": "verified-unreachable",
+        "goal-scope": "verified-unreachable",
+        "prompt-delta": "verified-unreachable",
+        "pclass-consumer": "verified-unreachable",
+        "outer-admission": "verified-unreachable",
+        "inner-poteto": "verified-unreachable",
+        "test-manager": "verified-unreachable",
+        "schema-feedback": "verified-unreachable",
+        "native-hook": "verified-unreachable",
+        "native-cron": "verified-unreachable",
+        "delivery-closure": "verified-unreachable",
+        "prompt-carriers": "cli-verified",
+        "portable-bundle": "cli-verified",
+        "requirement-coverage": "cli-verified",
+        "factory-profile": "cli-verified",
+        "source-lock": "cli-verified",
+        "semantic-golden": "cli-verified",
+        "blind-packet": "cli-verified"
+      }
+    }
+  },
+  "independent_source_review": {
+    "status": "ACCEPT_SCOPED_SOURCE_REVIEW",
+    "reviewers": [
+      "Codex read-only subagent neo_parser_correction_review",
+      "Codex read-only subagent fw_parser_feedback_review"
+    ],
+    "scope": "All 44 NeoWeaver cards, ten V controls, pure parser/refusal Scope, original requirement fidelity, declared dependencies; FactoryWeaver guidance/verification source changes",
+    "initial_findings": [
+      "T35 unconditional factorial wording",
+      "Stale implements/validated_by explanations after I/O correction",
+      "D42 abbreviated actual technical status",
+      "Compiler control-proposal wording conflicted with fixed V inputs"
+    ],
+    "corrected_and_read_back": true,
+    "proof_ceiling": "SPECIFICATION_SOURCE_CONTENT_ONLY",
+    "native_pclass_feedback": "NOT_RUN"
+  },
+  "parser_implementation": "NOT_RUN",
+  "native_pclass_feedback": "NOT_RUN",
+  "native_outer_inner_managers": "NOT_RUN",
+  "training_and_transfer": "NOT_RUN",
+  "parent_goal_closed": false,
+  "prior_verification": "verification-before-parser-correction.json",
+  "factoryweaver_feedback_candidate": {
+    "head": "660778f7e0602bb84e9f46f49e76a620f880ee21",
+    "guidance_commit": "a90f195e5c40030a6b90464b153e38cac7c719e2",
+    "pull_request": "https://github.com/ed3c/factoryweaver/pull/26",
+    "source_review": "ACCEPT_SCOPED_SOURCE_REVIEW",
+    "native_pclass_feedback": "NOT_RUN"
+  },
+  "additional_actual_controls": {
+    "factoryweaver_full_suite": {
+      "tests": 232,
+      "result": "PASS_LOCAL_CLI_SOURCE_TESTS"
+    },
+    "final_verification_skill_suite": {
+      "tests": 6,
+      "result": "PASS"
+    },
+    "original_reader_positive_and_source_drift_refusal": "OBSERVED_READER_TRANSPORT_ONLY",
+    "pinned_installer_copy": {
+      "package": "skills@1.7.1",
+      "exit": 0,
+      "native_agent_invocation": "NOT_RUN"
+    }
+  }
+}
