@@ -111,6 +111,7 @@ def _candidate(args):
     _exact(args, ("candidate",))
     facts = args["candidate"]
     _source("neoweaver")
+    sys.path.insert(0, str(_source("neoweaver")))
     from neoweaver.learning import TrainingCandidate, inspect_training_candidate
     if type(facts) is not dict or set(facts) != set(TrainingCandidate.__dataclass_fields__):
         raise Refusal("candidate_fields_mismatch")
@@ -123,6 +124,7 @@ def _patch(args):
     if type(args["proposal_json"]) is not str or type(args["fixed_inputs"]) is not dict:
         raise Refusal("invalid_patch_input")
     _source("neoweaver")
+    sys.path.insert(0, str(_source("neoweaver")))
     from neoweaver.patches import DiagnosticRefusal, parse_proposal
     outcome = parse_proposal(args["proposal_json"].encode("utf-8"), args["fixed_inputs"])
     if isinstance(outcome, DiagnosticRefusal):
