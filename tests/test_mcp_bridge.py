@@ -142,9 +142,9 @@ class OriginalOwnerMcpTests(unittest.TestCase):
                 self.assertTrue(ok["eof"])
                 self.assertFalse(ok["authorizes_effects"])
                 sliced = bridge._evidence({**args, "offset": 0,
-                                          "max_bytes": len("one\\ntwo\\n".encode("utf-8")) + 1})
-                self.assertEqual(sliced["text"], "one\\ntwo\\n")
-                self.assertEqual(sliced["next_offset"], len("one\\ntwo\\n".encode("utf-8")))
+                                          "max_bytes": len("one\ntwo\n".encode("utf-8")) + 1})
+                self.assertEqual(sliced["text"], "one\ntwo\n")
+                self.assertEqual(sliced["next_offset"], len("one\ntwo\n".encode("utf-8")))
                 self.assertFalse(sliced["eof"])
                 with self.assertRaisesRegex(bridge.Refusal, "not_utf8_aligned_recall"):
                     bridge._evidence({**args, "offset": len("one\ntwo\n".encode()) + 1,
