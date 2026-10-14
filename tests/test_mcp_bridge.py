@@ -34,6 +34,18 @@ class OriginalOwnerMcpTests(unittest.TestCase):
         with self.assertRaises(bridge.Refusal):
             bridge._dispatch({"jsonrpc": "2.0", "id": 2, "method": "tools/call",
                               "params": {"name": "arbitrary_shell", "arguments": {}}})
+        # MCP 2025-06-18 permits omitted arguments and client _meta.
+        with patch.object(bridge, "_capabilities", return_value={"mode": "READ_ONLY"}):
+            old_handler = bridge.TOOLS["bridge_capabilities"]
+            bridge.TOOLS["bridge_capabilities"] = (old_handler[0], old_handler[1],
+                                                   bridge._capabilities)
+            try:
+                call = bridge._dispatch({"jsonrpc": "2.0", "id": 3, "method": "tools/call",
+                                         "params": {"name": "bridge_capabilities",
+                                                    "_meta": {"progressToken": 3}}})
+                self.assertEqual(json.loads(call["content"][0]["text"])["mode"], "READ_ONLY")
+            finally:
+                bridge.TOOLS["bridge_capabilities"] = old_handler
 
     def test_unconfigured_and_wrong_head_fail_closed(self):
         with patch.dict(os.environ, {}, clear=True):
@@ -129,6 +141,11 @@ class OriginalOwnerMcpTests(unittest.TestCase):
                 self.assertEqual(ok["text"], payload.decode())
                 self.assertTrue(ok["eof"])
                 self.assertFalse(ok["authorizes_effects"])
+                sliced = bridge._evidence({**args, "offset": 0,
+                                          "max_bytes": len("one\\ntwo\\n".encode("utf-8")) + 1})
+                self.assertEqual(sliced["text"], "one\\ntwo\\n")
+                self.assertEqual(sliced["next_offset"], len("one\\ntwo\\n".encode("utf-8")))
+                self.assertFalse(sliced["eof"])
                 with self.assertRaisesRegex(bridge.Refusal, "not_utf8_aligned_recall"):
                     bridge._evidence({**args, "offset": len("one\ntwo\n".encode()) + 1,
                                       "max_bytes": 1})
