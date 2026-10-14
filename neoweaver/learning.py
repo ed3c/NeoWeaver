@@ -1,129 +1,95 @@
-"""A6: pure eligibility screening on declarations from original evidence owners.
+"""A6: one direct, non-authorizing training decision screen.
 
-No model invocation, gradient update, rights adjudication or reward inference.
-A matching declaration is only a candidate for independent source verification.
+Consume supplied task/evaluation facts, not FileRefs or reconstructed Provider
+identities. A claimed PASS is NOT an independently observed training receipt.
+No model invocation, training update, rights adjudication, or provider effects.
 """
 from dataclasses import dataclass
-
-from .patches import OwnerRef
-
-
-@dataclass(frozen=True, slots=True)
-class GenerationEvidence:
-    actor: str  # proposer / open_solver / frozen_codex
-    policy_ref: OwnerRef | None
-    observation_ref: OwnerRef | None
-    action_ref: OwnerRef | None
-    generation_ref: OwnerRef | None
-    token_ref: OwnerRef | None
-
-
-@dataclass(frozen=True, slots=True)
-class EvaluationEvidence:
-    observation_ref: OwnerRef | None
-    action_ref: OwnerRef | None
-    rollout_ref: OwnerRef | None
-    replay_ref: OwnerRef | None
-    verifier_ref: OwnerRef | None
-    oracle_ref: OwnerRef | None
-    reward_ref: OwnerRef | None
-    acceptance: str  # pass / fail / unknown
-    protected_regressions: str  # pass / fail / unknown
-    effect_status: str  # none_observed / unknown
 
 
 @dataclass(frozen=True, slots=True)
 class TrainingCandidate:
-    generation: GenerationEvidence
-    evaluation: EvaluationEvidence
-    partition: str  # train / validation / held_out / unknown
-    rights: str  # allowed / denied / unknown
-    method: str  # sft / policy_gradient
-    rights_ref: OwnerRef | None  # actual Dataset/Rights Owner evidence
-    partition_ref: OwnerRef | None  # actual Dataset split provenance
+    actor: str                  # proposer / open_solver / frozen_codex
+    method: str                 # sft / policy_gradient
+    partition: str              # train / validation / held_out / unknown
+    rights: str                 # allowed / denied / unknown
+    acceptance: str             # pass / fail / unknown
+    protected_regressions: str  # pass / fail / unknown
+    effect_status: str          # none_observed / unknown
+    lineage: str                # matched / mismatched / unknown
+    token_provenance: str       # available / missing / unknown
+    replay: str                 # observed / failed / unknown
+    verifier: str               # independent / self / unknown
+    reward: str                 # observed / unknown
 
 
 @dataclass(frozen=True, slots=True)
 class EligibilityInspection:
     status: str  # REFUSED / BLOCKED / INCONCLUSIVE / STRUCTURALLY_ELIGIBLE
     reasons: tuple[str, ...]
-    evidence_ceiling: str = "DECLARED_EVIDENCE_RELATIONS_ONLY"
+    evidence_ceiling: str = "SUPPLIED_FACTS_ONLY"
     eligible_for_training: bool = False
     authorizes_landing: bool = False
 
 
-def _ref_ok(value):
-    return (type(value) is OwnerRef and type(value.producer) is str
-            and bool(value.producer.strip()) and type(value.reference) is str
-            and bool(value.reference.strip()))
+_ALLOWED = {
+    "actor": ("proposer", "open_solver", "frozen_codex"),
+    "method": ("sft", "policy_gradient"),
+    "partition": ("train", "validation", "held_out", "unknown"),
+    "rights": ("allowed", "denied", "unknown"),
+    "acceptance": ("pass", "fail", "unknown"),
+    "protected_regressions": ("pass", "fail", "unknown"),
+    "effect_status": ("none_observed", "unknown"),
+    "lineage": ("matched", "mismatched", "unknown"),
+    "token_provenance": ("available", "missing", "unknown"),
+    "replay": ("observed", "failed", "unknown"),
+    "verifier": ("independent", "self", "unknown"),
+    "reward": ("observed", "unknown"),
+}
 
 
 def inspect_training_candidate(candidate: TrainingCandidate) -> EligibilityInspection:
-    """Screen declaration shape, hard refusals and absent source evidence.
+    """Return one typed decision; never request a separate FileRef/auth route.
 
-    The original Dataset/Verifier/Trainer Owners must prove actual lineage,
-    immutable oracle, rights and execution before any TrainingBatch update.
+    Actual Dataset/Runner/Verifier/Trainer owners remain responsible for source
+    facts and effects when a real training run exists. The screening output
+    never grants permission or implies that its supplied facts were verified.
     """
-    if type(candidate) is not TrainingCandidate or (type(candidate.generation) is not GenerationEvidence
-                                                    or type(candidate.evaluation) is not EvaluationEvidence):
+    if type(candidate) is not TrainingCandidate:
         return EligibilityInspection("REFUSED", ("invalid_candidate_type",))
-    generation, evaluation = candidate.generation, candidate.evaluation
-    allowed = {
-        "actor": (generation.actor, ("proposer", "open_solver", "frozen_codex")),
-        "method": (candidate.method, ("sft", "policy_gradient")),
-        "partition": (candidate.partition, ("train", "validation", "held_out", "unknown")),
-        "rights": (candidate.rights, ("allowed", "denied", "unknown")),
-        "acceptance": (evaluation.acceptance, ("pass", "fail", "unknown")),
-        "protected_regressions": (evaluation.protected_regressions, ("pass", "fail", "unknown")),
-        "effect_status": (evaluation.effect_status, ("none_observed", "unknown")),
-    }
-    for field, (value, possibilities) in allowed.items():
-        if type(value) is not str or value not in possibilities:
+    for field, choices in _ALLOWED.items():
+        value = getattr(candidate, field)
+        if type(value) is not str or value not in choices:
             return EligibilityInspection("REFUSED", ("invalid_" + field,))
-    refs = {"candidate.rights_ref": candidate.rights_ref,
-            "candidate.partition_ref": candidate.partition_ref}
-    refs.update({"generation." + name: getattr(generation, name) for name in
-                 ("policy_ref", "observation_ref", "action_ref", "generation_ref", "token_ref")})
-    refs.update({"evaluation." + name: getattr(evaluation, name) for name in
-                 ("observation_ref", "action_ref", "rollout_ref", "replay_ref", "verifier_ref", "oracle_ref", "reward_ref")})
-    for key, value in refs.items():
-        if value is not None and not _ref_ok(value):
-            return EligibilityInspection("REFUSED", (key + ".invalid_ref",))
+
     blocked = []
-    if generation.actor == "frozen_codex":
+    if candidate.actor == "frozen_codex":
         blocked.append("frozen_codex_not_trainable")
     if candidate.partition in ("validation", "held_out"):
         blocked.append("non_training_partition")
     if candidate.rights == "denied":
         blocked.append("rights_denied")
-    if evaluation.acceptance == "fail":
+    if candidate.acceptance == "fail":
         blocked.append("acceptance_failed")
-    if evaluation.protected_regressions == "fail":
+    if candidate.protected_regressions == "fail":
         blocked.append("protected_regression_failed")
-    if (generation.generation_ref is not None and evaluation.verifier_ref is not None and
-            generation.generation_ref.producer == evaluation.verifier_ref.producer):
+    if candidate.lineage == "mismatched":
+        blocked.append("lineage_mismatch")
+    if candidate.verifier == "self":
         blocked.append("self_reported_verifier")
-    if (generation.observation_ref is not None and evaluation.observation_ref is not None and
-            generation.observation_ref != evaluation.observation_ref):
-        blocked.append("observation_lineage_mismatch")
-    if (generation.action_ref is not None and evaluation.action_ref is not None and
-            generation.action_ref != evaluation.action_ref):
-        blocked.append("action_lineage_mismatch")
+    if candidate.replay == "failed":
+        blocked.append("replay_failed")
     if blocked:
         return EligibilityInspection("BLOCKED", tuple(blocked))
-    missing = [key + ".missing" for key, value in refs.items() if value is None and
-               not (key == "generation.token_ref" and generation.actor == "proposer"
-                    and candidate.method == "sft")]
-    if candidate.partition == "unknown":
-        missing.append("partition_unknown")
-    if candidate.rights == "unknown":
-        missing.append("rights_unknown")
-    if evaluation.acceptance == "unknown":
-        missing.append("acceptance_unknown")
-    if evaluation.protected_regressions == "unknown":
-        missing.append("protected_regressions_unknown")
-    if evaluation.effect_status == "unknown":
-        missing.append("external_effect_unknown")
-    if missing:
-        return EligibilityInspection("INCONCLUSIVE", tuple(missing))
+
+    unknown = []
+    for field in ("partition", "rights", "acceptance", "protected_regressions",
+                  "effect_status", "lineage", "replay", "verifier", "reward"):
+        if getattr(candidate, field) == "unknown":
+            unknown.append(field + "_unknown")
+    if candidate.token_provenance != "available" and (
+            candidate.method == "policy_gradient" or candidate.actor == "open_solver"):
+        unknown.append("token_provenance_unavailable")
+    if unknown:
+        return EligibilityInspection("INCONCLUSIVE", tuple(unknown))
     return EligibilityInspection("STRUCTURALLY_ELIGIBLE", ())

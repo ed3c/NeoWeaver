@@ -42,6 +42,8 @@ Native P-class compliance 仍需 fresh consumer 與原 schema feedback。
 
 Learning、Execution、Verification 職責分開。Candidate 不改 immutable oracle、原 authorization、protected regressions 或 held-out partition。Frozen Codex transcript 不算 Proposer／open Solver 的 generation tokens。Unknown effect 先原 Owner readback，不重送 write 或創造 replacement authorization。
 
+A6 Training Eligibility 直接消費現有的 typed task/evaluation facts，使用 `neoweaver.learning.inspect_training_candidate` 做確定性 Hard Gate／Unknown 判斷。**不要**再建立 Provider Authenticity、A6 FileRef／SHA-256／`OwnerRef` 重覆比對、Evidence Directory、證據驗證狀態機或自行授權的「observed」receipt。原 Producer 的真實 Runtime Observation 才能支持未來 Training；沒有資料就保留 INCONCLUSIVE，且 `eligible_for_training=false`。這項精簡僅針對 A6 未被消費的證據包裝，不移除 Patch Parser／Replay 真正使用的必要 Source Binding。
+
 ## 驗證與回饋
 
 Test Manager 一次選必要 discriminating controls。Schema Manager 消費實際 feedback，原 next 的 consumption 需另有證據。Native Hook 只用原 actual event 與已 trusted definition；Cron 只用既有授權 heartbeat。Provider delivery、Writer Completed、scoped tests、P-class behavior 和 whole Goal 各自驗收。

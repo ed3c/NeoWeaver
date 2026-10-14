@@ -84,6 +84,25 @@ SFT warm start、policy-gradient／group-relative 更新都只是可選設計。
 
 Hard gates 先於 soft outcome/cost。任何 acceptance、權限、privacy、protected regression 或資料 split gate 不成立，候選不可被接受。沒有 gate observation 時使用 INCONCLUSIVE，不能用低成本 bonus 抵銷。通過 hard gates 之後，原 measurement producer 才可提供同 population 下的 outcome/cost components；Session 不能自己補 scalar reward 或成功比例。
 
+## A6 實作精簡：不建立 Provider Authenticity／FileRef 管線
+
+A6.0 的唯一現行 Source API 是 `inspect_training_candidate(TrainingCandidate)`，
+直接使用 Session／原 Runtime 已知的 task/evaluation facts（actor、method、
+partition、rights、acceptance、protected regressions、effect status、
+lineage、token provenance、replay、verifier、reward）。
+此前 A6.1–A6.3 額外製造的 FileRef、OwnerRef、SHA-256 與目錄型 Evidence Readback
+既沒有原生 Producer 的可信真相，也沒有 Trainer Consumer，已刪除。
+不可為了讓機械檢查 PASS 再要求 Agent 猜出或輸入這些資料。
+
+這是 **實作資料流精簡**，不是放棄原十項父需求或授予新的訓練權限。
+原完整規格中 TaskSnapshot／Rollout／TrainingBatch 的來源與證據敘述
+仍是未來真正執行時的正確性責任，不應誤作現行 A6 CLI 的先備驗收。
+Hard Gates 優先：Rights Denied、held-out／validation、acceptance／
+protected regression FAIL、wrong lineage、自簽 Verifier 與 frozen Codex
+均拒絕；未知保留 INCONCLUSIVE。所有結構篩選輸出仍
+`eligible_for_training=false`，真正的 source observations、train/checkpoint
+與 paired effect 必須等 Runtime 實際存在才能驗收。
+
 ## 因果實驗與 held-out transfer
 
 | Arm | Harness | Open Solver | 可回答的問題 |
