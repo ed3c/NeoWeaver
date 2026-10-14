@@ -8,7 +8,7 @@ import unittest
 from unittest.mock import patch
 
 from neoweaver.execution import ContainerCapture, ContainerTask, inspect_container_capture
-from neoweaver.snapshot import StagedSourcePair
+from neoweaver.snapshot import SourceFile, SourceManifest, StagedSource, StagedSourcePair
 import hashlib
 
 
@@ -20,7 +20,7 @@ class ProviderReadbackTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
-        self.root = Path(self.tmp.name)
+        self.root = Path(self.tmp.name).resolve()
         self.capture = ContainerCapture("baseline", "nw-replay-test", "EXIT_RECORDED", 0,
                                         self.root / "out", self.root / "err", "a" * 64, "b" * 64,
                                         0.1, "c" * 64, ID)
@@ -31,12 +31,16 @@ class ProviderReadbackTests(unittest.TestCase):
         self.alternate.mkdir()
         for folder in (self.source, self.alternate):
             (folder / "file.txt").write_bytes(b"pinned")
-        self.pair = StagedSourcePair("a" * 40, "b" * 40, "c" * 64,
-                                     (("file.txt", hashlib.sha256(b"pinned").hexdigest()),),
-                                     self.source, self.alternate)
+        checksum = hashlib.sha256(b"pinned").hexdigest()
+        manifest = SourceManifest((SourceFile("file.txt", checksum, False),),
+                                  hashlib.sha256(b"file.txt\0-" + bytes.fromhex(checksum)).hexdigest())
+        self.pair = StagedSourcePair("a" * 40, "b" * 40,
+                                     StagedSource(self.source, manifest),
+                                     StagedSource(self.alternate, manifest))
         (self.root / "container.cid").write_text(ID + "\n")
         self.capture = replace(self.capture,
                                stdout_path=self.root / "stdout.bin", stderr_path=self.root / "stderr.bin",
+                               source_manifest_sha256=manifest.sha256,
                                stdout_sha256=hashlib.sha256(b"").hexdigest(),
                                stderr_sha256=hashlib.sha256(b"").hexdigest())
         self.capture.stdout_path.write_bytes(b"")
@@ -126,7 +130,8 @@ class ProviderReadbackTests(unittest.TestCase):
         spy.assert_not_called()
 
     def test_original_source_and_cid_cannot_be_swapped(self):
-        changed = replace(self.pair, source_manifest_sha256="f" * 64)
+        changed = replace(self.pair, baseline=replace(self.pair.baseline,
+                          manifest=replace(self.pair.baseline.manifest, sha256="f" * 64)))
         self.assertEqual(inspect_container_capture(self.capture, self.task, changed).status, "REFUSED")
         (self.root / "container.cid").write_text("f" * 64)
         self.assertEqual(inspect_container_capture(self.capture, self.task, self.pair).status, "REFUSED")
