@@ -111,3 +111,56 @@ Docker daemon 的唯讀探測有回應，但本 admission 沒有提供原 Owner 
 目前沒有本次 PR、merge 或 closure 的 Provider receipt。原 Issue-atom、Test、Schema
 與 landing Owners 繼續各自交付與驗收；Writer outcome 不等於這些 receipts。
 Native Replay、RL training、frozen Codex transfer 與 whole Goal 繼續 OPEN。
+
+
+## Issue #16：完成事件與獨立 Oracle 接到原 pair API
+
+[NeoWeaver #16](https://github.com/ed3c/NeoWeaver/issues/16) 的原 source 是
+`c071f590905a4cd1d43ce983e2be33445fe22c63`。第一個不成立的前提是
+「exit 0、第一則 agent_message 或一個輸出檔足以證明任務完成」。歷史 raw
+只含 commentary 與未完成 turn；歷史 resumed trace 另有完整 turn。兩份來源
+分別讀取，沒有拼接或當成這次 live proof。
+
+本次 `run_native_arm` 保存真正的 launch、process 與 raw bytes，
+`inspect_native_pair` 以原先固定的 parser-response Oracle 判斷後，呼叫原
+`inspect_pair` 一次。正例需要 completed turn、最後 agent message 和輸出檔
+一致；反例包括 commentary、file-only、turn.failed、malformed events 及
+有效但錯誤的 literal condition。每臂保留自己的 task/model/schema/budget/source，
+不同 launch 不會被 inspection 時的共用 references 蓋掉。
+
+實作 edge 是原 source → Issue #16 → `4d74764` native boundary →
+`4ddf98e` 原 pair 接線 → `1910383` live driver。獨立 integration/security
+review 在初始 committed diff 重現三項缺陷。`item.started` 尚未完成卻有
+`turn.completed` 時被接受；含 `..` 的 capture path 繞過 source overlap；
+escaped lone surrogate 使 decoder 拋例外。`55c3bd3` 追蹤 item lifecycle，
+`e8d35ee` 在 launch 前 canonicalize path 並拒絕 malformed message encoding。
+對應正反 fixtures 均在修正後通過。這些是實際 review/correction edges，
+沒有另造 rework Issue 或 Provider receipt。
+
+實際 validation-only H0/H0 使用 clean source commit
+`e8d35ee5a3d3744c9e7b795f4ae7b9d589ee23fd`。兩個 unchanged source arms
+各經新 product API 啟動 installed Codex 一次，使用相同 `gpt-6-astra`、
+`high` effort、240 秒 deadline、task/schema/population 和 Provider-default
+seed policy。相同政策不證明 realized seed 相同。兩個實際 thread 不同，
+process exit 均為 0，source 前後未 drift，最後訊息與輸出檔一致，
+獨立三例 Oracle 結果均為 `MATCH_SCOPED`。真實 raw NDJSON、stderr、
+launch/process/source records 與固定 Oracle 保存在 repository 外的私有 root。
+
+原 pair 結果是 `INCONCLUSIVE`。本次沒有原 opaque snapshot/task/environment/
+solver/seed-policy/budget/oracle/harness refs，API 保留逐臂具名缺口，沒有從
+路徑或字串補造原 Owner references。真實選擇與來源仍保存在各 capture；
+`launch_mismatches` 為空。`sandbox_ref=None`、`effect_status=unknown` 和
+`isolation_verified=false` 保持不變。沒有把 CLI read-only request 當成
+Host isolation，也沒有把兩個 scoped matches 當成 paired gain。
+
+這是 source-assisted validation，public parser source/tests 可讀；沒有
+held-out、H1、learning update 或 learned artifact transfer。Native source
+commit 與其後的文件／manifest commits 分開記錄，不能把後來 HEAD 冒稱為
+先前 launch source。完整十項 REQ、44 Cards 與歷史 NOT_RUN bytes 未改寫。
+逐 REQ 未完成證據見 [native contract](docs/native-replay-contract.md)。
+
+Writer-side native subagents 使用 Waza check 與原 Soodles review-writing 作
+唯讀 integration/security 審查；不同模型家族執行為 NOT_RUN。最終 exact-head
+review、原 Test/Schema、matching-head CI、publication/landing 各有自己的
+readback，不能由這段 source 紀錄代替。當前沒有本 Issue 的 PR/merge/closure
+receipt，原 Provider 接續交付。Parent Goal 仍 OPEN。

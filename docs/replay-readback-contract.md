@@ -19,7 +19,7 @@ actual sandbox isolation, complete traces, or an immutable oracle.
 * `REFUSED`: wrong arm order, malformed reference/type or internally
   inconsistent terminal observation.
 * `INCONCLUSIVE`: any mismatch in snapshot, task, environment, Solver, seed
-  policy, budget or oracle; missing/reused run, sandbox or capture references;
+  policy, budget or oracle; missing original fixed conditions or harness references; missing/reused run, sandbox or capture references;
   missing terminal outcome or unknown external effect. An unknown is never
   converted into failure, zero cost or safe retry.
 * `STRUCTURALLY_COMPARABLE`: two claimed terminal observations with matching
@@ -48,3 +48,18 @@ regression gate and independently evaluated matched observations. The readback
 gate does not replace any of these. A6 training rights/token lineage and A7
 frozen Codex transfer remain separate. The original ten requirements and
 historical compilation `NOT_RUN` bytes are unchanged.
+
+## Native capture consumer
+
+`neoweaver.native.inspect_native_pair` now supplies readbacks from actual native
+captures and independent fixed parser decisions. Each arm retains its own launch
+selection. The adapter reports actual launch/source differences before the original
+pair verdict can be interpreted, and passes unknown effects and missing sandbox
+references through unchanged. Missing original fixed references now produce named
+INCONCLUSIVE gaps; malformed nonempty references still refuse.
+
+This implementation supplies the raw-capture and task-decision connection described
+in the [native contract](native-replay-contract.md). It does not close the remaining
+isolation, protected regression, environment, repeatability or effect proofs above.
+The live H0/H0 observation is recorded separately in LESSON; the original A5 fixture
+controls remain declared-readback evidence.

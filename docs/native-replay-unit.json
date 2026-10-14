@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "issue": {
+    "repository": "ed3c/NeoWeaver",
+    "number": 16
+  },
+  "instructions": [
+    {
+      "path": "README.md",
+      "baseline_sha256": "efc31277ddf9ca7fc6c9c5900be2da587c2e2bb9b3f2da803e08bf78b56abc13",
+      "treatment_sha256": "9c8907c13070ee8fb2187326783432ddf1434cd0b30b02ee34ae9690fe2f42a0"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "LESSON.md",
+      "role": "Observed premise, review corrections and actual native H0/H0 evidence limits",
+      "sha256": "ea29cd942908de6ff1021062e24add2a73c223b0547cd29f6b29c4d42c592a8e"
+    },
+    {
+      "path": "docs/native-replay-contract.md",
+      "role": "Native capture, independent Oracle and per-REQ proof boundaries",
+      "sha256": "f6e2498b1c7b07b782bac2dfa5a8df09f328f503f9571d78983aaec4a3d2e5d1"
+    },
+    {
+      "path": "docs/replay-readback-contract.md",
+      "role": "Original pair integration and absent-condition behavior",
+      "sha256": "a39b60bdc58159dc0886b40a7761d5eb078792ced18dc5a1c1cbd93aa36d6dcf"
+    },
+    {
+      "path": "neoweaver/native.py",
+      "role": "Native experiment boundary and fixed-decision verification",
+      "sha256": "3212f6efb670be93ffc456d2b39648b4b934d26d7f4517de4134d4b17e924be6"
+    },
+    {
+      "path": "tests/test_native.py",
+      "role": "Literal protocol and capture positive/negative controls",
+      "sha256": "4a4b7dc55a3ba1dffd457c936a2330e255988f35dfbb0eede1f11385a2eebdb7"
+    }
+  ],
+  "owner": {
+    "name": "Original Soodles Issue admission",
+    "tool": "issue_admission.validate_delivery_paths",
+    "authorization": "ed3c/NeoWeaver#16"
+  },
+  "authorizes_landing": false
+}
