@@ -6,12 +6,14 @@ Status: **source implementation candidate**, not a verified Codex plugin install
 
 Natural-language instructions such as "use the selected Test Manager", "do not guess the next owner", and "read only the required evidence" can trigger wasted model choices. Those mechanically answerable steps should use the original registered Producer and a tool call. **The tool is not a second producer or workflow state machine.** Do not move truly semantic Scope choice, authorization, provider effects, Native Hook approval or acceptance into a model-shaped wrapper.
 
-The first implementation lives at `plugins/codex-mcp/` and implements an **MCP stdio server** without additional Python dependencies. Its only six tools are:
+The first implementation lives at `plugins/codex-mcp/` and implements an **MCP stdio server** without additional Python dependencies. Its eight bounded read-only tools are:
 
 | Tool | Original producer | Guaranteed narrow scope |
 | --- | --- | --- |
 | `bridge_capabilities` | Git source readback | Reports configured exact HEADs; no claim of live Codex capability |
 | `soodles_test_plan` | `./soodles test --base SHA --plan` | One fixed, read-only Test Manager selection; no `--full`, no tests run |
+| `soodles_cli_contracts` | `./soodles schema cli-contracts` | Original CLI inventory and control gaps, not native branch proof |
+| `soodles_knowledge_inspect` | `./soodles knowledge inspect BUNDLE_SHA_REF` | Forwards existing Host-bound Bundle FileRef; refusal remains refusal, `next=null` grants no effects |
 | `factoryweaver_project` | `scripts/factoryweaver.py` | `validate` / `project` / `route` on an existing repo-scoped knowledge record; no effect |
 | `neoweaver_training_screen` | `neoweaver.learning.inspect_training_candidate` | Existing A6 eligibility from **supplied** facts only, never training authorization |
 | `neoweaver_patch_parse` | `neoweaver.patches.parse_proposal` | Existing proposal parser with **supplied** fixed inputs only, never a committed patch |
@@ -39,6 +41,14 @@ codex mcp add neoweaver-owner-tools \
 The placeholders are **real values to be read from the corresponding original owner**, not strings to paste literally or model-computed digests. To avoid leaking private repositories, configuration contains no credentials. If a repo is not connected, omit its environment bindings; its tools refuse and the others remain available.
 
 **Portable Codex plugin:** `plugins/codex-mcp/plugin.json`, `mcp.json` and `skills/owner-tools/SKILL.md` declare the same local stdio server. The portable `mcp.json` uses `${PLUGIN_ROOT}/server.py`; it does **not** bundle the three original repositories. Their explicit source roots and pinning remain necessary. Plugin installation and user trust must be separately observed. See official [OpenAI plugins docs](https://developers.openai.com/plugins/build/plugins) and [Agent Plugins stdio MCP spec](https://agent-plugins.org/specification). Do not claim this package is submitted to the public directory or automatically deploys local scripts.
+
+## Actual CLI Tool Call state and error mapping
+
+An installed Codex MCP `tools/call` names one tool with a typed, closed argument shape. It never asks the model to construct a Shell command or choose a new CLI. `soodles_cli_contracts({})` delegates unchanged to the existing Schema Manager CLI. `soodles_knowledge_inspect({bundle_ref})` accepts only the **original Host-issued** absolute path + SHA-256 inside the configured evidence root, passes that pin unchanged to the original Soodles Reader, and returns its `next/effects/refusal` without alteration. The bridge does **not** hash arbitrary model-chosen text to synthesize a Source Ref.
+
+A nonzero original CLI exit produces `status=OWNER_REFUSAL` and MCP `isError=true`. An original typed `refused/invalid` status is also an MCP error even if the command exited zero. Status `needs_scope` is a named non-terminal plan condition, **not** a PASS or permission to fall back to the full suite. A successful `tools/call` means only the read-only inspection completed; it does not upgrade source semantics, effect permission, Native Agent coverage or PR landing.
+
+These are mechanically constrained read-only calls. `edit_and_verify`, reducer, ObservationPack, and Online Context Compact are **not** installed by this MCP. Codex native hooks require independent supported capability/trust/event evidence. The native frozen Codex vs installed bridge H0/H1 is still `NOT_RUN` until the actual installed Host invokes the tool and the original Owner result is captured.
 
 ## Important non-equivalences
 
