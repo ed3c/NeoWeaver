@@ -194,8 +194,12 @@ def _evidence(args):
         raise Refusal("original_evidence_unavailable") from None
     try:
         value = chunk.decode("utf-8", errors="strict")
-    except UnicodeDecodeError:
-        raise Refusal("not_utf8_aligned_recall") from None
+    except UnicodeDecodeError as error:
+        if error.reason != "unexpected end of data" or error.start == 0:
+            raise Refusal("not_utf8_aligned_recall") from None
+        # Cut a partial trailing code point; next_offset remains a valid UTF-8 boundary.
+        chunk = chunk[:error.start]
+        value = chunk.decode("utf-8", errors="strict")
     return {"status": "SCOPED_READ", "offset": offset, "next_offset": offset + len(chunk),
             "eof": offset + len(chunk) == total, "total_bytes": total, "text": value,
             "evidence_ceiling": "ORIGINAL_FILE_REF_ONLY", "authorizes_effects": False}
@@ -261,13 +265,19 @@ def _dispatch(message):
     if method == "ping":
         return {}
     if method == "tools/list":
-        return {"tools": [{"name": name, "description": desc, "inputSchema": schema}
+        return {"tools": [{"name": name, "description": desc, "inputSchema": schema,
+                           "annotations": {"readOnlyHint": True, "destructiveHint": False}}
                           for name, (desc, schema, _) in TOOLS.items()]}
     if method == "tools/call":
-        p = _exact(message.get("params"), ("name", "arguments"))
-        if p["name"] not in TOOLS:
+        p = message.get("params")
+        if type(p) is not dict or not set(p).issubset({"name", "arguments", "_meta"}):
+            raise Refusal("invalid_tool_call")
+        if p.get("name") not in TOOLS:
             raise Refusal("unknown_tool")
-        result = TOOLS[p["name"]][2](p["arguments"])
+        args = p.get("arguments", {})
+        if type(args) is not dict:
+            raise Refusal("invalid_arguments")
+        result = TOOLS[p["name"]][2](args)
         value = json.dumps(result, ensure_ascii=False, separators=(",", ":"))
         return {"content": [{"type": "text", "text": value}], "isError": False}
     raise Refusal("unsupported_rpc_method")
