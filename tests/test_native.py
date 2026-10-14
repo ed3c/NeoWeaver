@@ -161,6 +161,20 @@ class NativeTests(NativeFixture, unittest.TestCase):
         result = self.inspect(self.capture(raw=THREAD + START + started + updated + finished + message(ANSWER) + END))
         self.assertEqual(result.status, 'MATCH_SCOPED')
 
+    def test_lone_unicode_surrogate_is_malformed_instead_of_crashing(self):
+        raw = THREAD + START + b'{"type":"item.completed","item":{"id":"bad","type":"agent_message","text":"\\ud800"}}\n' + END
+        result = self.inspect(self.capture(raw=raw))
+        self.assertEqual((result.status, result.reasons), ('REFUSED', ('malformed_agent_message',)))
+
+    def test_parent_traversal_cannot_place_capture_inside_source(self):
+        sibling = self.root / 'sibling'
+        sibling.mkdir()
+        directory = sibling / '..' / 'baseline' / 'hidden-capture'
+        with patch('neoweaver.native.subprocess.run') as launch, self.assertRaisesRegex(NativeRefusal, 'capture_exists_or_overlaps_source'):
+            run_native_arm(self.pair, 'baseline', self.task, self.conditions, directory)
+        launch.assert_not_called()
+        self.assertFalse((self.pair.baseline.directory / 'hidden-capture').exists())
+
     def test_output_file_must_match_last_message_not_an_earlier_answer(self):
         for raw in (completed(), THREAD + START + message(ANSWER) + COMMENT + END):
             result = self.inspect(self.capture(raw=raw, answer=b'{}'))

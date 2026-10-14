@@ -188,7 +188,7 @@ def _safe_directory(path):
     requested = Path(path).absolute()
     if requested.is_symlink() or any(parent.is_symlink() for parent in requested.parents):
         raise NativeRefusal("symlink_capture_directory")
-    return requested
+    return requested.resolve(strict=False)
 
 
 def run_native_arm(pair: StagedSourcePair, arm: str, task: NativeTask,
@@ -201,7 +201,7 @@ def run_native_arm(pair: StagedSourcePair, arm: str, task: NativeTask,
     if error:
         raise NativeRefusal(error)
     directory = _safe_directory(capture_directory)
-    roots = (pair.baseline.directory, pair.candidate.directory)
+    roots = (pair.baseline.directory.resolve(), pair.candidate.directory.resolve())
     if (directory.exists() or not directory.parent.is_dir()
             or any(directory == root or directory in root.parents or root in directory.parents
                    for root in roots)):
@@ -328,7 +328,10 @@ def _decode(capture):
                 if item["type"] == "agent_message":
                     if type(item.get("text")) is not str:
                         raise NativeRefusal("malformed_agent_message")
-                    last = item["text"].encode()
+                    try:
+                        last = item["text"].encode()
+                    except UnicodeError as error:
+                        raise NativeRefusal("malformed_agent_message") from error
         elif kind in ("turn.completed", "turn.failed"):
             if state != "in_turn":
                 raise NativeRefusal("terminal_outside_turn")
