@@ -2,8 +2,10 @@
 from dataclasses import dataclass
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
+import stat
 from typing import Mapping
 
 from .learning import TrainingCandidate, inspect_training_candidate
@@ -79,6 +81,52 @@ _MAX_RECEIPT_BYTES = 1024 * 1024
 _SHA256 = re.compile(r"[0-9a-f]{64}")
 
 
+def _read_receipt_beneath_root(root: Path, relative: Path):
+    """Hold directory FDs; never re-open a path after a symlink check.
+
+    Source directory protection and original FileRef selection remain Host-owned.
+    File identity is returned to distinguish hardlinked duplicate receipts.
+    """
+    if (not hasattr(os, "O_NOFOLLOW") or not hasattr(os, "O_DIRECTORY")
+            or os.open not in os.supports_dir_fd):
+        raise ValueError("host_lacks_nofollow_dirfd")
+    flags = os.O_RDONLY | os.O_NOFOLLOW | getattr(os, "O_CLOEXEC", 0)
+    opened = []
+    try:
+        directory_fd = os.open(root, flags | os.O_DIRECTORY)
+        opened.append(directory_fd)
+        for component in relative.parts[:-1]:
+            directory_fd = os.open(component, flags | os.O_DIRECTORY,
+                                   dir_fd=directory_fd)
+            opened.append(directory_fd)
+        file_fd = os.open(relative.parts[-1], flags | getattr(os, "O_NONBLOCK", 0),
+                          dir_fd=directory_fd)
+        opened.append(file_fd)
+        before = os.fstat(file_fd)
+        if not stat.S_ISREG(before.st_mode):
+            raise ValueError("not_regular")
+        if before.st_size > _MAX_RECEIPT_BYTES:
+            raise ValueError("source_too_large")
+        chunks, read_size = [], 0
+        while read_size <= _MAX_RECEIPT_BYTES:
+            chunk = os.read(file_fd, min(65536, _MAX_RECEIPT_BYTES + 1 - read_size))
+            if not chunk:
+                break
+            chunks.append(chunk)
+            read_size += len(chunk)
+        if read_size > _MAX_RECEIPT_BYTES:
+            raise ValueError("source_too_large")
+        after = os.fstat(file_fd)
+        if ((before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns) !=
+                (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns)):
+            raise ValueError("source_changed_during_read")
+        return b"".join(chunks), (before.st_dev, before.st_ino)
+    finally:
+        for descriptor in reversed(opened):
+            os.close(descriptor)
+
+
+
 def read_pinned_owner_evidence(candidate: TrainingCandidate, file_refs: Mapping[str, object],
                                *, owner_root: Path) -> EvidenceReadback:
     """Read exact original source bytes before using A6.1's relation screen.
@@ -119,33 +167,18 @@ def read_pinned_owner_evidence(candidate: TrainingCandidate, file_refs: Mapping[
         try:
             source = Path(record["path"])
             if (not source.is_absolute() or ".." in source.parts or
-                    not source.is_relative_to(original_root)):
+                    source == original_root or not source.is_relative_to(original_root)):
                 refused.append(slot + ".outside_owner_root")
                 continue
-            # Refuse symbolic links at any level under the Host-selected root;
-            # never interpret opaque OwnerRef.reference as a path.
+            # The relative name comes only from the previously selected FileRef.
+            # Keep directory file descriptors open through the final read.
+            # O_NOFOLLOW refuses symlink swaps, including at intermediate levels.
             relative = source.relative_to(original_root)
-            cursor = original_root
-            for part in relative.parts:
-                cursor = cursor / part
-                if cursor.is_symlink():
-                    raise ValueError("symlink")
-            resolved = source.resolve(strict=True)
-            if (resolved == original_root or not resolved.is_relative_to(original_root)
-                    or not resolved.is_file()):
-                raise ValueError("not_regular")
-            if resolved in used:
+            raw, identity = _read_receipt_beneath_root(original_root, relative)
+            if identity in used:
                 refused.append(slot + ".reused_source_file")
                 continue
-            used.add(resolved)
-            # Bound the receipt size. The Host must protect its source root
-            # against concurrent unauthorized mutation; digest checks detect
-            # changed bytes but do not authenticate the original producer.
-            with resolved.open("rb") as stream:
-                raw = stream.read(_MAX_RECEIPT_BYTES + 1)
-            if len(raw) > _MAX_RECEIPT_BYTES:
-                refused.append(slot + ".source_too_large")
-                continue
+            used.add(identity)
             if hashlib.sha256(raw).hexdigest() != record["sha256"]:
                 refused.append(slot + ".digest_mismatch")
                 continue
@@ -177,7 +210,15 @@ def read_pinned_owner_evidence(candidate: TrainingCandidate, file_refs: Mapping[
             checked.append(slot)
         except FileNotFoundError:
             missing.append(slot + ".source_missing")
-        except (OSError, UnicodeError, ValueError, TypeError, RecursionError):
+        except ValueError as error:
+            reason = str(error)
+            if reason == "source_too_large":
+                refused.append(slot + ".source_too_large")
+            elif reason == "source_changed_during_read":
+                refused.append(slot + ".source_changed_during_read")
+            else:
+                refused.append(slot + ".unreadable_source")
+        except (OSError, UnicodeError, TypeError, RecursionError):
             refused.append(slot + ".unreadable_source")
     if refused:
         return EvidenceReadback("REFUSED", tuple(refused), tuple(checked))

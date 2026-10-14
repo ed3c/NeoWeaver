@@ -206,5 +206,77 @@ class PinnedOwnerSourceTests(unittest.TestCase):
             self.assertEqual(self.verify().status, "SOURCE_BYTES_MATCH_DECLARATIONS")
 
 
+    def test_replacing_selected_file_with_symlink_just_before_open_refuses(self):
+        """A path-validation/read race cannot follow a newly installed symlink."""
+        from unittest.mock import patch
+        from neoweaver import evidence
+        outside = self.root.parent / "outside.json"
+        outside.write_bytes((self.root / "rights.json").read_bytes())
+        original = evidence._read_receipt_beneath_root
+
+        def swap_before_open(root, relative):
+            if relative.name == "rights.json":
+                selected = self.root / "rights.json"
+                selected.unlink()
+                selected.symlink_to(outside)
+            return original(root, relative)
+
+        with patch.object(evidence, "_read_receipt_beneath_root", side_effect=swap_before_open):
+            result = self.verify()
+        self.assertEqual(result.status, "REFUSED")
+        self.assertIn("rights.unreadable_source", result.reasons)
+        self.assertFalse(result.eligible_for_training)
+
+    def test_intermediate_symlink_directory_refuses_original_ref(self):
+        name = "rights"
+        nested = self.root / "receipts"
+        nested.mkdir()
+        original = self.root / "rights.json"
+        copied = nested / "rights.json"
+        copied.write_bytes(original.read_bytes())
+        selected = dict(self.selected, rights={**self.selected[name], "path": str(copied)})
+        copied.unlink()
+        nested.rmdir()
+        nested.symlink_to(self.root.parent, target_is_directory=True)
+        result = self.verify(selection=selected)
+        self.assertEqual(result.status, "REFUSED")
+        self.assertIn("rights.unreadable_source", result.reasons)
+
+    def test_hardlinked_second_receipt_is_not_two_distinct_producer_files(self):
+        import os
+        original = self.root / "rights.json"
+        duplicate = self.root / "partition.json"
+        duplicate.unlink()
+        os.link(original, duplicate)
+        selected = dict(self.selected, partition={
+            "path": str(duplicate),
+            "sha256": self.selected["rights"]["sha256"],
+        })
+        result = self.verify(selection=selected)
+        self.assertEqual(result.status, "REFUSED")
+        self.assertIn("partition.reused_source_file", result.reasons)
+
+    def test_nonregular_fifo_refuses_without_blocking(self):
+        import os
+        fifo = self.root / "fifo"
+        os.mkfifo(fifo)
+        selected = dict(self.selected, rights={
+            "path": str(fifo),
+            "sha256": self.selected["rights"]["sha256"],
+        })
+        result = self.verify(selection=selected)
+        self.assertEqual(result.status, "REFUSED")
+        self.assertIn("rights.unreadable_source", result.reasons)
+
+    def test_root_directory_cannot_be_used_as_receipt_file(self):
+        selected = dict(self.selected, rights={
+            "path": str(self.root),
+            "sha256": self.selected["rights"]["sha256"],
+        })
+        result = self.verify(selection=selected)
+        self.assertEqual(result.status, "REFUSED")
+        self.assertIn("rights.outside_owner_root", result.reasons)
+
+
 if __name__ == "__main__":
     unittest.main()
