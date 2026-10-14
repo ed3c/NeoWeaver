@@ -318,7 +318,12 @@ def _dispatch(message):
             raise Refusal("invalid_arguments")
         result = TOOLS[p["name"]][2](args)
         value = json.dumps(result, ensure_ascii=False, separators=(",", ":"))
-        return {"content": [{"type": "text", "text": value}], "isError": False}
+        original_refused = (type(result) is dict and (
+            result.get("status") in ("OWNER_REFUSAL", "REFUSED", "BLOCKED") or
+            type(result.get("original_owner_result")) is dict and
+            result["original_owner_result"].get("status") in ("refused", "invalid")))
+        return {"content": [{"type": "text", "text": value}],
+                "isError": bool(original_refused)}
     raise Refusal("unsupported_rpc_method")
 
 
