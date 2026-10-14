@@ -157,6 +157,35 @@ def _plan(args):
     return _call_original(root, [str(root / "soodles"), "test", "--base", base, "--plan"])
 
 
+def _soodles_cli_contracts(args):
+    """Expose the original read-only CLI inventory; never make a second routing choice."""
+    _exact(args, ())
+    root = _source("soodles")
+    return _call_original(root, [str(root / "soodles"), "schema", "cli-contracts"])
+
+
+def _soodles_knowledge_inspect(args):
+    """Pass the original Host-created FileRef unchanged to the original Knowledge Reader."""
+    _exact(args, ("bundle_ref",))
+    ref = _exact(args["bundle_ref"], ("path", "sha256"))
+    root_dir = os.environ.get("HARNESS_EVIDENCE_ROOT")
+    if not root_dir or not Path(root_dir).is_absolute():
+        raise Refusal("evidence_root_not_configured")
+    path, digest = ref["path"], ref["sha256"]
+    if (type(path) is not str or not Path(path).is_absolute() or
+            type(digest) is not str or re.fullmatch("[0-9a-f]{64}", digest) is None):
+        raise Refusal("invalid_original_file_ref")
+    owner_root = Path(root_dir).resolve()
+    absolute = Path(path).resolve()
+    if not absolute.is_relative_to(owner_root) or not absolute.is_file():
+        raise Refusal("evidence_path_outside_root")
+    root = _source("soodles")
+    # The authoritative Soodles knowledge.inspect validates FileRef bytes/source;
+    # this adapter never creates a new FileRef, task, admission or next.
+    return _call_original(root, [str(root / "soodles"), "knowledge", "inspect",
+                                 str(absolute), digest])
+
+
 def _evidence(args):
     _exact(args, ("ref", "offset", "max_bytes"))
     ref = _exact(args["ref"], ("path", "sha256"))
@@ -223,6 +252,16 @@ TOOLS = {
                             {"type": "object", "properties": {}, "additionalProperties": False}, _capabilities),
     "soodles_test_plan": ("Call existing Soodles Test Manager once in --plan mode; never execute tests.",
                           {"type": "object", "properties": {}, "additionalProperties": False}, _plan),
+    "soodles_cli_contracts": ("Call original Soodles schema CLI inventory; no tests, mutation or routing.",
+                              {"type": "object", "properties": {}, "additionalProperties": False},
+                              _soodles_cli_contracts),
+    "soodles_knowledge_inspect": ("Consume original Host-bound Soodles FactoryWeaver Scope FileRef, without creating a new admission.",
+                                  {"type": "object", "properties": {
+                                      "bundle_ref": {"type": "object", "properties": {
+                                          "path": {"type": "string"}, "sha256": {"type": "string"}},
+                                          "required": ["path", "sha256"], "additionalProperties": False}},
+                                   "required": ["bundle_ref"], "additionalProperties": False},
+                                  _soodles_knowledge_inspect),
     "factoryweaver_project": ("Call original read-only FactoryWeaver knowledge CLI on a repository-scoped record.",
                               {"type": "object", "properties": {
                                   "record_path": {"type": "string"},
