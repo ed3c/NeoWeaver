@@ -16,7 +16,7 @@ class SourceSnapshotTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
-        base = Path(self.temp.name)
+        base = Path(self.temp.name).resolve()
         self.root = base / "source"
         self.root.mkdir()
         git(self.root, "init", "-q")
@@ -35,16 +35,17 @@ class SourceSnapshotTests(unittest.TestCase):
         self.assertEqual(result.status, "FILESYSTEM_COPIES_ONLY")
         self.assertEqual(result.commit, self.head)
         self.assertEqual(result.tree, git(self.root, "rev-parse", "HEAD^{tree}"))
-        self.assertNotEqual(result.baseline_dir, result.candidate_dir)
+        self.assertNotEqual(result.baseline.directory, result.candidate.directory)
         self.assertFalse(result.authorizes_execution)
         self.assertFalse(result.authorizes_landing)
-        for name, digest in result.source_files:
-            a = (result.baseline_dir / name).read_bytes()
-            b = (result.candidate_dir / name).read_bytes()
+        for entry in result.baseline.manifest.files:
+            name, digest = entry.path, entry.sha256
+            a = (result.baseline.directory / name).read_bytes()
+            b = (result.candidate.directory / name).read_bytes()
             self.assertEqual(a, b)
             self.assertEqual(hashlib.sha256(a).hexdigest(), digest)
-        (result.candidate_dir / "README.md").write_text("changed\n")
-        self.assertEqual((result.baseline_dir / "README.md").read_text(), "Test source\n")
+        (result.candidate.directory / "README.md").write_text("changed\n")
+        self.assertEqual((result.baseline.directory / "README.md").read_text(), "Test source\n")
         self.assertEqual((self.root / "README.md").read_text(), "Test source\n")
 
     def test_wrong_head_and_invalid_sha_stop_before_destination_write(self):
@@ -91,8 +92,8 @@ class SourceSnapshotTests(unittest.TestCase):
         git(self.root, "commit", "-qm", "attribute")
         updated = git(self.root, "rev-parse", "HEAD")
         pair = materialize_source_pair(self.root, updated, self.target)
-        self.assertIn("README.md", {path for path, _ in pair.source_files})
-        self.assertEqual((pair.candidate_dir / "README.md").read_text(), "Test source\n")
+        self.assertIn("README.md", {entry.path for entry in pair.baseline.manifest.files})
+        self.assertEqual((pair.candidate.directory / "README.md").read_text(), "Test source\n")
 
     def test_export_subst_does_not_mutate_tracked_blobs(self):
         (self.root / ".gitattributes").write_text("README.md export-subst\n")
@@ -101,7 +102,7 @@ class SourceSnapshotTests(unittest.TestCase):
         git(self.root, "commit", "-qm", "attribute")
         updated = git(self.root, "rev-parse", "HEAD")
         pair = materialize_source_pair(self.root, updated, self.target)
-        self.assertEqual((pair.baseline_dir / "README.md").read_text(), "$Format:%H$\n")
+        self.assertEqual((pair.baseline.directory / "README.md").read_text(), "$Format:%H$\n")
 
     def test_nested_git_directory_is_not_accepted_as_source_root(self):
         with self.assertRaises(SnapshotRefusal) as error:

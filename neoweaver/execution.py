@@ -6,7 +6,6 @@ isolation. The original Owner still selects the image, task and oracle.
 from dataclasses import dataclass
 import hashlib
 import json
-import os
 from pathlib import Path
 import re
 import secrets
@@ -14,7 +13,7 @@ import shutil
 import subprocess
 import time
 
-from .snapshot import StagedSourcePair
+from .snapshot import SnapshotRefusal, StagedSourcePair, validate_source_pair
 
 
 class ExecutionRefusal(ValueError):
@@ -55,32 +54,13 @@ _IMAGE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9._:/-]*@sha256:[0-9a-f]{64}$")
 def _check_source(pair, arm):
     if type(pair) is not StagedSourcePair or arm not in ("baseline", "candidate"):
         raise ExecutionRefusal("invalid_source_pair")
-    target = pair.baseline_dir if arm == "baseline" else pair.candidate_dir
-    if target.is_symlink() or not target.is_dir():
-        raise ExecutionRefusal("source_missing_or_symlink")
-    # The original producer must supply distinct stages, not two aliases.
-    if pair.baseline_dir.resolve() == pair.candidate_dir.resolve():
-        raise ExecutionRefusal("reused_source_directory")
-    expected = dict(pair.source_files)
-    if not expected or len(expected) != len(pair.source_files):
-        raise ExecutionRefusal("invalid_source_manifest")
-    observed = {}
-    for directory, dirs, files in os.walk(target, followlinks=False):
-        root = Path(directory)
-        for name in dirs:
-            if (root / name).is_symlink():
-                raise ExecutionRefusal("source_symlink")
-        for name in files:
-            file = root / name
-            if file.is_symlink() or not file.is_file():
-                raise ExecutionRefusal("source_symlink")
-            relative = file.relative_to(target).as_posix()
-            if relative not in expected:
-                raise ExecutionRefusal("unexpected_source_file")
-            observed[relative] = hashlib.sha256(file.read_bytes()).hexdigest()
-    if observed != expected:
-        raise ExecutionRefusal("source_changed")
-    return target.resolve(strict=True)
+    try:
+        validate_source_pair(pair)
+    except SnapshotRefusal as error:
+        raise ExecutionRefusal(error.condition) from error
+    except OSError as error:
+        raise ExecutionRefusal("source_unreadable") from error
+    return getattr(pair, arm).directory.resolve(strict=True)
 
 
 def run_container_arm(pair: StagedSourcePair, arm: str, task: ContainerTask,
@@ -107,7 +87,7 @@ def run_container_arm(pair: StagedSourcePair, arm: str, task: ContainerTask,
             or not requested.parent.is_dir()):
         raise ExecutionRefusal("unsafe_evidence_dir")
     evidence = requested.resolve(strict=False)
-    arm_roots = (pair.baseline_dir.resolve(), pair.candidate_dir.resolve())
+    arm_roots = (pair.baseline.directory.resolve(), pair.candidate.directory.resolve())
     if (evidence.exists() or any(evidence == root or evidence in root.parents
                                  or root in evidence.parents for root in arm_roots)):
         raise ExecutionRefusal("evidence_dir_exists_or_overlaps")
@@ -162,7 +142,7 @@ def run_container_arm(pair: StagedSourcePair, arm: str, task: ContainerTask,
     # Original Owner owns later cleanup; no unknown-effect retries.
     return ContainerCapture(arm, name, status, exit_code,
                             stdout_path, stderr_path, stdout_sha, stderr_sha,
-                            duration, pair.source_manifest_sha256, container_id)
+                            duration, getattr(pair, arm).manifest.sha256, container_id)
 
 
 @dataclass(frozen=True, slots=True)
@@ -196,7 +176,8 @@ def inspect_container_capture(capture: ContainerCapture, task: ContainerTask,
             or type(task.argv) is not tuple or not task.argv
             or any(type(x) is not str or not x for x in task.argv)):
         return ContainerInspection("REFUSED", ("invalid_original_task",), ident)
-    if type(pair) is not StagedSourcePair or pair.source_manifest_sha256 != capture.source_manifest_sha256:
+    if (type(pair) is not StagedSourcePair or capture.arm not in ("baseline", "candidate")
+            or getattr(pair, capture.arm).manifest.sha256 != capture.source_manifest_sha256):
         return ContainerInspection("REFUSED", ("source_manifest_mismatch",), ident)
     try:
         source = _check_source(pair, capture.arm)

@@ -7,7 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from neoweaver.execution import ContainerTask, ExecutionRefusal, run_container_arm
-from neoweaver.snapshot import StagedSourcePair
+from neoweaver.snapshot import SourceFile, SourceManifest, StagedSource, StagedSourcePair
 
 
 IMAGE = "neoweaver/runtime@sha256:" + "a" * 64
@@ -17,7 +17,7 @@ class ContainerExecutionTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
-        self.dir = Path(self.temp.name)
+        self.dir = Path(self.temp.name).resolve()
         self.source = self.dir / "source"
         self.source.mkdir()
         self.baseline = self.source / "baseline"
@@ -27,8 +27,11 @@ class ContainerExecutionTests(unittest.TestCase):
             (folder / "code.txt").write_bytes(b"pinned\n")
         import hashlib
         checksum = hashlib.sha256(b"pinned\n").hexdigest()
-        self.pair = StagedSourcePair("a" * 40, "b" * 40, "c" * 64,
-                                     (("code.txt", checksum),), self.baseline, self.candidate)
+        manifest = SourceManifest((SourceFile("code.txt", checksum, False),),
+                                  hashlib.sha256(b"code.txt\0-" + bytes.fromhex(checksum)).hexdigest())
+        self.pair = StagedSourcePair("a" * 40, "b" * 40,
+                                     StagedSource(self.baseline, manifest),
+                                     StagedSource(self.candidate, manifest))
         self.out = self.dir / "capture"
         self.task = ContainerTask(IMAGE, ("/usr/bin/python3", "-B", "task.py"), 30)
 
@@ -140,7 +143,7 @@ class ContainerExecutionTests(unittest.TestCase):
         self.assertEqual((self.out / "receipt").read_text(), "original")
 
     def test_reused_stage_and_evidence_inside_opposite_stage_refuse(self):
-        aliased = replace(self.pair, candidate_dir=self.baseline)
+        aliased = replace(self.pair, candidate=replace(self.pair.candidate, directory=self.baseline))
         with self.assertRaises(ExecutionRefusal) as err:
             run_container_arm(aliased, "baseline", self.task, self.out)
         self.assertEqual(err.exception.condition, "reused_source_directory")
