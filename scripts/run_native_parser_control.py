@@ -25,9 +25,10 @@ def main():
     parser.add_argument('source_head', help='Exact clean source HEAD to stage unchanged in both arms')
     args = parser.parse_args()
     selection = json.loads(args.selection.read_bytes())['selected_native_task']
-    root = Path(selection['evidence_root'])
+    root = Path(selection['evidence_root']).absolute()
     if root.exists() or root.is_symlink() or any(p.is_symlink() for p in root.parents):
         raise ValueError('evidence root must be fresh and outside source')
+    root = root.resolve(strict=False)
     repository = Path(__file__).resolve().parents[1]
     if root == repository or repository in root.parents or root in repository.parents:
         raise ValueError('evidence root overlaps repository')

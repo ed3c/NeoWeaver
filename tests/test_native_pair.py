@@ -1,6 +1,9 @@
 """Public native-to-original-pair controls using labeled protocol fixtures."""
 from dataclasses import replace
 from pathlib import Path
+import json
+import os
+import tempfile
 import unittest
 from unittest.mock import patch
 
@@ -93,6 +96,33 @@ class NativePairTests(NativeFixture, unittest.TestCase):
         self.assertEqual(report.readbacks[0].oracle_ref,wrong.reference)
         empty = inspect_native_pair(baseline,candidate,replace(self.oracle,expected=b'{"decisions":[]}'))
         self.assertEqual(empty.oracle_results[0].reasons,('case_population_mismatch',))
+
+
+class DriverPreflightTests(unittest.TestCase):
+    def test_relative_and_traversal_evidence_roots_cannot_enter_repository(self):
+        from scripts import run_native_parser_control as driver
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary).resolve()
+            repository = root / 'repo'
+            repository.mkdir()
+            sibling = root / 'sibling'
+            sibling.mkdir()
+            selection = root / 'task.json'
+            destinations = (repository / 'evidence',
+                            sibling / '..' / 'repo' / 'evidence',
+                            Path(os.path.relpath(repository / 'evidence', Path.cwd())))
+            for destination in destinations:
+                with self.subTest(destination=destination):
+                    selection.write_text(json.dumps({'selected_native_task': {'evidence_root': str(destination)}}))
+                    with patch.object(driver, '__file__', str(repository / 'scripts' / 'driver.py')), \
+                         patch('sys.argv', ['driver', str(selection), 'a' * 40]), \
+                         patch.object(driver, 'read_pinned') as read, \
+                         patch.object(driver, 'run_native_arm') as launch, \
+                         self.assertRaisesRegex(ValueError, 'evidence root overlaps repository'):
+                        driver.main()
+                    read.assert_not_called()
+                    launch.assert_not_called()
+                    self.assertFalse((repository / 'evidence').exists())
 
 
 if __name__ == '__main__':
