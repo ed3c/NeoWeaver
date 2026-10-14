@@ -1,47 +1,62 @@
-# A6 Training Eligibility — declaration-only, no training
+# A6 Training Eligibility — direct inputs, no FileRef or Provider Authentication
 
-The existing original requirements **REQ-two-policies** and **REQ-learning-dataset** separate the Harness Proposer's action lineage, optional open Solver token lineage, frozen Codex traces, dataset rights/splits and independent reward evidence. `neoweaver.learning.inspect_training_candidate(candidate)` is a pure screening function over **Original Producer-supplied** records. It does not fetch any referenced payload, invoke a model, update weights, choose a Trainer, schedule retraining or grant effects.
+The A6 screening input is one `TrainingCandidate`: `actor`, `method`,
+`partition`, `rights`, `acceptance`, `protected_regressions`,
+`effect_status`, `lineage`, `token_provenance`, `replay`,
+`verifier`, and `reward`.
 
-## Actual producer / consumer boundaries
+These are **task and evaluation facts supplied by the current Session or an actual
+runtime**, not a second chain of opaque `OwnerRef`, FileRef, SHA-256, source
+directories, or Provider-authentication metadata. The original Producer still
+owns its truth; this module does not independently verify its inputs. It also
+never asks an Agent to invent a digest, operation ID, provenance receipt,
+runtime identity, credentials, or new approval steps.
 
-- `GenerationEvidence` comes from the original Generation Owner: actor, policy, observation, action, generation and optionally own-token references.
-- `EvaluationEvidence` comes from the original replay/verifier/reward Owners: observation/action identity to match Generation, rollout, replay, independent verifier, immutable oracle and reward references, plus reported acceptance, protected-regression and external-effect states.
-- `TrainingCandidate` carries the selected `train | validation | held_out | unknown` partition, `allowed | denied | unknown` rights decision and **separate original dataset partition/rights references**. These are opaque `OwnerRef` values, not paths, invented hashes, or model authentication credentials.
-- `method` is `sft` or `policy_gradient`, as selected by the original training policy owner. Missing Proposer token reference is tolerated **only** for a proposed SFT source record; on-policy Proposer gradient use and every open Solver candidate need original token provenance. Frozen Codex transcript is never permitted as trainable policy-owned tokens.
+## One deterministic decision
 
-## Four non-authorizing results
+`inspect_training_candidate(candidate)` returns exactly one typed,
+non-authorizing result.
 
-| Result | Conditions | Interpretation |
-| --- | --- | --- |
-| `REFUSED` | Malformed record, type or unsupported actor/status/method | No learning judgment |
-| `BLOCKED` | Frozen Codex policy, validation/held-out update, denied rights, failed acceptance/protected regression, self-reported verifier, mismatched observation/action | Known declared hard gate violated; candidate must not enter training |
-| `INCONCLUSIVE` | Unknown rights, split, gates or effect; missing required generation, token, replay, oracle, reward, or source reference | Original Owner readback required; **unknown is not zero or failure** |
-| `STRUCTURALLY_ELIGIBLE` | Supported, internally matched declarations with train partition, source refs, rights declared allowed, protected gates declared pass | Merely consistent **claimed** data, not verified real inputs or update authority |
+| Status | Meaning |
+| --- | --- |
+| `REFUSED` | Invalid type or unsupported decision value |
+| `BLOCKED` | Frozen Codex policy, validation/held-out, denied rights, acceptance/protected-gate failure, mismatched lineage, self-verification or failed replay |
+| `INCONCLUSIVE` | Unknown rights, split, results, effect, lineage, replay, verifier or reward; missing policy-owned tokens for a method that needs them |
+| `STRUCTURALLY_ELIGIBLE` | Supplied decision facts are internally consistent; not actual evidence of model trainability |
 
-Every result preserves `eligible_for_training=false` and `authorizes_landing=false`. `evidence_ceiling=DECLARED_EVIDENCE_RELATIONS_ONLY` never changes. Referenced objects are not cryptographically attested; matching `OwnerRef` strings cannot prove actual ownership, data rights, independently observed reward, sandbox isolation, on-policy lineage or immutability.
+The SFT Proposer does not need an invented policy-gradient token reference.
+Policy-gradient updates and open Solver training require available
+policy-owned token provenance. Frozen Codex is never treated as a trainable
+policy. No soft reward or cost can override a hard gate.
 
-## Objective discriminating controls
+Every result retains `eligible_for_training=false`,
+`authorizes_landing=false` and `evidence_ceiling=SUPPLIED_FACTS_ONLY`.
+No Trainer, optimizer, model execution, real Dataset Rights reading, rewards,
+native replay, rollback, or Frozen Codex transfer is performed.
 
-`tests/test_learning.py` verifies normal declared relation matching, frozen Codex refusal, withheld tokens on SFT/PG or open Solver, validation/held-out exclusion, rights denial and hard-gate precedence, missing/unknown data, self-verifier rejection, cross-observation/action mismatch, malformed references and absence of file/process/network side effects.
+## Removed overdesign
 
-## Remaining real requirements
+The former A6.1–A6.3 `neoweaver/evidence.py`, source FileRef and
+`verify_owner_evidence` / `read_pinned_owner_evidence` stages had **no
+authenticated Producer or real downstream Trainer consumer**. Extra file
+digests, directory-FD security checks, matching `readback=observed` and
+self-declared `OwnerRef` equality did not make the data true. They have been
+deleted rather than maintained as new CI or Native Agent admission gates.
 
-Before **any** update, the original Dataset Owner must inspect the actual rights and split receipts and protect held-out partition, the Generation Owner must supply genuine policy/action/token lineage, the Runner/independent Verifier must establish original replay and hard-gate results, and the Trainer must select its already authorized update method and rollback checkpoint. No full A5 physical run or A6 Trainer existed at this source-only correction stage. A7 Frozen Codex native transfer and repeatable paired effect are still unobserved; the ten parent REQs and old compiled evidence are unchanged.
+This change is scoped to **A6 eligibility**. Existing PatchProposal
+mutation-boundary references and A5 replay matching identities are different,
+already consumed contracts; they are not this unused A6 FileRef layer.
 
-## A6.2 Source-bound receipt bytes (separate original reader)
+## Verification and future real work
 
-The existing `verify_owner_evidence(candidate, receipts)` only compares **Caller-supplied declarations**. Its `readback="observed"` can be self-asserted and must never authorize training. For a selected Host with a real original Evidence Directory, use the read-only `read_pinned_owner_evidence(candidate, file_refs, owner_root=...)`.
+`python3 -m unittest discover -s tests -v` covers one permitted declaration,
+missing policy-owned tokens, refused frozen Codex/held-out/denied rights,
+acceptance/protected regressions, lineage and verifier mismatch, unknown
+outcomes and zero file/process/network side effects.
 
-The Host, not the Candidate, must select the external original-owner directory and the previously issued **exact FileRefs** (`path`, `sha256`). The Reader requires one original source file for each required A6.1 receipt slot, including Token lineage when required by the selected method. It refuses sources outside the original root, symlinks, reused files, extra fields, malformed or duplicate-key JSON, nonfinite values, nonmatching SHA-256, mismatched OwnerRef and oversized records. It reads actual bytes rather than trusting an Agent's `readback="observed"` field. Missing files or explicitly unknown readback remain `INCONCLUSIVE`; known hard gates still refuse before reading files.
-
-The source payload contains only the existing declared `{"ref":{"producer":...,"reference":...},"readback":"observed"}` fields. The file's contents are *claims* and SHA-256 only detects changes relative to a trusted reference; it is not a signature, provider verification, ownership credential, dataset-rights adjudication, real Generation Token proof, immutable oracle guarantee or independent reward observation. The Host must protect the original root from candidate writes and pin the FileRefs through the existing Original Producer. A mutable or caller-chosen root cannot provide trustworthy provenance. No native signed receipts or authorized Trainer existed when this code was written.
-
-`SOURCE_BYTES_MATCH_DECLARATIONS` is a **byte-bound relation result**, not `VERIFIED_TRAINING_BATCH` or permission to train. As with `STRUCTURALLY_ELIGIBLE`, `eligible_for_training=false` and `authorizes_landing=false` always. Real Provider authentication and original eligible TrainingBatch acceptance remain separate A6 work. Negative controls in `tests/test_evidence.py` verify actual file reads, tampering, foreign source, missing/unknown evidence, duplicate path, symlink, malformed payload and size boundaries.
-
-## A6.3 Existing source reader — race-safe open boundary
-
-The Source-bound Reader previously inspected a symbolic link and then called `Path.open()` separately. A concurrently replaced file or intermediate directory could be followed between the checks (TOCTOU). The original evidence Reader now opens the Host-selected source root, each subdirectory and final regular file with held directory file descriptors and POSIX `O_NOFOLLOW`. It refuses unsupported `dir_fd`/`O_NOFOLLOW` Hosts rather than silently fall back to path-based opening. The final file is checked with `fstat()` and read with a bounded size; duplicate hardlinked inodes cannot count as independent receipt files. A source changed during read is refused.
-
-This is a **file-read integrity correction**, not Provider Authentication. The Host still must select/protect an actual original-owner root and immutable FileRefs. An attacker controlling that root or the upstream FileRef Producer can forge matching contents and hashes. POSIX symlink-race resistance alone does not prove Dataset Rights, original Token Lineage, independent Verifier authority or a Trainer checkpoint. `SOURCE_BYTES_MATCH_DECLARATIONS` remains non-authorizing, `eligible_for_training=false`, and all native/replay/training claims retain their prior UNKNOWN/NOT_RUN state.
-
-Discriminating controls now include a deterministic symlink swap exactly before the file-descriptor open, symlinked intermediate directories, duplicate hardlinks, FIFO refusal and root-directory-as-file refusal; original positive/missing/foreign/digest controls are unchanged.
+A real training run would still need actual Data, rights, matched replay,
+independent acceptance, a configured Trainer/checkpoint and rollback. This is
+a **product correctness requirement when training is actually requested**,
+not a demand to build speculative Provider Authenticity or FileRef
+infrastructure in advance. All ten original parent requirements remain open
+until genuinely verified.
