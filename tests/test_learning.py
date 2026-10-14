@@ -1,140 +1,119 @@
-"""A6 declared lineage discriminators; no model trainer or native dataset."""
+"""A6 direct decision screening: neither FileRefs nor Provider-auth fixtures."""
 from dataclasses import replace
 import unittest
 from unittest.mock import patch
 
-from neoweaver.learning import (
-    GenerationEvidence, EvaluationEvidence, TrainingCandidate, inspect_training_candidate
-)
-from neoweaver.patches import OwnerRef
-
-
-def ref(name, producer="original-generation"):
-    return OwnerRef(producer, name)
+from neoweaver.learning import TrainingCandidate, inspect_training_candidate
 
 
 def sample(actor="proposer", method="sft"):
-    generation = GenerationEvidence(actor, ref("policy"), ref("observation"), ref("action"),
-                                    ref("generation"), ref("own-tokens"))
-    evaluation = EvaluationEvidence(ref("observation"), ref("action"), ref("rollout", "original-runner"),
-                                    ref("replay", "original-runner"), ref("verification", "independent-verifier"),
-                                    ref("protected-oracle", "original-oracle"), ref("reward", "original-reward"),
-                                    "pass", "pass", "none_observed")
-    return TrainingCandidate(generation, evaluation, "train", "allowed", method,
-                             ref("rights", "original-rights-owner"), ref("split", "original-dataset-owner"))
+    return TrainingCandidate(
+        actor=actor, method=method, partition="train", rights="allowed",
+        acceptance="pass", protected_regressions="pass", effect_status="none_observed",
+        lineage="matched", token_provenance="available",
+        replay="observed", verifier="independent", reward="observed",
+    )
 
 
 class LearningEligibilityTests(unittest.TestCase):
-    def test_honest_proposer_source_declarations_are_only_structurally_eligible(self):
+    def test_supplied_normal_facts_do_not_authorize_training(self):
         result = inspect_training_candidate(sample())
         self.assertEqual(result.status, "STRUCTURALLY_ELIGIBLE")
-        self.assertEqual(result.reasons, ())
-        self.assertEqual(result.evidence_ceiling, "DECLARED_EVIDENCE_RELATIONS_ONLY")
+        self.assertEqual(result.evidence_ceiling, "SUPPLIED_FACTS_ONLY")
         self.assertFalse(result.eligible_for_training)
         self.assertFalse(result.authorizes_landing)
+        self.assertEqual(result.reasons, ())
 
-    def test_proposer_sft_allows_missing_token_only_for_non_gradient_method(self):
-        record = sample()
-        sft = replace(record, generation=replace(record.generation, token_ref=None))
-        self.assertEqual(inspect_training_candidate(sft).status, "STRUCTURALLY_ELIGIBLE")
-        pg = replace(sft, method="policy_gradient")
-        result = inspect_training_candidate(pg)
-        self.assertEqual(result.status, "INCONCLUSIVE")
-        self.assertIn("generation.token_ref.missing", result.reasons)
+    def test_sft_proposer_does_not_require_fake_generated_tokens(self):
+        for provenance in ("missing", "unknown"):
+            with self.subTest(provenance=provenance):
+                case = replace(sample(), token_provenance=provenance)
+                self.assertEqual(inspect_training_candidate(case).status, "STRUCTURALLY_ELIGIBLE")
 
-    def test_open_solver_requires_own_token_lineage_even_for_sft(self):
-        record = sample("open_solver")
-        missing = replace(record, generation=replace(record.generation, token_ref=None))
-        result = inspect_training_candidate(missing)
-        self.assertEqual(result.status, "INCONCLUSIVE")
-        self.assertIn("generation.token_ref.missing", result.reasons)
-        self.assertEqual(inspect_training_candidate(record).status, "STRUCTURALLY_ELIGIBLE")
+    def test_gradient_and_open_solver_require_real_token_provenance(self):
+        for case in (replace(sample(method="policy_gradient"), token_provenance="missing"),
+                     replace(sample("open_solver"), token_provenance="unknown")):
+            with self.subTest(case=case):
+                result = inspect_training_candidate(case)
+                self.assertEqual(result.status, "INCONCLUSIVE")
+                self.assertIn("token_provenance_unavailable", result.reasons)
+                self.assertFalse(result.eligible_for_training)
 
-    def test_frozen_codex_never_eligible_even_with_fabricated_own_tokens(self):
+    def test_frozen_codex_never_enters_trainable_policy(self):
         result = inspect_training_candidate(sample("frozen_codex"))
         self.assertEqual(result.status, "BLOCKED")
         self.assertIn("frozen_codex_not_trainable", result.reasons)
 
-    def test_validation_and_held_out_never_enter_training(self):
-        for partition in ("validation", "held_out"):
-            with self.subTest(partition=partition):
-                result = inspect_training_candidate(replace(sample(), partition=partition))
+    def test_validation_heldout_and_denied_rights_block(self):
+        for field, value, expected in (
+                ("partition", "validation", "non_training_partition"),
+                ("partition", "held_out", "non_training_partition"),
+                ("rights", "denied", "rights_denied")):
+            with self.subTest(field=field, value=value):
+                result = inspect_training_candidate(replace(sample(), **{field: value}))
                 self.assertEqual(result.status, "BLOCKED")
-                self.assertIn("non_training_partition", result.reasons)
+                self.assertIn(expected, result.reasons)
 
-    def test_rights_denial_and_hard_gate_failure_cannot_be_rewarded_away(self):
-        original = sample()
-        broken = replace(original, rights="denied",
-                         evaluation=replace(original.evaluation, acceptance="fail", protected_regressions="fail"))
-        result = inspect_training_candidate(broken)
+    def test_acceptance_and_protected_regression_failures_precede_cost(self):
+        case = replace(sample(), acceptance="fail", protected_regressions="fail")
+        result = inspect_training_candidate(case)
         self.assertEqual(result.status, "BLOCKED")
-        self.assertEqual(set(result.reasons), {"rights_denied", "acceptance_failed", "protected_regression_failed"})
+        self.assertEqual(set(result.reasons),
+                         {"acceptance_failed", "protected_regression_failed"})
 
-    def test_unknown_rights_or_oracle_or_effect_remain_inconclusive(self):
-        original = sample()
-        unknown = replace(original, rights="unknown", partition="unknown",
-                          evaluation=replace(original.evaluation, acceptance="unknown", protected_regressions="unknown",
-                                             effect_status="unknown", reward_ref=None))
-        result = inspect_training_candidate(unknown)
-        self.assertEqual(result.status, "INCONCLUSIVE")
-        self.assertIn("rights_unknown", result.reasons)
-        self.assertIn("partition_unknown", result.reasons)
-        self.assertIn("external_effect_unknown", result.reasons)
-        self.assertIn("evaluation.reward_ref.missing", result.reasons)
-        self.assertFalse(result.eligible_for_training)
+    def test_replay_failure_and_wrong_lineage_are_not_silent_success(self):
+        case = replace(sample(), replay="failed", lineage="mismatched")
+        result = inspect_training_candidate(case)
+        self.assertEqual(result.status, "BLOCKED")
+        self.assertEqual(set(result.reasons), {"replay_failed", "lineage_mismatch"})
 
-    def test_lineage_must_match_same_observation_and_action(self):
-        original = sample()
-        for field, why in (("observation_ref", "observation_lineage_mismatch"),
-                           ("action_ref", "action_lineage_mismatch")):
-            with self.subTest(field=field):
-                record = replace(original, evaluation=replace(original.evaluation, **{field: ref("foreign")}))
-                result = inspect_training_candidate(record)
-                self.assertEqual(result.status, "BLOCKED")
-                self.assertIn(why, result.reasons)
-
-    def test_self_reported_verifier_is_not_independent_evidence(self):
-        original = sample()
-        changed = replace(original, evaluation=replace(original.evaluation,
-                                                      verifier_ref=ref("self-verification")))
-        result = inspect_training_candidate(changed)
+    def test_self_verifier_cannot_claim_independent_acceptance(self):
+        result = inspect_training_candidate(replace(sample(), verifier="self"))
         self.assertEqual(result.status, "BLOCKED")
         self.assertIn("self_reported_verifier", result.reasons)
 
-    def test_missing_rollout_replay_or_original_oracle_cannot_create_reward(self):
-        original = sample()
-        for field in ("rollout_ref", "replay_ref", "verifier_ref", "oracle_ref", "reward_ref"):
+    def test_undetermined_results_and_effects_remain_unknown(self):
+        for field in ("partition", "rights", "acceptance", "protected_regressions",
+                      "effect_status", "lineage", "replay", "verifier", "reward"):
             with self.subTest(field=field):
-                record = replace(original, evaluation=replace(original.evaluation, **{field: None}))
-                result = inspect_training_candidate(record)
+                case = replace(sample(), **{field: "unknown"})
+                result = inspect_training_candidate(case)
                 self.assertEqual(result.status, "INCONCLUSIVE")
-                self.assertIn("evaluation." + field + ".missing", result.reasons)
+                self.assertIn(field + "_unknown", result.reasons)
 
-    def test_missing_dataset_rights_or_split_evidence_is_inconclusive(self):
-        original = sample()
-        for key in ("rights_ref", "partition_ref"):
-            with self.subTest(key=key):
-                result = inspect_training_candidate(replace(original, **{key: None}))
-                self.assertEqual(result.status, "INCONCLUSIVE")
-                self.assertIn("candidate." + key + ".missing", result.reasons)
+    def test_known_hard_gate_blocks_despite_other_unknowns(self):
+        case = replace(sample(), partition="held_out", rights="unknown",
+                       acceptance="unknown", effect_status="unknown")
+        result = inspect_training_candidate(case)
+        self.assertEqual(result.status, "BLOCKED")
+        self.assertIn("non_training_partition", result.reasons)
 
-    def test_malformed_reference_and_invalid_types_refuse(self):
+    def test_no_file_ref_or_provider_identity_selection_in_public_input(self):
+        keys = set(TrainingCandidate.__dataclass_fields__)
+        self.assertEqual(keys, {
+            "actor", "method", "partition", "rights", "acceptance",
+            "protected_regressions", "effect_status", "lineage",
+            "token_provenance", "replay", "verifier", "reward",
+        })
+        self.assertFalse(any("ref" in key or "provider" in key for key in keys))
+
+    def test_malformed_statuses_or_freeform_identities_are_refused(self):
         self.assertEqual(inspect_training_candidate(None).status, "REFUSED")
-        original = sample()
-        bad = (replace(original, generation=replace(original.generation, policy_ref=OwnerRef("", "broken"))),
-               replace(original, generation=replace(original.generation, actor="third-party")),
-               replace(original, evaluation=replace(original.evaluation, acceptance=True)),
-               replace(original, method="invented"),
-               replace(original, generation=replace(original.generation, token_ref="fake-digest")))
-        for record in bad:
-            with self.subTest(record=record):
-                self.assertEqual(inspect_training_candidate(record).status, "REFUSED")
+        bad = (replace(sample(), actor="another-owner"),
+               replace(sample(), method="guess"),
+               replace(sample(), rights=True),
+               replace(sample(), replay="pass"),
+               replace(sample(), token_provenance=1))
+        for candidate in bad:
+            with self.subTest(candidate=candidate):
+                self.assertEqual(inspect_training_candidate(candidate).status, "REFUSED")
 
-    def test_pure_inspector_never_reads_files_executes_or_contacts_network(self):
+    def test_inspection_is_pure_without_file_process_network_effects(self):
         with patch("builtins.open", side_effect=AssertionError("file")), \
              patch("subprocess.Popen", side_effect=AssertionError("process")), \
              patch("socket.socket", side_effect=AssertionError("network")):
-            self.assertEqual(inspect_training_candidate(sample()).status, "STRUCTURALLY_ELIGIBLE")
+            self.assertEqual(inspect_training_candidate(sample()).status,
+                             "STRUCTURALLY_ELIGIBLE")
 
 
 if __name__ == "__main__":
