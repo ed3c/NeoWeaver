@@ -13,14 +13,14 @@ class RunReadback:
     """A claim emitted by an external runner, not a trust credential."""
 
     arm: str
-    snapshot_ref: OwnerRef
-    task_ref: OwnerRef
-    environment_ref: OwnerRef
-    solver_ref: OwnerRef
-    seed_policy_ref: OwnerRef
-    budget_ref: OwnerRef
-    oracle_ref: OwnerRef
-    harness_ref: OwnerRef
+    snapshot_ref: OwnerRef | None
+    task_ref: OwnerRef | None
+    environment_ref: OwnerRef | None
+    solver_ref: OwnerRef | None
+    seed_policy_ref: OwnerRef | None
+    budget_ref: OwnerRef | None
+    oracle_ref: OwnerRef | None
+    harness_ref: OwnerRef | None
     run_ref: OwnerRef | None
     sandbox_ref: OwnerRef | None
     capture_ref: OwnerRef | None
@@ -63,7 +63,8 @@ def inspect_pair(baseline: RunReadback, candidate: RunReadback) -> PairInspectio
         return PairInspection("REFUSED", ("wrong_arm_order",), None)
     for arm, run in (("baseline", baseline), ("candidate", candidate)):
         for field in (*_MATCHED, "harness_ref"):
-            if not _valid_ref(getattr(run, field)):
+            value = getattr(run, field)
+            if value is not None and not _valid_ref(value):
                 return PairInspection("REFUSED", (f"{arm}.{field}.invalid_ref",), None)
         for field in _SEPARATE:
             value = getattr(run, field)
@@ -79,6 +80,10 @@ def inspect_pair(baseline: RunReadback, candidate: RunReadback) -> PairInspectio
             return PairInspection("REFUSED", (f"{arm}.nonterminal_completion",), None)
 
     missing = []
+    for arm, run in (("baseline", baseline), ("candidate", candidate)):
+        for field in (*_MATCHED, "harness_ref"):
+            if getattr(run, field) is None:
+                missing.append(f"{arm}.missing_{field}")
     for field in _MATCHED:
         if getattr(baseline, field) != getattr(candidate, field):
             missing.append("unmatched_" + field)

@@ -6,6 +6,8 @@
 
 [A5 Paired Replay Readback](docs/replay-readback-contract.md) 目前只提供原 Runner observations 的 read-only structural comparability gate：匹配 task/environment/Solver/seed/budget/oracle，拒絕重用或缺少 run/sandbox/capture refs，unknown effect 保持 INCONCLUSIVE。它**不是** Snapshot Runner、獨立 Oracle、真實 sandbox 或 replay PASS。
 
+[Native capture and fixed Oracle](docs/native-replay-contract.md) 現在提供 `run_native_arm` 與 `inspect_native_pair`，將實際 Codex 完成事件、固定 parser-response Oracle 和原 pair API 接通。每個 capture 保留自己的 launch selection，明列 task/model/schema/budget/source 差異。缺少 sandbox／effect 證據時，兩個 scoped match 仍只得到 pair INCONCLUSIVE。這是 validation-only H0/H0 接線範圍；逐 REQ 進度與未完成證據見 native contract。
+
 [Hook purpose applicability](docs/hook-purpose-applicability.md)分開 task-review、PR／MR source check 與未來 native transfer，逐步核對推論與必要資料。
 
 [Bounded Docker Execution Transport](docs/container-execution-contract.md) executes an original Owner-selected digest-pinned command against a read-only staged source and records the Docker client result. Transport results do not establish native isolation, task completion, independent replay acceptance or training eligibility.
