@@ -167,7 +167,7 @@ def read_pinned_owner_evidence(candidate: TrainingCandidate, file_refs: Mapping[
         try:
             source = Path(record["path"])
             if (not source.is_absolute() or ".." in source.parts or
-                    not source.is_relative_to(original_root)):
+                    source == original_root or not source.is_relative_to(original_root)):
                 refused.append(slot + ".outside_owner_root")
                 continue
             # The relative name comes only from the previously selected FileRef.
