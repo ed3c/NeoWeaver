@@ -29,6 +29,7 @@ class OriginalOwnerMcpTests(unittest.TestCase):
         self.assertEqual(names, {
             "bridge_capabilities", "soodles_test_plan", "factoryweaver_project",
             "neoweaver_training_screen", "neoweaver_patch_parse", "owner_evidence_range",
+            "soodles_cli_contracts", "soodles_knowledge_inspect",
         })
         self.assertFalse(any("edit" in n or "execute" in n or "merge" in n for n in names))
         with self.assertRaises(bridge.Refusal):
@@ -75,6 +76,45 @@ class OriginalOwnerMcpTests(unittest.TestCase):
             with patch.dict(os.environ, {}, clear=True):
                 with self.assertRaisesRegex(bridge.Refusal, "original_test_base_not_pinned"):
                     bridge._plan({})
+
+    def test_cli_contracts_consumes_one_original_cli_no_new_owner(self):
+        with patch.object(bridge, "_source", return_value=ROOT) as lookup:
+            with patch.object(bridge, "_call_original", return_value={
+                    "status": "OWNER_RESULT", "original_owner_result": {
+                        "owner": "schema-manager", "next": None}}) as owner:
+                result = bridge._soodles_cli_contracts({})
+        lookup.assert_called_once_with("soodles")
+        self.assertEqual(owner.call_args.args[1][1:], ["schema", "cli-contracts"])
+        self.assertIsNone(result["original_owner_result"]["next"])
+        with self.assertRaisesRegex(bridge.Refusal, "invalid_arguments"):
+            bridge._soodles_cli_contracts({"invented_method": "auto"})
+
+    def test_knowledge_file_ref_is_forwarded_to_original_owner_without_rerouting(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bundle = root / "selected-scope.json"
+            bundle.write_text('{"bundle":"source-bound"}', encoding="utf-8")
+            expected = hashlib.sha256(bundle.read_bytes()).hexdigest()
+            args = {"bundle_ref": {"path": str(bundle), "sha256": expected}}
+            with patch.dict(os.environ, {"HARNESS_EVIDENCE_ROOT": str(root)}):
+                with patch.object(bridge, "_source", return_value=ROOT):
+                    with patch.object(bridge, "_call_original", return_value={
+                            "status": "OWNER_RESULT", "original_owner_result": {
+                                "status": "source_bound_proposal", "next": None,
+                                "effects": []}}) as owner:
+                        result = bridge._soodles_knowledge_inspect(args)
+                    self.assertEqual(owner.call_args.args[1][1:],
+                                     ["knowledge", "inspect", str(bundle), expected])
+                    self.assertEqual(result["original_owner_result"]["effects"], [])
+                    with self.assertRaisesRegex(bridge.Refusal, "invalid_original_file_ref"):
+                        bridge._soodles_knowledge_inspect({"bundle_ref": {
+                            "path": str(bundle), "sha256": "model_guessed"}})
+                    with self.assertRaisesRegex(bridge.Refusal, "evidence_path_outside_root"):
+                        bridge._soodles_knowledge_inspect({"bundle_ref": {
+                            "path": "/etc/passwd", "sha256": expected}})
+                with patch.dict(os.environ, {"HARNESS_EVIDENCE_ROOT": ""}):
+                    with self.assertRaisesRegex(bridge.Refusal, "evidence_root_not_configured"):
+                        bridge._soodles_knowledge_inspect(args)
 
     def test_factory_command_allowlist_no_arbitrary_shell(self):
         with patch.object(bridge, "_source", return_value=ROOT):
