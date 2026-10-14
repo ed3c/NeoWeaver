@@ -91,6 +91,15 @@ class ReplayReadbackTests(unittest.TestCase):
                 self.assertEqual(outcome.reasons, (code,))
         self.assertEqual(inspect_pair({}, candidate).status, "REFUSED")
 
+    def test_missing_fixed_references_are_gaps_but_malformed_references_refuse(self):
+        baseline, candidate = pair()
+        for field in ("snapshot_ref", "task_ref", "environment_ref", "solver_ref",
+                      "seed_policy_ref", "budget_ref", "oracle_ref", "harness_ref"):
+            with self.subTest(field=field):
+                report = inspect_pair(baseline, replace(candidate, **{field: None}))
+                self.assertEqual(report.status, "INCONCLUSIVE")
+                self.assertIn("candidate.missing_" + field, report.reasons)
+
     def test_readback_inspection_has_no_file_process_or_network_effects(self):
         with patch("builtins.open", side_effect=AssertionError("read")), \
              patch("subprocess.Popen", side_effect=AssertionError("process")), \

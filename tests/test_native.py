@@ -32,7 +32,7 @@ def completed(answer=ANSWER):
     return THREAD + WARNING + START + COMMENT + message(answer) + END
 
 
-class NativeTests(unittest.TestCase):
+class NativeFixture:
     def setUp(self):
         temp = tempfile.TemporaryDirectory()
         self.addCleanup(temp.cleanup)
@@ -84,6 +84,8 @@ class NativeTests(unittest.TestCase):
     def inspect(self, capture, oracle=None):
         return inspect_native_pair(capture, capture, oracle or self.oracle).oracle_results[0]
 
+
+class NativeTests(NativeFixture, unittest.TestCase):
     def test_completed_final_and_output_file_match(self):
         capture = self.capture()
         result = self.inspect(capture)
