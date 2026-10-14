@@ -116,6 +116,28 @@ class OriginalOwnerMcpTests(unittest.TestCase):
                     with self.assertRaisesRegex(bridge.Refusal, "evidence_root_not_configured"):
                         bridge._soodles_knowledge_inspect(args)
 
+    def test_original_owner_refusal_is_mcp_error_not_false_green(self):
+        name = "soodles_cli_contracts"
+        previous = bridge.TOOLS[name]
+        try:
+            for original, expected_error in [
+                ({"status": "OWNER_RESULT",
+                  "original_owner_result": {"status": "ready", "next": None}}, False),
+                ({"status": "OWNER_REFUSAL",
+                  "exit_code": 2, "original_owner_result": {"status": "refused"}}, True),
+                ({"status": "OWNER_RESULT",
+                  "original_owner_result": {"status": "refused"}}, True),
+                ({"status": "BLOCKED", "eligible_for_training": False}, True),
+            ]:
+                with self.subTest(original=original):
+                    bridge.TOOLS[name] = (previous[0], previous[1], lambda args: original)
+                    result = bridge._dispatch({"jsonrpc": "2.0", "method": "tools/call",
+                                               "params": {"name": name, "arguments": {}}})
+                    self.assertIs(result["isError"], expected_error)
+                    self.assertEqual(json.loads(result["content"][0]["text"]), original)
+        finally:
+            bridge.TOOLS[name] = previous
+
     def test_factory_command_allowlist_no_arbitrary_shell(self):
         with patch.object(bridge, "_source", return_value=ROOT):
             with self.assertRaisesRegex(bridge.Refusal, "unknown_factory_operation"):
