@@ -269,6 +269,7 @@ def _capture_error(capture):
 def _decode(capture):
     thread, turn_id, state, last = None, None, "before_thread", None
     usage, finished = (), set()
+    active = {}
     provider_error = False
     for line in capture.raw.splitlines():
         if not line.strip():
@@ -310,7 +311,19 @@ def _decode(capture):
                 raise NativeRefusal("unsupported_event")
             if item["id"] in finished:
                 raise NativeRefusal("repeated_completed_item")
+            ident = item["id"]
+            if kind == "item.started":
+                if ident in active:
+                    raise NativeRefusal("repeated_started_item")
+                active[ident] = item["type"]
+            elif kind == "item.updated" and ident not in active:
+                raise NativeRefusal("update_without_started_item")
+            if ident in active and active[ident] != item["type"]:
+                raise NativeRefusal("contradictory_item_type")
             if kind == "item.completed":
+                if item.get("status") == "in_progress":
+                    raise NativeRefusal("contradictory_item_status")
+                active.pop(ident, None)
                 finished.add(item["id"])
                 if item["type"] == "agent_message":
                     if type(item.get("text")) is not str:
@@ -319,6 +332,8 @@ def _decode(capture):
         elif kind in ("turn.completed", "turn.failed"):
             if state != "in_turn":
                 raise NativeRefusal("terminal_outside_turn")
+            if kind == "turn.completed" and active:
+                raise NativeRefusal("unfinished_items_at_completion")
             state = "completed" if kind == "turn.completed" else "failed"
             if "usage" in event:
                 data = event["usage"]

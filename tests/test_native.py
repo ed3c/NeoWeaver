@@ -144,6 +144,23 @@ class NativeTests(NativeFixture, unittest.TestCase):
                 result = self.inspect(self.capture(raw=raw))
                 self.assertEqual((result.status, result.reasons, result.completed), ('REFUSED', (reason,), None))
 
+    def test_unfinished_and_contradictory_item_lifecycle_refuses(self):
+        started = b'{"type":"item.started","item":{"id":"cmd","type":"command_execution","status":"in_progress"}}\n'
+        updated = b'{"type":"item.updated","item":{"id":"cmd","type":"command_execution","status":"in_progress"}}\n'
+        finished = b'{"type":"item.completed","item":{"id":"cmd","type":"command_execution","status":"completed"}}\n'
+        for items, reason in (
+            (started, 'unfinished_items_at_completion'),
+            (started + started, 'repeated_started_item'),
+            (updated, 'update_without_started_item'),
+            (started + finished.replace(b'command_execution', b'agent_message'), 'contradictory_item_type'),
+            (started + finished.replace(b'completed"}}', b'in_progress"}}'), 'contradictory_item_status'),
+        ):
+            with self.subTest(reason=reason):
+                result = self.inspect(self.capture(raw=THREAD + START + items + message(ANSWER) + END))
+                self.assertEqual((result.status, result.reasons), ('REFUSED', (reason,)))
+        result = self.inspect(self.capture(raw=THREAD + START + started + updated + finished + message(ANSWER) + END))
+        self.assertEqual(result.status, 'MATCH_SCOPED')
+
     def test_output_file_must_match_last_message_not_an_earlier_answer(self):
         for raw in (completed(), THREAD + START + message(ANSWER) + COMMENT + END):
             result = self.inspect(self.capture(raw=raw, answer=b'{}'))
