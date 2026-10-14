@@ -42,6 +42,14 @@ Native P-class compliance 仍需 fresh consumer 與原 schema feedback。
 
 Frozen Codex H0/H1 MCP 治療與 Pi 原生／Pi+SoL-Pi 機制對照須分開。Codex 与 Pi 是不同 Harness，不能將跨 Host 差異算成 SoL-Pi 單一機制收益。已提交 Source/Fixture/CI 不等於在 Host 安裝、信任、呼叫或 Fresh Consumer 行為；未有 Native Capture 時狀態維持 NOT_RUN。
 
+## Frozen Codex 與 SoL-Pi 候選的 Tool Call 推論邊界
+
+本候選 Plugin 只有受限、唯讀的 original-owner MCP Tools；不是第二個 Harness Orchestrator。最新 `soodles_cli_contracts({})` 與 `soodles_knowledge_inspect({bundle_ref})` 直接消費原 Soodles CLI 的 Catalog 與來源綁定 Reader，和既有 `soodles_test_plan({})`、`factoryweaver_project(...)`、`neoweaver_patch_parse(...)`、`neoweaver_training_screen(...)`、`owner_evidence_range(...)` 使用同一個拒絕與權限邊界。Tool 不重建測試、原 next、SHA、權限或觀測事實。見 [Codex MCP 邊界](docs/codex-mcp-harness-boundary.md)。
+
+P-class 只保留尚未被來源／CLI 確定的語意判斷；Source Pin、CLI Choice、Owner FileRef 與具名 Refusal 都由原 Producer 提供。輸出過大、來源變動、未提供 FileRef、Host 未裝載時維持 `REFUSED/NOT_RUN`，不得自動重新測試或取得替代身份。Native `edit_and_verify`、Pi ObservationPack／Compaction 的自動攔截均尚未接入 Codex，必須先有 Host Capability、實際 Caller、原 Test Manager Selection 與未知寫入 Readback。
+
+H0/H1 Frozen Codex（相同模型與負載，只有 Tool Surface 改變）及 Pi/SoL-Pi（相同 Pi 僅一機制變化）分開驗證；不同 Host 之間的差異不計為單一機制收益。原 A6 訓練資格 Hard Gates、Protected Oracles、十項 REQ 和 Original Provider Landing 不變。
+
 ## 資料與 effects
 
 原 Source／Registry／Host／Runner／Provider 產生自己的 identities、digests、heads、argv、capture 與 receipts。Consumer 使用其原 references，不補造或重建。缺 capability、token provenance、rights、evaluation population 或 admission，只停止依賴它的步驟；continue 已授權且不依賴該缺口的工作。
