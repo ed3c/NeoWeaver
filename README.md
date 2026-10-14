@@ -14,4 +14,6 @@
 
 [A6 Training Eligibility](docs/training-eligibility-contract.md) provides a pure, **non-authorizing** check of original Dataset Rights, train/validation/held-out partitions, policy/token lineage and independently declared verification/reward references. A structurally consistent declaration does not start a Trainer or prove real rights/reward data.
 
+The same A6 contract now includes a **source-bound receipt reader** that checks original Host-selected file bytes/digests before relation matching; its output remains non-authenticating and non-authorizing.
+
 [完整規格](docs/specs/learned-harness-coevolution.md)保留十項原需求與其後續驗收。Replay、training、learned artifact 的 native transfer 和 whole Goal 尚未驗收；歷史編譯證據保留原狀。
