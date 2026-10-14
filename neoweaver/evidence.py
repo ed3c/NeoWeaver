@@ -2,7 +2,6 @@
 from dataclasses import dataclass
 import hashlib
 import json
-import os
 from pathlib import Path
 import re
 from typing import Mapping
@@ -94,6 +93,8 @@ def read_pinned_owner_evidence(candidate: TrainingCandidate, file_refs: Mapping[
     if not isinstance(file_refs, Mapping) or not isinstance(owner_root, Path):
         return EvidenceReadback("REFUSED", ("invalid_source_selection",), ())
     try:
+        if not owner_root.is_absolute():
+            return EvidenceReadback("REFUSED", ("invalid_owner_root",), ())
         original_root = owner_root.absolute()
         if owner_root.is_symlink() or not original_root.is_dir():
             return EvidenceReadback("REFUSED", ("invalid_owner_root",), ())
