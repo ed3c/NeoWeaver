@@ -7,8 +7,18 @@
 - The input must be a **clean Git repository root** at the supplied 40-character commit. The helper obtains HEAD, Git Tree and status from Git; the caller explicitly chooses a new destination outside the source checkout. No Issue, TaskSnapshot, runtime argv or credential is inferred.
 - Read content through `git ls-tree` and `git cat-file blob`, not the worktree or `git archive`. This preserves tracked bytes even if `.gitattributes` uses `export-ignore` or `export-subst`.
 - Only regular tracked files (Git mode `100644` / `100755`) are accepted. Symlinks, submodules, unsafe/duplicate paths, bad refs, stale/dirty source, non-root checkout and preexisting output refuse. Total file count and bytes are bounded.
-- `StagedSourcePair` returns the original Git commit/tree, a computed manifest digest, per-file SHA-256 and two distinct destination paths. Edits to one copy do not edit the other or the source checkout.
+- `StagedSourcePair` returns the original Git commit/tree, separate baseline and candidate `StagedSource` records. Each record contains its directory and a `SourceManifest` with the computed digest, per-file SHA-256, and executable bit. Both manifests initially describe the same Git blobs. Edits to one copy do not edit the other or the source checkout.
 - If interrupted after destination creation, inspect the original owner-selected output before any cleanup/retry. The helper does not erase or overwrite unknown prior writes.
+
+## Bounded candidate treatment
+
+`apply_candidate_treatment(pair, proposal, binding)` is the same staging Producer's bounded write boundary after `parse_proposal`. `TargetBinding` comes from the original caller. It fixes the source commit, snapshot reference, opaque target and expected-source references, tracked relative path, expected bytes, and protected paths. The function compares references as data. It does not derive paths from reference strings or establish authorization from a proposal.
+
+Before writing, the function validates both staged copies against their original manifests. It refuses a stale source binding, stale expected bytes, protected path, unsafe path, symlink, overlapping stages, or previously applied treatment. It replaces only the candidate target with the proposal's UTF-8 bytes and preserves the file's executable bit. The candidate manifest is derived by replacing that one original entry. Other hashes are retained, rather than accepted from a scan of changed files. The original Git checkout and baseline remain untouched.
+
+`validate_source_pair` checks the complete file lists, content hashes, and executable bits of both arms. Transport and inspection consume this check even when only H1 is selected. Later baseline or candidate drift cannot be incorporated into a new valid manifest by another treatment call. A failed or interrupted local write requires original Owner readback before any retry.
+
+The public API and source controls are described in [Candidate treatment](candidate-treatment-contract.md). These Python records are trusted caller data, not an authentication or admission framework.
 
 ## Evidence ceiling
 

@@ -10,7 +10,7 @@
 
 [Bounded Docker Execution Transport](docs/container-execution-contract.md) executes an original Owner-selected digest-pinned command against a read-only staged source and records the Docker client result. Transport results do not establish native isolation, task completion, independent replay acceptance or training eligibility.
 
-[Git Source Materialization](docs/source-materialization-contract.md) stages exact tracked Git blob bytes in two separate filesystem copies, without task execution or sandbox guarantees. Source staging is not native Replay, independent Oracle acceptance, training, or transfer.
+[Git Source Materialization](docs/source-materialization-contract.md) stages exact tracked Git blob bytes in two separate filesystem copies. [Candidate treatment](docs/candidate-treatment-contract.md) consumes a parsed single-target proposal and an original caller-fixed source binding, preserves H0, and records only the permitted H1 replacement. Existing transport and inspection check both fixed arm manifests before using the selected arm. These source and mocked transport controls do not establish native Replay, independent Oracle acceptance, training, or transfer.
 
 [A6 Training Eligibility](docs/training-eligibility-contract.md) accepts direct typed task/evaluation facts and checks partition, rights, token lineage and hard gates. The unused A6 FileRef / Provider Authenticity layers have been removed. This screening does not start a Trainer, verify model data or authorize a policy update.
 

@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "issue": {
+    "repository": "ed3c/NeoWeaver",
+    "number": 14
+  },
+  "instructions": [
+    {
+      "path": "README.md",
+      "baseline_sha256": "404dd322b9c445b3c6c41d718eac0b293c82a3109d63c388256bebcf4d1b7aba",
+      "treatment_sha256": "efc31277ddf9ca7fc6c9c5900be2da587c2e2bb9b3f2da803e08bf78b56abc13"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "LESSON.md",
+      "role": "Observed first premise and actual Issue/commit lineage",
+      "sha256": "7de7f468df99dc4a8fde9fd3d1f9db37a584f53c2b71552e40711af0c52dcd6c"
+    },
+    {
+      "path": "docs/container-execution-contract.md",
+      "role": "Existing transport and inspection consumer contract",
+      "sha256": "4c2456c7734aba7f13b81ec3872baeb04fd703c76d8b44019d0bd7c865f573fe"
+    },
+    {
+      "path": "docs/source-materialization-contract.md",
+      "role": "Original staging Producer and bounded treatment contract",
+      "sha256": "ef39340809df4a9227a830a9781eaf307279c707e98a8fdb23656dec92cbc53c"
+    },
+    {
+      "path": "neoweaver/execution.py",
+      "role": "Per-arm transport capture and inspection consumers",
+      "sha256": "78dd90177424c2c8bcb0606dce21bd62faf2f15c15fbd1a19e951c017abf1bc8"
+    },
+    {
+      "path": "neoweaver/snapshot.py",
+      "role": "Source-bound single-target application and arm manifest Producer",
+      "sha256": "0c2d49a532b4a012995c1bd86a0d81bdf2d3557c5047f7b08a03f71926bb36a5"
+    },
+    {
+      "path": "tests/test_candidate_treatment.py",
+      "role": "Public API positive and negative integration controls",
+      "sha256": "74a8b0f227f775e603feaf8f209d935414e96eca16d7a54061fd44928e44dae6"
+    }
+  ],
+  "owner": {
+    "name": "Original Soodles Issue admission",
+    "tool": "issue_admission.validate_delivery_paths",
+    "authorization": "ed3c/NeoWeaver#14"
+  },
+  "authorizes_landing": false
+}

@@ -75,3 +75,39 @@ The source correction feedback is [FactoryWeaver PR #26](https://github.com/ed3c
 Hook Manager 的既有 Stop adapter 沒有直接呼叫 Waza `check`，GitHub workflows 也沒有 MR → Hook Manager bridge。Remote repository webhook inventory 無可用認證，保持 UNKNOWN；不能宣稱全服務沒有 webhook。本機既有 Codex plugin 的 Stop handler 與 Soodles Hook Manager 是不同來源，也不以 Installed／Active 欄位當 check 已執行。觀察完成後撤除本次暫時 project 定義，保留私有原生 captures，不修改其他 hooks 或繞過 trust。
 
 本輪 executable control 與 Host observation 摘要見 [parser verification](docs/parser-verification.json)。歷史編譯 helper 的 `parser_implementation=NOT_RUN` 只描述原 compiled artifact 所持證據；它不是目前程式存在性的探測器。Parser 實測、native Hook 有限觀察、MR check、replay、training、transfer 與 whole Goal 分開驗收。
+
+
+## Issue #14：合法 H1 與未授權 drift 的來源邊界
+
+[NeoWeaver #14](https://github.com/ed3c/NeoWeaver/issues/14) 的 admitted source 是
+`cd52805ca37b9adcb4672b76e8ed6d668de2b259`。第一個不成立的前提是「兩個 source
+copies 共用 baseline manifest，也能表達合法 H1」。本次先以真實 temporary Git
+source 呼叫既有 Parser，得到 `ParsedProposal`，再寫入候選 replacement。
+原 transport 回 `source_changed`，Docker invocation 為 0，capture 未建立，H0
+與 Git 原檔仍為原值。這是 public API 的來源斷點，不是 Docker 或 native Replay failure。
+原始診斷保存在 repository 外，沒有公開 host paths 或 transcript。
+
+本 Issue 的實作修正 commit 是 `46457b6c16fb5da95396cf0912f988b1b2f58e91`。原 staging Producer 現在保存每 arm
+manifest，並消費 caller 固定的 opaque refs、tracked path、expected bytes 與
+protected paths。只替換一個 H1 target 的 hash，既有 transport 與 inspection
+檢查兩 arm 的固定 bytes 和 modes。正例是合法 H1 進入 mocked Docker transport
+與 inspection，H0、非 target 與 Git 原檔保持 literal expected bytes。反例是
+同樣 H1 bytes 未經 bounded application，仍 `source_changed` 且 Docker 為 0。
+Stale binding、protected alias、escape、symlink、後續 drift 與 capture substitution
+各有拒絕控制。十項 REQ、44 Cards 與歷史 verification bytes 均未改寫。
+
+Writer 自審與獨立 reviewer 另重現 candidate target hardlink 到 Git 原檔的問題。
+原本直接寫入會把原 Git 檔改成 H1。新增 `target_hardlink` 的寫入前拒絕後，Git
+與 baseline hardlink 控制都保留 H0。這修正實際觀察到的 alias write，沒有宣稱
+消除 filesystem check 到 write 或 mount 之間的並行修改窗口。
+
+本次原 Test Manager 選定的 42 個 source、transport、inspection tests 與 compiled
+consistency check 已通過。獨立 writer-side review 使用此 Host 的原生 subagent；
+Cursor 專用 Task、指定跨模型執行與完整 native P-class compliance 沒有被宣稱。
+Docker daemon 的唯讀探測有回應，但本 admission 沒有提供原 Owner 固定的 image
+與 task，故沒有 live Docker task、isolation、oracle 或 `RunReadback` PASS。
+
+這條 rework edge 是原 source commit → Issue #14 → 上述實作 commit。
+目前沒有本次 PR、merge 或 closure 的 Provider receipt。原 Issue-atom、Test、Schema
+與 landing Owners 繼續各自交付與驗收；Writer outcome 不等於這些 receipts。
+Native Replay、RL training、frozen Codex transfer 與 whole Goal 繼續 OPEN。
