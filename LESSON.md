@@ -134,7 +134,11 @@ review 在初始 committed diff 重現三項缺陷。`item.started` 尚未完成
 `turn.completed` 時被接受；含 `..` 的 capture path 繞過 source overlap；
 escaped lone surrogate 使 decoder 拋例外。`55c3bd3` 追蹤 item lifecycle，
 `e8d35ee` 在 launch 前 canonicalize path 並拒絕 malformed message encoding。
-對應正反 fixtures 均在修正後通過。這些是實際 review/correction edges，
+對應正反 fixtures 均在修正後通過。終審另在 temporary repository 重現
+live driver 的 relative／`..` evidence root 也能繞過 repository overlap。
+`07bdda3` 將 driver root 同樣 canonicalize；新控制確認拒絕時沒有讀取
+pinned task、寫入 Oracle 或啟動 native。這不影響已觀察的絕對私有 live root，
+沒有因此替換或重跑兩個原 capture。這些是實際 review/correction edges，
 沒有另造 rework Issue 或 Provider receipt。
 
 實際 validation-only H0/H0 使用 clean source commit
