@@ -36,19 +36,15 @@ Parent Goal 與 Deferred Scope 仍存在完整 Knowledge Record。
 此 Review 是新的 source-level feedback，不覆寫原 compiled evidence；
 Native P-class compliance 仍需 fresh consumer 與原 schema feedback。
 
-## Codex Plugin / MCP — read-only original owner tools
+## Frozen Codex Plugin / MCP — P-class → 原 CLI Tool Call
 
-當 Host 實際提供 MCP Capability，先讀 [Codex MCP Harness Boundary](docs/codex-mcp-harness-boundary.md) 並呼叫 `bridge_capabilities`；來源 Root/HEAD、Test Manager Base 和 FileRef 均由原 Producer／使用者設定，Session 不自行編造。首個 Tool Surface 僅提供 `soodles_test_plan`、`factoryweaver_project`、`neoweaver_training_screen`、`neoweaver_patch_parse`、`owner_evidence_range` 等唯讀／無 effects 的原 Owner 接口。此 Plugin 不截取 Codex 內建 Edit/Tool Result，不替代 Noodle Writer、Test Manager、Schema Manager 或 Provider Landing。
+當 Host 已實際安裝、啟用 [Codex MCP Bridge](docs/codex-mcp-harness-boundary.md) 時，先呼叫 `bridge_capabilities({})` 讀取原 Source Root/HEAD 的 Pin 狀態。Host／原 Producer 提供引用；Session 不生成 SHA、Identity、Test Base 或證據路徑。原 Soodles CLI / FactoryWeaver CLI / NeoWeaver Validator 是事實與狀態轉移的 Owner，MCP 不提供第二套 Orchestrator。
 
-Frozen Codex H0/H1 MCP 治療與 Pi 原生／Pi+SoL-Pi 機制對照須分開。Codex 与 Pi 是不同 Harness，不能將跨 Host 差異算成 SoL-Pi 單一機制收益。已提交 Source/Fixture/CI 不等於在 Host 安裝、信任、呼叫或 Fresh Consumer 行為；未有 Native Capture 時狀態維持 NOT_RUN。
+僅在需求及原 Producer 的有效資料支持時呼叫受限 Tool：`soodles_test_plan({})`（原 Test Manager 唯讀 Plan）、`soodles_cli_contracts({})`（原 CLI Source Catalog）、`soodles_knowledge_inspect({bundle_ref})`（原 Reader 的來源綁定讀回）、`factoryweaver_project(...)`（原 Validate/Project/Route）、`neoweaver_patch_parse(...)`、`neoweaver_training_screen(...)`（原 Parser/A6 Hard Gate）、`owner_evidence_range(...)`（原 Evidence FileRef 精確範圍讀）。Provider 的 Refusal、`next=null`、`needs_scope` 或超出 Context Bound 的讀回不得解釋成 PASS／Admission。原 next／test argv／effects 無需讓模型重選。
 
-## Frozen Codex 與 SoL-Pi 候選的 Tool Call 推論邊界
+**Action Fusion 不是原子冪等寫入。** 現有候選僅唯讀；Codex MCP 不自動截取內建 Edit/Tool Result、Native Plan 或 Compaction。未來有確實 Writer Caller 時，由原 Noodle Admission + Test Manager + Side-effect Owner 處理 Stable Operation、CAS、Readback，不能添加任意 model-supplied `verifyCommand`。Native Capability 未觀察時保持 `NOT_RUN`。Soodles 的原七決策點規則與三層驗證不變。
 
-本候選 Plugin 只有受限、唯讀的 original-owner MCP Tools；不是第二個 Harness Orchestrator。最新 `soodles_cli_contracts({})` 與 `soodles_knowledge_inspect({bundle_ref})` 直接消費原 Soodles CLI 的 Catalog 與來源綁定 Reader，和既有 `soodles_test_plan({})`、`factoryweaver_project(...)`、`neoweaver_patch_parse(...)`、`neoweaver_training_screen(...)`、`owner_evidence_range(...)` 使用同一個拒絕與權限邊界。Tool 不重建測試、原 next、SHA、權限或觀測事實。見 [Codex MCP 邊界](docs/codex-mcp-harness-boundary.md)。
-
-P-class 只保留尚未被來源／CLI 確定的語意判斷；Source Pin、CLI Choice、Owner FileRef 與具名 Refusal 都由原 Producer 提供。輸出過大、來源變動、未提供 FileRef、Host 未裝載時維持 `REFUSED/NOT_RUN`，不得自動重新測試或取得替代身份。Native `edit_and_verify`、Pi ObservationPack／Compaction 的自動攔截均尚未接入 Codex，必須先有 Host Capability、實際 Caller、原 Test Manager Selection 與未知寫入 Readback。
-
-H0/H1 Frozen Codex（相同模型與負載，只有 Tool Surface 改變）及 Pi/SoL-Pi（相同 Pi 僅一機制變化）分開驗證；不同 Host 之間的差異不計為單一機制收益。原 A6 訓練資格 Hard Gates、Protected Oracles、十項 REQ 和 Original Provider Landing 不變。
+H0/H1 Frozen Codex（相同 Codex Model／Task，只有 MCP Surface 變化），與相同 Pi 的 SoL-Pi H0/H1（一次改一項 Extension），是兩個分開的因果實驗。不能將跨 Host 差異當作單一 SoL-Pi 機制收益。Plugin 原始碼／Unit CI PASS 不等於 Native Host 已安裝／消費。原十項 REQ、A6 Hard Gates、Frozen Codex 非 trainable、Protected Oracles 和原 Provider Landing 全部保留。
 
 ## 資料與 effects
 
