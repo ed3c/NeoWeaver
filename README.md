@@ -12,4 +12,6 @@
 
 [Git Source Materialization](docs/source-materialization-contract.md) stages exact tracked Git blob bytes in two separate filesystem copies, without task execution or sandbox guarantees. Source staging is not native Replay, independent Oracle acceptance, training, or transfer.
 
+[A6 Training Eligibility](docs/training-eligibility-contract.md) provides a pure, **non-authorizing** check of original Dataset Rights, train/validation/held-out partitions, policy/token lineage and independently declared verification/reward references. A structurally consistent declaration does not start a Trainer or prove real rights/reward data.
+
 [完整規格](docs/specs/learned-harness-coevolution.md)保留十項原需求與其後續驗收。Replay、training、learned artifact 的 native transfer 和 whole Goal 尚未驗收；歷史編譯證據保留原狀。
