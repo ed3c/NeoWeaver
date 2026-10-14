@@ -36,6 +36,12 @@ Parent Goal 與 Deferred Scope 仍存在完整 Knowledge Record。
 此 Review 是新的 source-level feedback，不覆寫原 compiled evidence；
 Native P-class compliance 仍需 fresh consumer 與原 schema feedback。
 
+## Codex Plugin / MCP — read-only original owner tools
+
+當 Host 實際提供 MCP Capability，先讀 [Codex MCP Harness Boundary](docs/codex-mcp-harness-boundary.md) 並呼叫 `bridge_capabilities`；來源 Root/HEAD、Test Manager Base 和 FileRef 均由原 Producer／使用者設定，Session 不自行編造。首個 Tool Surface 僅提供 `soodles_test_plan`、`factoryweaver_project`、`neoweaver_training_screen`、`neoweaver_patch_parse`、`owner_evidence_range` 等唯讀／無 effects 的原 Owner 接口。此 Plugin 不截取 Codex 內建 Edit/Tool Result，不替代 Noodle Writer、Test Manager、Schema Manager 或 Provider Landing。
+
+Frozen Codex H0/H1 MCP 治療與 Pi 原生／Pi+SoL-Pi 機制對照須分開。Codex 与 Pi 是不同 Harness，不能將跨 Host 差異算成 SoL-Pi 單一機制收益。已提交 Source/Fixture/CI 不等於在 Host 安裝、信任、呼叫或 Fresh Consumer 行為；未有 Native Capture 時狀態維持 NOT_RUN。
+
 ## 資料與 effects
 
 原 Source／Registry／Host／Runner／Provider 產生自己的 identities、digests、heads、argv、capture 與 receipts。Consumer 使用其原 references，不補造或重建。缺 capability、token provenance、rights、evaluation population 或 admission，只停止依賴它的步驟；continue 已授權且不依賴該缺口的工作。
