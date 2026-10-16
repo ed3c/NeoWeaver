@@ -1,5 +1,12 @@
 # NeoWeaver Agent entry
 
+## 狀態機修改契約與可選 Loop 接入
+
+修改本 repo 的 AGENTS、P-class、CLI 狀態機及其敘述時，先讀
+[狀態機修改契約套用](docs/state-machine-change.md)，由該頁解析固定版本原文。
+契約可獨立使用；只有選定迴圈任務才沿原 adapter 接入 LoopManager。
+既有驗證、雲端及發布邊界保持有效。CLI 驗證資料與合法轉移，不保證完整語義正確。
+
 先讀 [完整規格](docs/specs/learned-harness-coevolution.md)、[編譯與證據入口](docs/compiled/README.md) 和 [LESSON.md](LESSON.md)。十項原 logical REQ、source coverage 與尚缺的 native proofs 均需保留。規格與 PatchProposal 是提案；目前沒有 Trainer、performance gain 或 native transfer 已完成的證據。
 
 ## 規格與執行
