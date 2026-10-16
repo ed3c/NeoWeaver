@@ -43,6 +43,16 @@ Parent Goal 與 Deferred Scope 仍存在完整 Knowledge Record。
 此 Review 是新的 source-level feedback，不覆寫原 compiled evidence；
 Native P-class compliance 仍需 fresh consumer 與原 schema feedback。
 
+## Frozen Codex Plugin / MCP — P-class → 原 CLI Tool Call
+
+當 Host 已實際安裝、啟用 [Codex MCP Bridge](docs/codex-mcp-harness-boundary.md) 時，先呼叫 `bridge_capabilities({})` 讀取原 Source Root/HEAD 的 Pin 狀態。Host／原 Producer 提供引用；Session 不生成 SHA、Identity、Test Base 或證據路徑。原 Soodles CLI / FactoryWeaver CLI / NeoWeaver Validator 是事實與狀態轉移的 Owner，MCP 不提供第二套 Orchestrator。
+
+僅在需求及原 Producer 的有效資料支持時呼叫受限 Tool：`soodles_test_plan({})`（原 Test Manager 唯讀 Plan）、`soodles_cli_contracts({})`（原 CLI Source Catalog）、`soodles_knowledge_inspect({bundle_ref})`（原 Reader 的來源綁定讀回）、`factoryweaver_project(...)`（原 Validate/Project/Route）、`neoweaver_patch_parse(...)`、`neoweaver_training_screen(...)`（原 Parser/A6 Hard Gate）、`owner_evidence_range(...)`（原 Evidence FileRef 精確範圍讀）。Provider 的 Refusal、`next=null`、`needs_scope` 或超出 Context Bound 的讀回不得解釋成 PASS／Admission。原 next／test argv／effects 無需讓模型重選。
+
+**Action Fusion 不是原子冪等寫入。** 現有候選僅唯讀；Codex MCP 不自動截取內建 Edit/Tool Result、Native Plan 或 Compaction。未來有確實 Writer Caller 時，由原 Noodle Admission + Test Manager + Side-effect Owner 處理 Stable Operation、CAS、Readback，不能添加任意 model-supplied `verifyCommand`。Native Capability 未觀察時保持 `NOT_RUN`。Soodles 的原七決策點規則與三層驗證不變。
+
+H0/H1 Frozen Codex（相同 Codex Model／Task，只有 MCP Surface 變化），與相同 Pi 的 SoL-Pi H0/H1（一次改一項 Extension），是兩個分開的因果實驗。不能將跨 Host 差異當作單一 SoL-Pi 機制收益。Plugin 原始碼／Unit CI PASS 不等於 Native Host 已安裝／消費。原十項 REQ、A6 Hard Gates、Frozen Codex 非 trainable、Protected Oracles 和原 Provider Landing 全部保留。
+
 ## 資料與 effects
 
 原 Source／Registry／Host／Runner／Provider 產生自己的 identities、digests、heads、argv、capture 與 receipts。Consumer 使用其原 references，不補造或重建。缺 capability、token provenance、rights、evaluation population 或 admission，只停止依賴它的步驟；continue 已授權且不依賴該缺口的工作。

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "neoweaver-owner-tools",
+  "version": "0.1.0",
+  "description": "Read-only original-owner MCP adapters for Soodles, FactoryWeaver and NeoWeaver",
+  "author": {
+    "name": "NeoWeaver"
+  },
+  "keywords": [
+    "codex",
+    "mcp",
+    "verification",
+    "harness"
+  ]
+}
