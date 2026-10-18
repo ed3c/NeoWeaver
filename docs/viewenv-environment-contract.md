@@ -14,8 +14,8 @@ action, one termination, and an optional original NativePairReport attachment.
   training eligibility, or landing permission.
 - OpenEnv `make_environment_class(spec)`: authentic MCPEnvironment and
   FastMCP tool API, one bounded episode per instance, no generated ID.
-  `make_private_app` remains uncalled until an authorized private Host
-  selects the exact fixed inputs. It cannot be exposed on the public UI.
+  Only the original authenticated Host may create/serve a network endpoint;
+  this repository does not provide a standalone ASGI server launcher.
 - Verifiers `make_tool_env(spec, dataset, independent_rubric)`:
   authentic `vf.ToolEnv`, no default dataset, scorer or hidden oracle.
   The `ViewEnvToolkit` is independently testable without the optional
