@@ -58,3 +58,15 @@ Test Manager 一次選必要 discriminating controls。Schema Manager 消費實�
 FactoryWeaver doctor／local maintain 可重跑 CLI transport與拒絕。Full maintenance blocked 不得改成 full PASS。工程文件沿原 Soodles review-writing 做 source fidelity、actor、condition、causality、state、acceptance 審查。改 P-class guidance 的 native compliance 仍需 fresh consumer 和原 schema feedback；文字審查通過不替代該證據。
 
 先從實際 first unsupported premise 修原 Producer。依 LESSON 保留正反控制與 GitHub rework edges。不把歷史 source update 寫成 native Noodle／Manager receipt，也不以本規格完成宣稱產品已實作。
+
+
+## Visualization and environment integration (proposed)
+When the task explicitly chooses Harness², FineEnvs, or Loop Studio,
+read [Harness²/FineEnvs read-only view contract](docs/harness2-fineenvs-loop-studio.md).
+The new EpisodeViewV1 schema is a **read-only proposed transport envelope**;
+it is not a new Training Eligibility Gate, Source Owner, reset/step executor,
+reward producer, harness installer, runtime state machine or Codex permission.
+The original ten logical REQ and immutable verification/held-out rules win.
+Do not claim native harness probing, environment rollout, training or TanStack Start
+deployment from a written contract or a rendered illustration. Missing original
+owner receipts remain UNKNOWN; never give RL rewards for UI interaction alone.

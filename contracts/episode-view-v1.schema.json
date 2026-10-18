@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ed3c/NeoWeaver/blob/main/contracts/episode-view-v1.schema.json",
+  "title": "Proposed EpisodeViewV1 (source-bound read-only, not validity proof)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "original_refs",
+    "episode",
+    "harness",
+    "learning",
+    "display",
+    "permissions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "original_refs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task",
+        "environment",
+        "source",
+        "rights",
+        "evaluation"
+      ],
+      "properties": {
+        "task": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "environment": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rights": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evaluation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "episode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reset_ref",
+        "steps",
+        "terminal_ref"
+      ],
+      "properties": {
+        "reset_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "terminal_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "observation_ref",
+              "action_ref",
+              "step_receipt_ref"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "observation_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "action_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "step_receipt_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "harness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "surface",
+        "baseline_ref",
+        "candidate_ref",
+        "comparison_ref"
+      ],
+      "properties": {
+        "phase": {
+          "enum": [
+            "task_level",
+            "harnessing_level",
+            "not_applicable"
+          ]
+        },
+        "surface": {
+          "enum": [
+            "system_prompt",
+            "guardrails",
+            "memory",
+            "tool_guidance",
+            "subagents",
+            "skills",
+            "scripts",
+            "plugins",
+            "none"
+          ]
+        },
+        "baseline_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "candidate_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "comparison_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "learning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor",
+        "policy_ref",
+        "partition",
+        "reward_ref",
+        "verifier_ref",
+        "training_eligibility"
+      ],
+      "properties": {
+        "actor": {
+          "enum": [
+            "harness_proposer",
+            "open_solver",
+            "frozen_solver",
+            "unknown"
+          ]
+        },
+        "policy_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "partition": {
+          "enum": [
+            "train",
+            "validation",
+            "held_out",
+            "unknown"
+          ]
+        },
+        "reward_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verifier_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "training_eligibility": {
+          "enum": [
+            "eligible",
+            "ineligible",
+            "inconclusive",
+            "not_checked"
+          ]
+        }
+      }
+    },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "gaps"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "PROPOSED",
+            "OBSERVED",
+            "UNKNOWN",
+            "INCONCLUSIVE"
+          ]
+        },
+        "gaps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execute",
+        "train",
+        "publish",
+        "accept"
+      ],
+      "properties": {
+        "execute": {
+          "const": false
+        },
+        "train": {
+          "const": false
+        },
+        "publish": {
+          "const": false
+        },
+        "accept": {
+          "const": false
+        }
+      }
+    }
+  }
+}
