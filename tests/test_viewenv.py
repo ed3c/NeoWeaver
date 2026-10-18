@@ -58,6 +58,14 @@ class ViewEnvDomainTests(unittest.TestCase):
                                           spec.environment_ref,spec.fixed_inputs))
         self.assertIsNone(env.inspect().reward)
 
+    def test_mutable_caller_input_cannot_expand_allowlist_after_reset(self):
+        spec, raw = fixture()
+        env = ViewEnvEpisode(spec)
+        spec.fixed_inputs["allowlist"].clear()
+        observation = env.propose_patch(raw)
+        self.assertEqual("PROPOSED", observation.status)
+        self.assertIsNone(env.inspect().reward)
+
     def test_reject_duplicate_or_foreign_pair(self):
         spec, raw = fixture()
         env = ViewEnvEpisode(spec)
