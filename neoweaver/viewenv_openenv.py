@@ -106,9 +106,6 @@ def make_environment_class(spec: EpisodeSpec):
     return ViewEnvMCP
 
 
-def make_private_app(spec: EpisodeSpec):
-    """Use only under existing authenticated private Host admission."""
-    from openenv.core.env_server.http_server import create_app
-    from openenv.core.env_server.mcp_types import CallToolAction, CallToolObservation
-    return create_app(make_environment_class(spec), CallToolAction, CallToolObservation,
-                      env_name="viewenv", max_concurrent_envs=1)
+# ASGI serving is deliberately left to the original authenticated Host owner.
+# Constructing an OpenEnv environment class here does not create a public route
+# or grant a permission to expose private FixedInputs over the network.
