@@ -6,6 +6,9 @@ on:
       - 'contracts/loop-workbench-evidence-v0.schema.json'
       - 'scripts/loop_workbench_projection.py'
       - 'tests/test_loop_workbench_projection.py'
+      - 'neoweaver/viewenv*.py'
+      - 'tests/test_viewenv.py'
+      - 'docs/viewenv-environment-contract.md'
       - '.github/workflows/loop-workbench-projection.yml'
   workflow_dispatch:
 permissions:
@@ -19,5 +22,7 @@ jobs:
           persist-credentials: false
       - name: Run source-bound projection controls
         run: python3 -m unittest discover -s tests -p 'test_loop_workbench_projection.py' -v
+      - name: Run native ViewEnv domain and Verifiers adapter controls
+        run: python3 -m unittest discover -s tests -p 'test_viewenv.py' -v
       - name: Validate non-authorizing JSON schema syntax
         run: python3 -m json.tool contracts/loop-workbench-evidence-v0.schema.json > /dev/null
