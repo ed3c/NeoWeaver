@@ -17,5 +17,7 @@ jobs:
           python-version: '3.12'
       - name: Check declared Card and parser Scope consistency
         run: python scripts/check_compiled_contracts.py
-      - name: Exercise retained artifact refusal controls
+      - name: Install pinned optional Harness2 integration dependency
+        run: python -m pip install -r requirements-harness2.txt
+      - name: Exercise retained artifacts and pinned Harness2 boundary
         run: python -m unittest discover -s tests -v
