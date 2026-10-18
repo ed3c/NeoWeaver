@@ -11,8 +11,12 @@ class ViewEnvToolkit:
     def __init__(self, spec: EpisodeSpec):
         self.spec = spec
         self.domain = None
+        self._ever_reset = False
 
     def reset(self):
+        if self._ever_reset:
+            raise ValueError('episode_identity_reuse_refused')
+        self._ever_reset = True
         self.domain = ViewEnvEpisode(self.spec)
 
     def propose_patch(self, proposal_json: str) -> str:
