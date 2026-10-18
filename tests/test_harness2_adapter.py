@@ -69,6 +69,22 @@ class Harness2AdapterTests(unittest.TestCase):
         self.assertFalse(result.graded)
         self.assertIn('source drift', result.error)
 
+    def test_historical_context_requires_retained_verified_bytes(self):
+        import base64
+        data = json.loads(Path(self.snapshot['path']).read_text())
+        data['retained_sources'] = [{'reference': ref, 'base64': base64.b64encode(Path(ref['path']).read_bytes()).decode()}
+                                    for ref in (self.request, self.trace)]
+        snapshot = self.ref('retained.json', json.dumps(data))
+        Path(self.trace['path']).write_text('later version')
+        with self.assertRaises(ValueError):
+            ReviewEvidenceAdapter(snapshot)
+        adapter = ReviewEvidenceAdapter(snapshot, historical=True)
+        self.assertIn('original action', adapter.trajectory(self.root, obs_trunc=0))
+        data['retained_sources'][1]['base64'] = 'eA=='
+        tampered = self.ref('tampered.json', json.dumps(data))
+        with self.assertRaises(ValueError):
+            ReviewEvidenceAdapter(tampered, historical=True)
+
     def test_json_owner_keeps_missing_review_unknown_and_binds_adjudication(self):
         from neoweaver.behavior_tools import inspect
         from dataclasses import asdict

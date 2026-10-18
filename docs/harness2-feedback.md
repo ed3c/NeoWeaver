@@ -22,6 +22,10 @@ partition 為 train、validation 或 held_out；outcome 為 pass、fail 或 unkn
 Session／原裁決者對語義與獨立性聲明負責。CLI 核對格式與來源，不認證聲明為真。
 FileRef 應由原 producer 返回，不要求 Session 手算摘要。
 
+預設核對目前來源。JSON 可明確提供 `historical: true`，讀取新 Soodles snapshot
+當時保存且摘要相符的來源 bytes。結果標示 `retained_historical_bytes`。
+歷史讀回不證明目前來源、目前指引的行為或 next 仍有效；舊快照缺保存 bytes 時拒絕。
+
 沒有裁決時，原 Harness2 judge 返回未計分，fraction 保持 null。
 條件、獨立性與原生觀察的聲明齊備時，案例可列為 `golden_eligible`。
 這只表示提供的裁決事實滿足條件，不是認證黃金集完成。

@@ -9,7 +9,7 @@ from .harness2_adapter import ReviewEvidenceAdapter, read_ref
 from .harness_feedback import BehaviorLabel, dataset
 
 
-def inspect(snapshot, review=None):
+def inspect(snapshot, review=None, historical=False):
     labels = ()
     if review is not None:
         value = read_ref(review)
@@ -19,11 +19,12 @@ def inspect(snapshot, review=None):
                 or type(value.get('cases')) is not list):
             raise ValueError('review must bind this original snapshot and identify its reviewer')
         labels = tuple(BehaviorLabel(**case) for case in value['cases'])
-    adapter = ReviewEvidenceAdapter(snapshot, labels)
+    adapter = ReviewEvidenceAdapter(snapshot, labels, historical=historical)
     from harness2.core.judge import judge_one
     result = judge_one(adapter, adapter.data['run_id'], 'original', 1,
                        'original', adapter.data['run_id'], adapter.spec.runs_root)
     return {'schema': 1, 'status': 'reviewed' if result.graded else 'unknown',
+            'source_scope': 'retained_historical_bytes' if historical else 'current_sources',
             'snapshot': snapshot, 'review': review, 'dataset': dataset(labels),
             'upstream_judge': {'graded': result.graded, 'fraction': result.frac, 'raw': result.raw,
                                'problem': result.error or None},
@@ -37,7 +38,7 @@ def inspect(snapshot, review=None):
 def main():
     try:
         request = json.load(sys.stdin)
-        if type(request) is not dict or not {'snapshot'} <= request.keys() or request.keys() - {'snapshot', 'review'}:
+        if type(request) is not dict or not {'snapshot'} <= request.keys() or request.keys() - {'snapshot', 'review', 'historical'}:
             raise ValueError('expected snapshot and optional review references')
         result = inspect(**request)
     except (ValueError, TypeError, KeyError, OSError) as error:

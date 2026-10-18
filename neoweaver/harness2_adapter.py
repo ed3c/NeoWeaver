@@ -3,6 +3,7 @@
 The caller installs the pinned optional upstream package. The adapter never uses
 Harness2's executor or selection pool: Noodle owns runs; outer owns adoption.
 """
+import base64
 import hashlib
 import json
 from pathlib import Path
@@ -27,15 +28,18 @@ def read_ref(reference):
 class ReviewEvidenceAdapter:
     """Consumes a Soodles trajectory snapshot; labels stay out of model context."""
 
-    def __init__(self, snapshot, labels=()):
+    def __init__(self, snapshot, labels=(), *, historical=False):
+        if type(historical) is not bool:
+            raise ValueError('historical must be explicit boolean')
+        self.historical = historical
         self.reference = snapshot
         self.data = read_ref(snapshot)
-        if self.data.get('kind') != 'original_loop_behavior':
+        if type(self.data) is not dict or self.data.get('kind') != 'original_loop_behavior':
             raise ValueError('original LoopManager behavior snapshot required')
+        if historical and type(self.data.get('retained_sources')) is not list:
+            raise ValueError('snapshot has no retained source bytes')
         for ref in [self.data['request'], *self.data['sources']]:
-            raw = Path(ref['path']).read_bytes()
-            if hashlib.sha256(raw).hexdigest() != ref['sha256']:
-                raise ValueError('source drift: ' + ref['path'])
+            self.source_bytes(ref)
         self.labels = labels
         dataset(labels)  # Validate labels before the upstream judge catches errors.
         from harness2.core.spec import BenchSpec, BenchPrompts, ChannelSpec
@@ -43,6 +47,18 @@ class ReviewEvidenceAdapter:
             BenchPrompts(work='Review a candidate against the original task and preserve its continuation.'),
             {'proposer': ChannelSpec('opencode', 'unused/read-only'),
              'selector': ChannelSpec('opencode', 'unused/read-only')}, allow_subagents=False)
+
+    def source_bytes(self, ref):
+        row = next((x for x in self.data.get('retained_sources', []) if x['reference'] == ref), None)
+        if self.historical:
+            if row is None:
+                raise ValueError('historical source missing: ' + ref['path'])
+            raw = base64.b64decode(row['base64'], validate=True)
+        else:
+            raw = Path(ref['path']).read_bytes()
+        if hashlib.sha256(raw).hexdigest() != ref['sha256']:
+            raise ValueError('source drift: ' + ref['path'])
+        return raw
 
     def _task(self, task_id):
         if task_id != self.data['run_id']:
@@ -54,8 +70,7 @@ class ReviewEvidenceAdapter:
         if read_ref(self.reference) != self.data:
             raise ValueError('snapshot changed')
         for ref in [self.data['request'], *self.data['sources']]:
-            if hashlib.sha256(Path(ref['path']).read_bytes()).hexdigest() != ref['sha256']:
-                raise ValueError('source drift: ' + ref['path'])
+            self.source_bytes(ref)
 
     def task_prompt(self, task_id):
         self._task(task_id)
@@ -71,9 +86,7 @@ class ReviewEvidenceAdapter:
         # traces remain original sources; no prompt-budget truncation is applied.
         parts = []
         for ref in self.data['native_traces']:
-            raw = Path(ref['path']).read_bytes()
-            if hashlib.sha256(raw).hexdigest() != ref['sha256']:
-                raise ValueError('native trace changed')
+            raw = self.source_bytes(ref)
             parts.append(raw.decode('utf-8'))
         if not parts:
             raise ValueError('native trace unavailable')
