@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ed3c/NeoWeaver/blob/main/contracts/loop-workbench-evidence-v0.schema.json",
+  "title": "Loop Workbench episode observation projection (non-authorizing)",
+  "description": "Proposed read-only display payload. Source owners and their receipts remain authoritative.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_ref",
+    "episode_ref",
+    "task_ref",
+    "environment_ref",
+    "actor_ref",
+    "harness",
+    "actions",
+    "observations",
+    "verification",
+    "reward",
+    "termination"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 0
+    },
+    "run_ref": {
+      "$ref": "#/$defs/ref"
+    },
+    "episode_ref": {
+      "$ref": "#/$defs/ref"
+    },
+    "task_ref": {
+      "$ref": "#/$defs/ref"
+    },
+    "environment_ref": {
+      "$ref": "#/$defs/ref"
+    },
+    "actor_ref": {
+      "$ref": "#/$defs/ref"
+    },
+    "harness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "baseline_ref",
+        "candidate_ref"
+      ],
+      "properties": {
+        "phase": {
+          "enum": [
+            "propose",
+            "probe",
+            "compose",
+            "reflect",
+            "unknown"
+          ]
+        },
+        "baseline_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "candidate_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ref"
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ref"
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "verifier_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "INCONCLUSIVE",
+            "NOT_RUN"
+          ]
+        },
+        "verifier_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "reward": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "value",
+        "source_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "observed",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "source_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "observed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "source_ref": {
+                "$ref": "#/$defs/ref"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "unknown",
+                  "not_applicable"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "termination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reason_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "done",
+            "truncated",
+            "unknown"
+          ]
+        },
+        "reason_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    }
+  }
+}

@@ -1,0 +1,36 @@
+name: Loop Workbench RL Projection
+on:
+  pull_request:
+    paths:
+      - 'docs/specs/loop-workbench-harness2-fineenvs.md'
+      - 'contracts/loop-workbench-evidence-v0.schema.json'
+      - 'scripts/loop_workbench_projection.py'
+      - 'tests/test_loop_workbench_projection.py'
+      - 'neoweaver/viewenv*.py'
+      - 'tests/test_viewenv_harness2.py'
+      - 'tests/test_viewenv.py'
+      - 'docs/viewenv-environment-contract.md'
+      - '.github/workflows/loop-workbench-projection.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Run source-bound projection controls
+        run: python3 -m unittest discover -s tests -p 'test_loop_workbench_projection.py' -v
+      - name: Run native ViewEnv domain and Verifiers adapter controls
+        run: python3 -m unittest discover -s tests -p 'test_viewenv.py' -v
+      - name: Harness2 bounded source-to-probe bridge controls
+        run: python3 -m unittest discover -s tests -p 'test_viewenv_harness2.py' -v
+      - name: Install OpenEnv reference SDK in isolated test job
+        run: python3 -m pip install 'openenv==0.4.1'
+        timeout-minutes: 5
+      - name: Test actual OpenEnv MCP class and owner reset
+        run: python3 -m unittest discover -s tests -p 'test_viewenv_openenv.py' -v
+      - name: Validate non-authorizing JSON schema syntax
+        run: python3 -m json.tool contracts/loop-workbench-evidence-v0.schema.json > /dev/null
