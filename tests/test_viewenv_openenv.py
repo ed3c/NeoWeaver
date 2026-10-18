@@ -20,6 +20,8 @@ class NativeOpenEnvSmoke(unittest.TestCase):
         self.assertIsNone(env.state["reward"])
         with self.assertRaises(ValueError):
             env.reset(episode_id="foreign-episode")
+        with self.assertRaisesRegex(ValueError,"already_consumed"):
+            env.reset(episode_id="ep-1")
 
 if __name__ == "__main__":
     unittest.main()
