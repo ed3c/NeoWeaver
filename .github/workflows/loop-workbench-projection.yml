@@ -7,6 +7,7 @@ on:
       - 'scripts/loop_workbench_projection.py'
       - 'tests/test_loop_workbench_projection.py'
       - 'neoweaver/viewenv*.py'
+      - 'tests/test_viewenv_harness2.py'
       - 'tests/test_viewenv.py'
       - 'docs/viewenv-environment-contract.md'
       - '.github/workflows/loop-workbench-projection.yml'
@@ -24,6 +25,8 @@ jobs:
         run: python3 -m unittest discover -s tests -p 'test_loop_workbench_projection.py' -v
       - name: Run native ViewEnv domain and Verifiers adapter controls
         run: python3 -m unittest discover -s tests -p 'test_viewenv.py' -v
+      - name: Harness2 bounded source-to-probe bridge controls
+        run: python3 -m unittest discover -s tests -p 'test_viewenv_harness2.py' -v
       - name: Install OpenEnv reference SDK in isolated test job
         run: python3 -m pip install 'openenv==0.4.1'
         timeout-minutes: 5
