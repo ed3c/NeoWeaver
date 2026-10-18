@@ -20,6 +20,7 @@ def make_environment_class(spec: EpisodeSpec):
 
         def __init__(self):
             self.domain = ViewEnvEpisode(spec)
+            self._reset_count = 0
             mcp = FastMCP("viewenv")
 
             @mcp.tool
@@ -58,6 +59,9 @@ def make_environment_class(spec: EpisodeSpec):
             # substitute a new caller-controlled episode or silently reuse state.
             if episode_id is not None and episode_id != spec.episode_ref.reference:
                 raise ValueError("foreign_episode_identity")
+            if self._reset_count:
+                raise ValueError("episode_reset_already_consumed")
+            self._reset_count += 1
             self.domain = ViewEnvEpisode(spec)
             return Observation(done=False, reward=None, metadata={
                 "status": "READY", "episode_ref": spec.episode_ref.reference,
