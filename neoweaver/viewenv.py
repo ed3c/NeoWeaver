@@ -5,6 +5,7 @@ Codex, chooses or runs the Oracle, creates a reward, or grants authorization.
 Framework adapters wrap these same transitions instead of reimplementing them.
 """
 from dataclasses import dataclass
+from copy import deepcopy
 from typing import Literal
 
 from .patches import (
@@ -59,6 +60,9 @@ class ViewEnvEpisode:
         if type(spec.fixed_inputs) is not dict:
             raise ViewEnvRefusal("invalid_fixed_inputs")
         self.spec = spec
+        # Freeze the owner-fixed parser facts for this episode. A caller
+        # modifying the original dict later cannot silently expand allowlists.
+        self._fixed_inputs = deepcopy(spec.fixed_inputs)
         self._phase = "ready"
         self._actions = 0
         self._candidate: ParsedProposal | None = None
@@ -79,7 +83,7 @@ class ViewEnvEpisode:
         if self._done or self._candidate is not None or self._actions >= self.spec.max_actions:
             raise ViewEnvRefusal("episode_not_admitting_proposals")
         self._actions += 1
-        proposal = parse_proposal(raw, self.spec.fixed_inputs)
+        proposal = parse_proposal(raw, self._fixed_inputs)
         if type(proposal) is DiagnosticRefusal:
             self._diagnostic = proposal.condition
             return self.observation()
