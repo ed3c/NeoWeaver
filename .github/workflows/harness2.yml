@@ -4,6 +4,7 @@ on:
     paths:
       - requirements-harness2.txt
       - scripts/check_harness2.py
+      - scripts/propose_harness2.py
       - tests/test_harness2_source.py
       - .github/workflows/harness2.yml
   push:
@@ -11,6 +12,7 @@ on:
     paths:
       - requirements-harness2.txt
       - scripts/check_harness2.py
+      - scripts/propose_harness2.py
       - tests/test_harness2_source.py
       - .github/workflows/harness2.yml
 permissions:
@@ -50,3 +52,12 @@ jobs:
         env:
           PYTHONDONTWRITEBYTECODE: '1'
         run: python -m unittest discover -s tests -p test_workflow.py -v
+      - name: Emit data-only experiment proposal
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: python -m scripts.propose_harness2 > "${{ runner.temp }}/proposal.json"
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          name: harness2-experiment-v1
+          path: ${{ runner.temp }}/proposal.json
+          if-no-files-found: error

@@ -11,7 +11,8 @@
 
 Parent Goal 是在 NeoWeaver 保留完整、未修改的 Google Harness²，
 以合法訂閱 CLI 執行原生優化，再交原 Soodles Owner 獨立驗證 Promotion。
-本次先交付 Handoff 第 2 步。第 3 步的 dispatcher 與後續 native runtime 尚未接通。
+本次先驗證 Handoff 第 2 步，再實作第 3 步的 data-only producer。
+本機 dispatcher Source Candidate 另在 Soodles；live native runtime 尚未接通。
 
 第一個 Source-supported 斷點是「安裝 Python wheel 就保留完整 upstream」。
 上游 pyproject 只將 harness2 套件納入 wheel；原 repository 另外保有
@@ -33,6 +34,9 @@ requirements-harness2.txt 使用與 NeoWeaver #22 相同的完整 upstream commi
 獨立 harness2.yml 在標準 Ubuntu runner 讀取該 pin，保留完整 Google checkout，
 以同一 pin 安裝 Python distribution。原 specification.yml 沒有改動。
 Job 沒有 model login、subscription token、paid API key 或 dispatcher 操作。
+只有 main 的正常 push 才會發布 harness2-experiment-v1。
+內容只有 schema、固定的 neoweaver-validation-k1 experiment 和 upstream pin。
+PR job 不發布 proposal；artifact 不能授權本機執行。
 
 scripts/check_harness2.py 先核對 Git root、HEAD 和原 tree 的每個 tracked entry。
 Git 計算實際 bytes 的 blob identity。缺檔、變更 bytes、symlink 替代、
@@ -99,7 +103,7 @@ network egress policy 生效或 native isolation 通過。
 | A05 | NOT_RUN：僅上游 scripted library/reflection controls 通過 |
 | A06 | NOT_RUN：僅上游 scripted resume/drift controls 通過 |
 | A07 | 本機 demo/preflight VERIFIED；public GitHub job 待本次 exact-head readback |
-| A08 | NOT_RUN：public proposal／dispatcher 尚未實作 |
+| A08 | Source Candidate 已有 data-only producer 與本機 dispatcher；live main-run／admission 未驗證 |
 | A09 | BLOCKED：本機 ChatGPT login 已觀察；Linux 訂閱 transport、egress／isolation 未驗證 |
 | A10 | BLOCKED：Claude 未登入，四種 transport 未驗證 |
 | A11 | BLOCKED：原 LAB subscription-compatible Judge 未驗證 |
