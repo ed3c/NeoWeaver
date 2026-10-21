@@ -1,0 +1,25 @@
+{
+  "schema": "toolchain-profile@1",
+  "typescript_native": "npm:typescript@7.0.2",
+  "compiler_api": "npm:@typescript/typescript6@6.0.2",
+  "bun": "secondary development runtime and TypeScript 7 semantic check in actual JS consumer",
+  "tanstack_start": "only original React full-stack web target; not this repository",
+  "tsrs": {
+    "revision": "0341578031c47ecf555a35492554b4d212d07459",
+    "package": "@tsrs/wasm",
+    "target": "TypeScript 7.1 development, NOT TypeScript 7.0 stable parity"
+  },
+  "owners": {
+    "agent_execution": "original Soodles outer Noodle Poteto inner",
+    "typecheck": "actual JS consumer",
+    "verification": "original Test Manager",
+    "landing": "original Provider"
+  },
+  "installed": {
+    "typescript7": false,
+    "bun": false,
+    "tanstack": false,
+    "tsrs": false
+  },
+  "scope": "source-only specification; no new executable environment in this repository"
+}
