@@ -1,5 +1,9 @@
 # NeoWeaver Agent entry
 
+## External TypeScript/Bun/TanStack/tsrs consumer profile
+
+Read [the source-bound Toolchain Profile](docs/toolchain-profile.json) and [integration boundaries](docs/typescript7-bun-tanstack-tsrs.md) when the original Spec selects an actual JS/TS Consumer. This Python/spec repository does not locally run a TypeScript compiler. Do not infer installs, Native Agent acceptance or new permissions from a Card, guide or external PR.
+
 ## 狀態機修改契約與可選 Loop 接入
 
 修改本 repo 的 AGENTS、P-class、CLI 狀態機及其敘述時，先讀
