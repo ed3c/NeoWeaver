@@ -139,3 +139,26 @@ rolling/shared-quota 拒絕保留，沒有改入口或另一份 budget 繞過。
 ## Rolling Host 與 15 GB Swap 本輪讀回
 
 原來源合併為 ee774bf3，原 rolling 換版已讀回 active／ready，Swap 上限與共用 quota 保留。原 owner 身分、狀態與歷史未變；原序列化新增 39 個空 admission_refusal 欄位，故 JSON 形狀並非全等。真實 guest、Grok／Poteto 與恢復仍受原 gateway executable 缺失及原工作保留效果阻擋。兩張 lifecycle Cards 11→12；其餘 Cards／REQ 不變。Factory 原 validator、semantic shape、coverage、consistency 與新 lifecycle Reader 通過；Reader 為 source_bound_proposal、next=null、effects=[]，不授權 admission。Schema 重用範圍僅四份 bytes 未變的指引；Session 已消費原 next。來源忠實審查由目前 Session 完成，獨立語義 reviewer 保留 NOT_RUN。詳見 docs/compiled/openshell-rolling-host-integration-evidence.json。
+
+
+## Revision 24：修正 Grok companion 的過度禁止
+
+原 SPEC-full-lifecycle-boundary 的 forbidden 寫成「Do not start UML Viewer Grok」。
+此前提把早期「不啟用預設 companion」擴成所有 Grok 交互均禁止。
+`docs/specs/ub-review.md` 的展示邊界只禁止預設 Grok companion；後續已確認的
+`docs/specs/grok-shared-review.md`「已確認的交互」明確要求本機 Grok CLI，
+由 Outer 提供來源分析及必要片段。Grok 提出 policy、補證據、刷新及改碼請求，
+Outer 核對來源與既有授權，原 Test Manager／Noodle／Poteto 承擔工程效果。
+因此「所有 UML Viewer Grok 均不得啟動」不成立，也不能作為這條路徑的拒絕依據。
+
+本次只修正原 SPEC 的 forbidden，revision 23→24。禁止自動啟用上游預設自主
+Grok executor，並禁止 Grok 直接檢視或修改產品 Repo。已授權的提示詞 companion
+請求保留由 Outer 與原 owners 處理。原 frozen Oracle、timeout／invalid mutants、
+exit 0 不等於品質通過，以及必要功能／Formal 驗證的時機均保持原限制。
+這項來源修正不授權現在啟動 companion，不重播 R3，不改原 request 或效果收據。
+
+V 卡與其餘 43 張卡、十項原需求、原 Parser Scope／PromptDelta 均保留原值。
+原 Factory producer 固定此修正來源，重跑結構、delta 與 Reader 讀回。
+Delta 的 source reconciliation 與獨立語義審查仍未完成；Reader 只提供知識提案，
+不提供 admission、可執行 next 或 Provider 效果。原 Grok／Poteto 閉環、guest 品質、
+同 Host 恢復及 Parent Goal 的未完成義務不因本次修正改變。

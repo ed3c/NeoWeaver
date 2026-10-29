@@ -1,0 +1,50 @@
+{
+  "kind": "SOURCE_RECONCILIATION_SUMMARY",
+  "source": {
+    "source_type": "other",
+    "locator": "Source reconciliation of the overbroad Grok prohibition against accepted G1/G4/G5 prompt-only companion and original final-review constraints",
+    "source_id": "SRC-2d60190d6bd4435f908c041ae4ecd7d2c659756065575eb1d557b391caff36ae",
+    "source_dependency_key": "SOURCE-56e8c8ce006ab0e51f63468fbbaddff0e55c04671ec9ce1eeece6a1a9dfa9b3e",
+    "uri": "repo:docs/reviews/openshell-native-review-source-review.md",
+    "integrity": "PINNED_SHA256",
+    "sha256": "4a13f601f5b0caa468011cc14e5b5255433af9decf7e933e8bd021f6d604da4b"
+  },
+  "changed": [
+    {
+      "id": "SPEC-full-lifecycle-boundary",
+      "before": 23,
+      "after": 24,
+      "field": "forbidden"
+    }
+  ],
+  "cards": 44,
+  "requirements": 10,
+  "other_cards_unchanged": 43,
+  "source_facts": [
+    "Accepted prompt-only local Grok CLI companion through Outer",
+    "No default autonomous executor or direct product Repo inspection/change by Grok",
+    "Original quality, frozen Oracle and Formal/Test Manager requirements preserved"
+  ],
+  "factory_delta": {
+    "status": "BLOCKED",
+    "source_integrity_proven": false,
+    "source_independence_proven": false,
+    "remaining_work": [
+      "original_source_owner_readback_required"
+    ],
+    "private_retained_file": "factory-delta.json",
+    "sha256": "7b6afbf307001d446733614ebf6d91d5a1d3207f9b6d8c21ee4d1fc11d1a29d0"
+  },
+  "reader": {
+    "status": "source_bound_proposal",
+    "next": null,
+    "effects": [],
+    "private_retained_file": "factory-reader.json",
+    "sha256": "9c096f27c227c8ca1851fa36532734c297edcf37bb5942bd79ddc30d49ceda8d"
+  },
+  "independent_factory_semantics": "NOT_CAPTURED",
+  "native_execution": "NOT_RUN_BY_THIS_CORRECTION",
+  "parent_goal": "OPEN",
+  "authorizes_landing": false,
+  "proof_ceiling": "Knowledge-source correction and read-only transport only. Private retained filenames are not Host FileRefs or executable continuations."
+}
