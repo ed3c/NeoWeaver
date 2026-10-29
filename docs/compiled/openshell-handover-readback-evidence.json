@@ -1,0 +1,528 @@
+{
+  "source": {
+    "source_type": "other",
+    "locator": "Original VM Stop and old gateway/Host closure verified; successor retains current canonical gateway custody and R3 remains prepared",
+    "source_id": "SRC-914c918924ed833b45d80afbfa6eebe7cf4605db10ebe4df2126a027ebff9280",
+    "source_dependency_key": "SOURCE-571ac2f08177fee2251bfa58ce65b2f7b8b0eb1d4efe53fe93f158a5b3945681",
+    "uri": "repo:docs/specs/openshell-handover-readback.md",
+    "integrity": "PINNED_SHA256",
+    "sha256": "4081a9e965aab613b47f3ebb19718c35767c2f87cf00e693d0f9aebe10800c61"
+  },
+  "readbacks": {
+    "handover-readback.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/bound/handover-readback.json",
+      "sha256": "7d639dca4669e9ce54582db2182dcfadfad132e4369ef56c7d83feefa46c5e8c"
+    },
+    "shared-resources.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/bound/shared-resources.json",
+      "sha256": "8b46047a2d09e2f4285b79a2f2d99697621c1e4855e6cd98873c3d33830a2857"
+    },
+    "original-private-resources.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/bound/original-private-resources.json",
+      "sha256": "9206a7a2e9c5d17235228aa4547253a7fe1f5e719082da1629911dac8c8518b1"
+    },
+    "current-custody-summary.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/bound/current-custody-summary.json",
+      "sha256": "3178a5911396583ed29f9698fbaca67e1311a552c596a80d643712d355b2f8c8"
+    },
+    "native-inventory-invocation.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/bound/native-inventory-invocation.json",
+      "sha256": "688d7cb16d33f568804ef7bf7f013390b919b769743eb694368633a4eb7b3cc9"
+    },
+    "native-inventory-exit.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/bound/native-inventory-exit.json",
+      "sha256": "8ef199e2ba32edcf45464649ce4dae0f2106f394db6f819c55faa6df8200c959"
+    },
+    "r3-readback.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/bound/r3-readback.json",
+      "sha256": "4b0a274a46dbd2049a70806b33d4728e6191392b491f90fe1765309ddb50d4c5"
+    },
+    "schema-readback.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/bound/schema-readback.json",
+      "sha256": "252dcf25b0e2835735a74e3359853674119ef422bdebbe8114c4ebc7359759fa"
+    }
+  },
+  "handover": {
+    "original_receipts": {
+      "recovery-plan/stop-complete.json": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover/recovery-plan/stop-complete.json",
+        "sha256": "35098b723b4124ac63987865232100f1af517777ccb0d95ca0b1ce77be83739c"
+      },
+      "recovery-plan/native-stopped.json": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover/recovery-plan/native-stopped.json",
+        "sha256": "b46648896abb14c41463b9b1ab94518c10a903f55ba7dacb93046ad00f763e69"
+      },
+      "recovery-plan/release-complete.json": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover/recovery-plan/release-complete.json",
+        "sha256": "44c8cefc2a73b4eb1ee7d89a2cf149e618aaad1476337ebd1aac88dbd3e5072a"
+      },
+      "recovery-plan/host-exit.json": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover/recovery-plan/host-exit.json",
+        "sha256": "731d6b15997d141acd5b8ebbd233b62eee710ec8547ea574d3165066e9a8f3d9"
+      },
+      "host-successor/normal-host-exit-receipt.json": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover/host-successor/normal-host-exit-receipt.json",
+        "sha256": "280908fb254ef58a2f42cc270f9276745af96f7ab4344da47619f0b512e2abe5"
+      },
+      "host-restored/native-activation-receipt.json": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover/host-restored/native-activation-receipt.json",
+        "sha256": "940542d23877beec6fc4b0ac32d36e063aeedc472335b1ffa97d285f5bf62066"
+      }
+    },
+    "receipt_bindings": [
+      {
+        "receipt": "recovery-plan/stop-complete.json",
+        "field": "Plan",
+        "matches": true,
+        "source": {
+          "path": "PRIVATE_HOST_HOME/Documents/Codex/2026-10-25/soodles-noodle-noodle-llm-openshell-https-3/work/openshell-progress-deployment/postoffer-maintenance-_v11n3qy/recovery-plan/plan.json",
+          "sha256": "f39233dff5fff58763a7e5731cf1d05616032313e627d721d9890642a0aa21d6"
+        },
+        "snapshot": {
+          "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover-dependencies/recovery-plan_stop-complete.json/Plan",
+          "sha256": "f39233dff5fff58763a7e5731cf1d05616032313e627d721d9890642a0aa21d6"
+        }
+      },
+      {
+        "receipt": "recovery-plan/stop-complete.json",
+        "field": "Acknowledgement",
+        "matches": true,
+        "source": {
+          "path": "PRIVATE_HOST_HOME/Documents/Codex/2026-10-25/soodles-noodle-noodle-llm-openshell-https-3/work/openshell-progress-deployment/postoffer-maintenance-_v11n3qy/recovery-plan/native-stop-ack.json",
+          "sha256": "9b0cea9c0b37ffe826b23c67af5ff137f39cf4ad7a2efc5924f413bc6c828077"
+        },
+        "snapshot": {
+          "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover-dependencies/recovery-plan_stop-complete.json/Acknowledgement",
+          "sha256": "9b0cea9c0b37ffe826b23c67af5ff137f39cf4ad7a2efc5924f413bc6c828077"
+        }
+      },
+      {
+        "receipt": "recovery-plan/stop-complete.json",
+        "field": "Stopped",
+        "matches": true,
+        "source": {
+          "path": "PRIVATE_HOST_HOME/Documents/Codex/2026-10-25/soodles-noodle-noodle-llm-openshell-https-3/work/openshell-progress-deployment/postoffer-maintenance-_v11n3qy/recovery-plan/native-stopped.json",
+          "sha256": "b46648896abb14c41463b9b1ab94518c10a903f55ba7dacb93046ad00f763e69"
+        },
+        "snapshot": {
+          "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover-dependencies/recovery-plan_stop-complete.json/Stopped",
+          "sha256": "b46648896abb14c41463b9b1ab94518c10a903f55ba7dacb93046ad00f763e69"
+        }
+      },
+      {
+        "receipt": "recovery-plan/release-complete.json",
+        "field": "Plan",
+        "matches": true,
+        "source": {
+          "path": "PRIVATE_HOST_HOME/Documents/Codex/2026-10-25/soodles-noodle-noodle-llm-openshell-https-3/work/openshell-progress-deployment/postoffer-maintenance-_v11n3qy/recovery-plan/plan.json",
+          "sha256": "f39233dff5fff58763a7e5731cf1d05616032313e627d721d9890642a0aa21d6"
+        },
+        "snapshot": {
+          "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover-dependencies/recovery-plan_release-complete.json/Plan",
+          "sha256": "f39233dff5fff58763a7e5731cf1d05616032313e627d721d9890642a0aa21d6"
+        }
+      },
+      {
+        "receipt": "recovery-plan/release-complete.json",
+        "field": "Resources",
+        "matches": true,
+        "source": {
+          "path": "PRIVATE_HOST_HOME/Documents/Codex/2026-10-25/soodles-noodle-noodle-llm-openshell-https-3/work/openshell-progress-deployment/postoffer-maintenance-_v11n3qy/recovery-plan/resident-released-resources.json",
+          "sha256": "c3082d9b8c1149c5426b8d97b9ae6f8d7bd3351c17fbdee5ed7ae023994fe7b4"
+        },
+        "snapshot": {
+          "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover-dependencies/recovery-plan_release-complete.json/Resources",
+          "sha256": "c3082d9b8c1149c5426b8d97b9ae6f8d7bd3351c17fbdee5ed7ae023994fe7b4"
+        }
+      },
+      {
+        "receipt": "recovery-plan/release-complete.json",
+        "field": "Intent",
+        "matches": true,
+        "source": {
+          "path": "PRIVATE_HOST_HOME/.codex/worktrees/openshell-composition-component/noodle/.noodle/sessions/soodles-task-67e3a24fa29fa767f6de-0-local-task-20261028-201907-36e7b7/maintenance-release-intent.json",
+          "sha256": "aad9e449334b07dc447a3ffd767cbf90be375c8d716a527d2fbd52c722f590b4"
+        },
+        "snapshot": {
+          "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover-dependencies/recovery-plan_release-complete.json/Intent",
+          "sha256": "aad9e449334b07dc447a3ffd767cbf90be375c8d716a527d2fbd52c722f590b4"
+        }
+      },
+      {
+        "receipt": "recovery-plan/release-complete.json",
+        "field": "Response",
+        "matches": true,
+        "source": {
+          "path": "PRIVATE_HOST_HOME/Documents/Codex/2026-10-25/soodles-noodle-noodle-llm-openshell-https-3/work/openshell-progress-deployment/postoffer-maintenance-_v11n3qy/recovery-plan/resident-release-response.json",
+          "sha256": "1d624ecdc1009b14717c9dfc5aa269ea3ac34ff8dceb734d7f52d7dd2693e806"
+        },
+        "snapshot": {
+          "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover-dependencies/recovery-plan_release-complete.json/Response",
+          "sha256": "1d624ecdc1009b14717c9dfc5aa269ea3ac34ff8dceb734d7f52d7dd2693e806"
+        }
+      },
+      {
+        "receipt": "recovery-plan/host-exit.json",
+        "field": "Plan",
+        "matches": true,
+        "source": {
+          "path": "PRIVATE_HOST_HOME/Documents/Codex/2026-10-25/soodles-noodle-noodle-llm-openshell-https-3/work/openshell-progress-deployment/postoffer-maintenance-_v11n3qy/recovery-plan/plan.json",
+          "sha256": "f39233dff5fff58763a7e5731cf1d05616032313e627d721d9890642a0aa21d6"
+        },
+        "snapshot": {
+          "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover-dependencies/recovery-plan_host-exit.json/Plan",
+          "sha256": "f39233dff5fff58763a7e5731cf1d05616032313e627d721d9890642a0aa21d6"
+        }
+      },
+      {
+        "receipt": "recovery-plan/host-exit.json",
+        "field": "WaitResult",
+        "matches": true,
+        "source": {
+          "path": "PRIVATE_HOST_HOME/Documents/Codex/2026-10-25/soodles-noodle-noodle-llm-openshell-https-3/work/openshell-progress-deployment/postoffer-maintenance-_v11n3qy/original-wait-result.json",
+          "sha256": "31497585b28bfa2405f241bc0d85fd6d15f6ed83615ebc25d6d2916d37891ddd"
+        },
+        "snapshot": {
+          "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover-dependencies/recovery-plan_host-exit.json/WaitResult",
+          "sha256": "31497585b28bfa2405f241bc0d85fd6d15f6ed83615ebc25d6d2916d37891ddd"
+        }
+      },
+      {
+        "receipt": "recovery-plan/host-exit.json",
+        "field": "WaitCall",
+        "matches": true,
+        "source": {
+          "path": "PRIVATE_HOST_HOME/Documents/Codex/2026-10-25/soodles-noodle-noodle-llm-openshell-https-3/work/openshell-progress-deployment/postoffer-maintenance-_v11n3qy/original-wait-transcript.json",
+          "sha256": "1edb990c49a25f3cecafacac390e1169bf3fdbbefdad045ce54860e95600036d"
+        },
+        "snapshot": {
+          "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/original-handover-dependencies/recovery-plan_host-exit.json/WaitCall",
+          "sha256": "1edb990c49a25f3cecafacac390e1169bf3fdbbefdad045ce54860e95600036d"
+        }
+      }
+    ],
+    "original_vm": {
+      "id": "c0432b2e-f2bb-4d25-bfd7-d1b4aa79dd21",
+      "name": "n5a186740825a41a88a",
+      "phase": "SANDBOX_PHASE_STOPPED"
+    },
+    "original_resident": {
+      "pid": 55087,
+      "state": "exited",
+      "contexts": [],
+      "released_contexts": [
+        "d6aece8bab5b5b47e0ebcb6f38f1d326"
+      ]
+    },
+    "original_host": {
+      "HostInstance": "d6d93f5d901a6df1cb9e655394aec250",
+      "HostPID": 54720,
+      "ObservedAt": "2026-10-28T23:43:15.733088+00:00"
+    },
+    "current_host": {
+      "instance": "9ad92939590649a6c9001ea8dc4dda8d",
+      "pid": 81038,
+      "contexts": 2,
+      "active_workers": 0,
+      "active_residents": 1
+    },
+    "current_native_count": 21,
+    "current_non_stopped": [],
+    "rows": [
+      {
+        "identity": {
+          "Name": "n03b5fb16bba44aa68d",
+          "SandboxID": "4096207c-8798-4b12-87f0-ef3f8b134577",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n10757c52f27a443eb9",
+          "SandboxID": "34e192bf-6329-4683-b741-a6bb91e40b22",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n1b21c35cfd0642a1bf",
+          "SandboxID": "93072786-8ccc-4f08-ad58-5fbb34e61548",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n27970b854770461884",
+          "SandboxID": "6f5d0c0a-79b2-4862-890a-008af9f544e2",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n3ef9637579d549cfbc",
+          "SandboxID": "2b9cc683-c87b-4f34-b9f0-c6b8e3094db6",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n3f1ed44a4f754fe884",
+          "SandboxID": "3aabf355-2937-492c-8335-0d42ba17b37c",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n4163ebbc70504304b3",
+          "SandboxID": "1a604061-4e2e-449a-baf3-e800bd67317d",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n429b3faf401e42a5b8",
+          "SandboxID": "b05e6105-6d97-44ec-b0cf-f64f1c1c9f56",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n56c0be5c84e54fec80",
+          "SandboxID": "47692209-0fe6-4616-90cf-3822b95b289e",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n58038f299b9f4b76b7",
+          "SandboxID": "2208fdd5-a0dd-4c2c-b8fe-b1bd9295a7ee",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n5a186740825a41a88a",
+          "SandboxID": "c0432b2e-f2bb-4d25-bfd7-d1b4aa79dd21",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n6fcc10e9cb0c4ff590",
+          "SandboxID": "a32ebdef-75b1-4608-8490-7d06e4758a0b",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n772a89bfedf24c94be",
+          "SandboxID": "28d653a1-55fc-4875-ae23-ac1a4c58a949",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n83a15a1bd3284f459a",
+          "SandboxID": "03ffda4d-79d4-4813-b8ac-9acb8fedcc43",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n8cc0cffc95684177b5",
+          "SandboxID": "e02abf88-1b50-49a4-9060-8b1f8557818a",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "n969d10c1a3bf4708a3",
+          "SandboxID": "def0fbb1-19ac-48d8-bcef-60a42a57db07",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "nbb09d3e99e3d439b9f",
+          "SandboxID": "cfcb0a33-487a-4b43-b1e5-ffcf0edddf9b",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "nc7f396c5dc944f1c8b",
+          "SandboxID": "c60f9aad-6410-487d-bb1b-a6fe3323046b",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "ndc96ca0f858b4d8182",
+          "SandboxID": "51b55a5e-aa59-4160-ae9f-98987d3aaf00",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "nde8b16b1a4ba43f6ad",
+          "SandboxID": "a104221b-6703-409c-9811-7a8d2974b276",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      },
+      {
+        "identity": {
+          "Name": "ne6c1e8b7e81c4b9a8d",
+          "SandboxID": "5c4e3f1e-04c1-4469-ad50-f0d14b14a91e",
+          "Workspace": "default"
+        },
+        "phase": "SANDBOX_PHASE_STOPPED",
+        "in_original_custody": true,
+        "spec_equal_original_custody": true
+      }
+    ],
+    "original_inventory_status": "UNKNOWN_UNCHANGED",
+    "gateway_available_to_R3": false,
+    "reason": "Original VM/old resident/old Host closed; successor now retains the same gateway with two contexts. Current custody availability is not implied by historical closure.",
+    "effects": []
+  },
+  "prepared_request": {
+    "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/live-request-r3.json",
+    "sha256": "c4119a58ed6c4ebde0a1716056cd7057ef0a5ac3c1952653a00daefc44e44530"
+  },
+  "returned_next": {
+    "tool": "soodles_loop_enter",
+    "arguments": {
+      "request_file": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/live-request-r3.json"
+    },
+    "owner": "soodles.loop",
+    "operation": "original_entry"
+  },
+  "request_unchanged": true,
+  "schema": {
+    "evidence_validity": "VALID",
+    "observation_scope": "consumer_report",
+    "behavior": {
+      "classification": "PASS",
+      "failed_checks": []
+    },
+    "next": {
+      "owner": "task-owner",
+      "operation": "consume_verified_behavior",
+      "required": [],
+      "argv": null,
+      "input": null
+    }
+  },
+  "schema_next_consumption": {
+    "returned_next": {
+      "owner": "task-owner",
+      "operation": "consume_verified_behavior",
+      "required": [],
+      "argv": null,
+      "input": null
+    },
+    "action": "Current Session consumed only the unchanged four-instruction consumer_report: corrected the stale original-handover premise with exact original receipts, retained current successor custody and the same not-entered R3 request; no native claim upgraded.",
+    "native_review": "NOT_RUN",
+    "native_recovery": "NOT_RUN",
+    "authorizes_landing": false
+  },
+  "other_source_head": "119036b6828556ebae3f7470491ab6811c4e911d",
+  "other_source_access": "READ_ONLY; no deploy/import of its committed or active changes",
+  "native_grok_poteto_review": "NOT_RUN",
+  "guest_quality_metrics": "NOT_RUN",
+  "same_host_recovery": "NOT_RUN",
+  "parent_goal": "OPEN",
+  "authorizes_landing": false,
+  "other_original_stage_receipts": {
+    "component-candidate-review.stdout.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/other-work-stage-readback/component-candidate-review.stdout.json",
+      "sha256": "35c2b91922e9008fe434d93ba4b74e53f9ba39ba7b6f3418238c461544502833"
+    },
+    "component-integration-inspect.stdout.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/other-work-stage-readback/component-integration-inspect.stdout.json",
+      "sha256": "9fdd32cdfb67704d373040370fc1e01681eb33d13d006511742ecc9b79d4f9ec"
+    },
+    "component-integrated-review.stdout.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/other-work-stage-readback/component-integrated-review.stdout.json",
+      "sha256": "5d9cd1a9d0ef92d4da14b8344ccb55408765f0c677c60ea439a192d73be3a00d"
+    },
+    "drawing-candidate-inspect-01.stdout.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/other-work-stage-readback/drawing-candidate-inspect-01.stdout.json",
+      "sha256": "c3ba1664d5ecae6383e331e6004c8d34f5c5a4b61f665cbe7f9a97aadbe6a6c0"
+    }
+  },
+  "source_review": {
+    "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/r3-handover-readback-v8sg7uvs/bound/writing-review.json",
+    "sha256": "bfd94203fa5e896d5f11713fd7a2a218e6e0640b07fb8c50ae3684c35cce91a9"
+  },
+  "public_projection": {
+    "kind": "PORTABLE_HISTORICAL_SUMMARY",
+    "original_summary_sha256": "727cd246b07b2bd19decb851dc93423242d79502471a21fbf5396cba61bbd6fa",
+    "private_path_references": 41,
+    "private_locator_marker": "PRIVATE_HOST_HOME/",
+    "locator_meaning": "Private retained evidence location. The marker is not a filesystem root or a Host-issued FileRef.",
+    "historical_continuations": "Recorded next values and arguments are historical data. This public projection is not executable and does not authorize effects.",
+    "original_bytes": "Retained privately without modification; evidence digests and source bindings remain unchanged.",
+    "proof_ceiling": "Publication projection only; no new semantic, native, quality or landing acceptance."
+  }
+}

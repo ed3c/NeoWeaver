@@ -1,0 +1,363 @@
+{
+  "scope": "Neo final-review contract and optional Noodle set; no native product review claim",
+  "factory_source_revision": "bc8d7815ed4b3446bb3eacb6e3b50675f24b6f32",
+  "source_record": {
+    "source_type": "other",
+    "locator": "Accepted U2-U6 and F1; final-review boundary and evidence limits",
+    "source_id": "SRC-4436af676196cf0ef6ec7dec43e3aa320a543c8d3f5fc41f28730cfbc14b0bb7",
+    "source_dependency_key": "SOURCE-1a819a7682dab1d507c1457b9e5f8352e9006ef644044e80535f649a9fde1b53",
+    "uri": "repo:docs/specs/ub-review.md",
+    "integrity": "PINNED_SHA256",
+    "sha256": "5db23a5b65e712ff6ebf6208128d016a1031b887571bdb56115688f7616d4391"
+  },
+  "code_intel": {
+    "owner": "soodles.code-intel",
+    "status": "ready",
+    "sources": {
+      "supervisor_admission.py": "c8311e97ef5e29ee9c9d0febb24ee9285ae3684559854bd604b39d489c5ce435",
+      "task_roles.py": "69eb0a0dbad6f7ee2d9eae86349a5b276ac7279746956ff3730850f8f87fb107"
+    },
+    "analyzer": "f5b96e24b14e0001d5656fe4045837d3e3cab2dad19d9d5f947c9b178e1ab836",
+    "view": "symbols",
+    "data": {
+      "supervisor_admission.py": {
+        "symbols": [
+          {
+            "name": "_sha256",
+            "kind": "FunctionDef",
+            "line": 61,
+            "end_line": 62
+          },
+          {
+            "name": "_read_json",
+            "kind": "FunctionDef",
+            "line": 65,
+            "end_line": 73
+          },
+          {
+            "name": "_git",
+            "kind": "FunctionDef",
+            "line": 76,
+            "end_line": 80
+          },
+          {
+            "name": "_git_bytes",
+            "kind": "FunctionDef",
+            "line": 83,
+            "end_line": 89
+          },
+          {
+            "name": "_canonical",
+            "kind": "FunctionDef",
+            "line": 92,
+            "end_line": 93
+          },
+          {
+            "name": "_launcher_text",
+            "kind": "FunctionDef",
+            "line": 96,
+            "end_line": 175
+          },
+          {
+            "name": "_start_text",
+            "kind": "FunctionDef",
+            "line": 178,
+            "end_line": 305
+          },
+          {
+            "name": "_entry_text",
+            "kind": "FunctionDef",
+            "line": 308,
+            "end_line": 361
+          },
+          {
+            "name": "native_host_capability",
+            "kind": "FunctionDef",
+            "line": 364,
+            "end_line": 384
+          },
+          {
+            "name": "native_task_capability",
+            "kind": "FunctionDef",
+            "line": 387,
+            "end_line": 402
+          },
+          {
+            "name": "native_task_review_capability",
+            "kind": "FunctionDef",
+            "line": 405,
+            "end_line": 416
+          },
+          {
+            "name": "task_route",
+            "kind": "FunctionDef",
+            "line": 419,
+            "end_line": 430
+          },
+          {
+            "name": "task_input_refs",
+            "kind": "FunctionDef",
+            "line": 433,
+            "end_line": 448
+          },
+          {
+            "name": "task_prompt_inputs",
+            "kind": "FunctionDef",
+            "line": 451,
+            "end_line": 464
+          },
+          {
+            "name": "_task_inputs",
+            "kind": "FunctionDef",
+            "line": 467,
+            "end_line": 489
+          },
+          {
+            "name": "_task_file",
+            "kind": "FunctionDef",
+            "line": 492,
+            "end_line": 497
+          },
+          {
+            "name": "_task_config",
+            "kind": "FunctionDef",
+            "line": 500,
+            "end_line": 521
+          },
+          {
+            "name": "task_repository_config",
+            "kind": "FunctionDef",
+            "line": 524,
+            "end_line": 539
+          },
+          {
+            "name": "_task_skill",
+            "kind": "FunctionDef",
+            "line": 542,
+            "end_line": 576
+          },
+          {
+            "name": "prepare_task",
+            "kind": "FunctionDef",
+            "line": 579,
+            "end_line": 844
+          },
+          {
+            "name": "_config_bytes",
+            "kind": "FunctionDef",
+            "line": 847,
+            "end_line": 864
+          },
+          {
+            "name": "reject_source_only_native_followup",
+            "kind": "FunctionDef",
+            "line": 867,
+            "end_line": 886
+          },
+          {
+            "name": "prepare",
+            "kind": "FunctionDef",
+            "line": 889,
+            "end_line": 1234
+          },
+          {
+            "name": "_unique_object",
+            "kind": "FunctionDef",
+            "line": 1248,
+            "end_line": 1253
+          },
+          {
+            "name": "_publish_directory",
+            "kind": "FunctionDef",
+            "line": 1256,
+            "end_line": 1281
+          },
+          {
+            "name": "_sync_directory",
+            "kind": "FunctionDef",
+            "line": 1284,
+            "end_line": 1289
+          },
+          {
+            "name": "_write_durable",
+            "kind": "FunctionDef",
+            "line": 1292,
+            "end_line": 1296
+          },
+          {
+            "name": "_prepared_receipt",
+            "kind": "FunctionDef",
+            "line": 1299,
+            "end_line": 1310
+          },
+          {
+            "name": "_committed_preparation",
+            "kind": "FunctionDef",
+            "line": 1313,
+            "end_line": 1406
+          },
+          {
+            "name": "authorize",
+            "kind": "FunctionDef",
+            "line": 1409,
+            "end_line": 1596
+          },
+          {
+            "name": "_correction_selection",
+            "kind": "FunctionDef",
+            "line": 1599,
+            "end_line": 1621
+          },
+          {
+            "name": "_correction_readback",
+            "kind": "FunctionDef",
+            "line": 1624,
+            "end_line": 1676
+          },
+          {
+            "name": "correction",
+            "kind": "FunctionDef",
+            "line": 1679,
+            "end_line": 1690
+          },
+          {
+            "name": "_prepare_correction",
+            "kind": "FunctionDef",
+            "line": 1693,
+            "end_line": 1790
+          },
+          {
+            "name": "selected_lifecycle_source",
+            "kind": "FunctionDef",
+            "line": 1793,
+            "end_line": 1836
+          },
+          {
+            "name": "scope_amendment",
+            "kind": "FunctionDef",
+            "line": 1839,
+            "end_line": 1913
+          },
+          {
+            "name": "publish_scope_packet",
+            "kind": "FunctionDef",
+            "line": 1916,
+            "end_line": 1948
+          },
+          {
+            "name": "parser",
+            "kind": "FunctionDef",
+            "line": 1951,
+            "end_line": 1974
+          },
+          {
+            "name": "main",
+            "kind": "FunctionDef",
+            "line": 1977,
+            "end_line": 2012
+          }
+        ]
+      },
+      "task_roles.py": {
+        "symbols": [
+          {
+            "name": "context_identity",
+            "kind": "FunctionDef",
+            "line": 10,
+            "end_line": 13
+          },
+          {
+            "name": "read_role",
+            "kind": "FunctionDef",
+            "line": 16,
+            "end_line": 38
+          },
+          {
+            "name": "prepare_role",
+            "kind": "FunctionDef",
+            "line": 41,
+            "end_line": 103
+          },
+          {
+            "name": "role_prompt",
+            "kind": "FunctionDef",
+            "line": 106,
+            "end_line": 116
+          }
+        ]
+      }
+    },
+    "limits": [
+      "Python declarations only; no runtime dependency or call-graph completeness claim.",
+      "Structure does not prove semantic correctness, test coverage or execution.",
+      "Freshness describes the observed bytes; a later edit requires another read."
+    ]
+  },
+  "installation": {
+    "sources": [
+      {
+        "name": "crapper",
+        "repository": "https://github.com/unclebob/crapper.git",
+        "revision": "6fd92c4c9bcc56efb64a2f8743d5a2993bcfd42d",
+        "tracked_source_unchanged": true
+      },
+      {
+        "name": "dryer",
+        "repository": "https://github.com/unclebob/dryer.git",
+        "revision": "66ff6d21a42c04afcad89c78a80066176d1294b0",
+        "tracked_source_unchanged": true
+      },
+      {
+        "name": "mutator",
+        "repository": "https://github.com/unclebob/mutator.git",
+        "revision": "a5a0cb803b66e0cdb8bf471b3b08af701d424a41",
+        "tracked_source_unchanged": true
+      },
+      {
+        "name": "ub-mode",
+        "repository": "https://github.com/unclebob/ub-mode.git",
+        "revision": "57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f",
+        "tracked_source_unchanged": true
+      },
+      {
+        "name": "uml-viewer",
+        "repository": "https://github.com/unclebob/uml-viewer.git",
+        "revision": "f65dafe93b3cb1b4e6bb02dbe41503ed05bd9ebf",
+        "tracked_source_unchanged": true
+      }
+    ],
+    "python_tools": "help and isolated parser smoke exit 0",
+    "uml_viewer": "dependencies resolved; upstream example IR generated; GUI NOT_RUN",
+    "default_skill_discovery": "ub-review absent",
+    "explicit_skill_discovery": "ub-review present",
+    "selected_skill_producer": "original _task_skill returns complete subtree and review playbook"
+  },
+  "schema_feedback": {
+    "evidence_validity": "VALID",
+    "behavior": {
+      "classification": "PASS",
+      "failed_checks": []
+    },
+    "field_measurement": {
+      "unit": "reported_output_field",
+      "scope": "selected_protocol",
+      "expected": 23,
+      "observed": 23,
+      "failed": 0,
+      "missing": 0,
+      "workflow_decisions": null,
+      "reason": "Output fields do not measure observable workflow choices or complete trace coverage."
+    },
+    "owner_next": "consume_verified_behavior",
+    "consumption": "current Session read outputs/captures and used findings in this handoff",
+    "criteria_review": "current Session source review; not independent reviewer proof",
+    "carrier": "fresh read-only Codex consumers; not OpenShell guest"
+  },
+  "remaining": [
+    "Native review-role input and guest dependency execution NOT_RUN",
+    "Candidate metrics and effective iteration cost NOT_RUN",
+    "Output retrieval, correction return and native recovery NOT_RUN",
+    "Medium product website and bilingual article NOT_RUN",
+    "H0/H1 gain, Provider delivery and Parent Goal remain OPEN"
+  ]
+}

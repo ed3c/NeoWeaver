@@ -1,0 +1,258 @@
+{
+  "scope": "Original-owner compatible binary and verifier preparation; not deployment or native effect acceptance",
+  "source_record": {
+    "source_type": "other",
+    "locator": "Original-owner compatible deployment preparation and unchanged-result cleanup correction with preserved failed controls",
+    "source_id": "SRC-6941486f4445a619a99761b4fa9f260d3785cc0135daf09a7b653fd4bdda97a1",
+    "source_dependency_key": "SOURCE-8edc5720fb815cc6d23fe53fabb03c8261ed3becb1cfd0653d52c8eec14e913f",
+    "uri": "repo:docs/specs/openshell-compatible-deployment.md",
+    "integrity": "PINNED_SHA256",
+    "sha256": "8528fa55539849f79102e17ee60c63bf99417e640fea0192df7e1e77c338e80c"
+  },
+  "running_host": {
+    "binary_sha256": "44f4270a16820b107addc3180bb083358b0c343fa6ebe5bfdc4befdcbf8738b4",
+    "contexts": 0,
+    "host_dir": "PRIVATE_HOST_HOME/.local/state/nrd-host-progress-v3",
+    "host_instance_id": "b17c7b37f3a471c2c6be84e190f275da",
+    "host_pid": 38952,
+    "protocol": "noodle-host-v1",
+    "residents": {
+      "error": null,
+      "records": []
+    },
+    "resources": {
+      "unresolved_residents": 0,
+      "pressure": "warning",
+      "sample_error": null,
+      "reason": "memory_pressure",
+      "active_workers": 0,
+      "active_residents": 0,
+      "active_allocations": 0,
+      "maximum_workers": 4,
+      "effective_limit": 0,
+      "start_credit": 0,
+      "stable_samples": 0,
+      "swapout_bytes_per_second": 0,
+      "sample_age_seconds": 2.026521958,
+      "unsupported_monitor": false
+    },
+    "schema": 1,
+    "shutdown": {
+      "requested": false
+    },
+    "warning_grants": [],
+    "web_url": "http://127.0.0.1:52904/loops"
+  },
+  "original_task": {
+    "owner": "soodles.loop",
+    "status": "refused",
+    "problem": {
+      "field": "task.host.status",
+      "value": "host is unavailable; the persisted context was not detached"
+    },
+    "breakpoints": [
+      {
+        "kind": "deterministic",
+        "status": "refused",
+        "stage_id": "",
+        "message": "{'field': 'task.host.status', 'value': 'host is unavailable; the persisted context was not detached'}"
+      }
+    ],
+    "next": {
+      "kind": "input",
+      "owner": "Noodle",
+      "required": [
+        "original_request_readback"
+      ]
+    },
+    "effects": [],
+    "authorizes_landing": false
+  },
+  "compatible_binary": {
+    "binary": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/noodle-host-compatible-fixed",
+      "sha256": "df001e7c32c6697565a2ed3991f626e41909532b15d61e13e3fbf538e52ff477"
+    },
+    "build_info": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/compatible-fixed-build-info.txt",
+      "sha256": "b5cb4b96db1612ddfa84f82655ed39bcff687e338739c1e9cc500d5b35368425"
+    },
+    "capabilities": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/compatible-fixed-review-capabilities.json",
+      "sha256": "22ed65e39f39beaea5e4d3709c14a10fca9fdb16b36ad540ba24333791fd399b"
+    },
+    "capability_scope": "Offline binary; not running Host handshake",
+    "deploy_status": "NOT_DEPLOYED",
+    "focused_race_controls": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/unchanged-integration-controls.json",
+    "guest_execution": "NOT_RUN",
+    "kind": "compatible_binary_preparation",
+    "previous_failure": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/owner-integration-tests.txt",
+    "source_dirty": true,
+    "source_snapshot": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/fixed-source-snapshot.json",
+      "sha256": "d04f1e78350cdd9d2120c4c1f2cbd4c57aa97774483ae00271ce0a8d5a95f8cf"
+    },
+    "supersedes_for_future_deployment": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/compatible-binary.json"
+  },
+  "guest_verifier": {
+    "active_profile_changed": false,
+    "build_info": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/linux-verifier-build-info.txt",
+      "sha256": "c7d80d0100bdcd5c63c0425588b20b5eefbf3e3fe40c9d19fda1b059d56b19c6"
+    },
+    "capability": "Manifest v2 tool_files verifier from original integrated Noodle source",
+    "component": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/noodle-instructions-linux-arm64",
+      "sha256": "c3e73db55ec840c6e359280243c39ef5e27958a4b1d6a196bd8a13ae15abcff6"
+    },
+    "format": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/linux-verifier-file.txt",
+      "sha256": "a5e09a02f05c24c5da2d2262792ae9b48dddeaa8d975393a723a04dc9f45cd8e"
+    },
+    "native_guest_execution": "NOT_RUN"
+  },
+  "controls": {
+    "initial_four_packages": {
+      "exit": 1,
+      "loop": "PASS",
+      "runtime": "FAIL unchanged interrupted result",
+      "instructionbundle": "PASS",
+      "workspaceartifacts": "PASS",
+      "evidence": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/owner-integration-tests.txt"
+    },
+    "correction": {
+      "argv": [
+        "go",
+        "test",
+        "-p",
+        "1",
+        "-count=1",
+        "-race",
+        "./internal/workspaceartifacts",
+        "./runtime",
+        "-run",
+        "TestRetained|TestPublishUnchanged|TestOpenShellRuntimeStopPreservesProgressAfterBothNativeExits|TestOpenShellCleanup"
+      ],
+      "exit": 0,
+      "scope": "Changed retained-publication contract and original runtime cleanup/interruption controls; no guest execution"
+    },
+    "offline_cli": {
+      "argv": [
+        "go",
+        "test",
+        "-p",
+        "1",
+        "-count=1",
+        ".",
+        "-run",
+        "TestHostTaskReviewCapabilitiesAreOfflineAndSeparate|TestReviewLandedLocalMerge"
+      ],
+      "exit": 0,
+      "stdout": "ok  github.com/poteto/noodle  0.884s",
+      "coverage": "Offline native Host task review capability test; not live Host admission"
+    }
+  },
+  "schema": {
+    "instruction_bytes_changed": false,
+    "evidence_validity": "VALID",
+    "behavior": {
+      "classification": "PASS",
+      "failed_checks": []
+    },
+    "observation_scope": "consumer_report",
+    "next": {
+      "owner": "task-owner",
+      "operation": "consume_verified_behavior",
+      "required": [],
+      "argv": null,
+      "input": null
+    },
+    "next_consumed": "Current Session retained prior source-bound consumer_report and continued authorized preparation; no new native claim"
+  },
+  "remaining": [
+    "Compatible original deployment and resource admission",
+    "History-linked validation task; real Grok outer Poteto re-review",
+    "Guest quality tools, metrics and UML readback",
+    "Same-Host interruption and legal new attempt"
+  ],
+  "effects": [],
+  "authorizes_landing": false,
+  "go_structure": {
+    "reference": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/original-source-bytes/go-structure.json",
+      "sha256": "8066645dacbf7dc377675cc364ae4b95f627b385aff35536029710df2f4664ae"
+    },
+    "analyzer": "noodle-go-types-v1",
+    "head": "5ebbca7ff9219f098b1061092fdea929aa27876e",
+    "sources": [
+      {
+        "path": "internal/workspaceartifacts/apply.go",
+        "sha256": "1037517ab3c8e99f70d5e439a2c71d61e70d70ed0076cdb0ae6fd9e1cfa9d7f3"
+      },
+      {
+        "path": "internal/workspaceartifacts/extract.go",
+        "sha256": "6f6680c3515abbdb61290afc0fd4cc4e3803f197e1fc1333aeb2d29bc7b667f0"
+      },
+      {
+        "path": "internal/workspaceartifacts/git.go",
+        "sha256": "050d8441f58cc153460ad9c09ae6f92821b9bd0c42e7cea225abe63220ec2e62"
+      },
+      {
+        "path": "internal/workspaceartifacts/observe.go",
+        "sha256": "43e260c0cebde26f88644485cec488d6ea4bbf327e93679c297a381d492947d8"
+      },
+      {
+        "path": "internal/workspaceartifacts/observe_published.go",
+        "sha256": "f5a1d80e926b88502e549b551ce2477a51aaeb506d8a114694944781ca26ecac"
+      },
+      {
+        "path": "internal/workspaceartifacts/publish.go",
+        "sha256": "eef61ecc01dc4399475435251d5d6139c279830e50a123a096681ed466b44693"
+      },
+      {
+        "path": "internal/workspaceartifacts/publish_git.go",
+        "sha256": "c8f94246b546b5c53815d0112d19a2061c442c4fd263680f679deebb1df98625"
+      },
+      {
+        "path": "internal/workspaceartifacts/snapshot.go",
+        "sha256": "9a8b42e93a963c882b741bf6fde46b560cd96e00246397e7c4b56ba5fd73639f"
+      }
+    ],
+    "definitions": [
+      {
+        "id": "function-3fbf91d0e9adc945a59d749759124919f27fecab3de159ac513810879eba544a",
+        "kind": "function",
+        "name": "func github.com/poteto/noodle/internal/workspaceartifacts.VerifyRetainedPublication(ctx context.Context, repository string, baseline *github.com/poteto/noodle/internal/workspaceartifacts.Baseline, result *github.com/poteto/noodle/internal/workspaceartifacts.Result, head string) error",
+        "package": "github.com/poteto/noodle/internal/workspaceartifacts",
+        "file": "internal/workspaceartifacts/observe_published.go",
+        "line": 15,
+        "end_line": 98
+      }
+    ],
+    "limits": [
+      "static source relationships, not runtime traces",
+      "test files excluded",
+      "build-excluded files are not analyzed",
+      "dynamic dispatch and function values remain unknown",
+      "quality metrics are separate original tool evidence",
+      "source hashes bind selected files; module metadata and dependency exports are not a reproducible build snapshot"
+    ],
+    "native_execution": "NOT_RUN"
+  },
+  "followup_readbacks": [
+    {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-readback-1a9hci0q/followup-observation.json",
+      "sha256": "685f06a8126cc4c120face38721a2a86285e05c773fe3eecce8857d704b2e37b"
+    }
+  ],
+  "public_projection": {
+    "kind": "PORTABLE_HISTORICAL_SUMMARY",
+    "original_summary_sha256": "f5e24effab30bb0fa4ec8488b5e6125b94b7ae5f83d7f3db21450eebab6e0fd7",
+    "private_path_references": 14,
+    "private_locator_marker": "PRIVATE_HOST_HOME/",
+    "locator_meaning": "Private retained evidence location. The marker is not a filesystem root or a Host-issued FileRef.",
+    "historical_continuations": "Recorded next values and arguments are historical data. This public projection is not executable and does not authorize effects.",
+    "original_bytes": "Retained privately without modification; evidence digests and source bindings remain unchanged.",
+    "proof_ceiling": "Publication projection only; no new semantic, native, quality or landing acceptance."
+  }
+}

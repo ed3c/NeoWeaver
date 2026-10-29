@@ -1,0 +1,467 @@
+{
+  "source": {
+    "source_type": "other",
+    "locator": "Original Loop companion request/role handoff, pinned session archive artifacts and current native versus local observations",
+    "source_id": "SRC-b202c2a06d62d1243cbe9a9db72e2ede5247f172db19922ad5d81edb0c32d14d",
+    "source_dependency_key": "SOURCE-7a05e50fdba753ec70f1c3cc5bc2156d5f22068abb878786d72463fdd855c8f2",
+    "uri": "repo:docs/specs/grok-outer-handoff.md",
+    "integrity": "PINNED_SHA256",
+    "sha256": "65b5d3bb69cd380204b16324e2543d2301206535382c67a0db9c6c982406de16"
+  },
+  "code_intel": {
+    "soodles": {
+      "owner": "soodles.code-intel",
+      "status": "ready",
+      "sources": {
+        "loop_companion.py": "49d356fe22bff7a4093177c04f5469c6a05634fc9a25b53e6e2e9ddfc96a8194",
+        "task_session_readback.py": "689f2b2545a47d6e8f1f89efbbf3504e680192a94ce19a426df849d85f90612f"
+      },
+      "snapshot": "PRIVATE_HOST_HOME/soodles/.git/worktrees/soodles48/soodles-code-intel.noindex/native/92426270fd845a88c18982a4dfaa7fdbca94f340fe161ffc7958dcadf7017d9f.json",
+      "limits": [
+        "Static localization is not runtime reachability or semantic correctness.",
+        "Runtime evidence stays with the original Test/Schema owner; no cached PASS.",
+        "A finite localization benchmark cannot certify all Python behavior."
+      ],
+      "definitions": [
+        {
+          "path": "loop_companion.py",
+          "name": "prepare",
+          "line": 44,
+          "column": 4,
+          "end_line": 108,
+          "kind": "FunctionDef",
+          "end_column": 11,
+          "symbol_status": "matched",
+          "symbol": "scip-python python selected-source snapshot loop_companion/prepare()."
+        },
+        {
+          "path": "loop_companion.py",
+          "name": "turn",
+          "line": 124,
+          "column": 4,
+          "end_line": 147,
+          "kind": "FunctionDef",
+          "end_column": 8,
+          "symbol_status": "matched",
+          "symbol": "scip-python python selected-source snapshot loop_companion/turn()."
+        },
+        {
+          "path": "loop_companion.py",
+          "name": "feedback",
+          "line": 150,
+          "column": 4,
+          "end_line": 186,
+          "kind": "FunctionDef",
+          "end_column": 12,
+          "symbol_status": "matched",
+          "symbol": "scip-python python selected-source snapshot loop_companion/feedback()."
+        },
+        {
+          "path": "loop_companion.py",
+          "name": "artifacts",
+          "line": 189,
+          "column": 4,
+          "end_line": 196,
+          "kind": "FunctionDef",
+          "end_column": 13,
+          "symbol_status": "matched",
+          "symbol": "scip-python python selected-source snapshot loop_companion/artifacts()."
+        },
+        {
+          "path": "task_session_readback.py",
+          "name": "review_artifacts",
+          "line": 19,
+          "column": 4,
+          "end_line": 79,
+          "kind": "FunctionDef",
+          "end_column": 20,
+          "symbol_status": "matched",
+          "symbol": "scip-python python selected-source snapshot task_session_readback/review_artifacts()."
+        }
+      ]
+    },
+    "noodle": {
+      "owner": "soodles.code-intel",
+      "status": "ready",
+      "sources": {
+        "skill-sets/ub-review/scripts/companion_turn.py": "3ff547e90fbdd0a4d5f302d38937decfe8d88325477221b9dc5cf14f8642206a",
+        "skill-sets/ub-review/scripts/uml-companion.py": "e4d1e82aeb98b727abf7e802d4175418548fefc70e85b5882d31886a77fe604e"
+      },
+      "snapshot": "PRIVATE_HOST_HOME/neo-route-evidence/openshell-wiring/noodle-source/.git/soodles-code-intel.noindex/native/7252ebc595b8449e0b01a78663599aef6c6c53167b70a9349506493c06c61f51.json",
+      "limits": [
+        "Static localization is not runtime reachability or semantic correctness.",
+        "Runtime evidence stays with the original Test/Schema owner; no cached PASS.",
+        "A finite localization benchmark cannot certify all Python behavior."
+      ],
+      "definitions": [
+        {
+          "path": "skill-sets/ub-review/scripts/companion_turn.py",
+          "name": "save",
+          "line": 26,
+          "column": 4,
+          "end_line": 32,
+          "kind": "FunctionDef",
+          "end_column": 8,
+          "symbol_status": "matched",
+          "symbol": "scip-python python selected-source snapshot `skill-sets.ub-review.scripts.companion_turn`/save()."
+        },
+        {
+          "path": "skill-sets/ub-review/scripts/companion_turn.py",
+          "name": "sync_directory",
+          "line": 35,
+          "column": 4,
+          "end_line": 40,
+          "kind": "FunctionDef",
+          "end_column": 18,
+          "symbol_status": "matched",
+          "symbol": "scip-python python selected-source snapshot `skill-sets.ub-review.scripts.companion_turn`/sync_directory()."
+        },
+        {
+          "path": "skill-sets/ub-review/scripts/companion_turn.py",
+          "name": "mailbox_readback",
+          "line": 68,
+          "column": 4,
+          "end_line": 85,
+          "kind": "FunctionDef",
+          "end_column": 20,
+          "symbol_status": "matched",
+          "symbol": "scip-python python selected-source snapshot `skill-sets.ub-review.scripts.companion_turn`/mailbox_readback()."
+        },
+        {
+          "path": "skill-sets/ub-review/scripts/companion_turn.py",
+          "name": "bound_response",
+          "line": 88,
+          "column": 4,
+          "end_line": 95,
+          "kind": "FunctionDef",
+          "end_column": 18,
+          "symbol_status": "matched",
+          "symbol": "scip-python python selected-source snapshot `skill-sets.ub-review.scripts.companion_turn`/bound_response()."
+        },
+        {
+          "path": "skill-sets/ub-review/scripts/companion_turn.py",
+          "name": "turn",
+          "line": 98,
+          "column": 4,
+          "end_line": 177,
+          "kind": "FunctionDef",
+          "end_column": 8,
+          "symbol_status": "matched",
+          "symbol": "scip-python python selected-source snapshot `skill-sets.ub-review.scripts.companion_turn`/turn()."
+        }
+      ]
+    }
+  },
+  "tests": {
+    "owner": "test-manager",
+    "request_id": "c2083901173dc72e685fb899e62f22573881536d12c427d3095222723fea6300",
+    "selection": {
+      "owner": "test-manager",
+      "status": "ready",
+      "mode": "focused",
+      "scope_origin": "externally_supplied",
+      "base": "88bb280c867315dd15f098c2fe7f3cb422a6ad31",
+      "changed_paths": [
+        ".agents/skills/neo-route/references/core-model.md",
+        ".agents/skills/neo-route/references/neoweaver-profile.md",
+        ".agents/skills/neo-route/references/product-review-model.md",
+        ".agents/skills/neo-route/references/requirements-and-decisions.md",
+        ".agents/skills/neo-route/references/verification.md",
+        "contracts/manager-tools.md",
+        "issue_atom.py",
+        "loop_companion.py",
+        "manager_tools.py",
+        "soodles.py",
+        "task_session_readback.py",
+        "test_manager.py",
+        "tests/test_loop_companion.py",
+        "tests/test_task_session_readback.py"
+      ],
+      "modules": [
+        "test_loop_companion",
+        "test_manager_tools",
+        "test_task_session_readback"
+      ],
+      "physical": [],
+      "reasons": [
+        "Source changed: verify final bridge, archive byte provenance/refusals, native tool metadata and frozen CLI closure after adding artifact readback"
+      ],
+      "unresolved": [],
+      "authorizes_landing": false
+    },
+    "summary": {
+      "exit": 0,
+      "count": 58,
+      "failed_controls": [],
+      "non_claims": []
+    },
+    "receipt": {
+      "path": "PRIVATE_HOST_HOME/soodles/.git/worktrees/soodles48/soodles-test-requests.noindex/c2083901173dc72e685fb899e62f22573881536d12c427d3095222723fea6300/receipt.json",
+      "sha256": "90785b6b85db81ff85893e18f9d025762e0fed21aa0023aa72a0b2f7b5075d8a"
+    },
+    "next": {
+      "owner": "original acceptance owner",
+      "operation": "consume_test_evidence"
+    }
+  },
+  "schema": {
+    "evidence_validity": "VALID",
+    "behavior": {
+      "classification": "PASS",
+      "failed_checks": []
+    },
+    "field_measurement": {
+      "unit": "reported_output_field",
+      "scope": "selected_protocol",
+      "expected": 12,
+      "observed": 12,
+      "failed": 0,
+      "missing": 0,
+      "workflow_decisions": null,
+      "reason": "Output fields do not measure observable workflow choices or complete trace coverage."
+    },
+    "next": {
+      "owner": "task-owner",
+      "operation": "consume_verified_behavior",
+      "required": [],
+      "argv": null,
+      "input": null,
+      "evidence": {
+        "observe": [],
+        "reuse": [],
+        "verified": [
+          "companion-handoff"
+        ]
+      },
+      "actor": "Session"
+    },
+    "observation_scope": "consumer_report"
+  },
+  "native_grok": {
+    "owner": "Noodle.ub-review.companion",
+    "context_sha256": "c69b211d35b203e0db425a455f87abc6a00f17304d1329a28b8b179038e8b3ff",
+    "capture_directory": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/desktop/.uml-viewer/outer-turns/c69b211d35b203e0db425a455f87abc6a00f17304d1329a28b8b179038e8b3ff",
+    "authorizes_landing": false,
+    "status": "observed",
+    "session_id": "2f532bae-773f-4c74-bf08-5a21680f48e9",
+    "exit_code": 0,
+    "response": {
+      "summary": "The SOURCE_ANALYSIS protocol probe supplies no formed final-review candidate and no quality metrics. Original Host is unavailable and the viewer mailbox is absent, so no command ID applies. Missing evidence is preserved and no product effect is authorized.",
+      "requests": [
+        {
+          "kind": "evidence",
+          "command_ids": [],
+          "reason": "The supplied facts state that Original Host is unavailable and that no formed final-review candidate or quality metrics are present. The viewer mailbox status is absent and its command_ids list is empty. These facts do not support a candidate review, a metric judgment, or a no-change result.",
+          "requested_outcome": "When a final-review candidate exists, supply that bound candidate evidence with its provenance and the necessary quality metrics through the outer Session. Limit any later source excerpt to a specific unresolved claim."
+        }
+      ]
+    }
+  },
+  "native_host": {
+    "owner": "soodles.loop",
+    "status": "refused",
+    "problem": {
+      "field": "task.host.status",
+      "value": "host is unavailable; the persisted context was not detached"
+    },
+    "breakpoints": [
+      {
+        "kind": "deterministic",
+        "status": "refused",
+        "stage_id": "",
+        "message": "{'field': 'task.host.status', 'value': 'host is unavailable; the persisted context was not detached'}"
+      }
+    ],
+    "next": {
+      "kind": "input",
+      "owner": "Noodle",
+      "required": [
+        "original_request_readback"
+      ]
+    },
+    "effects": [],
+    "authorizes_landing": false
+  },
+  "limits": [
+    "Fresh consumer CLI was refused by readonly cache access; it did not establish native Host status",
+    "Native Grok protocol probe did not have a final-review candidate or execute product effects",
+    "Original Host deployment, guest quality and same-Host recovery remain incomplete",
+    "Policy application, four-repository review, website quality data and article/publication obligations remain open"
+  ],
+  "deployment_readback": {
+    "progress_host_resources": {
+      "binary_sha256": "44f4270a16820b107addc3180bb083358b0c343fa6ebe5bfdc4befdcbf8738b4",
+      "contexts": 0,
+      "host_dir": "PRIVATE_HOST_HOME/.local/state/nrd-host-progress-v3",
+      "host_instance_id": "b17c7b37f3a471c2c6be84e190f275da",
+      "host_pid": 38952,
+      "protocol": "noodle-host-v1",
+      "residents": {
+        "error": null,
+        "records": []
+      },
+      "resources": {
+        "unresolved_residents": 0,
+        "pressure": "warning",
+        "sample_error": null,
+        "reason": "memory_pressure",
+        "active_workers": 0,
+        "active_residents": 0,
+        "active_allocations": 0,
+        "maximum_workers": 4,
+        "effective_limit": 0,
+        "start_credit": 0,
+        "stable_samples": 0,
+        "swapout_bytes_per_second": 0,
+        "sample_age_seconds": 4.661882542,
+        "unsupported_monitor": false
+      },
+      "schema": 1,
+      "shutdown": {
+        "requested": false
+      },
+      "warning_grants": [],
+      "web_url": "http://127.0.0.1:52904/loops"
+    },
+    "progress_host_review_capabilities": {
+      "candidate_bound_merge": true,
+      "local_task_completion_recovery": true,
+      "local_task_completion_recovery_version": 2,
+      "local_task_directory_scope": 1,
+      "local_task_merge_recovery": true,
+      "local_task_review_recovery": true,
+      "local_task_roles": 1,
+      "openshell_instruction_materialization": 1,
+      "openshell_local_task_review": 1,
+      "openshell_saved_progress_attempt": 1,
+      "schema_version": 1
+    },
+    "shared_host_resources": {
+      "contexts": 3,
+      "host_instance_id": "f46753a568ffe8ee69509cf948a10196",
+      "host_pid": 41073,
+      "protocol": "noodle-host-v1",
+      "residents": {
+        "error": null,
+        "records": [
+          {
+            "id": "host10-cloud-auth-readback",
+            "name": "host10-cloud-auth-readback",
+            "fingerprint": "611f59029dbaa049bca1e3a9907ce85385b57d43e56a36fabe38ae1c0ab3fd08",
+            "sharing": "shared",
+            "pid": 65564,
+            "process_group": 65564,
+            "started": "Fri Oct 16 19:31:30 2026",
+            "state": "exited",
+            "contexts": [],
+            "released_contexts": [
+              "56a0496f3cc49a0efca22d8afbb93659"
+            ],
+            "error": "signal: terminated"
+          },
+          {
+            "id": "host10-cloud-readback",
+            "name": "host10-cloud-readback",
+            "fingerprint": "452e8a22307f165f1db9a5fbc05cfa14719a081be8356da1ade4c824c1b946c7",
+            "sharing": "shared",
+            "pid": 64951,
+            "process_group": 64951,
+            "started": "Fri Oct 16 19:30:20 2026",
+            "state": "exited",
+            "contexts": [],
+            "released_contexts": [
+              "56a0496f3cc49a0efca22d8afbb93659"
+            ],
+            "error": "signal: terminated"
+          },
+          {
+            "id": "loop-cloud-readback",
+            "name": "loop-cloud-readback",
+            "fingerprint": "e184a75de91304e659aaa3aba63c5a9b9b1d79800f004d92fd897bf0c2e93614",
+            "sharing": "shared",
+            "pid": 24279,
+            "process_group": 0,
+            "started": "Fri Oct 16 00:34:41 2026",
+            "state": "exited",
+            "contexts": [],
+            "released_contexts": [
+              "1a2e4d955fd0c314d59e71af8813811b"
+            ],
+            "error": "signal: terminated"
+          },
+          {
+            "id": "loop-handoff-preview",
+            "name": "loop-handoff-preview",
+            "fingerprint": "9fe3c785ef5967f90505771dd95f2c7f7f02b8d12b38fb345a339eca86700e0b",
+            "sharing": "shared",
+            "pid": 59125,
+            "process_group": 59125,
+            "started": "Fri Oct 16 19:09:18 2026",
+            "state": "exited",
+            "contexts": [],
+            "released_contexts": [
+              "b87e59ccbcfc4ce15fdfcb71b2a82085",
+              "67494879fc2fcfda769bab963c54beb6",
+              "35e47e0d908270884082b6971dd22d67",
+              "11fa8c3d68e1776e1cb3e1db35c1558d",
+              "bb97e2356e2fde42a45c7d665a4ab315",
+              "56a0496f3cc49a0efca22d8afbb93659"
+            ],
+            "error": "signal: terminated"
+          }
+        ]
+      },
+      "resources": {
+        "unresolved_residents": 0,
+        "pressure": "warning",
+        "sample_error": null,
+        "reason": "memory_pressure",
+        "active_workers": 0,
+        "active_residents": 0,
+        "active_allocations": 0,
+        "maximum_workers": 4,
+        "effective_limit": 0,
+        "start_credit": 0,
+        "stable_samples": 0,
+        "swapout_bytes_per_second": 0,
+        "sample_age_seconds": 1.816706833,
+        "unsupported_monitor": false
+      },
+      "schema": 1,
+      "warning_grants": [
+        {
+          "context_id": "8a13801cd8d69cf943073066b5f6f7ef",
+          "order_id": "soodles-task-48adc9421e8493d0768d",
+          "status": "consumed",
+          "issued_at": "2026-10-28T10:06:45.712002+08:00",
+          "expires_at": "2026-10-28T10:16:45.712002+08:00"
+        }
+      ],
+      "web_url": "http://127.0.0.1:50998/loops"
+    },
+    "conclusion": "The original task Host is unavailable. New progress Host exists but has zero start credit under memory warning and lacks openshell_role_tool_payload. No other deployment was modified or adopted."
+  },
+  "guest_component_preparation": {
+    "evidence": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/automation/guest-component-prepared.json",
+      "sha256": "2f9105df220e29ffdbd22666e7b8b6b42bd9bb1283108cef9e73de4aec97c2a8"
+    },
+    "status": "PREPARED_NOT_EXECUTED",
+    "component": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/automation/guest-tools/noodle-review-graph",
+      "sha256": "3dd7598cf3263a90c6cacda18ad4f30a586274adc4dc972d9aa47aa3a36b85a7"
+    },
+    "native_guest_execution": "NOT_RUN",
+    "quality_acceptance": "UNKNOWN"
+  },
+  "public_projection": {
+    "kind": "PORTABLE_HISTORICAL_SUMMARY",
+    "original_summary_sha256": "9c476383ff71e6fb2401e4278fd000a1c1d5db11338d78719ea94b950bdb684e",
+    "private_path_references": 7,
+    "private_locator_marker": "PRIVATE_HOST_HOME/",
+    "locator_meaning": "Private retained evidence location. The marker is not a filesystem root or a Host-issued FileRef.",
+    "historical_continuations": "Recorded next values and arguments are historical data. This public projection is not executable and does not authorize effects.",
+    "original_bytes": "Retained privately without modification; evidence digests and source bindings remain unchanged.",
+    "proof_ceiling": "Publication projection only; no new semantic, native, quality or landing acceptance."
+  }
+}

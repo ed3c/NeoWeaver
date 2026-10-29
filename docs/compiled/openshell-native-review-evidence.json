@@ -1,0 +1,163 @@
+{
+  "scope": "Original OpenShell review wiring; partial source implementation and real initial native failure",
+  "source_record": {
+    "source_type": "other",
+    "locator": "Native read-only OpenShell observation, source correction and original review prerequisites",
+    "source_id": "SRC-5bd8b4226911c26f75407af996b7b8d10702d6c9496a19c03c93c44d03caf50e",
+    "source_dependency_key": "SOURCE-249abd11bdf2c0842469f6c081e0a8d5aa65664f3893fee01c956142cea6a5d5",
+    "uri": "repo:docs/specs/openshell-native-review.md",
+    "integrity": "PINNED_SHA256",
+    "sha256": "afabee2ffeddeef25d10cd4150985ea871c61f58eb645fafc281c75198dfdf90"
+  },
+  "versions": {
+    "soodles": "794d5fd49e8dcc0d78ab55d1f9c5eae35b8ef1e4",
+    "noodle": "ac0b84363f0df59fbcdc4c668d7093e9dd1734bf",
+    "factoryweaver": "bc8d7815ed4b3446bb3eacb6e3b50675f24b6f32"
+  },
+  "code_intel": {
+    "owner": "soodles.code-intel",
+    "status": "ready",
+    "view": "native",
+    "sources": {
+      "task_materialization.py": "7e99d33da05665dd4f2e1836cf317a8c35baf272e26a6556fa524b1970f284bb",
+      "task_roles.py": "d9e644c11ff7c078b2ca4f5e4d2d9bbce24c23dc12cfd10aa4b72af7a3f4f0ef",
+      "task_session_readback.py": "8df2152e219128d0f14420a4db343cac6649c6d76494c7c4dca1dea8adb0a746"
+    },
+    "limits": [
+      "Static localization is not runtime reachability or semantic correctness.",
+      "Runtime evidence stays with the original Test/Schema owner; no cached PASS.",
+      "A finite localization benchmark cannot certify all Python behavior."
+    ],
+    "definitions": [
+      {
+        "path": "task_materialization.py",
+        "name": "prepare",
+        "line": 132,
+        "column": 4,
+        "end_line": 167,
+        "kind": "FunctionDef",
+        "end_column": 11,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_materialization/prepare()."
+      },
+      {
+        "path": "task_materialization.py",
+        "name": "publish",
+        "line": 193,
+        "column": 4,
+        "end_line": 221,
+        "kind": "FunctionDef",
+        "end_column": 11,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_materialization/publish()."
+      },
+      {
+        "path": "task_roles.py",
+        "name": "read_role",
+        "line": 16,
+        "column": 4,
+        "end_line": 46,
+        "kind": "FunctionDef",
+        "end_column": 13,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_roles/read_role()."
+      },
+      {
+        "path": "task_roles.py",
+        "name": "prepare_role",
+        "line": 49,
+        "column": 4,
+        "end_line": 125,
+        "kind": "FunctionDef",
+        "end_column": 16,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_roles/prepare_role()."
+      },
+      {
+        "path": "task_roles.py",
+        "name": "role_prompt",
+        "line": 128,
+        "column": 4,
+        "end_line": 139,
+        "kind": "FunctionDef",
+        "end_column": 15,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_roles/role_prompt()."
+      },
+      {
+        "path": "task_roles.py",
+        "name": "instruction_context",
+        "line": 142,
+        "column": 4,
+        "end_line": 150,
+        "kind": "FunctionDef",
+        "end_column": 23,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_roles/instruction_context()."
+      },
+      {
+        "path": "task_session_readback.py",
+        "name": "completed_once",
+        "line": 116,
+        "column": 4,
+        "end_line": 239,
+        "kind": "FunctionDef",
+        "end_column": 18,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_session_readback/completed_once()."
+      }
+    ],
+    "runtime": {
+      "status": "NOT_OBSERVED",
+      "owner": "original-test-or-runtime-owner"
+    },
+    "scope": "Selected source snapshot only; unknown/dynamic calls are not missing capabilities.",
+    "capture_boundary": "Full original Code Intel output retained in the external task evidence; this projection includes only relevant definitions and original source bindings."
+  },
+  "local_verification": {
+    "soodles": [
+      "497 selected controls passed before wrapper correction",
+      "11 role/provenance controls passed",
+      "39 materialization/admission controls passed after wrapper correction"
+    ],
+    "noodle": "unchanged publication and native readback focused controls passed; original pnpm build exit 0",
+    "build_limit": "Vite warned Node 22.11 is older than its supported 22.12 minimum; build completed"
+  },
+  "native_observation": {
+    "carrier": "OpenShell",
+    "role": "initial read-only Poteto",
+    "model_exit": 0,
+    "delivery": "unchanged",
+    "candidate_readback": "REFUSED: original OpenShell dispatch is not a bound successful settled result",
+    "wrapper_read": false,
+    "selected_poteto_skill_read": true,
+    "source_inputs_read": true,
+    "guest_python": "missing",
+    "guest_git": "missing",
+    "ub_review_role": "NOT_RUN",
+    "quality_tools": "NOT_RUN"
+  },
+  "schema_feedback": {
+    "evidence_validity": "INCONCLUSIVE",
+    "behavior": null,
+    "field_measurement": {
+      "unit": "reported_output_field",
+      "scope": "selected_protocol",
+      "expected": 6,
+      "observed": 0,
+      "failed": 0,
+      "missing": 6,
+      "workflow_decisions": null,
+      "reason": "Output fields do not measure observable workflow choices or complete trace coverage."
+    }
+  },
+  "schema_next": "supply_behavior_evidence",
+  "next_consumption": "Original native refusal was read and the producer defects were corrected locally. Required review observations remain absent while shared runtime deployment is pending. The initial Poteto trace is not supplied as a review consumer.",
+  "remaining": [
+    "Shared Host deployment of verified runtime",
+    "Native review role handoff and offline dependency execution",
+    "Quality outputs and full changed-scope acceptance",
+    "Original result retrieval, correction return and recovery acceptance",
+    "Independent source-semantic review, Medium publication and Parent Goal"
+  ]
+}

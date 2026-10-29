@@ -1,0 +1,372 @@
+{
+  "source": {
+    "integrity": "PINNED_SHA256",
+    "locator": "Integrated current original OpenShell controls, source-bound preview prerequisite and native refusal of incompatible 15 GB Swap-policy Host switch",
+    "sha256": "4d86397743969e5a6042d7656639eee4bdd9ee0759deb339d821b73089fd45b0",
+    "source_dependency_key": "SOURCE-dc794db9301c123ebd3d5480264e4dc533a1a6da76d52d8041a2f555b71af019",
+    "source_id": "SRC-9fa403411cb3bd34703577acaf134162ca6ed5e9ee3f06fd1645b36007b41fc6",
+    "source_type": "other",
+    "uri": "repo:docs/specs/openshell-host15-integration.md"
+  },
+  "candidate": {
+    "binary": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/host15-readback-nrov399b/noodle-openshell-integrated",
+      "sha256": "0726c8c286094809de3b23d43502a84b79301dfad74f186e657dce3283342810"
+    },
+    "build_info": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/host15-readback-nrov399b/integrated-build-info.txt",
+      "sha256": "a7046d533d601197a63ca65f7a46e081eca07f837064ad27ddc54c1e212e6ff3"
+    },
+    "deployment": "NOT_DEPLOYED",
+    "effects": [],
+    "excluded_paths": [
+      "examples/harness2/soodles_bridge.py",
+      "examples/harness2/test_soodles_bridge.py"
+    ],
+    "exclusion_reason": "Harness2 adapter is absent in this target and is not a dependency of selected Host/role contracts; no alternate adapter written",
+    "host15_compatibility": "REFUSED by original read-only maintenance plan",
+    "new_original_commits": [
+      "7c18ec4b15d0a7b45dfc2ff16858287a0127f614",
+      "a2e03b6d9f7dcbf5680dad6f006c78b0de20f580",
+      "7cda770b6abe23d9a52d31d4677c4b0505786080"
+    ],
+    "preview_prerequisite": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/host15-readback-nrov399b/preview-prerequisite-source.json",
+    "snapshot": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/host15-readback-nrov399b/source-snapshot.json",
+      "sha256": "7ceab0808085d58e30f58cd27d134874195f19a40ffe047b0a45014ad70a7a24"
+    },
+    "source_dirty": true
+  },
+  "guest_verifier": {
+    "active_profile_changed": false,
+    "bytes_match": true,
+    "component": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/host15-readback-nrov399b/noodle-instructions-linux-arm64",
+      "sha256": "c3e73db55ec840c6e359280243c39ef5e27958a4b1d6a196bd8a13ae15abcff6"
+    },
+    "guest_execution": "NOT_RUN",
+    "instruction_manifest_schema": 2,
+    "prior_build": {
+      "active_profile_changed": false,
+      "build_info": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/linux-verifier-build-info.txt",
+        "sha256": "c7d80d0100bdcd5c63c0425588b20b5eefbf3e3fe40c9d19fda1b059d56b19c6"
+      },
+      "capability": "Manifest v2 tool_files verifier from original integrated Noodle source",
+      "component": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/noodle-instructions-linux-arm64",
+        "sha256": "c3e73db55ec840c6e359280243c39ef5e27958a4b1d6a196bd8a13ae15abcff6"
+      },
+      "format": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/deployment-compatibility/linux-verifier-file.txt",
+        "sha256": "a5e09a02f05c24c5da2d2262792ae9b48dddeaa8d975393a723a04dc9f45cd8e"
+      },
+      "native_guest_execution": "NOT_RUN"
+    }
+  },
+  "private_host": {
+    "binary_sha256": "890f96e346dd4d572dd0552ae13b1df1d5cb74b6330bff32ab21ead25da7f70b",
+    "contexts": 1,
+    "gateway_warning_grants": [
+      {
+        "context_id": "d6aece8bab5b5b47e0ebcb6f38f1d326",
+        "order_id": "soodles-task-67e3a24fa29fa767f6de",
+        "resident_id": "noodle-refresh-drain",
+        "revision": 1,
+        "status": "consumed",
+        "gateway_started": true,
+        "issued_at": "2026-10-29T04:17:10.594458+08:00",
+        "expires_at": "2026-10-29T04:27:10.594458+08:00"
+      }
+    ],
+    "host_dir": "PRIVATE_HOST_HOME/.local/state/nrd-host-progress-v3",
+    "host_instance_id": "d6d93f5d901a6df1cb9e655394aec250",
+    "host_pid": 54720,
+    "protocol": "noodle-host-v1",
+    "residents": {
+      "error": null,
+      "records": [
+        {
+          "id": "noodle-refresh-drain",
+          "name": "noodle-refresh-drain",
+          "fingerprint": "7d0db81ae73982d4d30246cf4a7daff9ad8ce03cb0dc686e7d86c4d53d97f526",
+          "sharing": "shared",
+          "pid": 55087,
+          "process_group": 55087,
+          "started": "Thu Oct 29 04:17:10 2026",
+          "state": "running",
+          "contexts": [
+            "d6aece8bab5b5b47e0ebcb6f38f1d326"
+          ],
+          "released_contexts": [],
+          "guard_id": "openshell/d702a090f1c3e789969c09f85405ba7f64dda501daf89730d11fa66962f926f1"
+        }
+      ]
+    },
+    "resources": {
+      "unresolved_residents": 0,
+      "pressure": "warning",
+      "sample_error": null,
+      "reason": "memory_pressure",
+      "active_workers": 1,
+      "active_residents": 1,
+      "active_allocations": 2,
+      "maximum_workers": 4,
+      "effective_limit": 0,
+      "start_credit": 0,
+      "stable_samples": 0,
+      "swapout_bytes_per_second": 0,
+      "sample_age_seconds": 4.779207791,
+      "unsupported_monitor": false
+    },
+    "schema": 1,
+    "shutdown": {
+      "requested": false
+    },
+    "warning_grants": [],
+    "web_url": "http://127.0.0.1:61446/loops"
+  },
+  "host15": {
+    "binary_path": "PRIVATE_HOST_HOME/.local/share/noodle/builds/swap-used-15gb-maintenance-ac0bce68a73b4089c5b6a28dc11cdb74023660f3d6e76374f271700285629f28/noodle",
+    "binary_sha256": "ac0bce68a73b4089c5b6a28dc11cdb74023660f3d6e76374f271700285629f28",
+    "contexts": 0,
+    "host_instance_id": "9c26878c94a2c9e8c3a1af9f1308557c",
+    "host_pid": 38239,
+    "protocol": "noodle-host-v1",
+    "residents": {
+      "error": null,
+      "records": []
+    },
+    "resources": {
+      "worker_admission_policy": "swap-used-critical-guard-v2",
+      "shared_quota": {
+        "maximum": 4,
+        "allocations": 0,
+        "residents": 0,
+        "owned_allocations": 0
+      },
+      "owned_allocations": 0,
+      "unresolved_residents": 0,
+      "pressure": "warning",
+      "sample_error": null,
+      "reason": "ready",
+      "active_workers": 0,
+      "active_residents": 0,
+      "active_allocations": 0,
+      "maximum_workers": 4,
+      "effective_limit": 4,
+      "start_credit": 1,
+      "stable_samples": 577,
+      "swap_used_limit_bytes": 15000000000,
+      "swap_used_bytes": 3705405440,
+      "swapout_bytes_per_second": 0,
+      "sample_age_seconds": 0.649359458,
+      "unsupported_monitor": false
+    },
+    "rolling_error": "",
+    "rolling_host_version": 1,
+    "safe_host_switch": 0,
+    "schema": 1,
+    "warning_grants": [],
+    "web_url": "http://127.0.0.1:61127/loops"
+  },
+  "host15_capabilities": {
+    "candidate_bound_merge": true,
+    "local_task_completion_recovery": true,
+    "local_task_completion_recovery_version": 2,
+    "local_task_directory_scope": 1,
+    "local_task_merge_recovery": true,
+    "local_task_review_recovery": true,
+    "local_task_roles": 1,
+    "local_task_worktree_custody": 1,
+    "schema_version": 1
+  },
+  "original_loop": {
+    "owner": "soodles.loop",
+    "status": "refused",
+    "problem": {
+      "field": "task.host.status",
+      "value": "host is unavailable; the persisted context was not detached"
+    },
+    "breakpoints": [
+      {
+        "kind": "deterministic",
+        "status": "refused",
+        "stage_id": "",
+        "message": "{'field': 'task.host.status', 'value': 'host is unavailable; the persisted context was not detached'}"
+      }
+    ],
+    "next": {
+      "kind": "input",
+      "owner": "Noodle",
+      "required": [
+        "original_request_readback"
+      ]
+    },
+    "effects": [],
+    "authorizes_landing": false
+  },
+  "original_host15_maintenance_plan": {
+    "exit": 1,
+    "stderr": "target lacks compatible rolling Host and shared-quota contracts\n",
+    "effects": []
+  },
+  "go_controls": [
+    {
+      "argv": [
+        "go",
+        "test",
+        "-p",
+        "1",
+        "-race",
+        "-count=1",
+        ".",
+        "-run",
+        "TestRequiredExistingHost|TestContext|TestHostGatewayWarning|TestHostHistoricalDeferral|TestHostCapabilitiesPreservesProtocolContract|TestHostTaskReviewCapabilitiesAreOfflineAndSeparate"
+      ],
+      "exit": 0,
+      "log": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/host15-readback-nrov399b/integration-corrected-1.txt"
+    },
+    {
+      "argv": [
+        "go",
+        "test",
+        "-p",
+        "1",
+        "-race",
+        "-count=1",
+        "./internal/admission",
+        "./internal/instructionbundle",
+        "./internal/loopview"
+      ],
+      "exit": 0,
+      "log": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/host15-readback-nrov399b/integration-corrected-2.txt"
+    },
+    {
+      "argv": [
+        "go",
+        "test",
+        "-p",
+        "1",
+        "-race",
+        "-count=1",
+        "./runtime",
+        "-run",
+        "TestOpenShellRuntimeStopPreservesProgressAfterBothNativeExits|TestOpenShellProgressCommandBindsOriginalLaunch|TestOpenShellCleanup"
+      ],
+      "exit": 0,
+      "log": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/host15-readback-nrov399b/integration-corrected-3.txt"
+    }
+  ],
+  "ui_controls": {
+    "files": 2,
+    "tests": 7,
+    "test_exit": 0,
+    "typecheck_exit": 0,
+    "lint_exit": 0,
+    "runtime": "installed Node v22.23.2",
+    "original_setup_failure": "ERR_REQUIRE_ESM, retained in ui-controls-1.txt"
+  },
+  "go_structure": {
+    "reference": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/host15-readback-nrov399b/bound-go-structure.json",
+      "sha256": "7612bfafee587fef5f58995542f803f9c861f4a8440fddde389d632f63a2ded5"
+    },
+    "analyzer": "noodle-go-types-v1",
+    "head": "5ebbca7ff9219f098b1061092fdea929aa27876e",
+    "sources": [
+      {
+        "path": "internal/instructionbundle/files.go",
+        "sha256": "50ec114f8c34902a9608e1226b1904e14ae38c07b98baeaa7f0e9c90906aa054"
+      },
+      {
+        "path": "internal/instructionbundle/manifest.go",
+        "sha256": "0689ed53e6772b3b8ea7a879dc99fd85f2b280166beff372a7bff0f080d7e69e"
+      },
+      {
+        "path": "internal/instructionbundle/prepare.go",
+        "sha256": "1cc5121bf7172fd43baf2a492274df1c3fd96b03a4401112a674b3c25583123c"
+      },
+      {
+        "path": "internal/loopview/artifact.go",
+        "sha256": "5f47411ea6a283cf02bef28d4f592b75f8b7217fa5ee75ece94a92280fc35b56"
+      },
+      {
+        "path": "internal/loopview/details.go",
+        "sha256": "b980badf7a3da98313f5a5b026b6caa73dc7fed05c1819f7b0b812095eb4c83d"
+      },
+      {
+        "path": "internal/loopview/graph.go",
+        "sha256": "643137330b80376b5d28deed2fad1caaf8096086e9ad3006339819caf366a733"
+      },
+      {
+        "path": "internal/loopview/graph_shape.go",
+        "sha256": "f31c3344aad30c9d03fc31d44203cae9cb9e2d0f1ec50e5af34c84df8f6c152d"
+      },
+      {
+        "path": "internal/loopview/graph_store.go",
+        "sha256": "e6cd6486c1dbc13cee017911ea0e9ee8310369441e8ecba6c7fc304a4fed4347"
+      },
+      {
+        "path": "internal/loopview/index_content.go",
+        "sha256": "73211153a2292487763e3572e726ad8a79ba2effec408414f5b136cd78591fd1"
+      },
+      {
+        "path": "internal/loopview/preview.go",
+        "sha256": "f5fe6ef53f81eecc38708a905305cba33d9e6eaf51b521cef025ff67c66cf9d7"
+      },
+      {
+        "path": "internal/loopview/review_selection.go",
+        "sha256": "a3a85b818447f3bfe0cb99e497a7d55e738927a4e771afa9dc654e4fd42517dc"
+      },
+      {
+        "path": "internal/loopview/store.go",
+        "sha256": "e4254ea489525af7651a0c23ada3386515834cde58c01ddba8130e8ec14b78e1"
+      },
+      {
+        "path": "internal/loopview/view.go",
+        "sha256": "af8f8a4701077191b9b7ff34b5db42a7593995a23517114a19bfff0d4c5c8bb1"
+      }
+    ],
+    "limits": [
+      "static source relationships, not runtime traces",
+      "test files excluded",
+      "build-excluded files are not analyzed",
+      "dynamic dispatch and function values remain unknown",
+      "quality metrics are separate original tool evidence",
+      "source hashes bind selected files; module metadata and dependency exports are not a reproducible build snapshot"
+    ]
+  },
+  "schema": {
+    "evidence_validity": "VALID",
+    "observation_scope": "consumer_report",
+    "behavior": {
+      "classification": "PASS",
+      "failed_checks": []
+    },
+    "next": {
+      "owner": "task-owner",
+      "operation": "consume_verified_behavior",
+      "required": [],
+      "argv": null,
+      "input": null
+    }
+  },
+  "schema_next_consumed": "Current Session consumes unchanged four-instruction consumer_report, keeps native claims unknown and preserves original request/Host boundaries",
+  "host_selection": "PENDING_USER_CLARIFICATION",
+  "host_deployment": "NOT_RUN",
+  "guest_quality": "NOT_RUN",
+  "native_recovery": "NOT_RUN",
+  "effects": [],
+  "authorizes_landing": false,
+  "public_projection": {
+    "kind": "PORTABLE_HISTORICAL_SUMMARY",
+    "original_summary_sha256": "5b0f2d2212a09a9b42b45790611fb0eac5cc1eddf0ee59da5de1719b15c45212",
+    "private_path_references": 14,
+    "private_locator_marker": "PRIVATE_HOST_HOME/",
+    "locator_meaning": "Private retained evidence location. The marker is not a filesystem root or a Host-issued FileRef.",
+    "historical_continuations": "Recorded next values and arguments are historical data. This public projection is not executable and does not authorize effects.",
+    "original_bytes": "Retained privately without modification; evidence digests and source bindings remain unchanged.",
+    "proof_ceiling": "Publication projection only; no new semantic, native, quality or landing acceptance."
+  }
+}

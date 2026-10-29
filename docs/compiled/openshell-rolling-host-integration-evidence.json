@@ -1,0 +1,389 @@
+{
+  "source": {
+    "source_type": "other",
+    "locator": "Confirmed 15 GB Swap target, original rolling/shared-quota deployment, source-bound OpenShell integration and missing native gateway prerequisite",
+    "source_id": "SRC-8d35cfa26eb0d145c295fb0687fe7790dd480b12d3daf1bf73df3a081c1bcc09",
+    "source_dependency_key": "SOURCE-cd476ae28e44e3d533195a441cd8aa0dd12f872e67551aeb02ce81bb85b69178",
+    "uri": "repo:docs/specs/openshell-rolling-host-integration.md",
+    "integrity": "PINNED_SHA256",
+    "sha256": "2a3323748242bfeec23ab99f961b8e432176ed306867ce5fa7ec7e44e61ab2f1"
+  },
+  "readbacks": {
+    "candidate.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-candidate.json",
+      "sha256": "b1d872aba7748b017bc3063b0355d1f7edac140803d838315dd75176f90e8de7"
+    },
+    "host15-source-snapshot.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-host15-source-snapshot.json",
+      "sha256": "03f1663124cfcac83ac67125c731842b5c8e84cfb7ff18e8c0e8d991c5d7bdf3"
+    },
+    "admission-final.txt": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-admission-final.txt",
+      "sha256": "1dea1d286fd5032c2f9ed6d8a57568830fefba456bcce41641fff3dc00142a9c"
+    },
+    "admission-structure-final.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-admission-structure-final.json",
+      "sha256": "43620173d5343d217a8aec358ca4d3c20d4704e80dfe2bbdc07208db3e14375c"
+    },
+    "runtime-integration-resource-ready.txt": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-runtime-integration-resource-ready.txt",
+      "sha256": "bd94558a12f4aa1bdd413126d20cd8910f2a0d4b4df0c0c5dabe6bda5e270e85"
+    },
+    "host-integration-reassessed.txt": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-host-integration-reassessed.txt",
+      "sha256": "584d779b7d9dacc7f0be3175d5a49a6600de24332147edeab846dba9c2f7e658"
+    },
+    "host-affected-fixtures-ready.txt": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-host-affected-fixtures-ready.txt",
+      "sha256": "271ca872f71fa75dc8089bdce3d923d3c5ca9d4bfd21179c57199b31180a5185"
+    },
+    "host-owners-integration.txt": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-host-owners-integration.txt",
+      "sha256": "eeac284a891e259d71e2725c5f6685ed3c40c04f651b9d75983f9594d09b8037"
+    },
+    "loop-affected-reassessed.txt": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-loop-affected-reassessed.txt",
+      "sha256": "c03ccf4b61f1c68dd0ccc383a480024cabc0c97792d337b63affb09dd5e8652a"
+    },
+    "loop-final-fixtures.txt": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-loop-final-fixtures.txt",
+      "sha256": "fe6ca2ad75cea18d8d31c948551013c4c676090775a737530caf5c7ab9bdd9a0"
+    },
+    "build-final.txt": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-build-final.txt",
+      "sha256": "9308334419bf30daccb8a47f076aab9dc7a5d15068738d8fb87d67f0bde6a9cc"
+    },
+    "deployment-readback.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-deployment-readback.json",
+      "sha256": "457190b4d440914cf8d8f6edc8adafe95f137a687f84596570c66ec2e88ceca5"
+    },
+    "rolling-owner-differences.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-rolling-owner-differences.json",
+      "sha256": "965a72848994f14646f9f78241f63e7ec29e9a73e0c44813cc223676717dd2e6"
+    },
+    "profile-source-before.err": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-profile-source-before.err",
+      "sha256": "af705e3cf08fc08ae585c508babaf297344a880359516c847fa4baf99d8c1751"
+    },
+    "profile-prepared-readback.err": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-profile-prepared-readback.err",
+      "sha256": "af705e3cf08fc08ae585c508babaf297344a880359516c847fa4baf99d8c1751"
+    },
+    "guest-components.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-guest-components.json",
+      "sha256": "b624b13c896b1cc81172741f8fe758e71d0ea49b0a31ff8d88965c0a6908e118"
+    },
+    "schema-readback.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-schema-readback.json",
+      "sha256": "846671c7e614047337f32fcb1e2b5e75d5e166472f9a829ae286a58904903b94"
+    },
+    "processes-after-deployment.txt": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-processes-after-deployment.txt",
+      "sha256": "48b925d3eb90031aeff2a0c6e03d6b0f65744f476c78b55711f69c85749527fd"
+    }
+  },
+  "source_commit": "ee774bf313e1a1d9721bc6f2753e684658cc65f6",
+  "code_intel": {
+    "analyzer": "noodle-go-types-v1",
+    "patterns": [
+      "./internal/admission"
+    ],
+    "sources": [
+      {
+        "path": "internal/admission/budget.go",
+        "sha256": "e51e8bca11c84efb92952301a7c48d8cb2d9f65c469d17ad04e82eab92f97556"
+      },
+      {
+        "path": "internal/admission/consumer_lease.go",
+        "sha256": "48e33bb844c86c8b7415682c51ecb382f3181435287e54a1d7490aeb371b0ecd"
+      },
+      {
+        "path": "internal/admission/fixture_claim.go",
+        "sha256": "e1bdea75104c2dc3c3a13243314395891e57e2534c160bc5995132f333dad4bc"
+      },
+      {
+        "path": "internal/admission/fixture_evidence.go",
+        "sha256": "083eb5fc41dca075973819fa30bb14f800a07466679f4d248b3449484ac2de13"
+      },
+      {
+        "path": "internal/admission/fixture_inheritance.go",
+        "sha256": "d6e5e472c53e988cc3772ca54deddaf17eb802d0aac1a17d957b255636d38cf1"
+      },
+      {
+        "path": "internal/admission/fixture_recovery.go",
+        "sha256": "7cb22777a62104fb677f049d32c50e0f1f9aa5a405254f40579fe6e358219404"
+      },
+      {
+        "path": "internal/admission/fixture_registration.go",
+        "sha256": "be782f4eb5cc280f0d7fccc76f9bc36938275e915a56ce0b822b76e00e8e0881"
+      },
+      {
+        "path": "internal/admission/gateway_warning.go",
+        "sha256": "1aa83bc25e2c411e0bee30a6b3d590fb241feb3c105ee4ad685a1d431bbb034a"
+      },
+      {
+        "path": "internal/admission/native_consumer.go",
+        "sha256": "4bd446c7f7d1c4ec23c1553130dab1f64ae2045bee48415bc09ddf9fb2a3ee1b"
+      },
+      {
+        "path": "internal/admission/quota_migration.go",
+        "sha256": "b27dbf1cd11cfdc84d8719f3570412d103ce0e2eb0530f1cb757e9f633a038bb"
+      },
+      {
+        "path": "internal/admission/recovered_quota.go",
+        "sha256": "3b25898691185f3ee3446c8ab408fddcbeaa1bc671ee8bc06fc271b416d161bf"
+      },
+      {
+        "path": "internal/admission/resident_descendants.go",
+        "sha256": "d1b6d0f630ea4a82ac609d404e01d70333c1499cb7d4d1388d3b889c88f51a9d"
+      },
+      {
+        "path": "internal/admission/resident_escalation.go",
+        "sha256": "e111035a63064870ad186c4d9cb9fa969f107201bfb92f33c41047e409e09849"
+      },
+      {
+        "path": "internal/admission/resident_generation.go",
+        "sha256": "8d53b71e0a14db4a3ebe005e9eb827340e3f1788609f57acbac1f45f32055b59"
+      },
+      {
+        "path": "internal/admission/resident_guard.go",
+        "sha256": "87cc3e8d830b0816403812f682e460df16cda490e591056475bd7701599dad06"
+      },
+      {
+        "path": "internal/admission/resident_inventory.go",
+        "sha256": "b1b2e8fb3b911d5f2b27d06ee09c27f3658fa5c11bcabcf98a2b8bf84268e7a4"
+      },
+      {
+        "path": "internal/admission/resident_stop_unix.go",
+        "sha256": "7c70059762d865d1e101508da25a9c35910b1ebe43ba8820dd17cfab1b12e4de"
+      },
+      {
+        "path": "internal/admission/residents.go",
+        "sha256": "94632c1028d5952b49c58b5c6f4c5de2036a28eb650dc640394a1a2ed36aebd2"
+      },
+      {
+        "path": "internal/admission/sampler_darwin.go",
+        "sha256": "63c23d9eea7c15819589a52cb49771db98cb0e3873add511cdaf7a111eacdf13"
+      },
+      {
+        "path": "internal/admission/shared_quota.go",
+        "sha256": "327d642ee018d826ad457df219da1a4432129ebe6495dd5c0f04c5beadb06439"
+      },
+      {
+        "path": "internal/admission/warning_grant.go",
+        "sha256": "9c7f7ae61721ac26f8b15b5f2bfaaff867cf8a88b6b49894b604172941f1b344"
+      }
+    ],
+    "limits": "Static source/type relationships, not runtime trace or quality acceptance"
+  },
+  "deployment": {
+    "current_instance": "5cce4469f405f91db62eca479cde4b52",
+    "current_binary_sha256": "77d1b34274e329496f524616fa31eb896536008af57d66dc418e2fb79a3983c9",
+    "resources": {
+      "worker_admission_policy": "swap-used-critical-guard-v2",
+      "shared_quota": {
+        "maximum": 4,
+        "allocations": 0,
+        "residents": 0,
+        "owned_allocations": 0
+      },
+      "owned_allocations": 0,
+      "unresolved_residents": 0,
+      "pressure": "warning",
+      "sample_error": null,
+      "reason": "ready",
+      "active_workers": 0,
+      "active_residents": 0,
+      "active_allocations": 0,
+      "maximum_workers": 4,
+      "effective_limit": 4,
+      "start_credit": 1,
+      "stable_samples": 7,
+      "swap_used_limit_bytes": 15000000000,
+      "swap_used_bytes": 5043781632,
+      "swapout_bytes_per_second": 0,
+      "sample_age_seconds": 2.188540459,
+      "unsupported_monitor": false
+    },
+    "original_owners_byte_shape_unchanged": false,
+    "original_owner_identity_state_history_preserved": true,
+    "serialization_delta": {
+      "field": "admission_refusal",
+      "value": "",
+      "paths": [
+        "owners/139c5e210f68a3459c1bc37675e63cd1/original/admission_refusal",
+        "owners/139c5e210f68a3459c1bc37675e63cd1/current/admission_refusal",
+        "owners/168ffc6543a0d8c4c00ed40daf4a335e/original/admission_refusal",
+        "owners/168ffc6543a0d8c4c00ed40daf4a335e/current/admission_refusal",
+        "owners/36153886b252dba16cb4b6b318ee394b/last_admission/admission_refusal",
+        "owners/36153886b252dba16cb4b6b318ee394b/original/admission_refusal",
+        "owners/36153886b252dba16cb4b6b318ee394b/current/admission_refusal",
+        "owners/36153886b252dba16cb4b6b318ee394b/previous/0/admission_refusal",
+        "owners/36153886b252dba16cb4b6b318ee394b/previous/1/admission_refusal",
+        "owners/36153886b252dba16cb4b6b318ee394b/previous/2/admission_refusal",
+        "owners/36153886b252dba16cb4b6b318ee394b/previous/3/admission_refusal",
+        "owners/36153886b252dba16cb4b6b318ee394b/previous/4/admission_refusal",
+        "owners/36153886b252dba16cb4b6b318ee394b/previous/5/admission_refusal",
+        "owners/36153886b252dba16cb4b6b318ee394b/previous/6/admission_refusal",
+        "owners/36153886b252dba16cb4b6b318ee394b/previous/7/admission_refusal",
+        "owners/3b0aec01d963f8825ff131918b59fb91/original/admission_refusal",
+        "owners/3b0aec01d963f8825ff131918b59fb91/current/admission_refusal",
+        "owners/40b68cb086808020e451dd66ae04c523/original/admission_refusal",
+        "owners/40b68cb086808020e451dd66ae04c523/current/admission_refusal",
+        "owners/5d4586f436323b7b4aa41255fa094db2/original/admission_refusal",
+        "owners/5d4586f436323b7b4aa41255fa094db2/current/admission_refusal",
+        "owners/5d4586f436323b7b4aa41255fa094db2/previous/0/admission_refusal",
+        "owners/5d4586f436323b7b4aa41255fa094db2/previous/1/admission_refusal",
+        "owners/5d4586f436323b7b4aa41255fa094db2/previous/2/admission_refusal",
+        "owners/5d4586f436323b7b4aa41255fa094db2/previous/3/admission_refusal",
+        "owners/5d4586f436323b7b4aa41255fa094db2/previous/4/admission_refusal",
+        "owners/5d4586f436323b7b4aa41255fa094db2/previous/5/admission_refusal",
+        "owners/6051dabf77aaf5849758e3b1dbcd0196/original/admission_refusal",
+        "owners/6051dabf77aaf5849758e3b1dbcd0196/current/admission_refusal",
+        "owners/64427c5b0447b2256c6bc0907f79dc57/original/admission_refusal",
+        "owners/64427c5b0447b2256c6bc0907f79dc57/current/admission_refusal",
+        "owners/93e7344a7caf4559b3789095311d518b/original/admission_refusal",
+        "owners/93e7344a7caf4559b3789095311d518b/current/admission_refusal",
+        "owners/93e7344a7caf4559b3789095311d518b/previous/0/admission_refusal",
+        "owners/a56fdbcc2068cbe608adda5e0c995ca2/original/admission_refusal",
+        "owners/a56fdbcc2068cbe608adda5e0c995ca2/current/admission_refusal",
+        "owners/a56fdbcc2068cbe608adda5e0c995ca2/previous/0/admission_refusal",
+        "owners/e8472e83f30f34c3e63666f792dd4dde/original/admission_refusal",
+        "owners/e8472e83f30f34c3e63666f792dd4dde/current/admission_refusal"
+      ],
+      "count": 39,
+      "reason": "new Host receipt field serialized empty during original pool write; no task state or execution changed"
+    },
+    "first_exact_shape_assertion": "FAILED_RETAINED",
+    "old_generation": {
+      "id": "9c26878c94a2c9e8c3a1af9f1308557c",
+      "directory": "PRIVATE_HOST_HOME/Library/Caches/noodle/host/g/9c26878c94a2c9e8c3a1af9f1308557c",
+      "binary_path": "PRIVATE_HOST_HOME/.local/share/noodle/builds/swap-used-15gb-maintenance-ac0bce68a73b4089c5b6a28dc11cdb74023660f3d6e76374f271700285629f28/noodle",
+      "binary_sha256": "ac0bce68a73b4089c5b6a28dc11cdb74023660f3d6e76374f271700285629f28",
+      "state": "exited",
+      "process": {
+        "pid": 38239,
+        "session_id": "9c26878c94a2c9e8c3a1af9f1308557c",
+        "started_at": "2026-10-28T19:48:09.003834Z"
+      }
+    },
+    "quota": {
+      "schema": 2,
+      "maximum": 4,
+      "swap_used_limit_bytes": 15000000000,
+      "last_start_window": 358629289,
+      "leases": {}
+    },
+    "contexts": 0,
+    "gateway_warning_grants": [],
+    "warning_grants": [],
+    "effects": [
+      "Original rolling switch activated compatible generation and retired old generation"
+    ],
+    "task_dispatch": "NOT_RUN",
+    "guest_quality": "NOT_RUN",
+    "native_recovery": "NOT_RUN"
+  },
+  "guest_components": {
+    "noodle-instructions": {
+      "frozen": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/noodle-instructions-linux-arm64",
+        "sha256": "53c6786a878778649ff1b57a35c358413eecfefbbe581652324d2d3b8cd92ddf"
+      },
+      "guest_path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/prepared-profile/payload/bin/noodle-instructions",
+      "build_log": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/verifier-build.txt"
+    },
+    "noodle-progress": {
+      "frozen": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/noodle-progress-linux-arm64",
+        "sha256": "ce4863dc0b2b1f5940885d97151fc67a7f288a79c40fc995167c5290f3da22b3"
+      },
+      "guest_path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/prepared-profile/payload/noodle-progress",
+      "build_log": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/progress-build.txt"
+    },
+    "profile": {
+      "source": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/prepared-profile/source-profile-frozen.json",
+        "sha256": "b36a79d9d5c13f827a03ba8b8fd62c931f2af4a1d5deb459c18d461406a66025"
+      },
+      "prepared": {
+        "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/prepared-profile/profile-frozen.json",
+        "sha256": "14dc4e081b9c68f77be08037536dfbb2d97427b2ccba2be5abfc173c676b7067"
+      }
+    },
+    "status": "PREPARED_NOT_ADMITTED",
+    "guest_execution": "NOT_RUN",
+    "blockers": [
+      "Original profile LoadOpenShellProfile refuses missing custom gateway executable",
+      "Original other Host retains one worker and gateway; no takeover or replay"
+    ],
+    "effects": [
+      "Owned payload copy and component replacement only; active profiles unchanged"
+    ]
+  },
+  "test_scope": "Focused controls only. The broader Host and Loop passes retained failures; corrected affected controls passed separately. Runtime inputs changed from unsupported to known policy-v2 samples. Shared warning grant refusal is separately covered by final admission tests; runtime fixture budgets are not shared. No full-suite PASS.",
+  "schema": {
+    "evidence_validity": "VALID",
+    "observation_scope": "consumer_report",
+    "behavior": {
+      "classification": "PASS",
+      "failed_checks": []
+    },
+    "next": {
+      "owner": "task-owner",
+      "operation": "consume_verified_behavior",
+      "required": [],
+      "argv": null,
+      "input": null
+    }
+  },
+  "next_consumption": "Current Session consumed consume_verified_behavior only for unchanged four-instruction consumer_report, deployed through original rolling owner, and retained all native missing observations. No new native P-class evidence or improved decision cost is claimed.",
+  "native_grok_poteto_review": "NOT_RUN",
+  "guest_quality": "NOT_RUN",
+  "native_recovery": "NOT_RUN",
+  "parent_goal": "OPEN",
+  "authorizes_landing": false,
+  "factory_verification": {
+    "factory-validate.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-factory-validate.json",
+      "sha256": "8cc574dc1033ff45090a762acd323419c98935dc5d8fe5c99977b3973fe27aa6"
+    },
+    "factory-semantics.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-factory-semantics.json",
+      "sha256": "be1b2d67c5dbf635918e90d06ca04cd90cc9ddca6dd387eaac67370d50628db2"
+    },
+    "factory-coverage-corrected.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-factory-coverage-corrected.json",
+      "sha256": "e87d0664a83ef25a6ab87edf0010e60df5ad564defa967e1f628609972bd1755"
+    },
+    "neoweaver-consistency.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-neoweaver-consistency.json",
+      "sha256": "546d89cf7aed2a6e58e0a72a7e7d54cf0aae22b74217351ee2e924264c5c4432"
+    },
+    "factory-handoff.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-factory-handoff.json",
+      "sha256": "96b607f69044de93bbaab4fab113caf059eb5ea639b78564644583df58dac409"
+    },
+    "factory-reader.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/rolling-openshell-t0zhi58c/bound-factory-reader.json",
+      "sha256": "d70caef485bd90bc2c3fcff821dd4895e38a9cbca6f510b11da731b1b20c6cd4"
+    }
+  },
+  "factory_reader": {
+    "status": "source_bound_proposal",
+    "next": null,
+    "effects": [],
+    "semantic_alignment_to_original_goal": "Session reviewed partial scope against current user request; no new task admission",
+    "parent_goal": "OPEN"
+  },
+  "public_projection": {
+    "kind": "PORTABLE_HISTORICAL_SUMMARY",
+    "original_summary_sha256": "7fa1dd8cf5e0bf6bb3df330139f10e6dde03b06ac9dc181cbe1db153fee3d150",
+    "private_path_references": 34,
+    "private_locator_marker": "PRIVATE_HOST_HOME/",
+    "locator_meaning": "Private retained evidence location. The marker is not a filesystem root or a Host-issued FileRef.",
+    "historical_continuations": "Recorded next values and arguments are historical data. This public projection is not executable and does not authorize effects.",
+    "original_bytes": "Retained privately without modification; evidence digests and source bindings remain unchanged.",
+    "proof_ceiling": "Publication projection only; no new semantic, native, quality or landing acceptance."
+  }
+}

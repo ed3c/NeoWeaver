@@ -1,0 +1,98 @@
+{
+  "source": {
+    "source_type": "other",
+    "locator": "Confirmed Grok companion boundary, shared Go graph and current source-only observations; native review and recovery remain incomplete",
+    "source_id": "SRC-3ada9bd2ff115c80772617324239aab973feb9f4136cefdb13bb0553f450ba39",
+    "source_dependency_key": "SOURCE-cde7b1d1cc4ea14ad611b163d5a3e52648183618226ec9af69bd264194a7b05d",
+    "uri": "repo:docs/specs/grok-shared-review.md",
+    "integrity": "PINNED_SHA256",
+    "sha256": "8e4d4d277851140e1a6d43c2c0e238473590f6e2ff13141e3a60f7871e6381fb"
+  },
+  "code_intel": {
+    "owner": "soodles.code-intel",
+    "status": "ready",
+    "sources": {
+      "skill-sets/ub-review/scripts/review-snapshot.py": "619fa7f80332b30a4729941a59d76af8ab1b6efa479760e1bc28d7f503f99175",
+      "skill-sets/ub-review/scripts/uml-companion.py": "29cb0fcbde4109469cfae75350459faf86624ddc93a86e615cead97c076d3104"
+    },
+    "snapshot": "PRIVATE_HOST_HOME/neo-route-evidence/openshell-wiring/noodle-source/.git/soodles-code-intel.noindex/native/4626bf865ce5766abddc130c8fe9f6a80a746b86d9b5b9f75248c26b613b1369.json",
+    "limits": [
+      "Static localization is not runtime reachability or semantic correctness.",
+      "Runtime evidence stays with the original Test/Schema owner; no cached PASS.",
+      "A finite localization benchmark cannot certify all Python behavior."
+    ]
+  },
+  "schema": {
+    "evidence_validity": "VALID",
+    "behavior": {
+      "classification": "PASS",
+      "failed_checks": []
+    },
+    "next": {
+      "owner": "task-owner",
+      "operation": "consume_verified_behavior",
+      "required": [],
+      "argv": null,
+      "input": null,
+      "evidence": {
+        "observe": [],
+        "reuse": [],
+        "verified": [
+          "review-boundaries"
+        ]
+      },
+      "actor": "Session"
+    },
+    "observation_scope": "consumer_report"
+  },
+  "native_host": {
+    "owner": "soodles.loop",
+    "status": "refused",
+    "problem": {
+      "field": "task.host.status",
+      "value": "host is unavailable; the persisted context was not detached"
+    },
+    "breakpoints": [
+      {
+        "kind": "deterministic",
+        "status": "refused",
+        "stage_id": "",
+        "message": "{'field': 'task.host.status', 'value': 'host is unavailable; the persisted context was not detached'}"
+      }
+    ],
+    "next": {
+      "kind": "input",
+      "owner": "Noodle",
+      "required": [
+        "original_request_readback"
+      ]
+    },
+    "effects": [],
+    "authorizes_landing": false
+  },
+  "scope": "Source/UI/consumer-report only; no native quality or recovery acceptance",
+  "remaining": [
+    "OpenShell compatible original Host deployment",
+    "guest quality tools and original UML IR/metrics readback",
+    "same-Host interruption and legal new attempt",
+    "Grok policy/refresh/repair/re-review automatic exchange",
+    "four-repository bound candidate review",
+    "Noodle Host display and desktop layout acceptance",
+    "public deployment and bilingual articles"
+  ],
+  "grok_followup": {
+    "capture": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/grok-followup-completed.md",
+    "finding": "Initial accepted-candidate wording and all-files request corrected by current outer Session; native Grok withdrew both. Missing metrics remains unresolved, not NO_CHANGE.",
+    "scope": "Two prompt turns, not automated owner dispatch or policy application"
+  },
+  "public_projection": {
+    "kind": "PORTABLE_HISTORICAL_SUMMARY",
+    "original_summary_sha256": "e866472568ddfefaf6057da2ed872ff3b7121fc5493661ed45cc513cfc1e3104",
+    "private_path_references": 2,
+    "private_locator_marker": "PRIVATE_HOST_HOME/",
+    "locator_meaning": "Private retained evidence location. The marker is not a filesystem root or a Host-issued FileRef.",
+    "historical_continuations": "Recorded next values and arguments are historical data. This public projection is not executable and does not authorize effects.",
+    "original_bytes": "Retained privately without modification; evidence digests and source bindings remain unchanged.",
+    "proof_ceiling": "Publication projection only; no new semantic, native, quality or landing acceptance."
+  }
+}

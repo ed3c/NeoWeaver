@@ -1,0 +1,162 @@
+{
+  "source_record": {
+    "source_type": "other",
+    "locator": "Role-only bounded tool payload, original Host recovery scope, local controls and remaining native obligations",
+    "source_id": "SRC-945595915a4246b1ed9a96daa1d6b3144545c074504eeb7b8d9eab6558a3f666",
+    "source_dependency_key": "SOURCE-1f7d6ae9ceae9b7ea7ca921dde7c4bdd192ec1c00241a5d9a7bbd93fe193d679",
+    "uri": "repo:docs/specs/openshell-review-tool-payload.md",
+    "integrity": "PINNED_SHA256",
+    "sha256": "9327de8435d194e4af1a97a058075b3129cc772636fdb107a522b5e884eb55d4"
+  },
+  "versions": {
+    "soodles": "88bb280c867315dd15f098c2fe7f3cb422a6ad31",
+    "noodle": "4c5d4ba28f061e292b5280ef6f1eb1f926727bfd",
+    "factoryweaver": "bc8d7815ed4b3446bb3eacb6e3b50675f24b6f32"
+  },
+  "code_intel": {
+    "owner": "soodles.code-intel",
+    "status": "ready",
+    "view": "native",
+    "sources": {
+      "issue_execution.py": "7737b0657f7ed02370928e7305c1e5d048ac2673e22c92f69c378dfbfec4e7d4",
+      "task_materialization.py": "0e4af1caf71771a1913cb17e839f7b7b9bd64ee585d3b829d37b8ce427e8d13a",
+      "task_roles.py": "8ab3a513a764d71b66f0b7ea3ea091a20deb90173368b7a1da813b312920a4c4",
+      "task_session_readback.py": "3519bd2518890587ec6764c21c9c1e0c9c01ab4246b027e75a4cc237efc6b1c1"
+    },
+    "limits": [
+      "Static localization is not runtime reachability or semantic correctness.",
+      "Runtime evidence stays with the original Test/Schema owner; no cached PASS.",
+      "A finite localization benchmark cannot certify all Python behavior."
+    ],
+    "definitions": [
+      {
+        "path": "issue_execution.py",
+        "name": "task_review",
+        "line": 2662,
+        "column": 4,
+        "end_line": 2783,
+        "kind": "FunctionDef",
+        "end_column": 15,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot issue_execution/task_review()."
+      },
+      {
+        "path": "task_materialization.py",
+        "name": "validate_manifest",
+        "line": 87,
+        "column": 4,
+        "end_line": 148,
+        "kind": "FunctionDef",
+        "end_column": 21,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_materialization/validate_manifest()."
+      },
+      {
+        "path": "task_materialization.py",
+        "name": "prepare",
+        "line": 151,
+        "column": 4,
+        "end_line": 200,
+        "kind": "FunctionDef",
+        "end_column": 11,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_materialization/prepare()."
+      },
+      {
+        "path": "task_materialization.py",
+        "name": "readback",
+        "line": 203,
+        "column": 4,
+        "end_line": 233,
+        "kind": "FunctionDef",
+        "end_column": 12,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_materialization/readback()."
+      },
+      {
+        "path": "task_materialization.py",
+        "name": "publish",
+        "line": 236,
+        "column": 4,
+        "end_line": 265,
+        "kind": "FunctionDef",
+        "end_column": 11,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_materialization/publish()."
+      },
+      {
+        "path": "task_roles.py",
+        "name": "read_role",
+        "line": 16,
+        "column": 4,
+        "end_line": 46,
+        "kind": "FunctionDef",
+        "end_column": 13,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_roles/read_role()."
+      },
+      {
+        "path": "task_roles.py",
+        "name": "prepare_role",
+        "line": 49,
+        "column": 4,
+        "end_line": 134,
+        "kind": "FunctionDef",
+        "end_column": 16,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_roles/prepare_role()."
+      },
+      {
+        "path": "task_session_readback.py",
+        "name": "progress_evidence",
+        "line": 98,
+        "column": 4,
+        "end_line": 114,
+        "kind": "FunctionDef",
+        "end_column": 21,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_session_readback/progress_evidence()."
+      },
+      {
+        "path": "task_session_readback.py",
+        "name": "completed",
+        "line": 117,
+        "column": 4,
+        "end_line": 132,
+        "kind": "FunctionDef",
+        "end_column": 13,
+        "symbol_status": "matched",
+        "symbol": "scip-python python selected-source snapshot task_session_readback/completed()."
+      }
+    ]
+  },
+  "local_controls": {
+    "soodles": "121 controls passed before later exact role changes; four selected controls passed after them. Two fixture-correction failures retained separately. All 18 completion-reader controls passed after binding the original supervisor receipt.",
+    "noodle": "instructionbundle, guest verifier, capability, scoped recovery/readback, new-attempt Loop and Host race controls passed; pnpm build completed after Host CLI integration. Linux guest execution remains NOT_RUN."
+  },
+  "native_readback": "original OpenShell dispatch is not a bound successful settled result",
+  "schema": {
+    "evidence_validity": "INCONCLUSIVE",
+    "behavior": null,
+    "field_measurement": {
+      "unit": "reported_output_field",
+      "scope": "selected_protocol",
+      "expected": 9,
+      "observed": 0,
+      "failed": 0,
+      "missing": 9,
+      "workflow_decisions": null,
+      "reason": "Output fields do not measure observable workflow choices or complete trace coverage."
+    }
+  },
+  "schema_next": "supply_behavior_evidence",
+  "next_consumption": "Preserved original refusal and prepared missing native dependencies through original role producer. No actual ub-review consumer observation exists; original Host deployment and live new-attempt acceptance remain prerequisites.",
+  "remaining": [
+    "Native role handoff, guest tool execution and quality acceptance",
+    "OpenShell UML IR/metrics production and readback",
+    "Pinned upstream Go LanguageGraph unavailable",
+    "Original Host legal new attempt and live interruption/recovery acceptance",
+    "Fresh native consumer and independent criteria/source review",
+    "Medium website/bilingual articles and Parent Goal"
+  ]
+}

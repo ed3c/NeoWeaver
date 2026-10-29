@@ -1,0 +1,426 @@
+{
+  "scope": "Local task OpenShell source materialization candidate; not whole NeoWeaver lifecycle acceptance",
+  "source_status": "source-reviewed candidates; not installed or landed",
+  "code_intel": {
+    "owner": "soodles.code-intel",
+    "status": "ready",
+    "sources": {
+      "issue_execution.py": "a41ec3c51c95f7721a253d3fc035b9b18da0f3531ce6c4a8226af83348e21118",
+      "supervisor_admission.py": "c8311e97ef5e29ee9c9d0febb24ee9285ae3684559854bd604b39d489c5ce435"
+    },
+    "analyzer": "f5b96e24b14e0001d5656fe4045837d3e3cab2dad19d9d5f947c9b178e1ab836",
+    "view": "symbols",
+    "data": {
+      "issue_execution.py": {
+        "symbols": [
+          {
+            "name": "task_effect_inputs",
+            "kind": "FunctionDef",
+            "line": 1849,
+            "end_line": 1885
+          },
+          {
+            "name": "task_adopt_host_runtime",
+            "kind": "FunctionDef",
+            "line": 2016,
+            "end_line": 2133
+          },
+          {
+            "name": "task_interrupt",
+            "kind": "FunctionDef",
+            "line": 3337,
+            "end_line": 3409
+          },
+          {
+            "name": "task_enter",
+            "kind": "FunctionDef",
+            "line": 3412,
+            "end_line": 3509
+          }
+        ]
+      },
+      "supervisor_admission.py": {
+        "symbols": [
+          {
+            "name": "native_task_review_capability",
+            "kind": "FunctionDef",
+            "line": 405,
+            "end_line": 416
+          },
+          {
+            "name": "task_input_refs",
+            "kind": "FunctionDef",
+            "line": 433,
+            "end_line": 448
+          },
+          {
+            "name": "task_prompt_inputs",
+            "kind": "FunctionDef",
+            "line": 451,
+            "end_line": 464
+          },
+          {
+            "name": "_task_inputs",
+            "kind": "FunctionDef",
+            "line": 467,
+            "end_line": 489
+          },
+          {
+            "name": "prepare_task",
+            "kind": "FunctionDef",
+            "line": 579,
+            "end_line": 844
+          }
+        ]
+      }
+    },
+    "changed_or_unindexed": [],
+    "effects": [],
+    "authorizes_landing": false,
+    "limits": [
+      "Python declarations only; no runtime dependency or call-graph completeness claim.",
+      "Structure does not prove semantic correctness, test coverage or execution.",
+      "Freshness describes the observed bytes; a later edit requires another read."
+    ],
+    "next": null
+  },
+  "noodle_sources": [
+    {
+      "repository": "Noodle",
+      "path": "runtime/openshell_task_inputs.go",
+      "commit": "6a410b3fafd0c7d7b298f6de64508e00b92c4651",
+      "sha256": "6d8c5eb5d758ac5eb08df9faafcdbbb693282086081ea259b82daa9514b1a27a"
+    },
+    {
+      "repository": "Noodle",
+      "path": "runtime/openshell_runtime.go",
+      "commit": "6a410b3fafd0c7d7b298f6de64508e00b92c4651",
+      "sha256": "b8bd546e60ccd5d0c0d20665dcf46b60e94b3571ec0541e546d161022c583295"
+    },
+    {
+      "repository": "Noodle",
+      "path": "loop/loop.go",
+      "commit": "6a410b3fafd0c7d7b298f6de64508e00b92c4651",
+      "sha256": "0455c3af23dee6591b396b7fc2814688d3d083b287bf18adc59c38b2592071fc"
+    },
+    {
+      "repository": "Noodle",
+      "path": "config/types_defaults.go",
+      "commit": "6a410b3fafd0c7d7b298f6de64508e00b92c4651",
+      "sha256": "6716d85e4dd64933c6d172a993b1916b241166ad1a6cd25420136cb4d4468493"
+    },
+    {
+      "repository": "Noodle",
+      "path": "cmd_host.go",
+      "commit": "6a410b3fafd0c7d7b298f6de64508e00b92c4651",
+      "sha256": "4155ad80112ddf947272107b4e113be448190b2ea11a82ff1df2540ee8622913"
+    }
+  ],
+  "test_manager": [
+    {
+      "owner": "Test Manager",
+      "request_id": "1824f11647d768367649c4aef30cefe738d4c66596632e6dca42efdacf141250",
+      "receipt_sha256": "591525c0876d87ec5d770fcb121410e689a8e5e80596c3e7b2b8d45f7901aa69",
+      "exit": 0,
+      "count": 29,
+      "scope": {
+        "owner": "test-manager",
+        "status": "ready",
+        "mode": "focused",
+        "scope_origin": "externally_supplied",
+        "base": "452fa29891f1146398619c1a893d5d2137441139",
+        "changed_paths": [
+          ".agents/skills/neo-route/references/neoweaver-profile.md",
+          "contracts/loop-interface.md",
+          "contracts/loop-request-v1.schema.json",
+          "docs/native-hook-profiles.md",
+          "issue_execution.py",
+          "loop_interface.py",
+          "supervisor_admission.py",
+          "tests/test_loop_interface.py",
+          "tests/test_loop_task_execution.py",
+          "tests/test_task_admission.py"
+        ],
+        "modules": [
+          "test_task_admission"
+        ],
+        "physical": [],
+        "reasons": [
+          "Revalidate original admission after correcting earliest named capability refusal and source-drift oracle from failed request."
+        ],
+        "unresolved": [],
+        "authorizes_landing": false
+      },
+      "source_status": "historical; covered source boundaries retained, later seam changes have separate controls"
+    },
+    {
+      "owner": "Test Manager",
+      "request_id": "4f8548e2f0c518f4b79ebe8ad5561b36465071e0bbf82dd22f6ca41781496711",
+      "receipt_sha256": "7c2d439ab001364071a291f014f0923f2657d656ed084145c02a14642145f335",
+      "exit": 0,
+      "count": 7,
+      "scope": {
+        "owner": "test-manager",
+        "status": "ready",
+        "mode": "focused",
+        "scope_origin": "externally_supplied",
+        "base": "452fa29891f1146398619c1a893d5d2137441139",
+        "changed_paths": [
+          ".agents/skills/neo-route/references/neoweaver-profile.md",
+          "contracts/loop-interface.md",
+          "contracts/loop-request-v1.schema.json",
+          "docs/native-hook-profiles.md",
+          "issue_execution.py",
+          "loop_interface.py",
+          "supervisor_admission.py",
+          "tests/test_loop_interface.py",
+          "tests/test_loop_task_execution.py",
+          "tests/test_task_admission.py"
+        ],
+        "modules": [
+          "test_loop_task_execution"
+        ],
+        "physical": [],
+        "reasons": [
+          "Verify new runtime-v2 interruption scope, OpenShell source proposal and existing ACK/no-replay neighbors after localized correction."
+        ],
+        "unresolved": [],
+        "authorizes_landing": false,
+        "test_cases": [
+          "test_loop_task_execution.LoopTaskExecutionTests.test_app_interrupt_journals_pause_then_stop_and_reads_ack_without_replay",
+          "test_loop_task_execution.LoopTaskExecutionTests.test_app_interrupt_old_runtime_never_receives_destructive_stop",
+          "test_loop_task_execution.LoopTaskExecutionTests.test_app_interrupt_rejects_unrestricted_context_before_host_effect",
+          "test_loop_task_execution.LoopTaskExecutionTests.test_app_interrupt_unknown_append_and_error_ack_never_replay",
+          "test_loop_task_execution.LoopTaskExecutionTests.test_openshell_interrupt_uses_original_runtime_scope_and_never_process_scope",
+          "test_loop_task_execution.LoopTaskExecutionTests.test_openshell_stage_keeps_guest_inputs_and_rejects_process_downgrade",
+          "test_loop_task_execution.LoopTaskExecutionTests.test_prior_openshell_preparation_without_inputs_stays_blocked"
+        ]
+      },
+      "source_status": "historical; covered source boundaries retained, later seam changes have separate controls"
+    },
+    {
+      "owner": "Test Manager",
+      "request_id": "528fda9608ee8608dafadfd9bffbf11cd30ae82407174c891ef68423f4e6aae6",
+      "receipt_sha256": "bb731a3dfce1f8d33d1b72a7af44add6ccf331196f277a47fd80b6533b301c72",
+      "exit": 0,
+      "count": 4,
+      "scope": {
+        "owner": "test-manager",
+        "status": "ready",
+        "mode": "focused",
+        "scope_origin": "externally_supplied",
+        "base": "452fa29891f1146398619c1a893d5d2137441139",
+        "changed_paths": [
+          ".agents/skills/neo-route/references/neoweaver-profile.md",
+          "contracts/loop-interface.md",
+          "contracts/loop-request-v1.schema.json",
+          "docs/native-hook-profiles.md",
+          "issue_execution.py",
+          "loop_interface.py",
+          "supervisor_admission.py",
+          "tests/test_loop_interface.py",
+          "tests/test_loop_task_execution.py",
+          "tests/test_task_admission.py"
+        ],
+        "modules": [
+          "test_loop_task_execution",
+          "test_task_admission"
+        ],
+        "physical": [],
+        "reasons": [
+          "Independent seam review found original OpenShell profile missing from first successor-adoption source checks; validate refusal before readback and adjacent process/read-entry controls."
+        ],
+        "unresolved": [],
+        "authorizes_landing": false,
+        "test_cases": [
+          "test_loop_task_execution.LoopTaskExecutionTests.test_openshell_successor_refuses_original_profile_drift_before_readback",
+          "test_loop_task_execution.LoopTaskExecutionTests.test_runtime_successor_preserves_envelope_and_reuses_original_task",
+          "test_task_admission.TaskAdmissionTests.test_openshell_inputs_preserve_large_binary_scripts_support_skills_and_refuse_drift",
+          "test_task_admission.TaskAdmissionTests.test_openshell_routes_bind_profile_and_complete_guest_inputs_without_host_harness"
+        ]
+      },
+      "source_status": "historical intermediate profile-drift correction"
+    },
+    {
+      "owner": "Test Manager",
+      "request_id": "ccd2ff0ce2f0f6e801978148596c743e209c096d109353334bcdb2e8ead273ea",
+      "receipt_sha256": "79c423a207dcc59e1cedef52807c8cf8bdcbd8bcf7147a656996e558072f71c1",
+      "exit": 0,
+      "count": 13,
+      "scope": {
+        "owner": "test-manager",
+        "status": "ready",
+        "mode": "focused",
+        "scope_origin": "externally_supplied",
+        "base": "452fa29891f1146398619c1a893d5d2137441139",
+        "changed_paths": [
+          ".agents/skills/neo-route/references/neoweaver-profile.md",
+          "contracts/loop-interface.md",
+          "contracts/loop-request-v1.schema.json",
+          "docs/native-hook-profiles.md",
+          "issue_execution.py",
+          "loop_interface.py",
+          "supervisor_admission.py",
+          "tests/test_loop_interface.py",
+          "tests/test_loop_task_execution.py",
+          "tests/test_task_admission.py"
+        ],
+        "modules": [
+          "test_loop_task_execution",
+          "test_task_admission"
+        ],
+        "physical": [],
+        "reasons": [
+          "Revalidate selected seam controls after correcting fixture checkpoint loading and asserting the original task.skill.source refusal field. Preserve failed request fc12b420 and unchanged product oracles."
+        ],
+        "unresolved": [],
+        "authorizes_landing": false,
+        "test_cases": [
+          "test_loop_task_execution.LoopTaskExecutionTests.test_openshell_attempted_successor_requires_native_stopped_readback",
+          "test_loop_task_execution.LoopTaskExecutionTests.test_openshell_successor_refuses_original_profile_drift_before_readback",
+          "test_loop_task_execution.LoopTaskExecutionTests.test_openshell_successor_requires_same_review_capability_as_admission",
+          "test_loop_task_execution.LoopTaskExecutionTests.test_runtime_successor_preserves_envelope_and_reuses_original_task",
+          "test_task_admission.TaskAdmissionTests.test_directory_scope_requires_native_support_before_admission",
+          "test_task_admission.TaskAdmissionTests.test_explicit_effort_is_bound_to_worker_config_without_rewriting_original_admission",
+          "test_task_admission.TaskAdmissionTests.test_openshell_frozen_special_mode_refuses_before_effect",
+          "test_task_admission.TaskAdmissionTests.test_openshell_inputs_preserve_large_binary_scripts_support_skills_and_refuse_drift",
+          "test_task_admission.TaskAdmissionTests.test_openshell_refuses_agents_symlink_ancestor_before_snapshot",
+          "test_task_admission.TaskAdmissionTests.test_openshell_refuses_unwired_effort_without_materialization",
+          "test_task_admission.TaskAdmissionTests.test_openshell_routes_bind_profile_and_complete_guest_inputs_without_host_harness",
+          "test_task_admission.TaskAdmissionTests.test_route_and_native_capability_refuse_before_materialization",
+          "test_task_admission.TaskAdmissionTests.test_skill_special_member_is_refused_instead_of_omitted"
+        ]
+      },
+      "source_status": "seam correction; subsequent existing-envelope effort refusal has separate final controls"
+    },
+    {
+      "owner": "Test Manager",
+      "request_id": "bf05ce8d8ff6ac7ef3bce6bd981c51041096472bdd749b798d3ea8aaa09a09af",
+      "receipt_sha256": "c81bb517347226e2006d7ed0677f5bc92b588ddc7ee9a15cc28ebea315e169e6",
+      "exit": 0,
+      "count": 2,
+      "scope": {
+        "owner": "test-manager",
+        "status": "ready",
+        "mode": "focused",
+        "scope_origin": "externally_supplied",
+        "base": "452fa29891f1146398619c1a893d5d2137441139",
+        "changed_paths": [
+          ".agents/skills/neo-route/references/neoweaver-profile.md",
+          "contracts/loop-interface.md",
+          "contracts/loop-request-v1.schema.json",
+          "docs/native-hook-profiles.md",
+          "issue_execution.py",
+          "loop_interface.py",
+          "supervisor_admission.py",
+          "tests/test_loop_interface.py",
+          "tests/test_loop_task_execution.py",
+          "tests/test_task_admission.py"
+        ],
+        "modules": [
+          "test_loop_task_execution"
+        ],
+        "physical": [],
+        "reasons": [
+          "Readback of pre-existing prepared envelopes bypasses new prepare effort refusal; validate refusal at original new-effect boundary without rewriting envelope or blocking supported OpenShell Stage projection."
+        ],
+        "unresolved": [],
+        "authorizes_landing": false,
+        "test_cases": [
+          "test_loop_task_execution.LoopTaskExecutionTests.test_openshell_stage_keeps_guest_inputs_and_rejects_process_downgrade",
+          "test_loop_task_execution.LoopTaskExecutionTests.test_prior_openshell_effort_preparation_refuses_before_attach"
+        ]
+      },
+      "source_status": "final new-effect effort refusal and supported OpenShell Stage neighbor"
+    }
+  ],
+  "noodle_focused_tests": {
+    "packages": [
+      "config",
+      "runtime",
+      "loop",
+      "root"
+    ],
+    "result": "PASS_SCOPED",
+    "native_vm_model": "NOT_RUN",
+    "logs_sha256": {
+      "task-inputs-tests.log": "eb513bf2b0ef38b14a659e4073ec75cecb05cf085015a984e78f747cf50345bf",
+      "task-inputs-order-binding-tests.log": "b95a730680110fe6271fe811380d6b9a9c0eb71b183b383a3aa7f5038b5b32ca"
+    }
+  },
+  "native_admission": {
+    "owner": "soodles.loop",
+    "status": "refused",
+    "problem": {
+      "field": "task.native_host.openshell_local_task_review",
+      "value": "unsupported"
+    },
+    "breakpoints": [
+      {
+        "kind": "deterministic",
+        "status": "refused",
+        "stage_id": "",
+        "message": "{'field': 'task.native_host.openshell_local_task_review', 'value': 'unsupported'}"
+      }
+    ],
+    "next": {
+      "kind": "input",
+      "owner": "Noodle",
+      "required": [
+        "native_openshell_local_task_review"
+      ]
+    },
+    "effects": [],
+    "authorizes_landing": false
+  },
+  "final_native_review_capabilities": {
+    "candidate_bound_merge": true,
+    "local_task_completion_recovery": true,
+    "local_task_completion_recovery_version": 2,
+    "local_task_directory_scope": 1,
+    "local_task_merge_recovery": true,
+    "local_task_review_recovery": true,
+    "local_task_roles": 1,
+    "schema_version": 1
+  },
+  "schema_feedback": {
+    "evidence_validity": "VALID",
+    "behavior": {
+      "classification": "PASS",
+      "failed_checks": []
+    },
+    "field_measurement": {
+      "unit": "reported_output_field",
+      "scope": "selected_protocol",
+      "expected": 8,
+      "observed": 8,
+      "failed": 0,
+      "missing": 0,
+      "workflow_decisions": null,
+      "reason": "Output fields do not measure observable workflow choices or complete trace coverage."
+    },
+    "scope": "Two fresh read-only outer consumers, not OpenShell guest consumers",
+    "next_operation": "consume_verified_behavior",
+    "consumed": true
+  },
+  "remaining": [
+    "Original OpenShell local-task review capability is absent from selected binary; original owner has pending work",
+    "Fresh guest input consumption, native read-only enforcement, output retrieval and matching Stop/Stopped readback are NOT_RUN for this task",
+    "Two provider routes, interruption/recovery and product acceptance remain separate",
+    "Issue-route wiring, learned artifact transfer, H0/H1 improvement, training, Medium publication and Parent Goal are not established",
+    "Attempted OpenShell Host adoption lacks native stopped readback; typed refusal replaces local PID inference",
+    "Explicit OpenShell model_reasoning_effort is refused until native reasoning-level carrier exists"
+  ],
+  "failed_history": [
+    {
+      "request_id": "1f26258644857f74d531e5640ade411f84cb158ec95dc5cb52aeacbf7ee9ee2e",
+      "status": "failed",
+      "disposition": "Corrected original capability refusal handling and drift-field oracle; original receipt preserved."
+    },
+    {
+      "request_id": "fc12b4201387fcde7d832f4c7ff2c07fb5ba531434e80ab39c3773d4e5be7797",
+      "status": "failed",
+      "disposition": "Corrected fixture checkpoint loading and original task.skill.source field; original receipt preserved. No product oracle relaxed."
+    }
+  ]
+}
