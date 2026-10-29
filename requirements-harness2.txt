@@ -1,2 +1,2 @@
-# The Git submodule fixes the complete, unmodified upstream source revision.
+# Complete upstream source is fixed by third_party/harness2.source.json.
 -e ./third_party/harness2

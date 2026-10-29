@@ -1,9 +1,12 @@
 # 固定完整 Harness² 上游
 
-NeoWeaver 以 `third_party/harness2` Git submodule 保留 Google Harness² 的完整來源。
+NeoWeaver 以 `third_party/harness2` immutable vendor 保留 Google Harness² 的完整來源。
 固定版本為 `1cfe254e8d25b15f37048c3730134686abe60335`。
 原 LICENSE、CLI、core、substrate、benchmark、reflection、library 與 resume 均保留。
-NeoWeaver 不在此 submodule 修改 prompts、channel 或演算法。
+原 Git blob inventory 保存在 vendor 外的 `third_party/harness2.source.json`。
+NeoWeaver 不在此 vendor 修改 prompts、channel 或演算法。
+既有 source materializer 只接受一般 Git blob；gitlink 會阻擋原 Native driver。
+完整 vendor 保留原檔案及 bytes，並沿用既有 materializer，不擴張其來源邊界。
 
 完整來源必須可讀，因為後續接合需要檢查原 benchmark、CLI 與依賴條件。
 只複製 solver 或安裝一個縮減 adapter 無法滿足這個要求。
@@ -16,7 +19,7 @@ NeoWeaver 不在此 submodule 修改 prompts、channel 或演算法。
 在 NeoWeaver checkout 執行：
 
 ```sh
-git submodule update --init third_party/harness2
+python3.13 scripts/check_harness2_source.py
 python3.13 -m venv .venv
 .venv/bin/python -m pip install -r requirements-harness2.txt
 .venv/bin/harness2-demo --output /absolute/external/demo-directory --mode both --k 2
@@ -29,6 +32,7 @@ python3.13 -m venv .venv
 ## 證據與未完成範圍
 
 `harness2-upstream-demo` workflow 使用原 CLI 和 deterministic demo。
+它先核對完整 vendor 檔案清單及 Git blob bytes；這不認證來源語義或 Native 效果。
 它沒有訂閱憑證，也不呼叫付費模型 API。
 原 demo 可檢查原遞迴及 library 接線；它不是模型改善實驗。
 實際 workflow 結果需讀回對應 commit 的 GitHub run。

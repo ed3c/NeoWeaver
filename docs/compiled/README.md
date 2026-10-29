@@ -4,8 +4,10 @@
 
 [目前產品工程規格](../specs/neoweaver-product-program.md)補充完整 Harness²、
 指令候選範圍、全流程比較、獨立 Promotion 與 Migration-RL 後續責任。
-本地候選沿原 10 REQ／44 個 Card ID，更新六張既有 SPEC／V 的 revision，
-並為四項 REQ 加入來源支持的驗收條件。原 Parser Scope、原 logical statements、
+本地候選沿原 10 REQ／44 個 Card ID，先更新六張既有 SPEC／V 的 revision，
+並為四項 REQ 加入來源支持的驗收條件。後續獨立審查補回比較前固定意圖與
+可回答澄清內容的條件；僅 causal-attribution 的 SPEC／V 再增加 revision。
+原 Parser Scope、原 logical statements、
 falsifiers 及歷史 verification bytes 保持原值。
 
 原 FactoryWeaver validator、per-type inspect 與本地 consistency check 已執行。

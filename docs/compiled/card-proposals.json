@@ -348,7 +348,8 @@
     {
       "evidence_topics": [
         "Original ten logical REQ rows and all handoff sections",
-        "Current complete NeoWeaver product Goal, fixed upstream, instruction-only candidate boundary, complete Outer/Inner comparison, independent Promotion and Migration-RL obligations"
+        "Current complete NeoWeaver product Goal, fixed upstream, instruction-only candidate boundary, complete Outer/Inner comparison, independent Promotion and Migration-RL obligations",
+        "Independent semantic review correction: equal frozen clarification information and unanticipated human decisions remain pending; complete immutable upstream vendor preserves existing source materializer"
       ],
       "links": [
         {
@@ -383,7 +384,7 @@
       "semantics": {
         "given": "A/B/C/D 觀察或明示缺失，task/environment/budget/population 匹配。",
         "when": "原 evaluator 比較固定 counterpart 並區分 component 與 interaction。 Proposed behavior；NeoWeaver native 執行尚未發生。",
-        "then": "Report only identifiable components from matched observed arms: A/B supports HarnessDifference; A/C supports SolverDifference; all four support Interaction. Missing components remain NOT_RUN; unmatched comparisons are INCONCLUSIVE.\n目前完整產品主線在實際里程碑間比較 Codex 驅動的原需求→澄清→判斷→派工→實作→審查→驗收。第一輪只改指令、skills 與流程設定；模型、CLI、資源、隔離與獨立 Oracle 固定。基礎程式修復另作共同起點，不混算成候選收益。採用需固定需求全滿足、原成功配對不退步，並有未見案例提高自主完成或減少額外救援；必要澄清另計。完整產品不是兩道 benchmark。",
+        "then": "Report only identifiable components from matched observed arms: A/B supports HarnessDifference; A/C supports SolverDifference; all four support Interaction. Missing components remain NOT_RUN; unmatched comparisons are INCONCLUSIVE.\n目前完整產品主線在實際里程碑間比較 Codex 驅動的原需求→澄清→判斷→派工→實作→審查→驗收。第一輪只改指令、skills 與流程設定；模型、CLI、資源、隔離與獨立 Oracle 固定。基礎程式修復另作共同起點，不混算成候選收益。採用需固定需求全滿足、原成功配對不退步，並有未見案例提高自主完成或減少額外救援；必要澄清另計。完整產品不是兩道 benchmark。\n配對前固定原始意圖與可回答內容。兩版本只有問到對應問題時才取得相同答案；未預期人類決策保持待確認，不靠猜測取得成功。",
         "inputs_outputs": "MatchedArms with original population/resource/oracle references → observed component differences with per-component availability. A/D can report a joint total difference, without component attribution; never synthesize missing arms.",
         "forbidden": "只看 D 或單次改善便宣稱成功、或不匹配預算／task population，均 INCONCLUSIVE；不將 interaction 當單一政策效果",
         "negative_case": "Improvement in D alone cannot identify cause",
@@ -399,7 +400,8 @@
     {
       "evidence_topics": [
         "Original ten logical REQ rows and all handoff sections",
-        "Current complete NeoWeaver product Goal, fixed upstream, instruction-only candidate boundary, complete Outer/Inner comparison, independent Promotion and Migration-RL obligations"
+        "Current complete NeoWeaver product Goal, fixed upstream, instruction-only candidate boundary, complete Outer/Inner comparison, independent Promotion and Migration-RL obligations",
+        "Independent semantic review correction: equal frozen clarification information and unanticipated human decisions remain pending; complete immutable upstream vendor preserves existing source materializer"
       ],
       "links": [],
       "semantics": {
@@ -407,7 +409,7 @@
         "oracle": "Original paired evaluator checks matched input availability and component formulas, with whole-Goal hard gates/repeatability measured separately.",
         "producer": "原 paired evaluator",
         "positive_control": "Given matched A/B, report B−A as HarnessDifference and C/D-dependent results NOT_RUN. With all four matched arms, compute the three defined components. Whole Goal still needs its own repeatable positive paired evidence.",
-        "negative_control": "Only matching A/D permits joint total D−A, not component attribution. D alone or mismatched budget cannot identify component effects; one positive pair or hard-gate failure cannot close whole Goal.\n目前新增辨別條件仍 NOT_RUN：兩臂都需完整 outer＋inner 原生軌跡。候選較快卻品質下降、只有旁觀 Session 手補外層、把共同程式修復算成指令收益、只用已揭露案例、把救援算成必要澄清，均不能證明改善。原有固定 Oracle、held-out 與原成功配對保護不變。",
+        "negative_control": "Only matching A/D permits joint total D−A, not component attribution. D alone or mismatched budget cannot identify component effects; one positive pair or hard-gate failure cannot close whole Goal.\n目前新增辨別條件仍 NOT_RUN：兩臂都需完整 outer＋inner 原生軌跡。候選較快卻品質下降、只有旁觀 Session 手補外層、把共同程式修復算成指令收益、只用已揭露案例、把救援算成必要澄清，均不能證明改善。原有固定 Oracle、held-out 與原成功配對保護不變。\n原始意圖、可回答澄清資料與答覆條件在兩臂固定。任一臂得到額外答案、澄清政策不同、或把未預期人類決策猜測成成功，均不得歸因為自主改善。此反例尚需匹配的 Native 比較；目前只完成來源條件修正。",
         "observation_status": "Proposed NeoWeaver behavior controls: NOT_RUN. Actual specification consistency/CLI/source-review evidence is reported separately per covered subject; no native/training PASS is inferred."
       },
       "series": "V",

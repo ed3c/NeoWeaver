@@ -15,6 +15,8 @@
 完整上游的其他可編輯能力仍保留；保留能力不表示本輪有權改憑證、Oracle 或 effect policy。
 
 首要成果是完整任務成功率與減少人工救援。必要產品澄清另計。
+比較前固定原始意圖與可回答內容。兩版本只有問到對應問題時，才取得相同答案。
+未預期的人類決策保持待確認；不能靠猜測取得成功。
 重複提問、把可查事實交回人類及人工修復流程，不能藏入必要澄清。
 相同固定起點下，候選需滿足原需求與獨立檢查，原成功配對不退步，且至少有未見案例提高自主完成程度或減少額外救援。
 只變快、少用工具或少問問題不能抵銷品質下降。小樣本只支持實際觀察案例。
@@ -90,10 +92,10 @@ Evals→卡片→下一 Consumer 的實際消費需獨立讀回；CognitiveStop 
 
 ## 可觀察交付與尚缺證據
 
-本機候選目前提供完整上游 Git submodule、原安裝入口及 credential-free workflow。
+本機候選目前提供完整上游 immutable vendor、原安裝入口及 credential-free workflow。
 本機原 demo 已觀察兩個 deterministic accounting tasks 的 parallel／sequential；相同 output 再讀沒有新 executor／editor 呼叫。
 這些例子只驗證上游接線，不是完整 NeoWeaver 任務、訂閱角色證明、官方 benchmark 相容性或優化收益。
-公開 workflow 尚需 exact-head Provider run；原 Test Manager 對 submodule 的 bound-source scope 仍需原責任入口處理。
+公開 workflow 尚需 exact-head Provider run；原 Test Manager 的必要 scope 仍需原責任入口選定。
 
 完整 executable adapter、四角色訂閱 transport、可信 dispatcher、獨立驗收、形式化 Promotion、原生 outer＋inner 比較及 Migration-RL 各項仍未完成。
 原 R3、指定舊 VM／Host、失敗與未知效果保留。H5 資源等待不能以新 Host 或額外模型進程繞過。

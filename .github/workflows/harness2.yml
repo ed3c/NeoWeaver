@@ -12,10 +12,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          submodules: true
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Check the complete unmodified upstream source
+        run: python scripts/check_harness2_source.py
       - name: Install the original upstream distribution
         run: python -m pip install -r requirements-harness2.txt
       - name: Exercise the original CLIs

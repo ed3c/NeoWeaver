@@ -1,2 +1,4 @@
 __pycache__/
 *.py[cod]
+/.venv/
+/third_party/harness2/harness2.egg-info/
