@@ -53,6 +53,11 @@ A6 Training Eligibility 直接消費現有的 typed task/evaluation facts，使�
 
 ## 驗證與回饋
 
+Harness 改進使用[Harness2 回饋接口](docs/harness2-feedback.md)，保持 Codex 權重不變。
+先消費 Soodles 原生 trajectory，再核對具來源的裁決與資料分區；未知不當零分。
+配對只沿原 Replay 條件比較，不把兩次修訂當成配對。平手、未知或回歸保留 baseline。
+分數只支援原 outer 審查，不授權採用；held-out 不回流到 proposer 或選擇。
+
 Test Manager 一次選必要 discriminating controls。Schema Manager 消費實際 feedback，原 next 的 consumption 需另有證據。Native Hook 只用原 actual event 與已 trusted definition；Cron 只用既有授權 heartbeat。Provider delivery、Writer Completed、scoped tests、P-class behavior 和 whole Goal 各自驗收。
 
 FactoryWeaver doctor／local maintain 可重跑 CLI transport與拒絕。Full maintenance blocked 不得改成 full PASS。工程文件沿原 Soodles review-writing 做 source fidelity、actor、condition、causality、state、acceptance 審查。改 P-class guidance 的 native compliance 仍需 fresh consumer 和原 schema feedback；文字審查通過不替代該證據。
