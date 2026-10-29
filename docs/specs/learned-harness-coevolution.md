@@ -1,5 +1,8 @@
 # NeoWeaver Learned Harness Co-evolution 完整規格
 
+目前產品目標、完整 Harness² 接合、第一輪指令搜尋範圍及 Migration-RL 交互，見[目前產品工程規格](neoweaver-product-program.md)。
+原十項 REQ 與本文件的訓練／transfer 義務保留；近期工程先完成固定權重的完整產品接合與獨立驗收，不以此宣稱權重訓練已完成。
+
 本文件重新編譯原 PR #1 的十項 logical REQ。純 parser／refusal 已有第一個局部實作與正反控制，見 [parser contract](../parser-contract.md) 與 [本輪實測摘要](../parser-verification.json)。其餘產品、Trainer、native Frozen Codex transfer 仍為 PROPOSED，尚未實作或執行。FactoryWeaver CLI 的實際驗證只支持本文件的結構、引用與唯讀交接，不支持 RL 成效或 Agent compliance。來源版本、原需求別名與歷史驗證結果見 [編譯入口](../compiled/README.md)。
 
 ## 原始 Goal 與成功邊界
