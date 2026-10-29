@@ -1,0 +1,43 @@
+name: harness2-upstream-demo
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  upstream-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          submodules: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install the original upstream distribution
+        run: python -m pip install -r requirements-harness2.txt
+      - name: Exercise the original CLIs
+        run: |
+          harness2 --help
+          harness2-judge --help
+          harness2-report --help
+          harness2-setup --help
+          harness2-check --help
+          harness2-bridge --help
+      - name: Run both original deterministic recursion modes
+        run: |
+          harness2-demo --output "$RUNNER_TEMP/harness2-demo" --mode both --k 2
+          cp "$RUNNER_TEMP/harness2-demo/demo.json" "$RUNNER_TEMP/harness2-demo/initial-demo.json"
+      - name: Read the same completed run through the original resume path
+        run: |
+          harness2-demo --output "$RUNNER_TEMP/harness2-demo" --mode both --k 2
+          cp "$RUNNER_TEMP/harness2-demo/demo.json" "$RUNNER_TEMP/harness2-demo/resumed-demo.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: harness2-upstream-demo
+          path: ${{ runner.temp }}/harness2-demo/
+          include-hidden-files: true
+          if-no-files-found: error

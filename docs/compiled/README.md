@@ -1,5 +1,18 @@
 # NeoWeaver source-grounded compilation
 
+## 目前產品規格候選
+
+[目前產品工程規格](../specs/neoweaver-product-program.md)補充完整 Harness²、
+指令候選範圍、全流程比較、獨立 Promotion 與 Migration-RL 後續責任。
+本地候選沿原 10 REQ／44 個 Card ID，更新六張既有 SPEC／V 的 revision，
+並為四項 REQ 加入來源支持的驗收條件。原 Parser Scope、原 logical statements、
+falsifiers 及歷史 verification bytes 保持原值。
+
+原 FactoryWeaver validator、per-type inspect 與本地 consistency check 已執行。
+六項原 Card Delta 已讀完；terminal 仍為 BLOCKED，保留 source／非卡片資料的
+reconciliation。結構檢查不提供獨立語義審查、Native、Provider 或 Parent Goal closure。
+這是目前本地 Source candidate，不宣稱已更新遠端 main 或原生 Registry acceptance。
+
 本次重新編譯使用已接受 FactoryWeaver main `a370c271ab6517298306e51c0f5a38c754bd71dd`。前一份 NeoWeaver spec revision `df41167de1d191d890db9bb94cfcc43663d027f7` 的十項 logical REQ 原文與別名均保留；它本來就是 PROPOSED，不是 native Registry acceptance。
 
 ## 可審查 artifacts
