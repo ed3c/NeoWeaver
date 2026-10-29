@@ -132,6 +132,10 @@
     {
       "source_id": "SRC-factoryweaver-effective-catalog-controls",
       "disposition": "D42 exact fixture locator; supports an observed FactoryWeaver case, not Neo runtime failure"
+    },
+    {
+      "source_id": "SRC-9ccef92bcec41716834441ffa3b98fc8b6eba2b9f3dd85e63fc66634fbd15cae",
+      "disposition": "Update only existing SPEC/V-full-lifecycle local input handoff; preserve all ten REQs, 44 Cards, parser Scope, original unresolved K and historical verification"
     }
   ]
 }

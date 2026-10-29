@@ -1,0 +1,241 @@
+{
+  "source": {
+    "source_type": "other",
+    "locator": "Original custom gateway binary restoration, native artifact controls and retained original custody effects before R3 admission",
+    "source_id": "SRC-a35f6cc9eb363335a831f228fff9dc4336d7707118cae97f6ecb00a891253c4f",
+    "source_dependency_key": "SOURCE-b90e3dacdc2c15d28a47d4a40e25b38495bc7b6fda3585171e2d630c2ee3a812",
+    "uri": "repo:docs/specs/openshell-gateway-restoration.md",
+    "integrity": "PINNED_SHA256",
+    "sha256": "40d3ffdfb5b3238da0fa8bf53b8d0ed67b75508cc0fe4def2ebdfa93366ad314"
+  },
+  "readbacks": {
+    "gateway-restoration.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/gateway-restoration.json",
+      "sha256": "9a11089b72e991b992a548ea3f5f6075e53f8559f1c4f101fd4190d03d2af048"
+    },
+    "gateway-build-readback.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/gateway-build-readback.json",
+      "sha256": "61b35a05a093fe34ca611df375aaa7e43b33efb050116d2e4ca61a4ad77859e4"
+    },
+    "original-build-receipt.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/original-build-receipt.json",
+      "sha256": "6689bc82fad1d9b89d69a02d8a531676e0bd9e455e1b76be9b8a4034e6c89ad4"
+    },
+    "original-location-rebuild-receipt.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/original-location-rebuild-receipt.json",
+      "sha256": "8421bef6f901b6231da51feaa9a4ea7d031e32bb01703f9972c200895ae092e4"
+    },
+    "original-profile-readback.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/original-profile-readback.json",
+      "sha256": "48b1c6d63d715ca3b5e7a346b20211b4bbc6a40b399d94d2c54a78e79495fef0"
+    },
+    "prepared-profile-readback.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/prepared-profile-readback.json",
+      "sha256": "697a241ac46a420d375a035e661e24a8644a28f896f32d6f3605256e8a731896"
+    },
+    "original-custody-summary.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/original-custody-summary.json",
+      "sha256": "b7f2b1a7c95d0e3d22243032bf202327e6f6cdacc5c3c7d040e86d9cd802f584"
+    },
+    "original-native-spec-reconciliation.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/original-native-spec-reconciliation.json",
+      "sha256": "b0289f1fddad6446f9a389104d63ad62fffd239580baeac47b4ed48613f4b37b"
+    },
+    "original-native-spec-reconciliation-corrected.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/original-native-spec-reconciliation-corrected.json",
+      "sha256": "63f8793a259064b4959d95d35ea43c0449e96b4a76b59460b316b509521800bd"
+    },
+    "native-inventory-invocation.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/native-inventory-invocation.json",
+      "sha256": "8ba82ca18506ea9fec32efc463a35a72befc7f8e96ee886c5841b01392f3e07f"
+    },
+    "native-inventory-exit.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/native-inventory-exit.json",
+      "sha256": "8ef199e2ba32edcf45464649ce4dae0f2106f394db6f819c55faa6df8200c959"
+    },
+    "schema-readback.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/schema-readback.json",
+      "sha256": "7f2e21e37305c96bc944c0a929c8ea975d8437fb2f90712ebd7f72f5e0a2c5ed"
+    },
+    "schema-next-consumption.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/schema-next-consumption.json",
+      "sha256": "a1e0494a49cb40c893c6413d2410e9d24afd54ad47dcb44efc3a572170d256d0"
+    },
+    "loop-prepared.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/loop-prepared.json",
+      "sha256": "ca28a924e161ed7df7f2585f999c850bde0b5e60b105fcbdd2068d724cd7ffd5"
+    },
+    "live-request-r3.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/live-request-r3.json",
+      "sha256": "c4119a58ed6c4ebde0a1716056cd7057ef0a5ac3c1952653a00daefc44e44530"
+    },
+    "owned-build-cache-cleanup.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/owned-build-cache-cleanup.json",
+      "sha256": "8ee7da892102ebfb2f9f9e6fc1d85ea0b44bab74fdfde0fee6895dc6c7f2e5b6"
+    },
+    "native-acceptance-original-bytes/evidence.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/native-acceptance-original-bytes/evidence.json",
+      "sha256": "64eebb007881356663a03d9e89ca472feea68dce190abac1e5dbe7787347147c"
+    },
+    "native-acceptance-separate-path/evidence.json": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/bound/native-acceptance-separate-path/evidence.json",
+      "sha256": "3c9c981ba1578820f3a7924b3e761a2007a79294e41acdcd1b00d64614ef5a5e"
+    }
+  },
+  "source_commit": "ee774bf313e1a1d9721bc6f2753e684658cc65f6",
+  "code_intel": {
+    "analyzer": "noodle-go-types-v1",
+    "sources": [
+      {
+        "path": "internal/admission/budget.go",
+        "sha256": "e51e8bca11c84efb92952301a7c48d8cb2d9f65c469d17ad04e82eab92f97556"
+      },
+      {
+        "path": "internal/admission/consumer_lease.go",
+        "sha256": "48e33bb844c86c8b7415682c51ecb382f3181435287e54a1d7490aeb371b0ecd"
+      },
+      {
+        "path": "internal/admission/fixture_claim.go",
+        "sha256": "e1bdea75104c2dc3c3a13243314395891e57e2534c160bc5995132f333dad4bc"
+      },
+      {
+        "path": "internal/admission/fixture_evidence.go",
+        "sha256": "083eb5fc41dca075973819fa30bb14f800a07466679f4d248b3449484ac2de13"
+      },
+      {
+        "path": "internal/admission/fixture_inheritance.go",
+        "sha256": "d6e5e472c53e988cc3772ca54deddaf17eb802d0aac1a17d957b255636d38cf1"
+      },
+      {
+        "path": "internal/admission/fixture_recovery.go",
+        "sha256": "7cb22777a62104fb677f049d32c50e0f1f9aa5a405254f40579fe6e358219404"
+      },
+      {
+        "path": "internal/admission/fixture_registration.go",
+        "sha256": "be782f4eb5cc280f0d7fccc76f9bc36938275e915a56ce0b822b76e00e8e0881"
+      },
+      {
+        "path": "internal/admission/gateway_warning.go",
+        "sha256": "1aa83bc25e2c411e0bee30a6b3d590fb241feb3c105ee4ad685a1d431bbb034a"
+      },
+      {
+        "path": "internal/admission/native_consumer.go",
+        "sha256": "4bd446c7f7d1c4ec23c1553130dab1f64ae2045bee48415bc09ddf9fb2a3ee1b"
+      },
+      {
+        "path": "internal/admission/quota_migration.go",
+        "sha256": "b27dbf1cd11cfdc84d8719f3570412d103ce0e2eb0530f1cb757e9f633a038bb"
+      },
+      {
+        "path": "internal/admission/recovered_quota.go",
+        "sha256": "3b25898691185f3ee3446c8ab408fddcbeaa1bc671ee8bc06fc271b416d161bf"
+      },
+      {
+        "path": "internal/admission/resident_descendants.go",
+        "sha256": "d1b6d0f630ea4a82ac609d404e01d70333c1499cb7d4d1388d3b889c88f51a9d"
+      },
+      {
+        "path": "internal/admission/resident_escalation.go",
+        "sha256": "e111035a63064870ad186c4d9cb9fa969f107201bfb92f33c41047e409e09849"
+      },
+      {
+        "path": "internal/admission/resident_generation.go",
+        "sha256": "8d53b71e0a14db4a3ebe005e9eb827340e3f1788609f57acbac1f45f32055b59"
+      },
+      {
+        "path": "internal/admission/resident_guard.go",
+        "sha256": "87cc3e8d830b0816403812f682e460df16cda490e591056475bd7701599dad06"
+      },
+      {
+        "path": "internal/admission/resident_inventory.go",
+        "sha256": "b1b2e8fb3b911d5f2b27d06ee09c27f3658fa5c11bcabcf98a2b8bf84268e7a4"
+      },
+      {
+        "path": "internal/admission/resident_stop_unix.go",
+        "sha256": "7c70059762d865d1e101508da25a9c35910b1ebe43ba8820dd17cfab1b12e4de"
+      },
+      {
+        "path": "internal/admission/residents.go",
+        "sha256": "94632c1028d5952b49c58b5c6f4c5de2036a28eb650dc640394a1a2ed36aebd2"
+      },
+      {
+        "path": "internal/admission/sampler_darwin.go",
+        "sha256": "63c23d9eea7c15819589a52cb49771db98cb0e3873add511cdaf7a111eacdf13"
+      },
+      {
+        "path": "internal/admission/shared_quota.go",
+        "sha256": "327d642ee018d826ad457df219da1a4432129ebe6495dd5c0f04c5beadb06439"
+      },
+      {
+        "path": "internal/admission/warning_grant.go",
+        "sha256": "9c7f7ae61721ac26f8b15b5f2bfaaff867cf8a88b6b49894b604172941f1b344"
+      }
+    ],
+    "limits": "Reused unchanged source-bound Noodle structure; not runtime or quality acceptance"
+  },
+  "artifact_acceptance": "Both binary subjects passed three isolated real-gateway scenarios. Exact original-byte subject restored. No real credential/VM/model effects.",
+  "original_inventory_status": "UNKNOWN_UNCHANGED; diagnostic source reconciliation conveys no release authority",
+  "native_effect_readback": "19 original IDs/specs, 18 Stopped, one Ready; current Stop and gateway/Host handover incomplete",
+  "schema": {
+    "evidence_validity": "VALID",
+    "observation_scope": "consumer_report",
+    "behavior": {
+      "classification": "PASS",
+      "failed_checks": []
+    },
+    "next": {
+      "owner": "task-owner",
+      "operation": "consume_verified_behavior",
+      "required": [],
+      "argv": null,
+      "input": null
+    }
+  },
+  "next_consumption": {
+    "returned_next": {
+      "owner": "task-owner",
+      "operation": "consume_verified_behavior",
+      "required": [],
+      "argv": null,
+      "input": null
+    },
+    "action": "Current Session consumed verified behavior only within unchanged four-instruction consumer_report; restored only proven original bytes, retained unknown native effects, preserved same prepared R3 request without admission while original custody is active.",
+    "native_review": "NOT_RUN",
+    "native_recovery": "NOT_RUN",
+    "old_missing_native_protocol": "Not upgraded by this consumer_report",
+    "authorizes_landing": false
+  },
+  "r3": {
+    "owner": "soodles.loop",
+    "status": "prepared",
+    "request": {
+      "path": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/live-request-r3.json",
+      "sha256": "c4119a58ed6c4ebde0a1716056cd7057ef0a5ac3c1952653a00daefc44e44530"
+    },
+    "next": {
+      "tool": "soodles_loop_enter",
+      "arguments": {
+        "request_file": "PRIVATE_HOST_HOME/neo-route-evidence/grok-review-integration/gateway-continuation-_9syetd0/live-request-r3.json"
+      },
+      "owner": "soodles.loop",
+      "operation": "original_entry"
+    },
+    "effects": [],
+    "authorizes_landing": false
+  },
+  "native_grok_poteto_review": "NOT_RUN",
+  "guest_quality": "NOT_RUN",
+  "native_recovery": "NOT_RUN",
+  "parent_goal": "OPEN",
+  "authorizes_landing": false,
+  "public_projection": {
+    "kind": "PORTABLE_HISTORICAL_SUMMARY",
+    "original_summary_sha256": "f3dc290111e23a428ee9a38526485c9a9eac7c18a61339fd25cbce8446488389",
+    "private_path_references": 20,
+    "private_locator_marker": "PRIVATE_HOST_HOME/",
+    "locator_meaning": "Private retained evidence location. The marker is not a filesystem root or a Host-issued FileRef.",
+    "historical_continuations": "Recorded next values and arguments are historical data. This public projection is not executable and does not authorize effects.",
+    "original_bytes": "Retained privately without modification; evidence digests and source bindings remain unchanged.",
+    "proof_ceiling": "Publication projection only; no new semantic, native, quality or landing acceptance."
+  }
+}
