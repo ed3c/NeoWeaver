@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "neoweaver": {
+      "command": "python3",
+      "args": ["scripts/neoweaver.py", "mcp"]
+    }
+  }
+}

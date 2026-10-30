@@ -58,3 +58,7 @@ Test Manager 一次選必要 discriminating controls。Schema Manager 消費實�
 FactoryWeaver doctor／local maintain 可重跑 CLI transport與拒絕。Full maintenance blocked 不得改成 full PASS。工程文件沿原 Soodles review-writing 做 source fidelity、actor、condition、causality、state、acceptance 審查。改 P-class guidance 的 native compliance 仍需 fresh consumer 和原 schema feedback；文字審查通過不替代該證據。
 
 先從實際 first unsupported premise 修原 Producer。依 LESSON 保留正反控制與 GitHub rework edges。不把歷史 source update 寫成 native Noodle／Manager receipt，也不以本規格完成宣稱產品已實作。
+
+成品 Goal 與原 task 證據需對帳時，沿 [Product CLI](docs/product-cli.md) 的同一
+operations 與原 TaskAdapter；只有具名 coverage／review 語義交回 Session。
+CLI、MCP、Host 載入及 Native 效果分別驗收，不由局部完成關閉完整 Goal。
