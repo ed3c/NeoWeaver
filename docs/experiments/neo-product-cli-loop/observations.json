@@ -1,0 +1,248 @@
+{
+  "acceptance_observed": false,
+  "observations": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "py_compile",
+        "neoweaver/product_goal.py",
+        "neoweaver/product_cli.py",
+        "neoweaver/mcp_stdio.py",
+        "scripts/neoweaver.py",
+        "tests/test_product_goal.py",
+        "tests/test_product_cli.py",
+        "tests/test_mcp_cli.py",
+        "tests/test_agent_cli_harness.py",
+        "docs/experiments/neo-product-cli-loop/fault_replay.py"
+      ],
+      "status": "NOT_RUN",
+      "exit": null,
+      "error": "ENOENT",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_product_goal.py",
+        "-v"
+      ],
+      "status": "NOT_RUN",
+      "exit": null,
+      "error": "ENOENT",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_product_cli.py",
+        "-v"
+      ],
+      "status": "NOT_RUN",
+      "exit": null,
+      "error": "ENOENT",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_mcp_cli.py",
+        "-v"
+      ],
+      "status": "NOT_RUN",
+      "exit": null,
+      "error": "ENOENT",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_agent_cli_harness.py",
+        "-v"
+      ],
+      "status": "NOT_RUN",
+      "exit": null,
+      "error": "ENOENT",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_task_adapter.py",
+        "-v"
+      ],
+      "status": "NOT_RUN",
+      "exit": null,
+      "error": "ENOENT",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/neoweaver.py",
+        "goal",
+        "reconcile",
+        "--help"
+      ],
+      "status": "NOT_RUN",
+      "exit": null,
+      "error": "ENOENT",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/neoweaver.py",
+        "mcp"
+      ],
+      "status": "NOT_RUN",
+      "exit": null,
+      "error": "ENOENT",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "docs/experiments/neo-product-cli-loop/fault_replay.py"
+      ],
+      "status": "NOT_RUN",
+      "exit": null,
+      "error": "ENOENT",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "source-only inventory read"
+      ],
+      "status": "PASS",
+      "requirements": 10,
+      "cards": 44,
+      "evidence_ceiling": "SOURCE_ONLY_NOT_PYTHON_AST_OR_RUNTIME"
+    },
+    {
+      "command": [
+        "node",
+        "read source digests"
+      ],
+      "status": "OBSERVED",
+      "files": [
+        {
+          "path": "neoweaver/task_adapter.py",
+          "sha256": "55adf3b54ca101030688a8c0666faf89efe9819537b01db37947d5b7d3aabb58"
+        },
+        {
+          "path": "scripts/run_task_adapter.py",
+          "sha256": "76f32b43cdaa658ffe4b641462d853f03d5d454af880a4e481ea4e38a14ce785"
+        },
+        {
+          "path": "scripts/loop.py",
+          "sha256": "e81dad076a056a69226b631d54e87c6c109528f49026d7b1eaa27a5cd4f4ade6"
+        },
+        {
+          "path": "docs/compiled/specification.json",
+          "sha256": "0bdfbd7075aa736ed505e0f200dfc0a69c4960ee8ce4c0cabc045ac4b287a3ef"
+        },
+        {
+          "path": "docs/specs/neoweaver-product-program.md",
+          "sha256": "e0cbda2dd1aea45a87d68a0ddc09091417466e6cd8eef959cb660823bc6a5b91"
+        }
+      ],
+      "note": "Digests identify inspected bytes, not Native execution or authority."
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "docs/experiments/neo-product-cli-loop/control-cli-probe.mjs"
+      ],
+      "status": "PASS",
+      "exit": 0,
+      "evidence_ceiling": "JAVASCRIPT_SYNTAX_ONLY"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "docs/experiments/neo-product-cli-loop/view.mjs"
+      ],
+      "status": "PASS",
+      "exit": 0,
+      "evidence_ceiling": "JAVASCRIPT_SYNTAX_ONLY"
+    },
+    {
+      "command": [
+        "node",
+        "materialized pele-render/scripts/render.mjs",
+        "docs/experiments/neo-product-cli-loop/chart.mmd",
+        "docs/experiments/neo-product-cli-loop/chart.svg"
+      ],
+      "status": "PASS",
+      "exit": 0,
+      "renderer": "Pele 1.9.0",
+      "width": 553,
+      "height": 964,
+      "evidence_ceiling": "AUTHORED_CHART_RENDER_NOT_TLC"
+    },
+    {
+      "command": [
+        "node",
+        "JSON.parse examples/agent-cli-mcp.json and observations.json"
+      ],
+      "status": "PASS",
+      "exit": 0,
+      "evidence_ceiling": "JSON_SYNTAX_ONLY"
+    }
+  ],
+  "tlc": "NOT_RUN: Java/TLC/mise absent; did not invoke auto-installer",
+  "native_effect": "NOT_RUN",
+  "host_installation": "NOT_RUN",
+  "fresh_consumer_schema": "NOT_RUN"
+}

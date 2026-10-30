@@ -1,0 +1,14 @@
+---
+title: Neo product CLI | authored projection | TLC NOT_RUN
+---
+stateDiagram-v2
+  [*] --> admission
+  admission --> reconcile: original admission
+  reconcile --> semantic: read full Goal and Owner evidence
+  semantic --> next: Session selects local coverage
+  next --> verification: consume original next
+  verification --> unknown: missing effect response
+  unknown --> verification: read original Owner only
+  verification --> delivery: original scoped acceptance
+  delivery --> outer: return original delivery and remaining Goal
+  outer --> [*]: independent acceptance remains with Outer
