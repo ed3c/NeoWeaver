@@ -19,6 +19,14 @@ FileRefs、source_commit、environment、timeout_s 及 require_existing_instance
 selection 的 `request` 消費原 `{path, sha256}`，`carrier` 消費原已選設定。
 先讀取原任務，capture 必須是 Repo 外不存在的新目錄。
 
+CLI 的 selection 與 `--review` 檔案沿用 TaskAdapter 的嚴格 JSON parser，
+各層重複 key 與非有限常數均拒絕。selection 必須是 JSON object；review
+必須是 object，且只可攜帶 `decision`、`feedback`、`acceptance_review`。
+這些入口檢查在 carrier 呼叫與 capture 建立前完成。輸入拒絕以 exit 2
+及 stderr JSON 的 `status=refused`、`problem`、`authorizes_landing=false`
+回報。缺欄位沿用原診斷。Review 的語義、必要欄位與驗收仍由原 Owner 負責，
+入口形狀通過不代表核准或驗收通過。
+
 ```text
 python scripts/run_task_adapter.py /absolute/private/selection.json inspect /absolute/external/capture-1
 ```

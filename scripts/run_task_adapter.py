@@ -7,7 +7,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from neoweaver.task_adapter import PinnedLoopCLI, TaskAdapter
+from neoweaver.task_adapter import PinnedLoopCLI, TaskAdapter, _json
 
 
 def main():
@@ -18,16 +18,22 @@ def main():
     parser.add_argument('--review', type=Path, help='Actual Session decision and original acceptance observation')
     args = parser.parse_args()
     try:
-        selection = json.loads(args.selection.read_bytes())
+        selection = _json(args.selection.read_bytes())
+        if not isinstance(selection, dict):
+            raise ValueError('invalid_task_selection')
+        if args.operation == 'inspect' and args.review:
+            raise ValueError('inspect_cannot_submit_review')
+        review = None
+        if args.review:
+            review = _json(args.review.read_bytes())
+            if not isinstance(review, dict) or set(review) - {'decision', 'feedback', 'acceptance_review'}:
+                raise ValueError('invalid_session_review')
         carrier = PinnedLoopCLI(selection['carrier'])
         adapter = TaskAdapter(selection['request'], carrier)
         if args.operation == 'inspect':
-            if args.review:
-                raise ValueError('inspect_cannot_submit_review')
             state = adapter.inspect(args.capture)
         else:
             previous = adapter.readback(selection['readback'])
-            review = json.loads(args.review.read_bytes()) if args.review else None
             state = adapter.advance(previous, args.capture, review=review)
         print(json.dumps(asdict(state), ensure_ascii=False, allow_nan=False))
         return 2 if state.status in ('unknown', 'refused', 'failed') else 0

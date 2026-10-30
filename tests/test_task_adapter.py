@@ -3,10 +3,12 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+import runpy
 import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from neoweaver.task_adapter import PinnedLoopCLI, TaskAdapter, TransportUnknown
 
@@ -227,3 +229,137 @@ class TaskAdapterTests(unittest.TestCase):
                              capture_output=True, text=True)
         self.assertEqual(run.returncode, 2)
         self.assertEqual(json.loads(run.stderr)['problem'], 'inspect_cannot_submit_review')
+
+
+class TaskAdapterCLITests(unittest.TestCase):
+    reviewed_result = TaskAdapterTests.reviewed_result
+
+    def setUp(self):
+        TaskAdapterTests.setUp(self)
+        self.script = Path(__file__).resolve().parents[1] / 'scripts/run_task_adapter.py'
+        self.marker = self.root / 'carrier-calls'
+        self.entrypoint = self.root / 'fixture-cli.py'
+        self.entrypoint.write_text(
+            'import json,sys\nfrom pathlib import Path\n'
+            'payload=json.load(sys.stdin)\n'
+            f'with Path({str(self.marker)!r}).open("a") as log:\n'
+            ' log.write(json.dumps({"argv":sys.argv[1:],"input":payload})+"\\n")\n'
+            f'print({json.dumps(self.reviewed_result())!r})\n')
+        self.selection = {
+            'request': self.request,
+            'carrier': {'python': reference(Path(sys.executable).resolve()),
+                        'entrypoint': reference(self.entrypoint),
+                        'sources': [reference(self.entrypoint)], 'source_commit': 'fixture',
+                        'environment': {}, 'timeout_s': 5},
+        }
+        saved = self.root / 'readback.json'
+        saved.write_text(json.dumps(self.reviewed_result()))
+        self.selection['readback'] = reference(saved)
+
+    def run_cli(self, selection, operation='inspect', review=None):
+        path = self.root / 'selection.json'
+        path.write_text(selection)
+        argv = [sys.executable, str(self.script), str(path), operation,
+                str(self.root / 'capture')]
+        if review is not None:
+            review_path = self.root / 'review.json'
+            review_path.write_text(review)
+            argv += ['--review', str(review_path)]
+        return subprocess.run(argv, capture_output=True, text=True)
+
+    def assert_refused_without_effects(self, run, problem):
+        self.assertEqual(run.returncode, 2, run.stderr)
+        self.assertEqual(run.stdout, '')
+        self.assertEqual(json.loads(run.stderr), {
+            'status': 'refused', 'problem': problem, 'authorizes_landing': False})
+        self.assertFalse(self.marker.exists())
+        self.assertFalse((self.root / 'capture').exists())
+
+    def test_nonobject_selection_refuses_at_entry(self):
+        for raw in ('[]', 'null', '"selection"', '7', 'true'):
+            with self.subTest(raw=raw):
+                self.assert_refused_without_effects(
+                    self.run_cli(raw), 'invalid_task_selection')
+
+    def test_selection_duplicate_keys_refuse_at_every_level(self):
+        for field in (None, 'request', 'carrier', 'readback'):
+            selection = deepcopy(self.selection)
+            if field is None:
+                raw = json.dumps(selection)[:-1] + ',"request":null}'
+            else:
+                selection[field] = {'duplicate': 'first'}
+                raw = json.dumps(selection).replace(
+                    '"duplicate": "first"', '"duplicate":"first","duplicate":"second"')
+            with self.subTest(field=field):
+                self.assert_refused_without_effects(
+                    self.run_cli(raw), 'duplicate_json_key')
+
+    def test_invalid_review_refuses_before_readback_or_carrier(self):
+        selection = {**self.selection, 'readback': {'path': 'unreadable'}}
+        for raw in ('[]', 'null', '"review"', '7', 'false', '{"candidate":{}}'):
+            with self.subTest(raw=raw):
+                self.assert_refused_without_effects(
+                    self.run_cli(json.dumps(selection), 'advance', raw),
+                    'invalid_session_review')
+
+    def test_review_duplicate_keys_refuse_before_carrier(self):
+        for raw in ('{"decision":"approve","decision":"request-changes"}',
+                    '{"acceptance_review":{"scope":"a","scope":"b"}}'):
+            with self.subTest(raw=raw):
+                self.assert_refused_without_effects(
+                    self.run_cli(json.dumps(self.selection), 'advance', raw),
+                    'duplicate_json_key')
+
+    def test_strict_json_constants_and_syntax_refuse_before_carrier(self):
+        for raw, problem in (('{"extra":NaN}', 'nonfinite_json'),
+                             ('{"extra":Infinity}', 'nonfinite_json')):
+            with self.subTest(raw=raw):
+                self.assert_refused_without_effects(self.run_cli(raw), problem)
+                self.assert_refused_without_effects(
+                    self.run_cli(json.dumps(self.selection), 'advance', raw), problem)
+        for review in (None, '{'):
+            with self.subTest(review=review):
+                run = self.run_cli('{' if review is None else json.dumps(self.selection),
+                                   'advance', review)
+                self.assertEqual(run.returncode, 2, run.stderr)
+                self.assertEqual(json.loads(run.stderr)['status'], 'refused')
+                self.assertFalse(self.marker.exists())
+                self.assertFalse((self.root / 'capture').exists())
+
+    def test_missing_selection_field_keeps_existing_diagnostic(self):
+        for field in ('carrier', 'request', 'readback'):
+            selection = deepcopy(self.selection)
+            del selection[field]
+            with self.subTest(field=field):
+                self.assert_refused_without_effects(
+                    self.run_cli(json.dumps(selection), 'advance'), repr(field))
+
+    def test_valid_inspect_preserves_owner_action(self):
+        run = self.run_cli(json.dumps(self.selection))
+        self.assertEqual(run.returncode, 0, run.stderr)
+        state = json.loads(run.stdout)
+        self.assertEqual(state['action'], self.reviewed_result()['review_input'])
+        self.assertEqual(state['status'], 'needs_review')
+        self.assertFalse(state['authorizes_landing'])
+        self.assertEqual(len(self.marker.read_text().splitlines()), 1)
+
+    def test_valid_review_consumes_original_continuation_once(self):
+        review = {'decision': 'request-changes', 'feedback': 'Independent control failed.'}
+        run = self.run_cli(json.dumps(self.selection), 'advance', json.dumps(review))
+        self.assertEqual(run.returncode, 0, run.stderr)
+        calls = [json.loads(line) for line in self.marker.read_text().splitlines()]
+        self.assertEqual([call['argv'] for call in calls], [
+            ['manager-request', 'loop_inspect'], ['manager-request', 'loop_candidate_review']])
+        self.assertEqual(calls[1]['input'], {
+            **self.reviewed_result()['review_input']['arguments'], **review})
+        self.assertFalse(json.loads(run.stdout)['authorizes_landing'])
+
+    def test_internal_type_error_is_not_disguised_as_input_refusal(self):
+        main = runpy.run_path(str(self.script))['main']
+        path = self.root / 'selection.json'
+        path.write_text(json.dumps(self.selection))
+        with patch.object(sys, 'argv', [str(self.script), str(path), 'inspect',
+                                       str(self.root / 'capture')]), patch(
+                'neoweaver.task_adapter.TaskAdapter.inspect', side_effect=TypeError('internal bug')):
+            with self.assertRaisesRegex(TypeError, 'internal bug'):
+                main()
